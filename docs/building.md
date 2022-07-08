@@ -197,6 +197,4 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
 set "OSCDIMG=C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\amd64\Oscdimg\oscdimg.exe"
 
 "%OSCDIMG%" -lfinal_iso -m -u2 -b"%EXTRACTED_IMAGE%\boot\etfsboot.com" "%EXTRACTED_IMAGE%" "%userprofile%\desktop\final_iso.iso"
-
-"%OSCDIMG%" -n -d -m "%EXTRACTED_IMAGE%" "%userprofile%\final_iso.iso"
 ```
