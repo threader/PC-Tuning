@@ -580,7 +580,7 @@
 
 ## Configure Services & Drivers
 
-- The service list configuration is not intended for laptop, Wi-Fi & webcame functionality. I am not responsible if anything goes wrong or you BSOD.
+- The service list configuration is not intended for laptop, Wi-Fi & webcam functionality. I am not responsible if anything goes wrong or you BSOD.
 
 - Download [Service-List-Builder](https://github.com/amitxv/Service-List-Builder/releases)
 
