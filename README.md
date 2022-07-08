@@ -45,29 +45,29 @@ The guidance is currently updated & have been tested on the following versions o
 
 - Windows 10 21H2
 
-
 ## Requirements
 
 - USB Storage Device (8gb minimum)
-- [Ventoy]
-- [Linux Mint Xfce Edition]
+- [Ventoy](https://github.com/ventoy/Ventoy/releases)
+- [Linux Mint Xfce Edition](https://linuxmint.com/edition.php?id=294)
 - Familiarity with the command-line interface (or the will to learn!)
 - Ethernet & at least one SSD/NVME (wake up, it's not 2006 anymore)
 
 ## Physical Setup
 
-- See [docs/physical-setup.md]
+- See [docs/physical-setup.md](./docs/physical-setup.md)
 
 ## Pre-Installation Instructions
 
-- See [docs/pre-install.md]
+- See [docs/pre-install.md](./docs/pre-install.md)
 
 ## Post-Installation Instructions
 
-- See [docs/post-install.md]
+- See [docs/post-install.md](./docs/post-install.md)
+
 ## Research
 
-- See [docs/research.md]
+- See [docs/research.md](./docs/research.md)
 
 ## Credits
 
@@ -79,15 +79,3 @@ The following projects & people deserve recognition for their research, knowledg
 - [Phlegm](https://twitter.com/getggos)
 - [Revision](https://sites.google.com/view/meetrevision)
 - [Timecard](https://github.com/djdallmann/GamingPCSetup/)
-
-[Ventoy]: https://github.com/ventoy/Ventoy/releases
-
-[Linux Mint Xfce Edition]: https://linuxmint.com/edition.php?id=294
-
-[docs/physical-setup.md]: ./docs/physical-setup.md
-
-[docs/pre-install.md]: ./docs/pre-install.md
-
-[docs/post-install.md]: ./docs/building.md
-
-[docs/research.md]: ./docs/research.md
