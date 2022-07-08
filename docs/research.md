@@ -21,7 +21,7 @@
    
 - Press F5 to start logging. After 30 seconds or so press F7 to stop the log.
    
-- In the left hand pane, click on the game executable name & click on a packet header. Expand the packet info under "Frame Details" an&d finally expand the subcatagory "Ipv4". This will reveal the current DSCP value of each frame.
+- In the left hand pane, click on the game executable name & click on a packet header. Expand the packet info under "Frame Details" and finally expand the subcatagory "Ipv4". This will reveal the current DSCP value of each frame.
 
     <img src="../media/network-monitor-new-capture.png" width="450">
 
