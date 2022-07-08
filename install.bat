@@ -1,7 +1,7 @@
 @echo off
 SETLOCAL EnableDelayedExpansion
 
-cd "%~dp0"
+pushd "%~dp0"
 if not exist "sources\install.wim" (
 	echo error: directory does not appear to be a windows image
 	pause
