@@ -32,7 +32,7 @@
 - [Configure FSE & QoS for Games](#configure-fse--qos-for-games)
 - [Cleanup](#cleanup)
 - [Configure Default Programs](#configure-default-programs)
-- [Final Thoughts & Tips](#final-thoughts-and-tips)
+- [Final Thoughts & Tips](#final-thoughts--tips)
 
 ## Miscellaneous
 
