@@ -37,7 +37,7 @@ It is important to note that you should be comfortable with reinstalling Windows
 
 The objective is to end up with a relatively *bare*, reliable & consistent system by tuning the BIOS & operating system to reduce unnecessary interrupts & [context switching](https://en.wikipedia.org/wiki/Context_switch), prevent other applications from stealing execution time from our realtime application (games) & most importantly, correctly configuring our hardware.
 
-Some elements of this guide are not directly performance related & are just personalization related as i cover configuring the operating system from start to finish. Very rarely, some elements may also be highly opinionated however i have tried my best to provide technical references, evidence, my own research & a valid justification to the information provided to prevent making changes that would otherwise make your system perform worse than stock. Feel free to challange any given information so that it can be reviewed.
+Some elements of this guide are not directly performance related & are just personalization related as i cover configuring the operating system from start to finish. Very rarely, some elements may also be highly opinionated however i have tried my best to provide technical references, evidence, my own research & a valid justification to the information provided to prevent making changes that would otherwise make your system perform worse than stock. Feel free to challenge any given information so that it can be reviewed.
 
 The guidance is currently updated & have been tested on the following versions of Windows:
 
@@ -71,7 +71,7 @@ The guidance is currently updated & have been tested on the following versions o
 
 ## Credits
 
-The following projects & people deserve recognition for their research, knowledge & overall contribution to the community. Please note that this guide may contain information similar to those of the projects listed below however it is not my intention to directly copy from them, in some circumstance it is unavoidable.
+The following projects & people deserve recognition for their research, knowledge & overall contribution to the community. Please note that this guide may contain information similar to those of the projects listed below however it is not my intention to directly copy from them, in some circumstances it is unavoidable.
 
 - [AME](https://ameliorated.info/)
 - [Bored](https://github.com/BoringBoredom/PC-Optimization-Hub)
