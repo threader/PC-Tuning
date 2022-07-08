@@ -52,7 +52,7 @@
 
 - Open ``Ventoy2Disk.exe``. Go to ``Option > Partition Style`` & select GPT (UEFI) or MBR (Legacy).
 
-    - See [media/identify-bios-mode.png](../media/bios-mode-system-info.png)
+    - See [media/identify-bios-mode.png](../media/identify-bios-mode.png)
 
 - Select your USB Storage & press install.
 
