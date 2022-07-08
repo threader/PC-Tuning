@@ -175,9 +175,15 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
 
     - The process is quite simple:
 
-        - Download the [latest Windows 10 image](https://www.microsoft.com/en-gb/software-download/windows10) & extract it, i would recommend renaming the extracted folder to avoid confusion
+        - Download the [latest Windows 10 image](https://www.microsoft.com/en-gb/software-download/windows10) & extract it, i would recommend renaming the extracted folder to avoid confusion. In the examples below, i have extracted it to ``C:\W10_image``
 
         - Replace ``sources\install.wim`` in the extracted Windows 10 image with the Windows 7 ``install.wim``
+
+    - We need to update a variable since our extracted directory has changed. Enter the path of your new extracted directory, mine is ``C:\W10_image``.
+
+        ```bat
+        set "EXTRACTED_IMAGE=C:\W10_image"
+        ```
 
 ## Insert DISM Apply-Image Script
 
