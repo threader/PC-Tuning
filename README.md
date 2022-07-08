@@ -23,7 +23,7 @@ EVA is no longer a custom Windows ISO. Instead, i have created a guide in hope o
 
 The setup & build process is similar to [AME's](https://ameliorated.info) in terms of debloating via Linux, i have used elements of their shell script in my own.
 
-You should follow this guide with the mindset of configuring something (e.g usb port layout, graphics driver etc.) once & do not intend on re-configuring it later on. The guide is structured so that modifications can be made without reverting other changes in the future. Configure everything once in stone & leave as is. 
+You should follow this guide with the mindset of configuring something (e.g usb port layout, graphics driver etc) once & do not intend on re-configuring it later on. The guide is structured so that modifications can be made without reverting other changes in the future. Configure everything once in stone & leave as is. 
 
 It is important to note that you should be comfortable with reinstalling Windows if anything goes wrong.
 
