@@ -36,12 +36,9 @@
             <details>
             <summary>Download Links</summary>
 
-            - Windows 10 1803
-
-            - Windows 10 21H2
+            - Windows 10 21H2 (coming soon)
 
             </details>
-
 
 
 ## Preparing the USB
