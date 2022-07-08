@@ -109,7 +109,7 @@
                 Variable value: 1
                 ```
     
-    - In ``Defragment and Optimize Drives``, disable ``Run on a schedule``. More details on doing maintenance tasks ourself in [Final Thoughts & Tips](#final-thoughts-and-tips).
+    - In ``Defragment and Optimize Drives``, disable ``Run on a schedule``. More details on doing maintenance tasks ourself in [Final Thoughts & Tips](#ffinal-thoughts--tips).
 
     - Disable all messages in ``Control Panel> System and Security > Action Center > Change Action Center settings > Change Security and Maintenance settings``
 
