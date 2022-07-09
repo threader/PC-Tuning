@@ -2,7 +2,7 @@
 
 ## Activation
 
-- Consider activating via HWID before configuring the image as the key will be permanently linked to your motherboard.
+- Consider activating before configuring the image as the key will be permanently linked to your motherboard/ HWID & you will not be forced to run activation scripts once booted into the image. This can be done with a legitimate key or with [massgravel's scripts](https://github.com/massgravel/Microsoft-Activation-Scripts).
 
 ## Configure Partitions
 
