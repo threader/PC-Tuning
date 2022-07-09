@@ -1,13 +1,5 @@
 # Physical Setup
 
-## Content Overview
-
-- [USB Port configuration](#usb-port-configuration)
-- [BIOS](#bios)
-- [Minimizing Interference](#minimizing-interference)
-- [Configure Peripherals](#configure-peripherals)
-- [Stability & Hardware Clocking](#stability-and-hardware-clocking)
-
 ## USB Port configuration
 
 - Plug your mouse & keyboard into the first two ports on your first usb controller. This can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html#download) with trial & error.

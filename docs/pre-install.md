@@ -1,14 +1,5 @@
 # Pre-Installation Instructions
 
-## Content Overview
-
-- [Activation](#activation)
-- [Configure Partitions](#configure-partitions)
-- [Obtaining a Base Image](#obtaining-a-base-image)
-    - [The Nature of Windows](#the-nature-of-windows)
-- [Preparing the USB](#preparing-the-usb)
-- [Booting Into the Image](#booting-into-the-image)
-
 ## Activation
 
 - Consider activating via HWID before configuring the image as the key will be permanently linked to your motherboard.

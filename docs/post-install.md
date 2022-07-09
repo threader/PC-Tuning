@@ -1,39 +1,5 @@
 # Post-Installation Instructions
 
-## Content Overview
-
-- [Miscellaneous](#miscellaneous)
-- [Merge the Registry Files](#merge-the-registry-files)
-- [Replace Task Manager with Process Explorer](#replace-task-manager-with-process-explorer)
-- [Visual Cleanup](#visual-cleanup)
-- [Removing Bloatware](#removing-bloatware)
-    - [Removing Bloatware with Linux](#removing-bloatware-with-linux)
-- [Installing Drivers](#installing-drivers)
-- [Activating Windows](#activating-windows)
-- [Installing Recommended Packages](#installing-recommended-packages)
-- [Configure the BCD Store](#configure-the-bcd-store)
-- [Configure Memory Management Settings](#configure-memory-management-settings)
-- [Disable Process Mitigations](#disable-process-mitigations)
-- [Configure the Network Adapter](#configure-the-network-adapter)
-- [Preferences](#preferences)
-- [Configure the Graphics Card](#configure-the-graphics-card)
-    - [Related GPU Settings](#related-gpu-settings)
-- [Configure Device Manager](#configure-device-manager)
-- [Configure Services & Drivers](#configure-services--drivers)
-- [Configure Control Panel](#configure-control-panel)
-- [Configure Power Options](#configure-power-options)
-- [Interrupt & IRQ Management](#interrupt--irq-management)
-    - [Message Signaled Interrupts](#message-signaled-interrupts)
-    - [Interrupt Affinity](#interrupt--irq-management)
-- [Memory Cleaner](#memory-cleaner)
-- [Optimizing the File System](#optimizing-the-file-system)
-- [Disable Hidden Power Saving](#disable-hidden-power-saving)
-- [Installing Games & Applications](#installing-games--applications)
-- [Configure FSE & QoS for Games](#configure-fse--qos-for-games)
-- [Cleanup](#cleanup)
-- [Configure Default Programs](#configure-default-programs)
-- [Final Thoughts & Tips](#final-thoughts--tips)
-
 ## Miscellaneous
 
 - Note: Do not connect to the internet until told to do so.

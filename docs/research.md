@@ -1,11 +1,5 @@
 # Research
 
-## Content Overview
-
-- [How can you verify if a DSCP QoS policy is working?](#how-can-you-verify-if-a-dscp-policy-is-working)
-- [What TscSyncPolicy does Windows use by default?](#what-tscsyncpolicy-does-windows-use-by-default)
-- [How many Rss Queues do you need?](#how-many-rss-queues-do-you-need)
-
 #### How can you verify if a DSCP QoS policy is working?
 
 <details>

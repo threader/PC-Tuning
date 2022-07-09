@@ -1,24 +1,6 @@
 # Build Instructions
 
-## Content Overview
-
-- [Requirements](#requirements)
-- [Downloading an Image](#downloading-an-image)
-- [Preparing the Build Environment](#preparing-the-build-environment)
-- [Stripping Non-Essential Editions](#stripping-non-essential-editions)
-- [Mounting the Image](#mounting-the-image)
-- [Integrating Updates](#integrating-updates)
-- [Enable .NET 3.5](#enable-net-35)
-- [Enable Legacy Components for older games](#enable-legacy-components-for-older-games)
-- [Integrating & Obtaining Drivers](#integrating--obtaining-drivers)
-- [Integrating Required Files](#integrating-required-files)
-- [Remove Provisioned Appx Bloatware](#remove-provisioned-appx-bloatware)
-- [Replacing Wallpapers](#replacing-wallpapers)
-- [Unmount & Commit](#unmount--commit)
-- [Insert DISM Apply-Image Script](#insert-dism-apply-image-script)
-- [Convert to ISO](#convert-to-iso)
-
-## Requirements
+## Build Requirements
 
 - [7-Zip](https://www.7-zip.org)
 - [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases)
