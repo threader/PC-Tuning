@@ -1,14 +1,23 @@
 # Post-Installation Instructions
 
+## OOBE Setup
+
+Once you have begun the OOBE process, follow the steps in the video.
+
+- Note: Do not enter a password by simply pressing enter, the service list recommended will break user password functionality & you will not be able to login again.
+
+- See [media/oobe-windows7-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows7-example.mp4)
+- See [media/oobe-windows10-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows10-example.mp4)
+
 ## Miscellaneous
 
 - Note: Do not connect to the internet until told to do so.
 
-- Give ``Users`` full control of the ``C:\`` drive. This resolves an issue with xperf ETL processing on Windows 7.
+- Allow users full control of the ``C:\`` drive. This resolves an issue with xperf ETL processing on Windows 7.
 
     - See [media/full-control-example.png](../media/full-control-example.png)
 
-    - Click continue & ignore errors.
+    - Click continue & ignore errors
 
 - Open CMD as Administrator & enter the commands below.
 
@@ -56,7 +65,7 @@
             "%windir%\SysWOW64\OneDriveSetup.exe" /uninstall
             ```
 
-    - Enable ``Launching applications and unsafe files`` in ``Internet Options > security > Custom Level``. This prevents [this annoying warning](https://gearupwindows.com/how-to-disable-open-file-security-warning-in-windows-10/). Feel free to skip this step.
+    - Enable ``Launching applications and unsafe files`` in ``Internet Options > security > Custom Level``. This prevents [this annoying warning](https://gearupwindows.com/how-to-disable-open-file-security-warning-in-windows-10/). Feel free to skip this step as security may be reduced.
 
     - In ``Advanced System Settings``, do the following:
 
@@ -64,7 +73,7 @@
 
         - In ``System Protection``, disable & delete System Restore points. It has been proven to be very unreliable
 
-        - In ``Remote``, disable Remote Assistance
+        - In ``Remote``, disable **Remote Assistance**
 
         - Windows 7 Only:
 
@@ -75,9 +84,9 @@
                 Variable value: 1
                 ```
     
-    - In ``Defragment and Optimize Drives``, disable ``Run on a schedule``. More details on doing maintenance tasks ourself in [Final Thoughts & Tips](#final-thoughts--tips).
+    - In ``Defragment and Optimize Drives``, disable **Run on a schedule**. More details on doing maintenance tasks ourself in [Final Thoughts & Tips](#final-thoughts--tips).
 
-    - Disable all messages in ``Control Panel> System and Security > Action Center > Change Action Center settings > Change Security and Maintenance settings``
+    - Disable all messages in ``Control Panel> System and Security > Action Center > Change Action Center settings > Change Security and Maintenance settings``.
 
         - This section is named ``Security and Maintenance`` on Windows 10
 
@@ -109,7 +118,7 @@
 
 - Place ``C:\prerequisites\sysinternals\procexp.exe`` into ``C:\Windows`` & open it.
 
-- Go to ``Options > Replace Task Manager``. I also configure ``Confirm Kill`` & ``Allow Only One Instance``.
+- Go to ``Options`` & select ``Replace Task Manager``. I also configure ``Confirm Kill`` & ``Allow Only One Instance``.
 
 ## Visual Cleanup
 
@@ -121,7 +130,7 @@
 
 ## Removing Bloatware
 
-- Windows 10 stores installed applications both in the legacy & immersive control panel. Before we remove bloatware via bruteforce on linux, we may as well uninstall what Windows allows us to.
+Windows 10 stores installed applications both in the legacy & immersive control panel. Before we remove bloatware via bruteforce on linux, we may as well uninstall what Windows allows us to.
 
 - Uninstall bloatware in ``Control Panel > Programs > Programs and Features``.
 
@@ -174,7 +183,7 @@
 
 - Once back into the Windows desktop, open ``C:\prerequisites\sysinternals\Autoruns.exe`` & delete all obsolete entries with a yellow label. Run with NSudo if you encounter any permission errors.
 
-- Run the command below in CMD to remove leftover scheduled tasks.
+- Open CMD & enter the command below to remove leftover scheduled tasks.
 
     ```bat
     C:\prerequisites\scripts\scheduled-tasks\disable-tasks.exe
@@ -190,7 +199,7 @@
 
 ## Activating Windows
 
-- As previously mentioned, you should have linked a key to your motherboard but if you have not now would be a good time to enter it. Open CMD & use the following commands:
+As previously mentioned, you should have linked a key to your motherboard but if you have not now would be a good time to enter it. Open CMD & enter the command below.
 
     ```bat
     slmgr /ipk [YOUR 25 DIGIT KEY]
@@ -282,7 +291,7 @@
 
 ## Configure the BCD Store
 
-- Open CMD & enter the following:
+- Open CMD & enter the commands below.
 
     - Disable the boot manager timeout when dual booting does not affect single boot times.
 
@@ -415,29 +424,19 @@
 
     - Run setup.exe to install the driver.
 
-    - Remove & disable telemetry with the commands below in CMD.
+    - Open CMD & enter the commands below to remove & disable telemetry.
 
         ```bat
         for /f "delims=" %a in ('where /r C:\ *NvTelemetry*') do (if exist "%a" (del /f /q /s "%a"))
-        ```
 
-        ```bat
         reg.exe add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v "OptInOrOutPreference" /t REG_DWORD /d 0 /f 
-        ```
 
-        ```bat
         reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup" /v "SendTelemetryData" /t REG_DWORD /d 0 /f
-        ```
 
-        ```bat
         rd /s /q "C:\Program Files\NVIDIA Corporation\Display.NvContainer\plugins\LocalSystem\DisplayDriverRAS"
-        ```
-        
-        ```bat
-        rd /s /q "C:\Program Files\NVIDIA Corporation\DisplayDriverRAS"
-        ```
 
-        ```bat
+        rd /s /q "C:\Program Files\NVIDIA Corporation\DisplayDriverRAS"
+
         rd /s /q "C:\ProgramData\NVIDIA Corporation\DisplayDriverRAS"
         ```
 
@@ -540,9 +539,17 @@
 
         - If there are multiple of the same devices & you are unsure which one is in use, refer back to the tree structure in ``View > Devices by connection``. Note that a single device can use many resources.
 
-- Run the ``C:\prerequisites\scripts\disable-pnp-powersaving.ps1``  script in CMD to disable power saving for various devices in device manager.
+- Open CMD & enter the command below to disable power saving for various devices in device manager. 
 
-- Run ``C:\prerequisites\device-cleanup\DeviceCleanup.exe -s -n *`` in CMD to cleanup hidden & unused devices.
+    ```bat
+    C:\prerequisites\scripts\disable-pnp-powersaving.ps1
+    ```
+
+- Open CMD & enter the command below to cleanup hidden & unused devices.
+    
+    ```bat
+    C:\prerequisites\device-cleanup\DeviceCleanup.exe -s -n *
+    ```
 
 ## Configure Services & Drivers
 
@@ -595,7 +602,7 @@
 
 	- USB Selective Suspend - Disabled
 
-- Remove every powerplan except the active one by running the followings command in CMD:
+- Open CMD & enter the command below to remove every powerplan except the active power scheme.
 
     ```bat
 	powercfg -delete 381b4222-f694-41f0-9685-ff5bb260df2e > NUL
@@ -635,7 +642,7 @@ issues [[1](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitatio
 
     - Note: Restart your PC instead of an individual driver to avoid issues
 
-    - To configure what CPU handles DPCs/ISRs for the network driver, RSS base processor can be configured. Use the following command in CMD, ensure to change the driver key to suit your needs:
+    - Open CMD & enter the command below to configure what CPU handles DPCs/ISRs for the network driver. Ensure to change the driver key to suit your needs.
 
         - Run ``C:\prerequisites\scripts\get-driver-keys.bat`` to get the driver keys on your system
 
@@ -665,7 +672,7 @@ issues [[1](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitatio
 
 ## Optimizing the File System
 
-- Open CMD & enter the following:
+- Open CMD & enter the commands below.
 
     - Prevents characters from the extended character set (including diacritic characters) to be used in 8.3 character-length short file names on NTFS volumes
 
@@ -773,7 +780,7 @@ issues [[1](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitatio
 
 - Reset Firewall rules:
 
-    - Open CMD & paste the following:
+    - Open CMD & enter the command below
 
         ```bat
         reg.exe delete "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f
@@ -784,7 +791,7 @@ issues [[1](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitatio
 
 - Configure Disk Cleanup:
 
-    - Enter the following command in CMD & tick all of the boxes
+    - Open CMD & enter the command below, tick all of the boxes
 
         ```bat
         cleanmgr /sageset:50
