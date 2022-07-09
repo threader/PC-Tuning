@@ -296,7 +296,7 @@
 
 - Media Player
 
-    - [mpv](https://mpv.io) recommended
+    - [mpv](https://mpv.io) or [mpc-hc](https://mpc-hc.org) ([alternative link](https://github.com/clsid2/mpc-hc)) recommended
 
 - Install [OpenShell](https://github.com/Open-Shell/Open-Shell-Menu)
 
