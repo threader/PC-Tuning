@@ -296,9 +296,7 @@
 
 - Media Player
 
-    - [mpv](https://mpv.io) or [mpc-hc](https://mpc-hc.org) recommended
-
-        - Delete ``C:\Program Files\MPC-HC\crashreporter`` if using mpc-hc
+    - [mpv](https://mpv.io) recommended
 
 - Install [OpenShell](https://github.com/Open-Shell/Open-Shell-Menu)
 
@@ -851,7 +849,7 @@ issues [[1](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitatio
 
 - Try to favour FOSS (free & open source software). Stay away from proprietary software where you can.
 
-- You do not need an antivirus. You need a brain & uBlock origin in your browser, i also recommend installing ClearURL & https everywhere extensions. Ensure to scan files with [VirusTotal](https://www.virustotal.com/gui/home/upload) before running them.
+- You do not need an antivirus. You need a brain & uBlock origin in your browser. I also recommend importing [ClearURL Filter List](https://raw.githubusercontent.com/DandelionSprout/adfilt/master/ClearURLs%20for%20uBo/clear_urls_uboified.txt) into uBlock origin & installing the [Skip Redirect](https://addons.mozilla.org/firefox/addon/skip-redirect/) extension. Ensure to scan files with [VirusTotal](https://www.virustotal.com/gui/home/upload) before running them.
 
 - Cap your framerate at a multiple of your monitor refresh rate to prevent frame mistiming [[1](https://youtu.be/_73gFgNrYVQ)]. E.g possible framerate caps with a 144hz monitor include 72, 144, 288, 432 ...
 
