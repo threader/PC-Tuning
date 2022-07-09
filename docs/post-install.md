@@ -205,7 +205,7 @@
 
         - Open ``C:\Program Files\7-Zip\7zFM.exe``, to go ``Tools > Options`` & associate 7-Zip with all file extensions by clicking the + button. You may need to click it twice to override existing associated extensions.
 
-- [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist)
+- [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist/releases)
 
     - Extract the zip file and run ``C:\prerequisites\visual-cpp-runtimes\VisualCppRedist_AIO_x86_x64.exe``
 
