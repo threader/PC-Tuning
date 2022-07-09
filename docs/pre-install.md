@@ -75,8 +75,7 @@
 
     - Do not enter a password by simply pressing enter, the service list recommended will break user password functionality & you will not be able to login again.
 
-    - See [media/oobe-windows7-example.mp4](../media/oobe-windows7-example.mp4)
-
-    - See [media/oobe-windows10-example.mp4](../media/oobe-windows10-example.mp4)
+    - See [media/oobe-windows7-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows7-example.mp4)
+    - See [media/oobe-windows10-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows10-example.mp4)
 
 - Once at desktop, if prompted, decline the network location wizard prompt when at desktop.

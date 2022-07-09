@@ -149,9 +149,9 @@
 
 - Disable features on the taskbar, unpin shortcuts & tiles from the taskbar & start menu.
 
-    - See [media/visual-cleanup-windows7-example.mp4](../media/visual-cleanup-windows7-example.mp4)
+    - See [media/visual-cleanup-windows7-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/visual-cleanup-windows7-example.mp4)
 
-    - See [media/visual-cleanup-windows10-example.mp4](../media/visual-cleanup-windows10-example.mp4)
+    - See [media/visual-cleanup-windows10-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/visual-cleanup-windows10-example.mp4)
 
 ## Removing Bloatware
 
