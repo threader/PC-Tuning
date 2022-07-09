@@ -516,7 +516,7 @@
 
 ## Configure Device Manager
 
-- Open the sound control panel.
+- Open the sound control panel, can be opened with win + r, ``mmsys.cpl``
 
     - Disable unused Plaback & Recording devices 
     
