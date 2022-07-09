@@ -1,3 +1,6 @@
+# inspired by the AME bash script
+# https://ameliorated.info/
+
 cd "$(dirname "$0")"
 
 if [[ -d "Program Files" ]] && [[ -d "Windows/System32" ]]
@@ -5,7 +8,6 @@ then
     echo info: valid windows installation detected, continuing
 else
     echo error: directory does not appear to be the root directory of a windows installation
-    echo info: exiting
     exit 1
 fi
 
