@@ -2,93 +2,14 @@
 
 ## OOBE Setup
 
+Note: Do not connect to the internet until told to do so.
+
 Once you have begun the OOBE process, follow the steps in the video.
 
 - Note: Do not enter a password by simply pressing enter, the service list recommended will break user password functionality & you will not be able to login again.
 
 - See [media/oobe-windows7-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows7-example.mp4)
 - See [media/oobe-windows10-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows10-example.mp4)
-
-## Miscellaneous
-
-- Note: Do not connect to the internet until told to do so.
-
-- Allow users full control of the ``C:\`` drive. This resolves an issue with xperf ETL processing on Windows 7.
-
-    - See [media/full-control-example.png](../media/full-control-example.png)
-
-    - Click continue & ignore errors
-
-- Open CMD as Administrator & enter the commands below.
-
-    - Set PowerShell ExecutionPolicy to unrestricted:
-
-        ```bat
-        PowerShell Set-ExecutionPolicy Unrestricted -force
-        ```
-    
-    - Set the password to never expire, resolves some bugs despite no password being set:
-
-        ```bat
-        net accounts /maxpwage:unlimited
-        ```
-
-    - Disable Automatic Repair, does more harm than good:
-
-        ```bat
-        bcdedit /set {current} recoveryenabled no
-        ```
-
-    - Windows 10+ Only:
-
-    	- Clean Up the WinSxS Folder:
-
-            ```bat
-            DISM /online /Cleanup-Image /StartComponentCleanup /ResetBase
-            ```
-
-    	- Disable [Reserved Storage](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/dism-storage-reserve?view=windows-11) on 1903+:
-
-            ```bat
-            DISM /Online /Set-ReservedStorageState /State:Disabled
-            ```
-
-    	- Uninstall Microsoft Edge:
-
-            ```bat
-            for /f "delims=" %a in ('where /r "C:\Program Files (x86)\Microsoft\Edge\Application" *setup.exe*') do (if exist "%a" (%a --uninstall --system-level --verbose-logging --force-uninstall))
-            ```
-
-    	- Uninstall OneDrive:
-
-            ```bat
-            "%windir%\SysWOW64\OneDriveSetup.exe" /uninstall
-            ```
-
-    - Enable ``Launching applications and unsafe files`` in ``Internet Options > security > Custom Level``. This prevents [this annoying warning](https://gearupwindows.com/how-to-disable-open-file-security-warning-in-windows-10/). Feel free to skip this step as security may be reduced.
-
-    - In ``Advanced System Settings``, do the following:
-
-        - In ``Computer Name > Change`` configure the PC name
-
-        - In ``System Protection``, disable & delete System Restore points. It has been proven to be very unreliable
-
-        - In ``Remote``, disable **Remote Assistance**
-
-        - Windows 7 Only:
-
-            - In ``Advanced > Environment Variables > System Variables``, create a new variable:
-
-                ```
-                Variable name: devmgr_show_nonpresent_devices
-                Variable value: 1
-                ```
-    
-    - In ``Defragment and Optimize Drives``, disable **Run on a schedule**. More details on doing maintenance tasks ourself in [Final Thoughts & Tips](#final-thoughts--tips).
-
-    - Disable all messages in ``Control Panel> System and Security > Action Center > Change Action Center settings > Change Security and Maintenance settings``.
-
-        - This section is named ``Security and Maintenance`` on Windows 10
 
 ## Merge the Registry Files
 
@@ -104,21 +25,6 @@ Once you have begun the OOBE process, follow the steps in the video.
 
 - You may establish an internet connection after you have restarted as the Windows Update policies will take effect.
 
-## Replace Task Manager with Process Explorer
-
-<details>
-<summary>What is wrong with Task Manager?</summary>
-
-- It relies on a kernel mode driver (pcw.sys) to operate (additional overhead).
-
-- Does not provide performance metrics such as cycles/ context switches delta & other useful details.
-
-- On Windows 8+, [Task Manager reports CPU utility in %](https://aaron-margosis.medium.com/task-managers-cpu-numbers-are-all-but-meaningless-2d165b421e43) which provides misleading CPU utilization details, on the other hand, Windows 7's Task Manager & process explorer report time-based busy utilization. This also explains why the disable idle power plan option results in 100% CPU utilization on Windows 8+.
-</details>
-
-- Place ``C:\prerequisites\sysinternals\procexp.exe`` into ``C:\Windows`` & open it.
-
-- Go to ``Options`` & select ``Replace Task Manager``. I also configure ``Confirm Kill`` & ``Allow Only One Instance``.
 
 ## Visual Cleanup
 
@@ -189,30 +95,13 @@ Windows 10 stores installed applications both in the legacy & immersive control 
     C:\prerequisites\scripts\scheduled-tasks\disable-tasks.exe
     ```
 
-## Installing Drivers
-
-- Install any drivers your system requires, avoid installing chipset drivers.
-
-- Try to obtain the bare driver so it can be installed in Device Manager as executable installers usually come with extra unnecessary bloatware. Most of the time, you can open the installer's executable in 7-Zip to obtain the driver.
-
-- I would recommend updating & installing ethernet, USB, sata (required on Windows 7 as enabling MSI on the stock sata driver will result in a BSOD), NVME & potentially the audio controller drivers.
-
-## Activating Windows
-
-As previously mentioned, you should have linked a key to your motherboard but if you have not now would be a good time to enter it. Open CMD & enter the command below.
-
-```bat
-slmgr /ipk [YOUR 25 DIGIT KEY]
-slmgr /ato
-```
-
 ## Installing Recommended Packages
 
 - Install [7-Zip](https://www.7-zip.org)
 
     - Run ``C:\prerequisites\7-Zip\7z2200-x64.exe``
 
-        - Open ``C:\Program Files\7-Zip\7zFM.exe``, to go ``Tools > Options`` & associate 7-Zip with all file extensions by clicking the + button. You may need to click it twice to override existing associated extensions.
+        - Open ``C:\Program Files\7-Zip\7zFM.exe``, to go ``Tools > Options`` & associate 7-Zip with all file extensions by clicking the + button. You may need to click it twice to override existing associated extensions
 
 - [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist/releases)
 
@@ -263,9 +152,7 @@ slmgr /ato
 
 - Install [DirectX Runtimes](https://www.microsoft.com/en-gb/download/details.aspx?id=35)
 
-    - Run ``C:\prerequisites\dxwebsetup.exe``
-
-        - Ensure to uncheck the bing bar option
+    - Run ``C:\prerequisites\dxwebsetup.exe``, ensure to uncheck the bing bar option
 
 - Media Player
 
@@ -284,6 +171,118 @@ slmgr /ato
         - I have included a registry file that will apply a basic OpenShell skin along with a few other settings, feel free to use your own.
 
         - Create a shortcut in win + r, ``shell:startup`` pointing to ``C:\Program Files\Open-Shell\StartMenu.exe``
+
+## Miscellaneous
+
+- Allow users full control of the ``C:\`` drive. This resolves an issue with xperf ETL processing on Windows 7.
+
+    - See [media/full-control-example.png](../media/full-control-example.png)
+
+    - Click continue & ignore errors
+
+- Open CMD as Administrator & enter the commands below.
+
+    - Set PowerShell ExecutionPolicy to unrestricted:
+
+        ```bat
+        PowerShell Set-ExecutionPolicy Unrestricted -force
+        ```
+    
+    - Set the password to never expire, resolves some bugs despite no password being set:
+
+        ```bat
+        net accounts /maxpwage:unlimited
+        ```
+
+    - Disable Automatic Repair, does more harm than good in our use case:
+
+        ```bat
+        bcdedit /set {current} recoveryenabled no
+        ```
+
+    - Windows 10+ Only:
+
+    	- Clean Up the WinSxS Folder:
+
+            ```bat
+            DISM /online /Cleanup-Image /StartComponentCleanup /ResetBase
+            ```
+
+    	- Disable [Reserved Storage](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/dism-storage-reserve?view=windows-11) on 1903+:
+
+            ```bat
+            DISM /Online /Set-ReservedStorageState /State:Disabled
+            ```
+
+    	- Uninstall Microsoft Edge:
+
+            ```bat
+            for /f "delims=" %a in ('where /r "C:\Program Files (x86)\Microsoft\Edge\Application" *setup.exe*') do (if exist "%a" (%a --uninstall --system-level --verbose-logging --force-uninstall))
+            ```
+
+    	- Uninstall OneDrive:
+
+            ```bat
+            "%windir%\SysWOW64\OneDriveSetup.exe" /uninstall
+            ```
+
+    - Enable ``Launching applications and unsafe files`` in ``Internet Options > security > Custom Level``. This prevents [this annoying warning](https://gearupwindows.com/how-to-disable-open-file-security-warning-in-windows-10/). Feel free to skip this step as security may be reduced.
+
+    - In ``Advanced System Settings``, do the following:
+
+        - In ``Computer Name > Change`` configure the PC name
+
+        - In ``System Protection``, disable & delete System Restore points. It has been proven to be very unreliable
+
+        - In ``Remote``, disable **Remote Assistance**
+
+        - Windows 7 Only:
+
+            - In ``Advanced > Environment Variables > System Variables``, create a new variable:
+
+                ```
+                Variable name: devmgr_show_nonpresent_devices
+                Variable value: 1
+                ```
+    
+    - In ``Defragment and Optimize Drives``, disable **Run on a schedule**. More details on doing maintenance tasks ourself in [Final Thoughts & Tips](#final-thoughts--tips).
+
+    - Disable all messages in ``Control Panel> System and Security > Action Center > Change Action Center settings > Change Security and Maintenance settings``.
+
+        - This section is named ``Security and Maintenance`` on Windows 10
+
+## Replace Task Manager with Process Explorer
+
+<details>
+<summary>What is wrong with Task Manager?</summary>
+
+- It relies on a kernel mode driver (pcw.sys) to operate (additional overhead).
+
+- Does not provide performance metrics such as cycles/ context switches delta & other useful details.
+
+- On Windows 8+, [Task Manager reports CPU utility in %](https://aaron-margosis.medium.com/task-managers-cpu-numbers-are-all-but-meaningless-2d165b421e43) which provides misleading CPU utilization details, on the other hand, Windows 7's Task Manager & process explorer report time-based busy utilization. This also explains why the disable idle power plan option results in 100% CPU utilization on Windows 8+.
+</details>
+
+- Place ``C:\prerequisites\sysinternals\procexp.exe`` into ``C:\Windows`` & open it.
+
+- Go to ``Options`` & select ``Replace Task Manager``. I also configure ``Confirm Kill`` & ``Allow Only One Instance``.
+
+## Installing Drivers
+
+- Install any drivers your system requires, avoid installing chipset drivers.
+
+- Try to obtain the bare driver so it can be installed in Device Manager as executable installers usually come with extra unnecessary bloatware. Most of the time, you can open the installer's executable in 7-Zip to obtain the driver.
+
+- I would recommend updating & installing ethernet, USB, sata (required on Windows 7 as enabling MSI on the stock sata driver will result in a BSOD), NVME & potentially the audio controller drivers.
+
+## Activating Windows
+
+As previously mentioned, you should have linked a key to your motherboard but if you have not now would be a good time to enter it. Open CMD & enter the command below.
+
+```bat
+slmgr /ipk [YOUR 25 DIGIT KEY]
+slmgr /ato
+```
 
 ## Configure the BCD Store
 
