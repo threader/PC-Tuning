@@ -216,7 +216,7 @@ As previously mentioned, you should have linked a key to your motherboard but if
 
 - [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist/releases)
 
-    - Extract the zip file and run ``C:\prerequisites\visual-cpp-runtimes\VisualCppRedist_AIO_x86_x64.exe``
+    - Run ``C:\prerequisites\visual-cpp-runtimes\VisualCppRedist_AIO_x86_x64.exe``
 
 - Web Browser
 
