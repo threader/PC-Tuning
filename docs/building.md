@@ -4,20 +4,19 @@
 
 - [7-Zip](https://www.7-zip.org)
 - [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases)
-    - Place the ``win-wallpaper.exe`` in ``C:\Windows``
 - Deployment Tools from the [Windows ADK](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install)
 
 ## Downloading an Image
 
-- Use the [download links spreadsheet](https://docs.google.com/spreadsheets/d/1zTF5uRJKfZ3ziLxAZHh47kF85ja34_OFB5C5bVSPumk/edit#gid=0) to download stock Windows images.
+Use the [download links spreadsheet](https://docs.google.com/spreadsheets/d/1zTF5uRJKfZ3ziLxAZHh47kF85ja34_OFB5C5bVSPumk/edit#gid=0) to download stock windows images.
 
-    - For Windows 7 i recommend ``en_windows_7_professional_with_sp1_x64_dvd_u_676939.iso``
+- For windows 7 i recommend ``en_windows_7_professional_with_sp1_x64_dvd_u_676939.iso``
 
-    - Ensure to cross-check the hashes for the image with other online sources such as the [adguard hash database](https://files.rg-adguard.net/version/f0bd8307-d897-ef77-dbd6-216fefbe94c5?lang=en-us) to verify that the image is genuine & not corrupted
+- Ensure to cross-check the hashes for the image with other online sources such as the [adguard hash database](https://files.rg-adguard.net/version/f0bd8307-d897-ef77-dbd6-216fefbe94c5?lang=en-us) to verify that the image is genuine & not corrupted
 
 ## Preparing the Build Environment
 
-- Extract the image to a directory of your choice with 7-Zip. In the examples below, i am using ``C:\Win10_21H2_English_x64``
+- Extract the image to a directory of your choice with 7-Zip. In the examples below, i am using ``C:\Win10_21H2_English_x64``.
 
 - Open CMD as Administrator & configure these variables below. These variables are temporary for this session & will be discarded if you close the terminal window so ensure to keep it open throughout the build process.
 
@@ -64,7 +63,7 @@
 
 ## Integrating Updates
 
-- Windows 7 Recommended Updates:
+- Windows 7 recommended updates:
 
     ```
     KB2670838 - platform update + directX 11.1
@@ -75,15 +74,15 @@
     KB3087873 - NVME/M.2
     ```
 
-- Windows 10 Recommended Updates:
+- Windows 10 recommended updates:
 
-    - Download the latest non-security update along with the servicing stack for that specific update. Use the official [Windows Update history page](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b) to get the relevant updates
+    - Download the latest cumulative update along with the servicing stack for that specific update. Use the official [windows update history page](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b) to identify the relevant updates
 
-- Download the updates from the [Microsoft Update Catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the KB identifier. Place the updates somewhere easily accessible such as ``C:\updates``.
+- Download the updates from the [microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the kb identifier. Place the updates somewhere easily accessible such as ``C:\updates``.
 
 - Integrate the updates into the install wim with the command below.
 
-    - Note: The Servicing Stack must be installed before installing the Cumulative Update, this generally only applies to Windows 10
+    - The servicing stack must be installed before installing the Cumulative Update, this generally only applies to Windows 10
 
     ```bat
     DISM /Image:"%MOUNT_DIR%" /Add-Package /PackagePath="C:\updates\KB2670838.msu"
@@ -91,7 +90,7 @@
 
 ## Enable .NET 3.5
 
-- Windows 10+ Only:
+- Windows 10 & higher only.
 
 ```bat
 DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:NetFx3 /All /LimitAccess /Source:"%EXTRACTED_IMAGE%\sources\sxs"
@@ -99,7 +98,7 @@ DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:NetFx3 /All /LimitAccess 
 
 ## Enable Legacy Components for older games
 
-- Windows 10+ Only:
+- Windows 10 & higher only.
 
 ```bat
 DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:DirectPlay /All
@@ -107,7 +106,7 @@ DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:DirectPlay /All
 
  ## Integrating & Obtaining Drivers
 
- - This is generally required for users installing Windows 7 to integrate USB/ NVME drivers so that setup can proceed.
+ - This is generally required for users installing windows 7 to integrate USB/ NVME drivers so that setup can proceed.
 
  - Place all of the drivers to be integrated somewhere easily accessible such as ``C:\drivers`` & use the command below to integrate them into the install wim.
 
@@ -127,9 +126,9 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
 
 ## Remove Provisioned Appx Bloatware
 
-- Windows 10+ Only.
+- Windows 10 & higher only.
 
-- This command removes the majority of Windows Apps such as Microsoft Store, Maps, Camera etc that nobody uses & potentially jeopardizes privacy.
+- This command removes the majority of windows apps such as microsoft store, maps, camera etc that nobody uses & potentially jeopardizes privacy.
 
     ```bat
     for /f "tokens=3" %i in ('DISM /Image:"%MOUNT_DIR%" /Get-ProvisionedAppxPackages ^| findstr "PackageName"') do (DISM /Image:"%MOUNT_DIR%" /Remove-ProvisionedAppxPackage /PackageName:%i)
@@ -139,7 +138,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
 
 - Run the command below to replace all backgrounds & user profile images with solid black images.
 
-    - Note: Also use the ``--win7`` argument if building Windows 7
+    - Note: Also use the ``--win7`` argument if building windows 7
 
     ```bat
     win-wallpaper.exe --dir "%MOUNT_DIR%" --rgb #000000
@@ -155,15 +154,15 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
 
 ## Replace Windows 7 Boot Wim
 
-- Windows 7 Only:
+- Windows 7 only.
 
-    - As you are aware, Windows 7 lacks driver support for modern hardware & you should have already integrated drivers into the install.wim however we have not yet touched the boot.wim (installer). We *could* integrate the same drivers into the boot.wim as we did before but in my experience this still leads to a problematic installation. Instead, we can use the Windows 10 boot.wim which already has modern hardware support to install our Windows 7 install.wim.
+    - As you are aware, windows 7 lacks driver support for modern hardware & you should have already integrated drivers into the install.wim however we have not yet touched the boot.wim (installer). We *could* integrate the same drivers into the boot.wim as we did before but in my experience this still leads to a problematic installation. Instead, we can use the windows 10 boot.wim which already has modern hardware support to install our windows 7 install.wim.
 
     - The process is quite simple:
 
-        - Download the [latest Windows 10 image](https://www.microsoft.com/en-gb/software-download/windows10) & extract it, i would recommend renaming the extracted folder to avoid confusion. In the examples below, i have extracted it to ``C:\W10_image``
+        - Download the [latest windows 10 image](https://www.microsoft.com/en-gb/software-download/windows10) & extract it, i would recommend renaming the extracted folder to avoid confusion. In the examples below, i have extracted it to ``C:\W10_image``
 
-        - Replace ``sources\install.wim`` in the extracted Windows 10 image with the Windows 7 ``install.wim``
+        - Replace ``sources\install.wim`` in the extracted windows 10 image with the windows 7 ``install.wim``
 
     - We need to update a variable since our extracted directory has changed. Enter the path of your new extracted directory, mine is ``C:\W10_image``.
 
@@ -183,7 +182,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
 
 ## Convert to ISO
 
-- Use the following commands to convert the extracted image to a ISO which will be created on the desktop:
+- Use the following command to convert the extracted image to a iso which will be created on the desktop:
 
 ```bat
 "%OSCDIMG%" -m -o -u2 -udfver102 -l"final_iso" -bootdata:2#p0,e,b"%EXTRACTED_IMAGE%\boot\etfsboot.com"#pEF,e,b"%EXTRACTED_IMAGE%\efi\microsoft\boot\efisys.bin" "%EXTRACTED_IMAGE%" "%userprofile%\Desktop\final_iso.iso"

@@ -16,6 +16,8 @@
 
 - Enable XMP for your RAM or configure the frequency & timings manually.
 
+    - See [integralfx/MemTestHelper](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md)
+
 - Set a static all-core frequency & voltage for the CPU. Variation in hardware clocks can introduce jitter due to the frequency transitions of cores [[1](https://developer.amd.com/wordpress/media/2013/12/PerformanceTuningGuidelinesforLowLatencyResponse.pdf)].
 
     - Configure load-line calibration to minimize voltage fluctuation under load
