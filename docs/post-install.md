@@ -256,8 +256,6 @@ slmgr /ato
                 - reader.parse-on-load.enabled = false
 
     - Install [uBlock Origin](https://github.com/gorhill/uBlock), Librewolf already ships with it
-    
-        - In the extension settings, use these [uBlock Origin filters by dreammjow](https://raw.githubusercontent.com/dreammjow/MyFilters/main/src/filters.txt)
 
 - Install [.NET 4.8 Runtimes](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48)
 
@@ -822,7 +820,7 @@ issues [[1](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitatio
 
 - Try to favour FOSS (free & open source software). Stay away from proprietary software where you can.
 
-- You do not need an antivirus. You need a brain & uBlock origin in your browser. I also recommend importing [ClearURL Filter List](https://raw.githubusercontent.com/DandelionSprout/adfilt/master/ClearURLs%20for%20uBo/clear_urls_uboified.txt) into uBlock origin & installing the [Skip Redirect](https://addons.mozilla.org/firefox/addon/skip-redirect/) extension. Ensure to scan files with [VirusTotal](https://www.virustotal.com/gui/home/upload) before running them.
+- You do not need an antivirus. I would also recommend importing [ClearURL's filter list](https://raw.githubusercontent.com/DandelionSprout/adfilt/master/ClearURLs%20for%20uBo/clear_urls_uboified.txt) along with [Dreammjow's filter list](https://raw.githubusercontent.com/dreammjow/MyFilters/main/src/filters.txt) into uBlock origin & installing the [Skip Redirect](https://addons.mozilla.org/firefox/addon/skip-redirect/) extension. Ensure to scan files with [VirusTotal](https://www.virustotal.com/gui/home/upload) before running them.
 
 - Cap your framerate at a multiple of your monitor refresh rate to prevent frame mistiming [[1](https://youtu.be/_73gFgNrYVQ)]. E.g possible framerate caps with a 144hz monitor include 72, 144, 288, 432 ...
 
