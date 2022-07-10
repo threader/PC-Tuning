@@ -172,13 +172,19 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
 
 ## Insert DISM Apply-Image Script
 
-- Open the extracted directory with the command below.
+Use the command below to open the extracted directory, place the ``install.bat`` script in the directory.
 
-    ```bat
-    explorer "%EXTRACTED_IMAGE%"
-    ```
+```bat
+explorer "%EXTRACTED_IMAGE%"
+```
 
-- Place the ``install.bat`` script in the directory.
+## Image compression (Optional)
+
+Use the commands below to compress the image, this may take a while.
+
+```bat
+DISM /Export-Image /SourceImageFile:"%EXTRACTED_IMAGE%\sources\install.wim" /SourceIndex:1 /DestinationImageFile:"%EXTRACTED_IMAGE%\sources\install.esd" /Compress:recovery /CheckIntegrity && del /f /q "%EXTRACTED_IMAGE%\sources\install.wim"
+```
 
 ## Convert to ISO
 
