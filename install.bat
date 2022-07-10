@@ -2,34 +2,42 @@
 SETLOCAL EnableDelayedExpansion
 
 pushd "%~dp0"
-if not exist "sources\install.wim" (
-	echo error: directory does not appear to be a windows image
-	pause
-	exit /b 1
+
+set "install_wim="
+if exist "sources\install.wim" (
+	set "install_wim=sources\install.wim"
+) else (
+	if exist "sources\install.esd" (
+		set "install_wim=sources\install.esd"
+	) else (
+		echo error: directory does not appear to be a windows image
+		pause
+		exit /b 1
+	)
 )
 
 :select_drive
-set /p INSTALL_DIR="Enter the drive letter you created to install windows on: "
+set /p install_dir="Enter the drive letter you created to install windows on: "
 
 set "err=0"
-if defined INSTALL_DIR (
-	if exist "!INSTALL_DIR!:" (
+if defined install_dir (
+	if exist "!install_dir!:" (
 		if exist "autounattend.xml" (
-			DISM /Apply-Image /ImageFile:"sources\install.wim" /Apply-Unattend:"autounattend.xml" /Index:1 /ApplyDir:"!INSTALL_DIR!:"
+			DISM /Apply-Image /ImageFile:"!install_wim!" /Apply-Unattend:"autounattend.xml" /Index:1 /ApplyDir:"!install_dir!:"
 			if not !errorlevel! == 0 (
 				set "err=1"
 			) else (
-				copy /y "autounattend.xml" "!INSTALL_DIR!:\Windows\System32\Sysprep\unattend.xml"
+				copy /y "autounattend.xml" "!install_dir!:\Windows\System32\Sysprep\unattend.xml"
 			)
 		) else (
-			DISM /Apply-Image /ImageFile:"sources\install.wim" /Index:1 /ApplyDir:"!INSTALL_DIR!:"
+			DISM /Apply-Image /ImageFile:"!install_wim!" /Index:1 /ApplyDir:"!install_dir!:"
 			if not !errorlevel! == 0 (
 				set "err=1"
 			) 
 		)
 
 		if !err! == 0 (
-			bcdboot "!INSTALL_DIR!:\Windows"
+			bcdboot "!install_dir!:\Windows"
 			echo info: reboot pc
 			pause
 			exit /b 0
@@ -42,4 +50,4 @@ if defined INSTALL_DIR (
 )
 
 echo error: invalid input
-goto select_drive
+goto :select_drive
