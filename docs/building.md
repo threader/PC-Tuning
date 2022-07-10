@@ -26,17 +26,21 @@
 
     set "MOUNT_DIR=C:\temp"
 
+    set "OSCDIMG=C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\amd64\Oscdimg\oscdimg.exe"
+
     if exist "%MOUNT_DIR%" (rd /s /q "%MOUNT_DIR%")
 
     mkdir "%MOUNT_DIR%"
     ```
 
-- If the environment was configured correctly, these two commands below should return ``true``.
+- If the environment was configured correctly, the commands below should return ``true``.
 
     ```bat
     if exist "%EXTRACTED_IMAGE%" (echo true) else (echo false)
 
     if exist "%MOUNT_DIR%" (echo true) else (echo false)
+
+    if exist "%OSCDIMG%" (echo true) else (echo false)
     ```
 
 ## Stripping Non-Essential Editions
@@ -182,7 +186,5 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
 - Use the following commands to convert the extracted image to a ISO which will be created on the desktop:
 
 ```bat
-set "OSCDIMG=C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\amd64\Oscdimg\oscdimg.exe"
-
-"%OSCDIMG%" -lfinal_iso -m -u2 -b"%EXTRACTED_IMAGE%\boot\etfsboot.com" "%EXTRACTED_IMAGE%" "%userprofile%\desktop\final_iso.iso"
+"%OSCDIMG%" -m -o -u2 -udfver102 -l"final_iso" -bootdata:2#p0,e,b"%EXTRACTED_IMAGE%\boot\etfsboot.com"#pEF,e,b"%EXTRACTED_IMAGE%\efi\microsoft\boot\efisys.bin" "%EXTRACTED_IMAGE%" "%userprofile%\Desktop\final_iso.iso"
 ```
