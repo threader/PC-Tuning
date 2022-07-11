@@ -78,11 +78,14 @@ Windows 10 stores installed applications both in the legacy & immersive control 
 
             - ``/Users/[USERNAME]/AppData/Local/Microsoft/WindowsApps``
 
-        - Delete everything except ``immersivecontrolpanel`` & ``ShellExperienceHost`` (not their exact names) in the following folders:
+        - In ``/Users/[USERNAME]/AppData/Local/Packages`` delete everything except:
 
-            - ``/Users/[USERNAME]/AppData/Local/Packages``
+            - **windows.immersivecontrolpanel_cw5n1h2txyewy**
+            - **Microsoft.Windows.ShellExperienceHost_cw5n1h2txyewy**
 
-            - ``/Windows/SystemApps``
+        - In ``/Windows/SystemApps`` delete everything except:
+
+            - **ShellExperienceHost_cw5n1h2txyewy**
 
     - Once finished, empty the ``Trash`` in the file explorer & restart to boot back into Windows
 
