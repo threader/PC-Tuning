@@ -122,7 +122,7 @@ Windows 10 stores installed applications both in the legacy & immersive control 
 
         - If you would like to set the search engine to Google, open [this link](https://www.linuxmint.com/searchengines.php), scroll to the bottom, click the Google icon & right click the URL to add the search engine to settings.
 
-        - Recommended ``about:config`` changes (enter about:config in the URL box)
+        - Recommended ``about:config`` changes (enter about:config in the URL box). Thanks to Dato for initially sharing these.
 
             - **Enable Compact Mode**
 
@@ -143,6 +143,10 @@ Windows 10 stores installed applications both in the legacy & immersive control 
             - **Disable reader mode**
 
                 - reader.parse-on-load.enabled = false
+
+            - **Disable ResistFingerprinting** (not recommended but the browser can become sluggish)
+
+                - privacy.resistFingerprinting
 
     - Install [uBlock Origin](https://github.com/gorhill/uBlock), Librewolf already ships with it
 
