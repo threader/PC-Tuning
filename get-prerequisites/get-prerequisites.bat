@@ -13,6 +13,13 @@ if not !errorlevel! == 0 (
     exit /b 1
 )
 
+ping archlinux.org > NUL
+if not !errorlevel! == 0 (
+    error: no internet connection
+    pause
+    exit /b 1
+)
+
 set "working_dir=%temp%\EVA"
 
 if exist !working_dir! (
