@@ -394,7 +394,7 @@ slmgr /ato
     <details>
     <summary>NVIDIA GPU</summary>
 
-    - I recommend using the 472.12 ([W7/W8](https://www.nvidia.com/en-us/drivers/results/180551), [W10](https://www.nvidia.com/Download/driverResults.aspx/180557/en-us/)) as it is the latest non-DCH driver. This is the latest driver supported on Windows 7 & is required on Windows 10 as we have stripped the Microsoft Store, although, the appx package for the control panel can be reinstalled if you choose to install a DCH driver.
+    - I recommend using the 472.12 ([W7/W8](https://www.nvidia.com/en-us/drivers/results/180551), [W10](https://www.nvidia.com/download/driverResults.aspx/180555/en-us/)) as it is the latest non-DCH driver. This is the latest driver supported on Windows 7 & is required on Windows 10 as we have stripped the Microsoft Store, although, the appx package for the control panel can be reinstalled if you choose to install a DCH driver.
 
     - Extract the driver executable package with 7-Zip & remove all folders **except** the following:
 
