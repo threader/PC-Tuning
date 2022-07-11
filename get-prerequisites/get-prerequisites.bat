@@ -6,6 +6,13 @@ setlocal EnableDelayedExpansion
 
 pushd "%~dp0"
 
+aria2c.exe --version > NUL
+if not !errorlevel! == 0 (
+    error: aria2c.exe not found
+    pause
+    exit /b 1
+)
+
 set "working_dir=%temp%\EVA"
 
 if exist !working_dir! (
@@ -25,6 +32,9 @@ if not exist "!working_dir!\EVA-main.zip" (
 
 7z x "!working_dir!\EVA-main.zip" -o"!working_dir!"
 
+if exist "C:\prerequisites" (rd /s /q "C:\prerequisites")
+if exist "C:\debloat.sh" (del /f /q "C:\debloat.sh")
+
 set "extract_err=0"
 for %%i in ("prerequisites", "debloat.sh") do (
     if exist "!working_dir!\EVA-main\%%i" (
@@ -41,6 +51,8 @@ if not !extract_err! == 0 (
 )
 
 rd /s /q "!working_dir!"
+
+echo info: done
 
 pause
 exit /b 0
