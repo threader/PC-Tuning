@@ -48,7 +48,7 @@ Windows 10 stores installed applications both in the legacy & immersive control 
 
         - See [media/windows10-features-example.png](../media/windows10-features-example.png)
 
-	- Reboot once before following the next steps (important)
+	- Restart your PC once before following the next steps (important)
 
 - Windows 10+ Only:
 
@@ -614,6 +614,8 @@ issues [[1](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitatio
             - You will BSOD if you enable MSI for the **stock** Windows 7 sata driver which you should have updated as mentioned in the [Installing Drivers](#installing-drivers) section
         
         - Be careful as to what you choose to prioritize as more harm than good may be done. E.g you will likely stutter in a open-world game that utilizes texture streaming if the GPU IRQ priority is set higher than the storage controller priority.
+
+    - Restart your PC, you can verify if a device is utilizing MSIs by checking if it has a negative IRQ in MSIUtil
 
     - Ensure that there is no IRQ sharing on your system by checking win + r, ``msinfo32`` ``Hardware Resources > Conflicts/Sharing`` section.
 
