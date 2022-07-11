@@ -28,10 +28,11 @@ The post-installation instructions are based on configuring a stock windows imag
 
     - By downloading & using any of the images provided, you agree to [Microsoft's Terms](https://www.microsoft.com/en-us/Useterms/Retail/Windows/10/UseTerms_Retail_Windows_10_English.htm). None of these images are preactivated.
 
-    - Windows 10 21H2 (coming soon)
+    - [Windows 10 21H2](https://drive.google.com/u/0/uc?id=1m5FEUFqlGdzDCWAeFK-vP31YjiurxmWA&export=download)
+
+        - SHA-1: ``3e4fb68c896b9c93fc0d80cc3ead97756bcae1c4``
 
     </details>
-
 
 ## Preparing the USB
 
