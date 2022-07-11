@@ -554,12 +554,6 @@ slmgr /ato
 
 - In ``C:\prerequisites\bare_services.ini``...
 
-    - Add ``nsi`` to the ``[Automatic_Services]`` section if you play Apex Legends or Black Ops Cold War
-
-    - You can add volsnap to the ``[Drivers_To_Disable]`` on Windows 8+
-
-    - You can remove ``AppXSvc`` & ``StateRepository`` on < Windows 10 1803
-
     - Remove ``pcw`` from ``[Drivers_To_Disable]`` if you did not replace task manager with process explorer
 
 - Remove ``MMCSS`` from the ``DependOnService`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Audiosrv`` if configuring Windows 7
