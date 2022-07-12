@@ -516,7 +516,7 @@ slmgr /ato
 
 - Open the sound control panel, can be opened with win + r, ``mmsys.cpl``
 
-    - Disable unused Plaback & Recording devices 
+    - Disable unused Playback & Recording devices 
     
     - Disable audio enhancements for them as they increase audiodg.exe cycles/s
     
