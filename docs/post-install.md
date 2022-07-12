@@ -377,7 +377,7 @@ slmgr /ato
 
 ## Preferences
 
-- Go through the preferences folder to configure the following:
+- Go through the preference folder to configure the following:
 
     - Desktop Icon Settings
 
