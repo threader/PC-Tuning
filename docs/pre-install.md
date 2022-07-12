@@ -28,9 +28,9 @@ The post-installation instructions are based on configuring a stock windows imag
 
     - By downloading & using any of the images provided, you agree to [Microsoft's Terms](https://www.microsoft.com/en-us/Useterms/Retail/Windows/10/UseTerms_Retail_Windows_10_English.htm). None of these images are preactivated.
 
-    - [Windows 10 21H2](https://drive.google.com/u/1/uc?id=19-bHJyMOfc2pm7VENDKOvlAefPa-UFvM&export=download)
+    - [Windows 10 21H2](https://drive.google.com/u/1/uc?id=1fJC2J5nXYJFvS2iEmshkfc8sW9c_iGBW&export=download)
 
-        - SHA-1: ``335106bdc932e601a8349e4dbb8077db009bbe8a``
+        - SHA-1: ``f1bd993d6d143e7578768f04e06cbdbd06e9e4a7``
 
     </details>
 
