@@ -13,6 +13,8 @@ def main():
     parser.add_argument("--win10", action="store_true", help="enables windows 10 support")
 
     args = parser.parse_args()
+    
+    registry_dir = "C:\\prerequisites\\scripts\\registry"
 
     if args.win7 and args.win10:
         print("error: registry file can only be applied for one windows version")
@@ -27,20 +29,21 @@ def main():
         print(f"error: {nsudo_path} not exists")
         return 1
 
-    if not all(os.path.exists(f"C:\\prerequisites\\registry\\{x}.reg") for x in ["registry", "W7", "W10"]):
+    if not all(os.path.exists(f"{registry_dir}\\{x}.reg") for x in ["registry", "W7", "W10"]):
         print("error: registry files not found")
+        return 1
 
     nsudo_args = [nsudo_path, "-U:T", "-P:E", "-Wait"]
 
-    subprocess.run(["regedit.exe", "/s", "C:\\prerequisites\\registry\\registry.reg"], check=False)
-    subprocess.run([*nsudo_args, "regedit.exe", "/s", "C:\\prerequisites\\registry\\registry.reg"], check=False)
+    subprocess.run(["regedit.exe", "/s", f"{registry_dir}\\registry.reg"], check=False)
+    subprocess.run([*nsudo_args, "regedit.exe", "/s", f"{registry_dir}\\registry.reg"], check=False)
 
     if args.win7:
-        subprocess.run(["regedit.exe", "/s", "C:\\prerequisites\\registry\\W10.reg"], check=False)
-        subprocess.run([*nsudo_args, "regedit.exe", "/s", "C:\\prerequisites\\registry\\W10.reg"], check=False)
+        subprocess.run(["regedit.exe", "/s", f"{registry_dir}\\W10.reg"], check=False)
+        subprocess.run([*nsudo_args, "regedit.exe", "/s", f"{registry_dir}\\registry\\W10.reg"], check=False)
     elif args.win10:
-        subprocess.run(["regedit.exe", "/s", "C:\\prerequisites\\registry\\W10.reg"], check=False)
-        subprocess.run([*nsudo_args, "regedit.exe", "/s", "C:\\prerequisites\\registry\\W7.reg"], check=False)
+        subprocess.run(["regedit.exe", "/s", f"{registry_dir}\\W10.reg"], check=False)
+        subprocess.run([*nsudo_args, "regedit.exe", "/s", f"{registry_dir}\\W7.reg"], check=False)
 
     return 0
 
