@@ -146,7 +146,7 @@ Windows 10 stores installed applications both in the legacy & immersive control 
 
             - **Disable ResistFingerprinting** (not recommended but the browser can become sluggish)
 
-                - privacy.resistFingerprinting
+                - privacy.resistFingerprinting = false
 
     - Install [uBlock Origin](https://github.com/gorhill/uBlock), Librewolf already ships with it
 
@@ -377,7 +377,7 @@ slmgr /ato
 
 ## Preferences
 
-- Go through the preferences folder to configure the following:
+- Go through the preference folder to configure the following:
 
     - Desktop Icon Settings
 
