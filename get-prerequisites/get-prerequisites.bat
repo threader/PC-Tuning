@@ -6,12 +6,19 @@ setlocal EnableDelayedExpansion
 
 pushd "%~dp0"
 
-aria2c.exe --version > NUL
-if not !errorlevel! == 0 (
-    error: aria2c.exe not found
-    pause
-    exit /b 1
+set "path_err=0"
+for %%i in (
+    "7z.exe"
+    "7z.dll"
+    "aria2c.exe",
+) do (
+    where %%i > NUL
+    if not !errorlevel! == 0 (
+        set "path_err=1"
+        echo error: %%i not found in path
+    )
 )
+if not !path_err! == 0 exit /b
 
 ping archlinux.org > NUL
 if not !errorlevel! == 0 (
@@ -20,7 +27,7 @@ if not !errorlevel! == 0 (
     exit /b 1
 )
 
-set "working_dir=%temp%\EVA"
+set "working_dir=!temp!\EVA"
 
 if exist !working_dir! (
     rd /s /q "!working_dir!"
@@ -57,7 +64,10 @@ if not !extract_err! == 0 (
     exit /b 1
 )
 
-rd /s /q "!working_dir!"
+if exist "!working_dir!" rd /s /q "!working_dir!"
+if exist "!windir!\7z.exe" del /f /q "!windir!\7z.exe"
+if exist "!windir!\7z.dll" del /f /q "!windir!\7z.exe"
+if exist "!windir!\aria2c.exe"d el /f /q "!windir!\7z.exe"
 
 echo info: done
 
