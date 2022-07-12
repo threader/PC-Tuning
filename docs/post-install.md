@@ -13,18 +13,15 @@ Once you have begun the OOBE process, follow the steps in the video.
 
 ## Merge the Registry Files
 
-- The registry files should be applied once by double-clicking the registry file normally, & once in ``C:\prerequisites\nsudo\NSudo.exe`` with the ``Enable All Privileges`` option enabled to ensure all registry keys are applied properly.
+- Open CMD as Administrator & enter the command below to merge the registry files. Use the ``--win7`` or ``--win10`` arguments depending on the windows version you are configuring.
 
-- ``C:\prerequisites\registry\registry.reg`` must be merged regardless of the Windows version.
-
-- ``C:\prerequisites\registry\W7.reg`` must also be applied only if on Windows 7.
-
-- ``C:\prerequisites\registry\W10.reg`` must also be applied only if on Windows 10.
+    ```bat
+    C:\prerequisites\scripts\registry\apply-registry.exe
+    ```
 
 - Restart your PC.
 
 - You may establish an internet connection after you have restarted as the Windows Update policies will take effect.
-
 
 ## Visual Cleanup
 
@@ -187,7 +184,7 @@ Windows 10 stores installed applications both in the legacy & immersive control 
 
     - Click continue & ignore errors
 
-- Open CMD as Administrator & enter the commands below.
+- Open CMD & enter the commands below.
 
     - Set PowerShell ExecutionPolicy to unrestricted:
 
