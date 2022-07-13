@@ -19,9 +19,19 @@ Once you have begun the OOBE process, follow the steps in the video.
     C:\prerequisites\scripts\registry\apply-registry.exe
     ```
 
-- Restart your PC.
+- Restart your PC (important).
 
 - You may establish an internet connection after you have restarted as the Windows Update policies will take effect.
+
+## Download Prerequisites
+
+This only applies if you are using a the base images provided in [docs/pre-install.md](./pre-install.md#obtaining-a-base-image).
+
+- Open CMD & enter the command below.
+
+    ```bat
+    C:\get-prerequisites.bat
+    ```
 
 ## Visual Cleanup
 
