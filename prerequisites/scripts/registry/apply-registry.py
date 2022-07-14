@@ -9,7 +9,9 @@ def main():
 
     parser = argparse.ArgumentParser()
 
+    # these currently do not do anything, they are here for the future so that user experience is unaffected
     parser.add_argument("--win7", action="store_true", help="enables windows 7 support")
+    parser.add_argument("--win8", action="store_true", help="enables windows 8 support")
     parser.add_argument("--win10", action="store_true", help="enables windows 10 support")
 
     args = parser.parse_args()

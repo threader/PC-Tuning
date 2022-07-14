@@ -40,6 +40,8 @@ The guidance is currently updated & have been tested on the following versions o
 
 - Windows 7 SP1
 
+- Windows 8.1
+
 - Windows 10 21H2
 
 ## Requirements

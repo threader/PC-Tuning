@@ -9,6 +9,7 @@ Once you have begun the OOBE process, follow the steps in the video.
 - Note: Do not enter a password by simply pressing enter, the service list recommended will break user password functionality & you will not be able to login again.
 
 - See [media/oobe-windows7-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows7-example.mp4)
+- See [media/oobe-windows8-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows8-example.mp4)
 - See [media/oobe-windows10-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows10-example.mp4)
 
 ## Merge the Registry Files
@@ -38,7 +39,7 @@ This only applies if you are using a the base images provided in [docs/pre-insta
 - Disable features on the taskbar, unpin shortcuts & tiles from the taskbar & start menu.
 
     - See [media/visual-cleanup-windows7-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/visual-cleanup-windows7-example.mp4)
-
+    - See [media/visual-cleanup-windows8-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/visual-cleanup-windows8-example.mp4)
     - See [media/visual-cleanup-windows10-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/visual-cleanup-windows10-example.mp4)
 
 ## Miscellaneous
@@ -78,12 +79,12 @@ This only applies if you are using a the base images provided in [docs/pre-insta
 
 - Disable all messages in ``Control Panel> System and Security > Action Center > Change Action Center settings > Change Security and Maintenance settings``.
 
-    - Note: This section is named ``Security and Maintenance`` on Windows 10
+    - Note: This section is named ``Security and Maintenance`` on Windows 10+
 
 
 ## Removing Bloatware
 
-Windows 10 stores installed applications both in the legacy & immersive control panel. Before we remove bloatware via bruteforce on linux, we may as well uninstall what Windows allows us to.
+Before we remove bloatware via bruteforce on linux, we may as well uninstall what windows allows us to.
 
 - Uninstall bloatware in ``Control Panel > Programs > Programs and Features``.
 
@@ -93,7 +94,7 @@ Windows 10 stores installed applications both in the legacy & immersive control 
 
         - See [media/windows7-features-example.png](../media/windows7-features-example.png)
 
-        - See [media/windows10-features-example.png](../media/windows10-features-example.png)
+        - See [media/windows8+-features-example.png](../media/windows8+-features-example.png)
 
 	- Restart your PC once before following the next steps (important)
 
@@ -113,7 +114,7 @@ Windows 10 stores installed applications both in the legacy & immersive control 
 
     - Type ``sudo bash debloat.sh`` to run the script & wait for it to finish
 
-    - Windows 10+ Only:
+    - Windows 8+ Only:
 
         - Change the view to list view to make the contents more readable by selecting ``View > List View``
 
@@ -213,7 +214,7 @@ Windows 10 stores installed applications both in the legacy & immersive control 
 
 - Install [OpenShell](https://github.com/Open-Shell/Open-Shell-Menu)
 
-    - Windows 10+ Only:
+    - Windows 8+ Only:
 
         - This is required as we removed the bloated stock start menu.
 
@@ -307,7 +308,7 @@ slmgr /ato
 
 ## Configure Memory Management Settings
 
-- Windows 10+ Only:
+- Windows 8+ Only:
 
     - Open Powershell & enter the following:
 
@@ -372,7 +373,7 @@ slmgr /ato
     <details>
     <summary>NVIDIA GPU</summary>
 
-    - I recommend using the 472.12 ([W7/W8](https://www.nvidia.com/en-us/drivers/results/180551), [W10](https://www.nvidia.com/download/driverResults.aspx/180555/en-us/)) as it is the latest non-DCH driver. This is the latest driver supported on Windows 7 & is required on Windows 10 as we have stripped the Microsoft Store, although, the appx package for the control panel can be reinstalled if you choose to install a DCH driver.
+    - I recommend using the 472.12 ([W7/W8](https://www.nvidia.com/en-us/drivers/results/180551), [W10](https://www.nvidia.com/download/driverResults.aspx/180555/en-us/)) as it is the latest non-DCH driver.
 
     - Extract the driver executable package with 7-Zip & remove all folders **except** the following:
 
@@ -486,7 +487,7 @@ slmgr /ato
 
     - Ensure your resolution is configured properly in Display Adapter Settings.
 
-        - Use the ``C:\prerequisites\Change Resolution.lnk`` shortcut on Windows 10
+        - Use the ``C:\prerequisites\Change Resolution.lnk`` shortcut on Windows 8+
 
 ## Configure Device Manager
 

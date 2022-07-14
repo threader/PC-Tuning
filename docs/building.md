@@ -74,7 +74,7 @@ Use the [download links spreadsheet](https://docs.google.com/spreadsheets/d/1zTF
     KB3087873 - NVME/M.2
     ```
 
-- Windows 10 recommended updates:
+- Windows 8+ recommended updates:
 
     - Download the latest cumulative update along with the servicing stack for that specific update. Use the official [windows update history page](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b) to identify the relevant updates
 
@@ -82,7 +82,7 @@ Use the [download links spreadsheet](https://docs.google.com/spreadsheets/d/1zTF
 
 - Integrate the updates into the install wim with the command below.
 
-    - The servicing stack must be installed before installing the Cumulative Update, this generally only applies to Windows 10
+    - The servicing stack must be installed before installing the Cumulative Update, this generally only applies to Windows 8+
 
     ```bat
     DISM /Image:"%MOUNT_DIR%" /Add-Package /PackagePath="C:\updates\KB2670838.msu"
@@ -90,7 +90,7 @@ Use the [download links spreadsheet](https://docs.google.com/spreadsheets/d/1zTF
 
 ## Enable .NET 3.5
 
-- Windows 10 & higher only.
+- Windows 8+ Only.
 
 ```bat
 DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:NetFx3 /All /LimitAccess /Source:"%EXTRACTED_IMAGE%\sources\sxs"
@@ -98,7 +98,7 @@ DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:NetFx3 /All /LimitAccess 
 
 ## Enable Legacy Components for older games
 
-- Windows 10 & higher only.
+- Windows 8+ Only.
 
 ```bat
 DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:DirectPlay /All
@@ -126,7 +126,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
 
 ## Remove Provisioned Appx Bloatware
 
-- Windows 10 & higher only.
+- Windows 8+ Only.
 
 - This command removes the majority of windows apps such as microsoft store, maps, camera etc that nobody uses & potentially jeopardizes privacy.
 
@@ -154,7 +154,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
 
 ## Replace Windows 7 Boot Wim
 
-- Windows 7 only.
+- Windows 7 Only.
 
     - As you are aware, windows 7 lacks driver support for modern hardware & you should have already integrated drivers into the install.wim however we have not yet touched the boot.wim (installer). We *could* integrate the same drivers into the boot.wim as we did before but in my experience this still leads to a problematic installation. Instead, we can use the windows 10 boot.wim which already has modern hardware support to install our windows 7 install.wim.
 
