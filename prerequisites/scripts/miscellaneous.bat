@@ -30,5 +30,6 @@ if exist "%windir%\SysWOW64\OneDriveSetup.exe" (
     "%windir%\SysWOW64\OneDriveSetup.exe" /uninstall
 )
 
+echo info: done
 pause
 exit /b 0
