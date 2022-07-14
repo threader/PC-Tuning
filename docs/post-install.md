@@ -431,13 +431,15 @@ slmgr /ato
 
     - NVIDIA Control Panel
 
-    - In the ``Adjust desktop size and position``, set the scaling mode to ``No Scaling`` & set perform scaling on to ``Display``. Configure your resolution & refresh rate.
+        - In the ``Adjust desktop size and position``, set the scaling mode to ``No Scaling`` & set perform scaling on to ``Display``. Configure your resolution & refresh rate.
 
-        - Use these 3D settings:
+            - Use these 3D settings:
 
-            - See [media/nvidia-cp-settings.png](../media/nvidia-cp-settings.png)
+                - See [media/nvidia-cp-settings.png](../media/nvidia-cp-settings.png)
 
-            - [Threaded Optimization offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html), it usually hurts frametime consistency but feel free to test it yourself. You should also consider whether or not you are already CPU bottlenecked if you do choose to enable the setting.
+                - [Threaded Optimization offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html), it usually hurts frametime consistency but feel free to test it yourself. You should also consider whether or not you are already CPU bottlenecked if you do choose to enable the setting.
+
+        - Enable ``Desktop > Enable Developer Settings``, in the ``Manage GPU Performance Counters``, enable ``Allow access to the GPU performance counters to all users``.
 
     - Disable Ansel with ``C:\prerequisites\nvidia-ansel-configurator\NvCameraConfiguration_v1.0.0.6.exe``
 
