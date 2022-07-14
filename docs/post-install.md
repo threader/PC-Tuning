@@ -506,6 +506,8 @@ slmgr /ato
 
     - Related: [research.md - How many Rss Queues do you need?](research.md#how-many-rss-queues-do-you-need)
 
+- Disable the ``High Definition Audio Controller`` on the same PCI port as your GPU.
+
 - Go to ``View > Resources by connection``
 
     - Disable any **unneeded** devices that are using an IRQ or I/O resources, always ask if unsure, take your time on this step. Windows should not allow you to disable any required devices but ensure you do not accidentally disable another important device such as your main USB controller or similar...
