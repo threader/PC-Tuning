@@ -13,7 +13,7 @@ def main():
     parser.add_argument("--win10", action="store_true", help="enables windows 10 support")
 
     args = parser.parse_args()
-    
+
     registry_dir = "C:\\prerequisites\\scripts\\registry"
 
     if args.win7 and args.win10:
@@ -29,7 +29,11 @@ def main():
         print(f"error: {nsudo_path} not exists")
         return 1
 
-    if not all(os.path.exists(f"{registry_dir}\\{x}.reg") for x in ["registry", "W7", "W10"]):
+    # if not all(os.path.exists(f"{registry_dir}\\{x}.reg") for x in ["registry", "W7", "W10"]):
+    #     print("error: registry files not found")
+    #     return 1
+
+    if not os.path.exists(f"{registry_dir}\\registry.reg"):
         print("error: registry files not found")
         return 1
 
@@ -38,12 +42,12 @@ def main():
     subprocess.run(["regedit.exe", "/s", f"{registry_dir}\\registry.reg"], check=False)
     subprocess.run([*nsudo_args, "regedit.exe", "/s", f"{registry_dir}\\registry.reg"], check=False)
 
-    if args.win7:
-        subprocess.run(["regedit.exe", "/s", f"{registry_dir}\\W10.reg"], check=False)
-        subprocess.run([*nsudo_args, "regedit.exe", "/s", f"{registry_dir}\\registry\\W10.reg"], check=False)
-    elif args.win10:
-        subprocess.run(["regedit.exe", "/s", f"{registry_dir}\\W10.reg"], check=False)
-        subprocess.run([*nsudo_args, "regedit.exe", "/s", f"{registry_dir}\\W7.reg"], check=False)
+    # if args.win7:
+    #     subprocess.run(["regedit.exe", "/s", f"{registry_dir}\\W10.reg"], check=False)
+    #     subprocess.run([*nsudo_args, "regedit.exe", "/s", f"{registry_dir}\\registry\\W10.reg"], check=False)
+    # elif args.win10:
+    #     subprocess.run(["regedit.exe", "/s", f"{registry_dir}\\W10.reg"], check=False)
+    #     subprocess.run([*nsudo_args, "regedit.exe", "/s", f"{registry_dir}\\W7.reg"], check=False)
 
     return 0
 

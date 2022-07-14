@@ -87,8 +87,8 @@ Windows 10 stores installed applications both in the legacy & immersive control 
 
         - In ``/Users/[USERNAME]/AppData/Local/Packages`` delete everything except:
 
-            - **windows.immersivecontrolpanel_cw5n1h2txyewy**
             - **Microsoft.Windows.ShellExperienceHost_cw5n1h2txyewy**
+            - **windows.immersivecontrolpanel_cw5n1h2txyewy**
 
         - In ``/Windows/SystemApps`` delete everything except:
 
@@ -96,14 +96,13 @@ Windows 10 stores installed applications both in the legacy & immersive control 
 
     - Once finished, empty the ``Trash`` in the file explorer & restart to boot back into Windows
 
-
-- Once back into the Windows desktop, open ``C:\prerequisites\sysinternals\Autoruns.exe`` & delete all obsolete entries with a yellow label. Run with NSudo if you encounter any permission errors.
-
-- Open CMD & enter the command below to remove leftover scheduled tasks.
+- Once back into the Windows desktop, open CMD & enter the command below to remove leftover scheduled tasks.
 
     ```bat
     C:\prerequisites\scripts\scheduled-tasks\disable-tasks.exe
     ```
+
+- Open ``C:\prerequisites\sysinternals\Autoruns.exe`` & delete all obsolete entries with a yellow label. Run with NSudo if you encounter any permission errors.
 
 ## Installing Recommended Packages
 
@@ -185,6 +184,10 @@ Windows 10 stores installed applications both in the legacy & immersive control 
         - I have included a registry file that will apply a basic OpenShell skin along with a few other settings, feel free to use your own.
 
         - Create a shortcut in win + r, ``shell:startup`` pointing to ``C:\Program Files\Open-Shell\StartMenu.exe``
+
+    - Windows 8 Only:
+
+        - Open ``"C:\Program Files\Open-Shell\Start Menu Settings.lnk"``, enable ``Show all settings`` then go to the Windows 8.1 Settings section and set ``Disable active corners`` to All.
 
 ## Miscellaneous
 
@@ -387,7 +390,7 @@ slmgr /ato
 
 ## Preferences
 
-- Go through the preference folder to configure the following:
+- Go through the ``C:\prerequisites\preferences`` folder to configure the following:
 
     - Desktop Icon Settings
 
@@ -562,7 +565,7 @@ slmgr /ato
 
 ## Configure Services & Drivers
 
-- The service list configuration is not intended for laptop, Wi-Fi & webcam functionality. I am not responsible if anything goes wrong or you BSOD.
+The service list configuration is not intended for laptop, Wi-Fi & webcam functionality. I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming and use default services for everything else.
 
 - Download [Service-List-Builder](https://github.com/amitxv/Service-List-Builder/releases)
 
@@ -571,6 +574,8 @@ slmgr /ato
     - Remove ``pcw`` from ``[Drivers_To_Disable]`` if you did not replace task manager with process explorer
 
 - Remove ``MMCSS`` from the ``DependOnService`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Audiosrv`` if configuring Windows 7
+
+- On 1607 & 1703, delete the ``ErrorControl`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Schedule`` to prevent an unresponsive explorer shell.
 
 - Once configured, use the following command. The scripts will be built in the ``build`` folder & NSudo is required to run them.
 
@@ -597,22 +602,22 @@ slmgr /ato
 
 - Set the power plan to high performance in ``Control Panel > Hardware and Sound > Power Options`` (PBO users excluded).
 
+- Open CMD & enter the command below to remove every powerplan except the active power scheme, ignore errors.
+
+    ```bat
+	powercfg -delete 381b4222-f694-41f0-9685-ff5bb260df2e
+	powercfg -delete 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
+	powercfg -delete a1841308-3541-4fab-bc81-f71556f20b4a
+	powercfg -delete e9a42b02-d5df-448d-aa00-03f14749eb61
+	```
+
 - Open ``C:\prerequisites\PowerSettingsExplorer.exe`` & configure the following.
 
     - Allow Throttle States - Off
 
     - USB 3 Link Powermanagement - Off
 
-	- USB Selective Suspend - Disabled
-
-- Open CMD & enter the command below to remove every powerplan except the active power scheme.
-
-    ```bat
-	powercfg -delete 381b4222-f694-41f0-9685-ff5bb260df2e > NUL
-	powercfg -delete 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c > NUL
-	powercfg -delete a1841308-3541-4fab-bc81-f71556f20b4a > NUL
-	powercfg -delete e9a42b02-d5df-448d-aa00-03f14749eb61 > NUL
-	```
+    - USB Selective Suspend - Disabled
 
 ## Interrupt & IRQ Management
 
@@ -779,7 +784,7 @@ issues [[1](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitatio
     - ``"C:\ProgramData\Microsoft\Windows\Start Menu\Programs"``
     - ``"C:\Program Files"``
     - ``"C:\ProgramData"``
-    - ``"C:\Prefetch"``
+    - ``"C:\Windows\Prefetch"``
     - ``"C:\Windows\SoftwareDistribution\download"``
     - ``"C:\Windows\Temp"``
 
