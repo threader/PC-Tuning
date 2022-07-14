@@ -57,6 +57,9 @@ You can either:
 - Use a USB
 
     - Drag & drop the iso into the same location where linux mint is & select the USB storage device in the boot options in BIOS.
+
+    - Note: When installing windows 8 pro with a USB, you may be required to enter a key. Use the generic key ``GCRJD-8NW9H-F2CDX-CCM8D-9D6T9`` to get past this step.
+
         
     OR
 
