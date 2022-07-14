@@ -534,7 +534,7 @@ The service list configuration is not intended for laptop, Wi-Fi & webcam functi
 
     - Remove ``pcw`` from ``[Drivers_To_Disable]`` if you did not replace task manager with process explorer
 
-- Remove ``MMCSS`` from the ``DependOnService`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Audiosrv`` if configuring Windows 7
+- On Windows 7 & 8, remove ``MMCSS`` from the ``DependOnService`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Audiosrv``
 
 - On 1607 & 1703, delete the ``ErrorControl`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Schedule`` to prevent an unresponsive explorer shell.
 
