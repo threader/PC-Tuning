@@ -41,6 +41,46 @@ This only applies if you are using a the base images provided in [docs/pre-insta
 
     - See [media/visual-cleanup-windows10-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/visual-cleanup-windows10-example.mp4)
 
+## Miscellaneous
+
+- Allow users full control of the ``C:\`` drive. This resolves an issue with xperf ETL processing on Windows 7.
+
+    - See [media/full-control-example.png](../media/full-control-example.png)
+
+    - Click continue & ignore errors
+
+- Open CMD & enter the command below.
+
+    ```bat
+    C:\prerequisites\scripts\miscellaneous.bat
+    ```
+
+- Enable ``Launching applications and unsafe files`` in ``Internet Options > security > Custom Level``. This prevents [this annoying warning](https://gearupwindows.com/how-to-disable-open-file-security-warning-in-windows-10/). Feel free to skip this step as security may be reduced.
+
+- In ``Advanced System Settings``, do the following:
+
+    - In ``Computer Name > Change`` configure the PC name
+
+    - In ``System Protection``, disable & delete System Restore points. It has been proven to be very unreliable
+
+    - In ``Remote``, disable **Remote Assistance**
+
+    - Windows 7 Only:
+
+        - In ``Advanced > Environment Variables > System Variables``, create a new variable:
+
+            ```
+            Variable name: devmgr_show_nonpresent_devices
+            Variable value: 1
+            ```
+    
+- In ``Defragment and Optimize Drives``, disable **Run on a schedule**. More details on doing maintenance tasks ourself in [Final Thoughts & Tips](#final-thoughts--tips).
+
+- Disable all messages in ``Control Panel> System and Security > Action Center > Change Action Center settings > Change Security and Maintenance settings``.
+
+    - Note: This section is named ``Security and Maintenance`` on Windows 10
+
+
 ## Removing Bloatware
 
 Windows 10 stores installed applications both in the legacy & immersive control panel. Before we remove bloatware via bruteforce on linux, we may as well uninstall what Windows allows us to.
@@ -49,7 +89,7 @@ Windows 10 stores installed applications both in the legacy & immersive control 
 
     - In the ``Turn Windows features on or off`` section, disable everything **except** for:
 
-        - Note: keep ``Windows Search`` enabled on Windows 7
+        - Note: Keep ``Windows Search`` enabled on Windows 7
 
         - See [media/windows7-features-example.png](../media/windows7-features-example.png)
 
@@ -188,85 +228,6 @@ Windows 10 stores installed applications both in the legacy & immersive control 
     - Windows 8 Only:
 
         - Open ``"C:\Program Files\Open-Shell\Start Menu Settings.lnk"``, enable ``Show all settings`` then go to the Windows 8.1 Settings section and set ``Disable active corners`` to All.
-
-## Miscellaneous
-
-- Allow users full control of the ``C:\`` drive. This resolves an issue with xperf ETL processing on Windows 7.
-
-    - See [media/full-control-example.png](../media/full-control-example.png)
-
-    - Click continue & ignore errors
-
-- Open CMD & enter the commands below.
-
-    - Set PowerShell ExecutionPolicy to unrestricted:
-
-        ```bat
-        PowerShell Set-ExecutionPolicy Unrestricted -force
-        ```
-    
-    - Set the password to never expire, resolves some bugs despite no password being set:
-
-        ```bat
-        net accounts /maxpwage:unlimited
-        ```
-
-    - Disable Automatic Repair, does more harm than good in our use case:
-
-        ```bat
-        bcdedit /set {current} recoveryenabled no
-        ```
-
-    - Windows 10+ Only:
-
-    	- Clean Up the WinSxS Folder:
-
-            ```bat
-            DISM /online /Cleanup-Image /StartComponentCleanup /ResetBase
-            ```
-
-    	- Disable [Reserved Storage](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/dism-storage-reserve?view=windows-11) on 1903+:
-
-            ```bat
-            DISM /Online /Set-ReservedStorageState /State:Disabled
-            ```
-
-    	- Uninstall Microsoft Edge:
-
-            ```bat
-            for /f "delims=" %a in ('where /r "C:\Program Files (x86)\Microsoft\Edge\Application" *setup.exe*') do (if exist "%a" (%a --uninstall --system-level --verbose-logging --force-uninstall))
-            ```
-
-    	- Uninstall OneDrive:
-
-            ```bat
-            "%windir%\SysWOW64\OneDriveSetup.exe" /uninstall
-            ```
-
-    - Enable ``Launching applications and unsafe files`` in ``Internet Options > security > Custom Level``. This prevents [this annoying warning](https://gearupwindows.com/how-to-disable-open-file-security-warning-in-windows-10/). Feel free to skip this step as security may be reduced.
-
-    - In ``Advanced System Settings``, do the following:
-
-        - In ``Computer Name > Change`` configure the PC name
-
-        - In ``System Protection``, disable & delete System Restore points. It has been proven to be very unreliable
-
-        - In ``Remote``, disable **Remote Assistance**
-
-        - Windows 7 Only:
-
-            - In ``Advanced > Environment Variables > System Variables``, create a new variable:
-
-                ```
-                Variable name: devmgr_show_nonpresent_devices
-                Variable value: 1
-                ```
-    
-    - In ``Defragment and Optimize Drives``, disable **Run on a schedule**. More details on doing maintenance tasks ourself in [Final Thoughts & Tips](#final-thoughts--tips).
-
-    - Disable all messages in ``Control Panel> System and Security > Action Center > Change Action Center settings > Change Security and Maintenance settings``.
-
-        - This section is named ``Security and Maintenance`` on Windows 10
 
 ## Replace Task Manager with Process Explorer
 
@@ -742,12 +703,6 @@ issues [[1](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitatio
 
         ```bat
         fsutil behavior set disabledeletenotify 0
-        ```
-
-    - Disable NTFS self-healing repair operations on the current installation, does more harm than good
-
-        ```bat
-        fsutil repair set C: 0
         ```
 
 ## Disable Hidden Power Saving
