@@ -22,7 +22,7 @@ if not !path_err! == 0 exit /b
 
 ping archlinux.org > NUL
 if not !errorlevel! == 0 (
-    error: no internet connection
+    echo error: no internet connection
     pause
     exit /b 1
 )
@@ -54,7 +54,7 @@ for %%i in ("prerequisites", "debloat.sh") do (
     if exist "!working_dir!\EVA-main\%%i" (
         move /y "!working_dir!\EVA-main\%%i" "C:\"
     ) else (
-        error: %%i does not exist
+        echo error: %%i does not exist
         set "extract_err=1"
     )
 )
