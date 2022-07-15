@@ -76,7 +76,7 @@ Use the [download links spreadsheet](https://docs.google.com/spreadsheets/d/1zTF
 
 - Windows 8+ recommended updates:
 
-    - Download the latest cumulative update along with the servicing stack for that specific update. Use the official [windows update history page](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b) to identify the relevant updates
+    - Download the latest cumulative update along with the servicing stack for that specific update. Use the official windows update history page [[W8](https://support.microsoft.com/en-us/topic/july-21-2016-kb3172614-dcf9bea5-47b0-b574-2929-4f9e130f5192) [W10](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b)].
 
 - Download the updates from the [microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the kb identifier. Place the updates somewhere easily accessible such as ``C:\updates``.
 
