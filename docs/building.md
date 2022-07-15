@@ -88,17 +88,13 @@ Use the [download links spreadsheet](https://docs.google.com/spreadsheets/d/1zTF
     DISM /Image:"%MOUNT_DIR%" /Add-Package /PackagePath="C:\updates\KB2670838.msu"
     ```
 
-## Enable .NET 3.5
-
-- Windows 8+ Only.
+## Enable .NET 3.5 (Windows 8+)
 
 ```bat
 DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:NetFx3 /All /LimitAccess /Source:"%EXTRACTED_IMAGE%\sources\sxs"
 ```
 
-## Enable Legacy Components for older games
-
-- Windows 8+ Only.
+## Enable Legacy Components for older games (Windows 8+)
 
 ```bat
 DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:DirectPlay /All
@@ -124,9 +120,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
 
 - Clone the repository & place the ``prerequisites`` folder & ``debloat.sh`` in the mounted directory.
 
-## Remove Provisioned Appx Bloatware
-
-- Windows 8+ Only.
+## Remove Provisioned Appx Bloatware (Windows 8+)
 
 - This command removes the majority of windows apps such as microsoft store, maps, camera etc that nobody uses & potentially jeopardizes privacy.
 
@@ -152,9 +146,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
     DISM /Unmount-wim /MountDir:"%MOUNT_DIR%" /Commit
     ```
 
-## Replace Windows 7 Boot Wim
-
-- Windows 7 Only.
+## Replace Windows 7 Boot Wim (Windows 7)
 
     - As you are aware, windows 7 lacks driver support for modern hardware & you should have already integrated drivers into the install.wim however we have not yet touched the boot.wim (installer). We *could* integrate the same drivers into the boot.wim as we did before but in my experience this still leads to a problematic installation. Instead, we can use the windows 10 boot.wim which already has modern hardware support to install our windows 7 install.wim.
 

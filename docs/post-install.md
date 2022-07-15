@@ -14,7 +14,7 @@ Once you have begun the OOBE process, follow the steps in the video.
 
 ## Merge the Registry Files
 
-- Open CMD as Administrator & enter the command below to merge the registry files. Use the ``--win7`` or ``--win10`` arguments depending on the windows version you are configuring.
+- Open CMD as Administrator & enter the command below to merge the registry files. Use the ``--win7``, ``--win8`` or ``--win10`` arguments depending on the windows version you are configuring.
 
     ```bat
     C:\prerequisites\scripts\registry\apply-registry.exe
@@ -22,7 +22,7 @@ Once you have begun the OOBE process, follow the steps in the video.
 
 - Restart your PC (important).
 
-- You may establish an internet connection after you have restarted as the Windows Update policies will take effect.
+- You may establish an internet connection after you have restarted as the windows update policies will take effect.
 
 ## Download Prerequisites
 
@@ -44,7 +44,7 @@ This only applies if you are using a the base images provided in [docs/pre-insta
 
 ## Miscellaneous
 
-- Allow users full control of the ``C:\`` drive. This resolves an issue with xperf ETL processing on Windows 7.
+- Allow users full control of the ``C:\`` drive. This resolves an issue with xperf etl processing on windows 7.
 
     - See [media/full-control-example.png](../media/full-control-example.png)
 
@@ -62,18 +62,9 @@ This only applies if you are using a the base images provided in [docs/pre-insta
 
     - In ``Computer Name > Change`` configure the PC name
 
-    - In ``System Protection``, disable & delete System Restore points. It has been proven to be very unreliable
+    - In ``System Protection``, disable & delete system restore points. It has been proven to be very unreliable
 
     - In ``Remote``, disable **Remote Assistance**
-
-    - Windows 7 Only:
-
-        - In ``Advanced > Environment Variables > System Variables``, create a new variable:
-
-            ```
-            Variable name: devmgr_show_nonpresent_devices
-            Variable value: 1
-            ```
     
 - In ``Defragment and Optimize Drives``, disable **Run on a schedule**. More details on doing maintenance tasks ourself in [Final Thoughts & Tips](#final-thoughts--tips).
 
@@ -90,7 +81,7 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
     - In the ``Turn Windows features on or off`` section, disable everything **except** for:
 
-        - Note: Keep ``Windows Search`` enabled on Windows 7
+        - Note: Keep ``Windows Search`` enabled on windows 7
 
         - See [media/windows7-features-example.png](../media/windows7-features-example.png)
 
@@ -135,9 +126,9 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
             - **ShellExperienceHost_cw5n1h2txyewy**
 
-    - Once finished, empty the ``Trash`` in the file explorer & restart to boot back into Windows
+    - Once finished, empty the ``Trash`` in the file explorer & restart to boot back into windows
 
-- Once back into the Windows desktop, open CMD & enter the command below to remove leftover scheduled tasks.
+- Once back into the windows desktop, open CMD & enter the command below to remove leftover scheduled tasks.
 
     ```bat
     C:\prerequisites\scripts\scheduled-tasks\disable-tasks.exe
@@ -200,6 +191,8 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
     - Install [uBlock Origin](https://github.com/gorhill/uBlock), Librewolf already ships with it
 
+        - Recommended filters in [Final Thoughts & Tips](#final-thoughts--tips)
+
 - Install [.NET 4.8 Runtimes](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48)
 
     - Run ``C:\prerequisites\ndp48-web.exe``
@@ -212,23 +205,21 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
     - [mpv](https://mpv.io) or [mpc-hc](https://mpc-hc.org) ([alternative link](https://github.com/clsid2/mpc-hc)) recommended
 
-- Install [OpenShell](https://github.com/Open-Shell/Open-Shell-Menu)
+- Install [OpenShell](https://github.com/Open-Shell/Open-Shell-Menu) (Windows 8+)
 
-    - Windows 8+ Only:
+    - This is required as we removed the bloated stock start menu
 
-        - This is required as we removed the bloated stock start menu.
+    - Run ``C:\prerequisites\open-shell\OpenShellSetup.exe``
 
-        - Run ``C:\prerequisites\open-shell\OpenShellSetup.exe``
+        - Only install the ``Open-Shell Menu``. Disable everything else to prevent installing bloatware
 
-            - Only install the ``Open-Shell Menu``. Disable everything else to prevent installing bloatware.
+    - I have included a registry file that will apply a basic OpenShell skin along with a few other settings, feel free to use your own
 
-        - I have included a registry file that will apply a basic OpenShell skin along with a few other settings, feel free to use your own.
-
-        - Create a shortcut in win + r, ``shell:startup`` pointing to ``C:\Program Files\Open-Shell\StartMenu.exe``
+    - Create a shortcut in win + r, ``shell:startup`` pointing to ``C:\Program Files\Open-Shell\StartMenu.exe``
 
     - Windows 8 Only:
 
-        - Open ``"C:\Program Files\Open-Shell\Start Menu Settings.lnk"``, enable ``Show all settings`` then go to the Windows 8.1 Settings section and set ``Disable active corners`` to All.
+        - Open ``"C:\Program Files\Open-Shell\Start Menu Settings.lnk"``, enable ``Show all settings`` then go to the Windows 8.1 Settings section and set ``Disable active corners`` to All
 
 ## Replace Task Manager with Process Explorer
 
@@ -267,7 +258,7 @@ slmgr /ato
 
 - Open CMD & enter the commands below.
 
-    - Disable the boot manager timeout when dual booting does not affect single boot times.
+    - Disable the boot manager timeout when dual booting does not affect single boot times
 
         ```bat
         bcdedit /timeout 0
@@ -278,7 +269,7 @@ slmgr /ato
         bcdedit /set nx optin
         ```
 
-    - Configure the operating system name, i usually name it to whatever Windows version i am using e.g ``Windows 10 1803``
+    - Configure the operating system name, i usually name it to whatever Windows version i am using e.g ``windows 10 1803``
 
         ```bat
         bcdedit /set {current} description "OSNAME"
@@ -286,19 +277,19 @@ slmgr /ato
 
     - Windows 8+ Only
         
-        - Disable the dynamic timer tick feature, implemented as a power saving feature:
+        - Disable the dynamic timer tick feature, implemented as a power saving feature
 
             ```bat
             bcdedit /set disabledynamictick yes
             ```
 
-        - Forces the clock to be backed by a platform source, no synthetic timers are allowed. Have not been able to prove the benifits of this, feel free to skip or test yourself:
+        - Forces the clock to be backed by a platform source, no synthetic timers are allowed. Have not been able to prove the benifits of this, feel free to skip or test yourself
 
             ```bat
             bcdedit /set useplatformtick yes
             ```
 
-        - Configure the TSC synchronization policy. Have not been able to prove the benifits of this, feel free to skip or test yourself:
+        - Configure the TSC synchronization policy. Have not been able to prove the benifits of this, feel free to skip or test yourself
 
             ```bat
             bcdedit /set tscsyncpolicy [legacy | enhanced]
@@ -306,33 +297,29 @@ slmgr /ato
 
             - Related: [research.md - What TscSyncPolicy does Windows use by default?](research.md#what-tscsyncpolicy-does-windows-use-by-default)
 
-## Configure Memory Management Settings
+## Configure Memory Management Settings (Windows 8+)
 
-- Windows 8+ Only:
+- Open powershell & enter the command below.
 
-    - Open Powershell & enter the following:
+    ```powershell
+    Get-MMAgent
+    ```
 
-        ```powershell
-        Get-MMAgent
-        ```
+- If anything is set to True, use the command below as an example to disable a given setting.
 
-    - If anything is set to True, use the following command as an example to disable a specific setting:
+    ```powershell
+    Disable-MMAgent -MemoryCompression
+    ```
 
-        ```powershell
-        Disable-MMAgent -MemoryCompression
-        ```
+## Disable Process Mitigations (Windows 10 1709+)
 
-## Disable Process Mitigations
+- Run the ``C:\prerequisites\scripts\disable-process-mitigations.bat`` script to disable [process mitigations](https://docs.microsoft.com/en-us/powershell/module/processmitigations/set-processmitigation?view=windowsserver2019-ps)
 
-- Windows 10 1709+ Only:
+- Effects can be viewed with the command below in powershell:
 
-    - Run the ``C:\prerequisites\scripts\disable-process-mitigations.bat`` script to disable [process mitigations](https://docs.microsoft.com/en-us/powershell/module/processmitigations/set-processmitigation?view=windowsserver2019-ps)
-
-    - Effects can be viewed with the following command in Powershell:
-
-        ```powershell
-        Get-ProcessMitigation -System
-        ```
+    ```powershell
+    Get-ProcessMitigation -System
+    ```
 
 ## Configure the Network Adapter
 
@@ -340,19 +327,17 @@ slmgr /ato
 
 - Right click your main network adapter & select properties.
 
-- Disable all items except the following:
+- Disable all items except ``QoS Packet Scheduler`` & ``Internet Protocol Version 4 (TCP/IPv4)``.
 
-    - ``QoS Packet Scheduler``
-
-    - ``Internet Protocol Version 4 (TCP/IPv4)``
-
-- [Configure a Static IP address](https://youtu.be/5iRp1Nug0PU?t=36), ths is required as we will be disabling the network services that waste cycles.
+- [Configure a Static IP address](https://youtu.be/5iRp1Nug0PU?t=36), ths is required as we will be disabling the network services that waste cpu time.
 
 - Disable ``NetBIOS over TCP/IP`` in ``General > Advanced > WINS`` to [prevent unnecessary system listening](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/DOCS/NETWORK/README.md).
 
 ## Preferences
 
 - Go through the ``C:\prerequisites\preferences`` folder to configure the following:
+
+    - Configure Pointer Scheme
 
     - Desktop Icon Settings
 
@@ -479,31 +464,31 @@ slmgr /ato
             ```
         - Save & place the batch script in win + r, ``shell:startup``
 
-    - Configure ``C:\prerequisites\CRU\CRU.exe`` as you usually would.
+    - Configure ``C:\prerequisites\CRU\CRU.exe`` as you usually would
 
         - Try to delete every resolution & the other bloatware (audio blocks) apart from your native resolution, this may be a work around for the 1 second black screen when alt-tabbing in FSE, feel free to skip this step if you do not want to risk a black screen or are not comfortable with doing this
 
         - Restart your PC
 
-    - Ensure your resolution is configured properly in Display Adapter Settings.
+    - Ensure your resolution is configured properly in Display Adapter Settings
 
         - Use the ``C:\prerequisites\Change Resolution.lnk`` shortcut on Windows 8+
 
 ## Configure Device Manager
 
-- Open the sound control panel, can be opened with win + r, ``mmsys.cpl``
+- Open the sound control panel, can be opened with win + r, ``mmsys.cpl``.
 
     - Disable unused Playback & Recording devices 
     
-    - Disable audio enhancements for them as they increase audiodg.exe cycles/s
+    - Disable audio enhancements as they waste cpu time
     
     - Disable Exclusive Mode in the Advanced section
 
     - I like to set the sound scheme to no sounds in the Sounds tab
 
-- Open device manager, ``View > Devices by connection``. Also enable ``Show hidden devices``
+- Open device manager, ``View > Devices by connection``.
 
-- Disable write-Cache buffer flushing on all drives in the ``Properties > Policies`` section.
+- Disable write-cache buffer flushing on all drives in the ``Properties > Policies`` section.
 
 - Go to your ``network adapter > properties > advanced``, disable any power saving & wake features.
 
@@ -515,9 +500,9 @@ slmgr /ato
 
     - Disable any **unneeded** devices that are using an IRQ or I/O resources, always ask if unsure, take your time on this step. Windows should not allow you to disable any required devices but ensure you do not accidentally disable another important device such as your main USB controller or similar...
 
-        - If there are multiple of the same devices & you are unsure which one is in use, refer back to the tree structure in ``View > Devices by connection``. Note that a single device can use many resources.
+        - If there are multiple of the same devices & you are unsure which one is in use, refer back to the tree structure in ``View > Devices by connection``. Note that a single device can use many resources
 
-- Open CMD & enter the command below to disable power saving for various devices in device manager. 
+- Open CMD & enter the command below to disable power saving for various devices in device manager.
 
     ```bat
     C:\prerequisites\scripts\disable-pnp-powersaving.ps1
@@ -539,7 +524,7 @@ The service list configuration is not intended for laptop, Wi-Fi & webcam functi
 
     - Remove ``pcw`` from ``[Drivers_To_Disable]`` if you did not replace task manager with process explorer
 
-- On Windows 7 & 8, remove ``MMCSS`` from the ``DependOnService`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Audiosrv``
+- On Windows 7 & 8, remove ``MMCSS`` from the ``DependOnService`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Audiosrv``.
 
 - On 1607 & 1703, delete the ``ErrorControl`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Schedule`` to prevent an unresponsive explorer shell.
 
@@ -598,11 +583,11 @@ issues [[1](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitatio
 
             - You will BSOD if you enable MSI for the **stock** Windows 7 sata driver which you should have updated as mentioned in the [Installing Drivers](#installing-drivers) section
         
-        - Be careful as to what you choose to prioritize as more harm than good may be done. E.g you will likely stutter in a open-world game that utilizes texture streaming if the GPU IRQ priority is set higher than the storage controller priority.
+        - Be careful as to what you choose to prioritize as more harm than good may be done. E.g you will likely stutter in a open-world game that utilizes texture streaming if the GPU IRQ priority is set higher than the storage controller priority
 
     - Restart your PC, you can verify if a device is utilizing MSIs by checking if it has a negative IRQ in MSIUtil
 
-    - Ensure that there is no IRQ sharing on your system by checking win + r, ``msinfo32`` ``Hardware Resources > Conflicts/Sharing`` section.
+    - Ensure that there is no IRQ sharing on your system by checking win + r, ``msinfo32`` ``Hardware Resources > Conflicts/Sharing`` section
 
 - ## Interrupt Affinity
 
@@ -774,11 +759,11 @@ issues [[1](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitatio
 
 ## Configure Default Programs
 
-- Configure default programs in ``Settings > Apps``
+- Configure default programs in ``Settings > Apps``.
 
 ## Final Thoughts & Tips
 
-- Before launching a game consider:
+- While gaming, consider the following:
 
     - Killing explorer.exe after you launch your game, it uses a ton of cycles.
 
@@ -788,7 +773,7 @@ issues [[1](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitatio
 
         - Drag & drop the scripts in ``C:\prerequisites\scripts\idle-scripts`` to the desktop for easy access. This way you can disable idle before launching a game & re-enable it after you close your game
 
-    - Kill other processes that waste CPU cycles such as game clients.
+    - Kill other processes that waste cpu time such as game clients
 
 - Don't run random tweaks, tweaking programs or fall for the "fps boost" marketing nonsense. If you have a question about a specific option or setting, just ask.
 

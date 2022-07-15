@@ -4,7 +4,7 @@
 
 - Plug your mouse & keyboard into the first two ports on your first usb controller. This can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html#download) with trial & error.
 
-    - Ryzen systems have a usb port that is directly connected to the cpu which can be identified through the motherboard manual
+    - Ryzen systems have a usb port that is directly connected to the CPU which can be identified through the motherboard manual
 
 - If you have more than one usb controller, you can isolate devices such as DACs, headsets & other devices onto another controller to prevent them interfering with polling consistency.
 
