@@ -18,11 +18,7 @@ def main():
 
     registry_dir = "C:\\prerequisites\\scripts\\registry"
 
-    if args.win7 and args.win10:
-        print("error: registry file can only be applied for one windows version")
-        return 1
-
-    if not (args.win7 or args.win10):
+    if not any([args.win7, args.win8, args.win10]):
         print("error: must specify windows version to apply registry files for")
         return 1
 
