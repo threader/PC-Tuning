@@ -26,7 +26,7 @@ Once you have begun the OOBE process, follow the steps in the video.
 
 ## Download Prerequisites
 
-This only applies if you are using a the base images provided in [docs/pre-install.md](./pre-install.md#obtaining-a-base-image).
+This only applies if you are using the base images provided in [docs/pre-install.md](./pre-install.md#obtaining-a-base-image).
 
 - Open CMD & enter the command below.
 
