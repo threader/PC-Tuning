@@ -12,8 +12,6 @@ Once you have begun the OOBE process, follow the steps in the video.
 - See [media/oobe-windows8-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows8-example.mp4)
 - See [media/oobe-windows10-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows10-example.mp4)
 
-- You may establish an internet connection after you have restarted as the windows update policies will take effect.
-
 ## Download Prerequisites
 
 This only applies if you are using the base images provided in [docs/pre-install.md](./pre-install.md#obtaining-a-base-image).
@@ -31,8 +29,10 @@ This only applies if you are using the base images provided in [docs/pre-install
     ```bat
     C:\prerequisites\scripts\registry\apply-registry.exe
     ```
-
+    
 - Restart your PC (important).
+
+- You may establish an internet connection after you have restarted as the windows update policies will take effect.
 
 ## Visual Cleanup
 
