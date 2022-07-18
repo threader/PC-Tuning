@@ -76,7 +76,7 @@ Use the [download links spreadsheet](https://docs.google.com/spreadsheets/d/1zTF
 
 - Windows 8+ recommended updates:
 
-    - Download the latest cumulative update along with the servicing stack for that specific update. Use the official windows update history page [[W8](https://support.microsoft.com/en-us/topic/july-21-2016-kb3172614-dcf9bea5-47b0-b574-2929-4f9e130f5192) [W10](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b)].
+    - Download the latest cumulative update along with the servicing stack for that specific update. Use the official windows update history page ([W8](https://support.microsoft.com/en-us/topic/july-21-2016-kb3172614-dcf9bea5-47b0-b574-2929-4f9e130f5192), [W10](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b)).
 
 - Download the updates from the [microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the kb identifier. Place the updates somewhere easily accessible such as ``C:\updates``.
 
@@ -148,19 +148,19 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
 
 ## Replace Windows 7 Boot Wim (Windows 7)
 
-    - As you are aware, windows 7 lacks driver support for modern hardware & you should have already integrated drivers into the install.wim however we have not yet touched the boot.wim (installer). We *could* integrate the same drivers into the boot.wim as we did before but in my experience this still leads to a problematic installation. Instead, we can use the windows 10 boot.wim which already has modern hardware support to install our windows 7 install.wim.
+As you are aware, windows 7 lacks driver support for modern hardware & you should have already integrated drivers into the install.wim however we have not yet touched the boot.wim (installer). We *could* integrate the same drivers into the boot.wim as we did before but in my experience this still leads to a problematic installation. Instead, we can use the windows 10 boot.wim which already has modern hardware support to install our windows 7 install.wim.
 
-    - The process is quite simple:
+- The process is quite simple:
 
-        - Download the [latest windows 10 image](https://www.microsoft.com/en-gb/software-download/windows10) & extract it, i would recommend renaming the extracted folder to avoid confusion. In the examples below, i have extracted it to ``C:\W10_image``
+    - Download the [latest windows 10 image](https://www.microsoft.com/en-gb/software-download/windows10) & extract it, i would recommend renaming the extracted folder to avoid confusion. In the examples below, i have extracted it to ``C:\W10_image``
 
-        - Replace ``sources\install.wim`` in the extracted windows 10 image with the windows 7 ``install.wim``
+    - Replace ``sources\install.wim`` in the extracted windows 10 image with the windows 7 ``install.wim``
 
-    - We need to update a variable since our extracted directory has changed. Enter the path of your new extracted directory, mine is ``C:\W10_image``.
+- We need to update a variable since our extracted directory has changed. Enter the path of your new extracted directory, mine is ``C:\W10_image``.
 
-        ```bat
-        set "EXTRACTED_IMAGE=C:\W10_image"
-        ```
+    ```bat
+    set "EXTRACTED_IMAGE=C:\W10_image"
+    ```
 
 ## Insert DISM Apply-Image Script
 
