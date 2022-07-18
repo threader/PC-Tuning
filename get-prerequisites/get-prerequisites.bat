@@ -67,7 +67,7 @@ if not !extract_err! == 0 (
 if exist "!working_dir!" rd /s /q "!working_dir!"
 if exist "!windir!\7z.exe" del /f /q "!windir!\7z.exe"
 if exist "!windir!\7z.dll" del /f /q "!windir!\7z.dll"
-if exist "!windir!\aria2c.exe"d el /f /q "!windir!\7z.exe"
+if exist "!windir!\aria2c.exe" del /f /q "!windir!\7z.exe"
 
 echo info: done
 
