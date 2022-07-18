@@ -21,6 +21,8 @@
 
 </details>
 
+---
+
 #### What TscSyncPolicy does Windows use by default?
 
 <details>
@@ -56,6 +58,8 @@ Conclusion: By default, Windows uses the ``default`` value, not ``enhanced`` or 
 
 </details>
 
+---
+
 #### How many Rss Queues do you need?
 
 <details>
@@ -77,3 +81,62 @@ As expected, this scenario demonstrates that both CPU 0 & CPU 1 are handling DPC
 Conclusion: During online matches, at most two Rss queues/cores are being utilized, however there is no harm in using more than two but it is important to be aware of the information above as people reserve consecutive cores specifically for the network driver when those core(s) could better be used for another driver or a real-time application. The amount of Rss queues a network adapter has may also determine the quality of the hardware but this is yet to be explored but something to keep in mind.
 
 </details>
+
+---
+
+#### Win32PrioritySeparation
+
+- #### The truth behind ambiguous values
+
+    <details>
+    <summary>Read More</summary>
+    <br>
+    
+    According to the documentation windows allows up to 0x3F (63 decimal) because the bitmask is made up of 6-bits [[1](bitmask)], so why do values above this exist? what happens if we enter a value greater than the (theoretically) maximum allowed? let's find out.
+
+    We can read PsPrioritySeparation & PspForegroundQuantum in a local kernel debugger such as WinDbg in realtime and use the quantum index provided in the windows internals book to find out the different values it returns with different Win32PrioritySeparation entries. See results below.
+
+    | PsPrioritySeparation | Foreground boost |
+    |----------------------|------------------|
+    | 2                    | 3:1              |
+    | 1                    | 2:1              |
+    | 0                    | 1:1              |
+
+    <img src="../media/w32ps-quantum-index.png" width="600">
+
+    Demonstration with the windows default, **0x2 (2 decimal)** :
+
+    ```
+    lkd> dd PsPrioritySeparation L1
+    fffff802`3a6fc5c4  00000002
+
+    lkd> db PspForegroundQuantum L3
+    fffff802`3a72e874  06 0c 12
+    ```
+    PspForegroundQuantum returns the values in hexadecimal so we need to convert it to decimal in order to use the tables correctly. ``06 0c 12`` is equivalent to ``6 12 18`` and PsPrioritySeparation returns ``2``. In the tables, this corresponds to short, variable, 3:1. But we already knew this as it is documented by microsoft, so now lets try an ambiguous value.
+
+    **0xffff3f91 (4294918033 decimal)**:
+
+    ```
+    lkd> dd PsPrioritySeparation L1
+    fffff802`3a6fc5c4  00000001
+
+    lkd> db PspForegroundQuantum L3
+    fffff802`3a72e874  0c 18 24
+    ```
+
+    ``0c 18 24`` is equivalent to ``12 24 36`` and PsPrioritySeparation returns ``1`` which corresponds to long, variable, 2:1. Nothing special as it seems, this is actually equivalent to values less than the maximum documented value as shown in [this csv](https://raw.githubusercontent.com/djdallmann/GamingPCSetup/master/CONTENT/RESEARCH/FINDINGS/win32prisep0to271.csv). I had the same results while testing various other values.
+
+    Conclusion: Why does windows allow us to enter values greater than 0x3F (63 decimal) if any value greater than this is equivalent to values less than the maximum documented value? The reason behind this is because the maximum value for a REG_DWORD is 0xFFFFFFFF (4294967295 decimal) [[1](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-dtyp/262627d8-3418-4627-9218-4ffe110850b2)] and there are no restrictions in place to prevent users to entering a illogical value (=> 63 in this case), so when the kernel reads the Win32PrioritySeparation registry key, it must account for invalid values so it only reads a portion of the entered value. The portion it chooses to read is the first 6-bits of the bitmask which means values greater than 63 are recurring values.
+    </details>
+
+---
+
+
+<!-- #### Title
+
+<details>
+<summary>Read More</summary>
+<br>
+
+</details> -->
