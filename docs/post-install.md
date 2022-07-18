@@ -12,6 +12,16 @@ Once you have begun the OOBE process, follow the steps in the video.
 - See [media/oobe-windows8-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows8-example.mp4)
 - See [media/oobe-windows10-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows10-example.mp4)
 
+## Merge the Registry Files
+
+- Open CMD as Administrator & enter the command below to merge the registry files. Use the ``--win7``, ``--win8`` or ``--win10`` arguments depending on the windows version you are configuring.
+
+    ```bat
+    C:\prerequisites\scripts\registry\apply-registry.exe
+    ```
+
+- Restart your PC (important).
+
 - You may establish an internet connection after you have restarted as the windows update policies will take effect.
 
 ## Download Prerequisites
@@ -23,16 +33,6 @@ This only applies if you are using the base images provided in [docs/pre-install
     ```bat
     C:\get-prerequisites.bat
     ```
-
-## Merge the Registry Files
-
-- Open CMD as Administrator & enter the command below to merge the registry files. Use the ``--win7``, ``--win8`` or ``--win10`` arguments depending on the windows version you are configuring.
-
-    ```bat
-    C:\prerequisites\scripts\registry\apply-registry.exe
-    ```
-
-- Restart your PC (important).
 
 ## Visual Cleanup
 
