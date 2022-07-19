@@ -399,7 +399,7 @@ slmgr /ato
         rd /s /q "C:\ProgramData\NVIDIA Corporation\DisplayDriverRAS"
         ```
 
-    - HDCP Can be disabled with the [following registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-are-there-any-configuration-options-that-allow-you-to-disable-hdcp-when-using-nvidia-based-graphics-cards), ensure to change the driver key to suit your needs:
+    - HDCP Can be disabled with the [following registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-are-there-any-configuration-options-that-allow-you-to-disable-hdcp-when-using-nvidia-based-graphics-cards) (reboot required), ensure to change the driver key to suit your needs:
 
         - Run ``C:\prerequisites\scripts\get-driver-keys.bat`` to get the driver keys on your system
         
@@ -407,7 +407,7 @@ slmgr /ato
             reg.exe add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "RMHdcpKeyglobZero" /t REG_DWORD /d "1" /f
             ```
     
-    - Force P-State 0 with the [following registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-is-there-a-registry-setting-that-can-force-your-display-adapter-to-remain-at-its-highest-performance-state-pstate-p0) to reduce render time & jitter caused by frequency transitions, ensure to change the driver key to suit your needs:
+    - Force P-State 0 with the [following registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-is-there-a-registry-setting-that-can-force-your-display-adapter-to-remain-at-its-highest-performance-state-pstate-p0) to reduce render time & jitter caused by frequency transitions (reboot required), ensure to change the driver key to suit your needs:
 
         - Run ``C:\prerequisites\scripts\get-driver-keys.bat`` to get the driver keys on your system
 
@@ -417,15 +417,25 @@ slmgr /ato
 
     - NVIDIA Control Panel
 
-        - In the ``Adjust desktop size and position``, set the scaling mode to ``No Scaling`` & set perform scaling on to ``Display``. Configure your resolution & refresh rate.
+        - Enable ``Desktop > Enable Developer Settings``, i also like to disable the notification tray icon
 
-            - Use these 3D settings:
+        - In the ``3D Settings > Manage 3D settings`` section, configure the following (don't change anything else):
 
-                - See [media/nvidia-cp-settings.png](../media/nvidia-cp-settings.png)
+            - **Anisotropic filtering** - Off
 
-                - [Threaded Optimization offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html), it usually hurts frametime consistency but feel free to test it yourself. You should also consider whether or not you are already CPU bottlenecked if you do choose to enable the setting.
+            - **Antialiasing - Gamma correction** - Off
 
-        - Enable ``Desktop > Enable Developer Settings``, in the ``Manage GPU Performance Counters``, enable ``Allow access to the GPU performance counters to all users``.
+            - **Low Latency Mode** - On (limits prerendered frames to 1)
+
+            - **Power management mode** - Prefer maximum performance
+
+            - **Texture filtering - Quality** - High performance
+
+            - [Threaded Optimization offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html), it usually hurts frametime consistency but feel free to test it yourself. You should also consider whether or not you are already CPU bottlenecked if you do choose to enable the setting
+
+        - In the ``Developer > Manage GPU Performance Counters``, enable ``Allow access to the GPU performance counters to all users``
+
+        - In the ``Display > Adjust desktop size and position`` section, set the scaling mode to ``No Scaling`` & set perform scaling on to ``Display``. Configure your resolution & refresh rate.
 
         - Consider disabling G-Sync, it has the potential to increase input latency due to extra processing however it has supposedly improved over time so feel free to test it yourself. Your mileage may vary.
 
@@ -494,6 +504,8 @@ slmgr /ato
     - Disable unused Playback & Recording devices 
     
     - Disable audio enhancements as they waste cpu time
+
+        - See [media/audio enhancements-benchmark.png](../media/audio%20enhancements-benchmark.png)
     
     - Disable Exclusive Mode in the Advanced section
 
@@ -628,7 +640,7 @@ issues [[1](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitatio
 
 ## Memory Cleaner
 
-- Feel free to skip this step as it is not required, Microsoft fixed the standby list memory management issues in a later version of Windows. [Memory Cleaner](https://github.com/danskee/MemoryCleaner) ([alternative link](https://git.zusier.xyz/Zusier/MemoryCleaner)) also allows us to set the kernel timer-resolution globally however the behaviour of timer-resolution changed in 2004+ as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change/), rendering these methods useless.
+Feel free to skip this step as it is not required, Microsoft fixed the standby list memory management issues in a later version of Windows. [Memory Cleaner](https://github.com/danskee/MemoryCleaner) ([alternative link](https://git.zusier.xyz/Zusier/MemoryCleaner)) also allows us to set the kernel timer-resolution globally however the behaviour of timer-resolution changed in 2004+ as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change/), rendering these methods useless.
 
 - Place ``C:\prerequisites\Memory-Cleaner.exe`` in win + r, ``shell:startup`` & open it.
 

@@ -26,7 +26,7 @@
 
 - Disable [Active State Power Management](https://en.wikipedia.org/wiki/Active_State_Power_Management) & any other power saving features you can locate in BIOS.
 
-- Disable unnecessary devices such as the Wireless LAN Controller, Bluetooth, unused USB controllers & unused PCI ports.
+- Disable unnecessary devices such as the Wireless LAN Controller, Bluetooth, unused USB controllers & unused PCI ports. They saturate interrupt request lines which can be viewed with ``msinfo32`` in the ``Hardware Resources > IRQs`` section.
 
 - Configure fan curves or set a static fan speed for the CPU & case fans. I personally set all fans to a reasonably high, constant, noise-acceptable speed.
 
@@ -60,7 +60,7 @@
 
 - Increasing DPI reduces latency [[1](https://www.youtube.com/watch?v=6AoRfv9W110)]. Most mice are able to handle 1600 DPI without [sensor smoothing](https://www.reddit.com/r/MouseReview/comments/5haxn4/sensor_smoothing).
 
-- Higher polling rate reduces jitter [[1](https://youtu.be/gOQNRvJbpmk?t=540), [2](https://www.youtube.com/watch?app=desktop&v=djCLZ6qEVuA)].
+- Higher polling rate reduces jitter [[1](https://youtu.be/gOQNRvJbpmk?t=540), [2](https://www.youtube.com/watch?app=desktop&v=djCLZ6qEVuA)]. Depending on your hardware, 8khz may heavily impact performance while in use, in this case, consider downclocking slightly (4khz, 2khz & 1khz options are commonly available).
 
 - USB output is limited to roughly 7A & RGB requires unnecessary power. Turn off RGB where you can or strip the LED from the peripheral as running a RGB effect/animation can take a great toll on the MCU. It requires a lot of processing power & will delay other processes [[1](https://blog.wooting.nl/what-influences-keyboard-speed)].
 
