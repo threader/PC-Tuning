@@ -427,6 +427,8 @@ slmgr /ato
 
         - Enable ``Desktop > Enable Developer Settings``, in the ``Manage GPU Performance Counters``, enable ``Allow access to the GPU performance counters to all users``.
 
+        - Consider disabling G-Sync, it has the potential to increase input latency due to extra processing however it has supposedly improved over time so feel free to test it yourself. Your mileage may vary.
+
     - Disable Ansel with ``C:\prerequisites\nvidia-ansel-configurator\NvCameraConfiguration_v1.0.0.6.exe``
 
     - Nvidia Inspector
@@ -444,6 +446,8 @@ slmgr /ato
 
     - Disable HDCP in the Display section under overrides in the radeonsoftware.
     </details>
+
+    - Disable FreeSync, it's poorly implemented compared to NVIDIA's G-Sync.
 
 - ## Related GPU Settings
 
