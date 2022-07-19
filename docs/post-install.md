@@ -277,7 +277,7 @@ slmgr /ato
 
     - Windows 8+ Only
         
-        - Disable the dynamic timer tick feature, implemented as a power saving feature
+        - Implemented as a power saving feature for laptops & tablets, you absolutely do not want a [tickless kernel](https://en.wikipedia.org/wiki/Tickless_kernel) on a desktop
 
             ```bat
             bcdedit /set disabledynamictick yes
