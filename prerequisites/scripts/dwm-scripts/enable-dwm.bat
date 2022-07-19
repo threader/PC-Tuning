@@ -7,12 +7,13 @@ pause
 echo info: enabling dwm
 Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\dwm.exe" /v "Debugger" /f
 
-set "system32=%windir%\System32"
-for %%i in ("UIRibbon", "UIRibbonRes", "Windows.UI.Logon") do (
-	if exist "%system32%\%%i.dlll" (
-		ren "%system32%\%%i.dlll" "%%i.dll"
-	) else (
-		echo info: %%i.dlll not exist
+for %%i in (UIRibbon, UIRibbonRes, Windows.UI.Logon) do (
+	if exist "%windir%\System32\%%i.dlll" (
+
+		takeown /F "%windir%\System32\%%i.dlll" /A
+		icacls "%windir%\System32\%%i.dlll" /grant Administrators:F
+
+		ren "%windir%\System32\%%i.dlll" "%%i.dll"
 	)
 )
 

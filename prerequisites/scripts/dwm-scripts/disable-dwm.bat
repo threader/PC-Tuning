@@ -7,12 +7,13 @@ pause
 echo info: disabling dwm
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\dwm.exe" /v "Debugger" /t REG_SZ /d "\"C:\WINDOWS\SYSTEM32\RUNDLL32.EXE\"" /f
 
-set "system32=%windir%\System32"
-for %%i in ("UIRibbon", "UIRibbonRes", "Windows.UI.Logon") do (
-	if exist "%system32%\%%i.dll" (
-		ren "%system32%\%%i.dll" "%%i.dlll"
-	) else (
-		echo info: %%i.dll not exist
+for %%i in (UIRibbon, UIRibbonRes, Windows.UI.Logon) do (
+	if exist "%windir%\System32\%%i.dll" (
+
+		takeown /F "%windir%\System32\%%i.dll" /A
+		icacls "%windir%\System32\%%i.dll" /grant Administrators:F
+
+		ren "%windir%\System32\%%i.dll" "%%i.dlll"
 	)
 )
 
