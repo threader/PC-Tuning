@@ -454,10 +454,10 @@ slmgr /ato
     - To be expanded in the future, follow [this guide](https://docs.google.com/document/d/1Vd5WKWhm77sG8o9xBoSNRuAWRTavLqynJ7aQhVrsa8Y/edit#heading=h.hgpjx6g7xmp6) for now.
 
     - Disable HDCP in the Display section under overrides in the radeonsoftware.
-    </details>
 
     - Disable FreeSync, it's poorly implemented compared to NVIDIA's G-Sync.
-
+    </details>
+    
 - ## Related GPU Settings
 
     - configure [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards) as you usually would
