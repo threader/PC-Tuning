@@ -55,7 +55,7 @@ This only applies if you are using the base images provided in [docs/pre-install
     C:\prerequisites\scripts\miscellaneous.bat
     ```
 
-- Enable ``Launching applications and unsafe files`` in ``Internet Options > security > Custom Level``. This prevents [this annoying warning](https://gearupwindows.com/how-to-disable-open-file-security-warning-in-windows-10/). Feel free to skip this step as security may be reduced.
+- Enable ``Launching applications and unsafe files`` in ``Internet Options > Security > Custom Level``. This prevents [this annoying warning](https://gearupwindows.com/how-to-disable-open-file-security-warning-in-windows-10/). Feel free to skip this step as security may be reduced.
 
 - In ``Advanced System Settings``, do the following:
 
