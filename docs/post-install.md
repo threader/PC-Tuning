@@ -14,14 +14,14 @@ Once you have begun the OOBE process, follow the steps in the video.
 
 ## Merge the Registry Files
 
-- Open CMD as Administrator & enter the command below to merge the registry files. Use the ``--win7``, ``--win8`` or ``--win10`` arguments depending on the windows version you are configuring.
+- Open CMD as Administrator & enter the command below to merge the registry files. Use the ``--win7``, ``--win8`` or ``--win10`` arguments depending on the Windows version you are configuring.
 
     ```bat
     C:\prerequisites\scripts\registry\apply-registry.exe
     ```
 - Restart your PC (important).
 
-- You may establish an internet connection after you have restarted as the windows update policies will take effect.
+- You may establish an internet connection after you have restarted as the Windows update policies will take effect.
 
 ## Download Prerequisites
 
@@ -43,7 +43,7 @@ This only applies if you are using the base images provided in [docs/pre-install
 
 ## Miscellaneous
 
-- Allow users full control of the ``C:\`` drive. This resolves an issue with xperf etl processing on windows 7.
+- Allow users full control of the ``C:\`` drive. This resolves an issue with xperf etl processing on Windows 7.
 
     - See [media/full-control-example.png](../media/full-control-example.png)
 
@@ -74,13 +74,13 @@ This only applies if you are using the base images provided in [docs/pre-install
 
 ## Removing Bloatware
 
-Before we remove bloatware via bruteforce on linux, we may as well uninstall what windows allows us to.
+Before we remove bloatware via bruteforce on linux, we may as well uninstall what Windows allows us to.
 
 - Uninstall bloatware in ``Control Panel > Programs > Programs and Features``.
 
     - In the ``Turn Windows features on or off`` section, disable everything **except** for:
 
-        - Note: Keep ``Windows Search`` enabled on windows 7
+        - Note: Keep ``Windows Search`` enabled on Windows 7
 
         - See [media/windows7-features-example.png](../media/windows7-features-example.png)
 
@@ -125,9 +125,9 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
             - **ShellExperienceHost_cw5n1h2txyewy**
 
-    - Once finished, empty the ``Trash`` in the file explorer & restart to boot back into windows
+    - Once finished, empty the ``Trash`` in the file explorer & restart to boot back into Windows
 
-- Once back into the windows desktop, open CMD & enter the command below to remove leftover scheduled tasks.
+- Once back into the Windows desktop, open CMD & enter the command below to remove leftover scheduled tasks.
 
     ```bat
     C:\prerequisites\scripts\scheduled-tasks\disable-tasks.exe
@@ -268,7 +268,7 @@ slmgr /ato
         bcdedit /set nx optin
         ```
 
-    - Configure the operating system name, i usually name it to whatever Windows version i am using e.g ``windows 10 1803``
+    - Configure the operating system name, I usually name it to whatever Windows version I am using e.g ``Windows 10 1803``
 
         ```bat
         bcdedit /set {current} description "OSNAME"
@@ -416,7 +416,7 @@ slmgr /ato
 
     - NVIDIA Control Panel
 
-        - Enable ``Desktop > Enable Developer Settings``, i also like to disable the notification tray icon
+        - Enable ``Desktop > Enable Developer Settings``, I also like to disable the notification tray icon
 
         - In the ``3D Settings > Manage 3D settings`` section, configure the following (don't change anything else):
 
@@ -442,7 +442,7 @@ slmgr /ato
 
     - Nvidia Inspector
 
-        - Disable [Cuda P2 States](https://babeltechreviews.com/nvidia-cuda-force-p2-state) in ``C:\prerequisites\nvidia-profile-inspector\nvidiaProfileInspector.exe``. Feel free to skip this step as i have not verified it affects anything as of yet but there should be no harm disabling it.
+        - Disable [Cuda P2 States](https://babeltechreviews.com/nvidia-cuda-force-p2-state) in ``C:\prerequisites\nvidia-profile-inspector\nvidiaProfileInspector.exe``. Feel free to skip this step as I have not verified it affects anything as of yet but there should be no harm disabling it.
 
         - Disable [SILK Smoothness](https://www.avsim.com/forums/topic/552651-nvidia-setting-silk-smoothness), feel free to skip this step as many games reportedly do not utilize it but no harm should be done disabling it. This setting was removed in newer driver versions.
 
@@ -721,7 +721,7 @@ Feel free to skip this step as it is not required, Microsoft fixed the standby l
 
 ## Disable Hidden Power Saving
 
-- All hidden means is not visible to the user, many driver INF configuration files contain these registry entries that are clearly labeled power saving, however i have not been able to prove the benifit of this script so feel free to skip this step.
+- All hidden means is not visible to the user, many driver INF configuration files contain these registry entries that are clearly labeled power saving, however I have not been able to prove the benifit of this script so feel free to skip this step.
 
     - Run the ``C:\prerequisites\scripts\disable-hidden-powersaving.bat`` script
 

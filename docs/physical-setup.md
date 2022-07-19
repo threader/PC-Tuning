@@ -56,7 +56,7 @@
 
 ## Configure Peripherals
 
-- If your peripherals support onboard memory profiles, it is recommended to configure them before booting into the windows image you plan on configuring as you will not need to install bloatware to configure this later. More details on separating work & gaming environments with a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) later in ths guide.
+- If your peripherals support onboard memory profiles, it is recommended to configure them before booting into the Windows image you plan on configuring as you will not need to install bloatware to configure this later. More details on separating work & gaming environments with a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) later in ths guide.
 
 - Increasing DPI reduces latency [[1](https://www.youtube.com/watch?v=6AoRfv9W110)]. Most mice are able to handle 1600 DPI without [sensor smoothing](https://www.reddit.com/r/MouseReview/comments/5haxn4/sensor_smoothing).
 

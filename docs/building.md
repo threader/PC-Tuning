@@ -8,9 +8,9 @@
 
 ## Downloading an Image
 
-Use the [download links spreadsheet](https://docs.google.com/spreadsheets/d/1zTF5uRJKfZ3ziLxAZHh47kF85ja34_OFB5C5bVSPumk/edit#gid=0) to download stock windows images.
+Use the [download links spreadsheet](https://docs.google.com/spreadsheets/d/1zTF5uRJKfZ3ziLxAZHh47kF85ja34_OFB5C5bVSPumk/edit#gid=0) to download stock images.
 
-- For windows 7 I recommend ``en_windows_7_professional_with_sp1_x64_dvd_u_676939.iso``.
+- For Windows 7 I recommend ``en_windows_7_professional_with_sp1_x64_dvd_u_676939.iso``.
 
 - Ensure to cross-check the hashes for the image with other online sources such as the [adguard hash database](https://files.rg-adguard.net/version/f0bd8307-d897-ef77-dbd6-216fefbe94c5?lang=en-us) to verify that the image is genuine & not corrupted.
 
@@ -76,11 +76,11 @@ Use the [download links spreadsheet](https://docs.google.com/spreadsheets/d/1zTF
 
 - Windows 8+ recommended updates:
 
-    - Download the latest cumulative update along with the servicing stack for that specific update. Use the official windows update history page ([W8](https://support.microsoft.com/en-us/topic/july-21-2016-kb3172614-dcf9bea5-47b0-b574-2929-4f9e130f5192), [W10](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b)).
+    - Download the latest cumulative update along with the servicing stack for that specific update. Use the official Windows update history page ([W8](https://support.microsoft.com/en-us/topic/july-21-2016-kb3172614-dcf9bea5-47b0-b574-2929-4f9e130f5192), [W10](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b)).
 
 - Download the updates from the [microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the kb identifier. Place the updates somewhere easily accessible such as ``C:\updates``.
 
-- Integrate the updates into the install wim with the command below.
+- Integrate the updates into the install.wim with the command below.
 
     - The servicing stack must be installed before installing the Cumulative Update, this generally only applies to Windows 8+
 
@@ -102,9 +102,9 @@ DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:DirectPlay /All
 
  ## Integrating & Obtaining Drivers
 
- - This is generally required for users installing windows 7 to integrate USB/ NVME drivers so that setup can proceed.
+ - This is generally required for users installing Windows 7 to integrate USB/ NVME drivers so that setup can proceed.
 
- - Place all of the drivers to be integrated somewhere easily accessible such as ``C:\drivers`` & use the command below to integrate them into the install wim.
+ - Place all of the drivers to be integrated somewhere easily accessible such as ``C:\drivers`` & use the command below to integrate them into the install.wim.
 
 ```bat
 DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
@@ -122,7 +122,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
 
 ## Remove Provisioned Appx Bloatware (Windows 8+)
 
-- This command removes the majority of windows apps such as microsoft store, maps, camera etc that nobody uses & potentially jeopardizes privacy.
+- This command removes the majority of Windows apps such as microsoft store, maps, camera etc that nobody uses & potentially jeopardizes privacy.
 
     ```bat
     for /f "tokens=3" %i in ('DISM /Image:"%MOUNT_DIR%" /Get-ProvisionedAppxPackages ^| findstr "PackageName"') do (DISM /Image:"%MOUNT_DIR%" /Remove-ProvisionedAppxPackage /PackageName:%i)
@@ -132,7 +132,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
 
 - Run the command below to replace all backgrounds & user profile images with solid black images.
 
-    - Note: Also use the ``--win7`` argument if building windows 7
+    - Note: Also use the ``--win7`` argument if building Windows 7
 
     ```bat
     win-wallpaper.exe --dir "%MOUNT_DIR%" --rgb #000000
@@ -148,13 +148,13 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
 
 ## Replace Windows 7 Boot Wim (Windows 7)
 
-As you are aware, windows 7 lacks driver support for modern hardware & you should have already integrated drivers into the install.wim however we have not yet touched the boot.wim (installer). We *could* integrate the same drivers into the boot.wim as we did before but in my experience this still leads to a problematic installation. Instead, we can use the windows 10 boot.wim which already has modern hardware support to install our windows 7 install.wim.
+As you are aware, Windows 7 lacks driver support for modern hardware & you should have already integrated drivers into the install.wim however we have not yet touched the boot.wim (installer). We *could* integrate the same drivers into the boot.wim as we did before but in my experience this still leads to a problematic installation. Instead, we can use the Windows 10 boot.wim which already has modern hardware support to install our Windows 7 install.wim.
 
 - The process is quite simple:
 
-    - Download the [latest windows 10 image](https://www.microsoft.com/en-gb/software-download/windows10) & extract it, i would recommend renaming the extracted folder to avoid confusion. In the examples below, i have extracted it to ``C:\W10_image``
+    - Download the [latest Windows 10 image](https://www.microsoft.com/en-gb/software-download/windows10) & extract it, I would recommend renaming the extracted folder to avoid confusion. In the examples below, I have extracted it to ``C:\W10_image``
 
-    - Replace ``sources\install.wim`` in the extracted windows 10 image with the windows 7 ``install.wim``
+    - Replace ``sources\install.wim`` in the extracted Windows 10 image with the Windows 7 ``install.wim``
 
 - We need to update a variable since our extracted directory has changed. Enter the path of your new extracted directory, mine is ``C:\W10_image``.
 
