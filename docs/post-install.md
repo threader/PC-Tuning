@@ -19,7 +19,6 @@ Once you have begun the OOBE process, follow the steps in the video.
     ```bat
     C:\prerequisites\scripts\registry\apply-registry.exe
     ```
-
 - Restart your PC (important).
 
 - You may establish an internet connection after you have restarted as the windows update policies will take effect.
