@@ -335,7 +335,7 @@ slmgr /ato
 
 ## Preferences
 
-- Go through the ``C:\prerequisites\preferences`` folder to configure the following:
+- Go through the ``C:\prerequisites\preference`` folder to configure the following:
 
     - Configure Pointer Scheme
 
