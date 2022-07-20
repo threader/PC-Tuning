@@ -188,6 +188,18 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
                 - privacy.resistFingerprinting = false
 
+        - Alternatively, the following lines can be added to ``"%userprofile%\AppData\Roaming\librewolf\Profiles\<profile>\prefs.js"``, ensure librewolf is closed before editing prefs.js
+
+        ```
+        user_pref("browser.uidensity", 1);
+        user_pref("full-screen-api.transition-duration.enter", "0");
+        user_pref("full-screen-api.transition-duration.leave", "0");
+        user_pref("full-screen-api.warning.timeout", "0");
+        user_pref("nglayout.enable_drag_images", false);
+        user_pref("reader.parse-on-load.enabled", false);
+        user_pref("privacy.resistFingerprinting", false);
+        ```
+
     - Install [uBlock Origin](https://github.com/gorhill/uBlock), Librewolf already ships with it
 
         - Recommended filters in [Final Thoughts & Tips](#final-thoughts--tips)
