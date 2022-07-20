@@ -15,7 +15,7 @@
    
 - Press F5 to start logging. After 30 seconds or so press F7 to stop the log.
    
-- In the left hand pane, click on the game executable name & click on a packet header. Expand the packet info under "Frame Details" and finally expand the subcategory "Ipv4". This will reveal the current DSCP value of each frame.
+- In the left hand pane, click on the game executable name & click on a packet header. Expand the packet info under "Frame Details" & finally expand the subcategory "Ipv4". This will reveal the current DSCP value of each frame.
 
     <img src="../media/network-monitor-dscp-value.png" width="400">
 
@@ -94,7 +94,7 @@ Conclusion: During online matches, at most two Rss queues/cores are being utiliz
     
     According to the documentation Windows allows up to 0x3F (63 decimal) because the bitmask is made up of 6-bits [[1](bitmask)], so why do values above this exist? what happens if we enter a value greater than the (theoretically) maximum allowed? let's find out.
 
-    We can read PsPrioritySeparation & PspForegroundQuantum in a local kernel debugger such as WinDbg in realtime and use the quantum index provided in the Windows internals book to find out the different values it returns with different Win32PrioritySeparation entries. See results below.
+    We can read PsPrioritySeparation & PspForegroundQuantum in a local kernel debugger such as WinDbg in realtime & use the quantum index provided in the Windows internals book to find out the different values it returns with different Win32PrioritySeparation entries. See results below.
 
     | PsPrioritySeparation | Foreground boost |
     |----------------------|------------------|
@@ -113,7 +113,7 @@ Conclusion: During online matches, at most two Rss queues/cores are being utiliz
     lkd> db PspForegroundQuantum L3
     fffff802`3a72e874  06 0c 12
     ```
-    PspForegroundQuantum returns the values in hexadecimal so we need to convert it to decimal in order to use the tables correctly. ``06 0c 12`` is equivalent to ``6 12 18`` and PsPrioritySeparation returns ``2``. In the tables, this corresponds to short, variable, 3:1. But we already knew this as it is documented by microsoft, so now lets try an ambiguous value.
+    PspForegroundQuantum returns the values in hexadecimal so we need to convert it to decimal in order to use the tables correctly. ``06 0c 12`` is equivalent to ``6 12 18`` & PsPrioritySeparation returns ``2``. In the tables, this corresponds to short, variable, 3:1. But we already knew this as it is documented by microsoft, so now lets try an ambiguous value.
 
     **0xffff3f91 (4294918033 decimal)**:
 
@@ -125,9 +125,89 @@ Conclusion: During online matches, at most two Rss queues/cores are being utiliz
     fffff802`3a72e874  0c 18 24
     ```
 
-    ``0c 18 24`` is equivalent to ``12 24 36`` and PsPrioritySeparation returns ``1`` which corresponds to long, variable, 2:1. Nothing special as it seems, this is actually equivalent to values less than the maximum documented value as shown in [this csv](https://raw.githubusercontent.com/djdallmann/GamingPCSetup/master/CONTENT/RESEARCH/FINDINGS/win32prisep0to271.csv). I had the same results while testing various other values.
+    ``0c 18 24`` is equivalent to ``12 24 36`` & PsPrioritySeparation returns ``1`` which corresponds to long, variable, 2:1. Nothing special as it seems, this is actually equivalent to values less than the maximum documented value as shown in [this csv](https://raw.githubusercontent.com/djdallmann/GamingPCSetup/master/CONTENT/RESEARCH/FINDINGS/win32prisep0to271.csv). I had the same results while testing various other values.
 
-    Conclusion: Why does Windows allow us to enter values greater than 0x3F (63 decimal) if any value greater than this is equivalent to values less than the maximum documented value? The reason behind this is because the maximum value for a REG_DWORD is 0xFFFFFFFF (4294967295 decimal) [[1](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-dtyp/262627d8-3418-4627-9218-4ffe110850b2)] and there are no restrictions in place to prevent users to entering a illogical value, so when the kernel reads the Win32PrioritySeparation registry key, it must account for invalid values so it only reads a portion of the entered value. The portion it chooses to read is the first 6-bits of the bitmask which means values greater than 63 are recurring values.
+    Conclusion: Why does Windows allow us to enter values greater than 0x3F (63 decimal) if any value greater than this is equivalent to values less than the maximum documented value? The reason behind this is because the maximum value for a REG_DWORD is 0xFFFFFFFF (4294967295 decimal) [[1](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-dtyp/262627d8-3418-4627-9218-4ffe110850b2)] & there are no restrictions in place to prevent users to entering a illogical value, so when the kernel reads the Win32PrioritySeparation registry key, it must account for invalid values so it only reads a portion of the entered value. The portion it chooses to read is the first 6-bits of the bitmask which means values greater than 63 are recurring values.
+    </details>
+
+- #### No foreground boost may be superior
+
+    <details>
+    <summary>Read More</summary>
+    <br>
+
+    Out of the box, Windows uses 0x2 (2 decimal) which (in terms of foreground boosting) means that the threads of foreground processes get three times as much processor time than the threads of background processes each time they are scheduled for the processor [[1](https://docs.microsoft.com/en-us/previous-versions//cc976120(v=technet.10)?redirectedfrom=MSDN)]. While this is theoretically desirable when playing a game for example, we need to pause for a moment & think about the potential damage this may be doing. 
+    
+    We can view the QuantumReset value in a local kernel debugger such as [WinDbg](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/debugger-download-tools) in realtime to check what a process's share of the total quantum is.
+
+    ```
+    QuantumReset is the default, full quantum of each thread on the system when it
+    is replenished This value is cached into each thread of the process, but the KPROCESS
+    structure is easier to look at 
+    ```
+
+    A script must be used as a sleep delay is required so that the a window can be brought to the front & be made the foreground process.
+
+    Script.txt contents:
+
+    ```
+    .sleep 1000
+    dt nt!_KPROCESS <address> QuantumReset
+    ```
+
+    ---
+    
+    Valorant (game):
+
+    ```
+    lkd> $$>a< "script.txt"
+        +0x281 QuantumReset : 18 ''
+    ```
+
+    Csrss (responsible for input):
+
+    ```
+    lkd> $$>a< "script.txt"
+        +0x281 QuantumReset : 6 ''
+    ```
+
+    System (windows kernel):
+
+    ```
+    lkd> $$>a< "script.txt"
+        +0x281 QuantumReset : 6 ''
+    ```
+
+    Audiodg (windows audio):
+
+    ```
+    lkd> $$>a< "script.txt"
+        +0x281 QuantumReset : 6 ''
+    ```
+
+    As you can see above, despite their importance, the game gets three times more cpu time than csrss, kernel & audio threads which can be problematic. If we use no foreground boost, all processes will get as much cpu time as each other (see below). The same result can be achieved with a fixed quantum because it automatically implies no foreground boost can be used.
+
+    Valorant (game):
+
+    ```
+    lkd> $$>a< "script.txt"
+        +0x281 QuantumReset : 6 ''
+    ```
+
+    Csrss (responsible for input):
+
+    ```
+    lkd> $$>a< "script.txt"
+        +0x281 QuantumReset : 6 ''
+    ```
+
+    System (windows kernel):
+    ```
+    lkd> $$>a< "script.txt"
+        +0x281 QuantumReset : 6 ''
+    ```
+
+
     </details>
 
 ---

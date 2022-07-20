@@ -230,7 +230,7 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
     - Windows 8 Only:
 
-        - Open ``"C:\Program Files\Open-Shell\Start Menu Settings.lnk"``, enable ``Show all settings`` then go to the Windows 8.1 Settings section and set ``Disable active corners`` to All
+        - Open ``"C:\Program Files\Open-Shell\Start Menu Settings.lnk"``, enable ``Show all settings`` then go to the Windows 8.1 Settings section & set ``Disable active corners`` to All
 
 ## Replace Task Manager with Process Explorer
 
@@ -552,7 +552,7 @@ slmgr /ato
 
 ## Configure Services & Drivers
 
-The service list configuration is not intended for laptop, Wi-Fi & webcam functionality. I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming and use default services for everything else.
+The service list configuration is not intended for laptop, Wi-Fi & webcam functionality. I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming & use default services for everything else.
 
 - Download [Service-List-Builder](https://github.com/amitxv/Service-List-Builder/releases)
 

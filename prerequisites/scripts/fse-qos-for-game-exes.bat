@@ -4,12 +4,12 @@ SETLOCAL EnableDelayedExpansion
 
 :set_application_path
 echo select the main game exe you would like to configure
-for /f "delims=" %%a in ('PowerShell "iex (${%~f0} | out-string)"') do set application_path=%%a
+for /f "delims=" %%a in ('PowerShell "iex (${%~f0} | out-string)"') do set "application_path=%%a"
 
 if defined application_path (
 	for %%a in ("!application_path!") do (
 		if /i "%%~xa"==".exe" (
-			for /f "usebackq delims=" %%a in ('"!application_path!"') do set profile_name=%%~na
+			for /f "usebackq delims=" %%a in ('"!application_path!"') do set "profile_name=%%~na"
 			echo info: !profile_name! selected
 			choice /c yn /n /m "set DSCP 46 QoS policy? [Y/N]"
 			if "!errorlevel!"=="1" (
