@@ -160,9 +160,9 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
             - ``pingsender.exe``
             - ``updater.exe``
 
-        - If you would like to set the search engine to Google, open [this link](https://www.linuxmint.com/searchengines.php), scroll to the bottom, click the Google icon & right click the URL to add the search engine to settings.
+        - If you would like to set the search engine to Google, open [this link](https://www.linuxmint.com/searchengines.php), scroll to the bottom, click the Google icon & right click the URL to add the search engine to settings
 
-        - Recommended ``about:config`` changes (enter about:config in the URL box). Thanks to Dato for initially sharing these.
+        - Recommended ``about:config`` changes (enter about:config in the URL box). Thanks to Dato for initially sharing these
 
             - **Enable Compact Mode**
 
