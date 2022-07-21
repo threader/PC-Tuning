@@ -7,15 +7,15 @@ setlocal EnableDelayedExpansion
 pushd "%~dp0"
 
 set "path_err=0"
-for %%i in (
+for %%a in (
     "7z.exe",
     "7z.dll",
     "aria2c.exe"
 ) do (
-    where %%i
+    where %%a
     if not !errorlevel! == 0 (
         set "path_err=1"
-        echo error: %%i not found in path
+        echo error: %%a not found in path
     )
 )
 if not !path_err! == 0 exit /b
@@ -50,11 +50,11 @@ if exist "C:\prerequisites" (rd /s /q "C:\prerequisites")
 if exist "C:\debloat.sh" (del /f /q "C:\debloat.sh")
 
 set "extract_err=0"
-for %%i in ("prerequisites", "debloat.sh") do (
-    if exist "!working_dir!\EVA-main\%%i" (
-        move /y "!working_dir!\EVA-main\%%i" "C:\"
+for %%a in ("prerequisites", "debloat.sh") do (
+    if exist "!working_dir!\EVA-main\%%a" (
+        move /y "!working_dir!\EVA-main\%%a" "C:\"
     ) else (
-        echo error: %%i does not exist
+        echo error: %%a does not exist
         set "extract_err=1"
     )
 )

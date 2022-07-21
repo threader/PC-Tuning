@@ -33,8 +33,8 @@ if not exist "!working_dir!\librewolf.exe" (
     exit /b 1
 )
 
-for /f "delims=" %%i in ('certutil -hashfile "!working_dir!\librewolf.exe" SHA1 ^| find /i /v "SHA1" ^| find /i /v "Certutil"') do (
-    set "file_sha1=%%i"
+for /f "delims=" %%a in ('certutil -hashfile "!working_dir!\librewolf.exe" SHA1 ^| find /i /v "SHA1" ^| find /i /v "Certutil"') do (
+    set "file_sha1=%%a"
 )
 
 if not "!file_sha1!" == "!sha1!" (

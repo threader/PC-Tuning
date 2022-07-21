@@ -1,10 +1,9 @@
 @echo off
-
-SETLOCAL EnableDelayedExpansion
+setlocal EnableDelayedExpansion
 
 :: initialize mask to get mask length
 PowerShell Set-ProcessMitigation -System -Disable CFG
-if not %errorlevel% == 0 (
+if not !errorlevel! == 0 (
 	echo error: unsupported windows version
 	pause
 	exit /b 1

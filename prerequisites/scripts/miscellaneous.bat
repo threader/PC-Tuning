@@ -1,4 +1,5 @@
 @echo off
+setlocal EnableDelayedExpansion
 
 echo info: setting powershell executionpolicy to unrestricted
 PowerShell Set-ExecutionPolicy Unrestricted -force
@@ -25,9 +26,9 @@ if exist "C:\Program Files (x86)\Microsoft\Edge\Application" (
     )
 )
 
-if exist "%windir%\SysWOW64\OneDriveSetup.exe" (
+if exist "!windir!\SysWOW64\OneDriveSetup.exe" (
     echo info: uninstalling onedrive
-    "%windir%\SysWOW64\OneDriveSetup.exe" /uninstall
+    "!windir!\SysWOW64\OneDriveSetup.exe" /uninstall
 )
 
 echo info: done

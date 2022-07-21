@@ -1,6 +1,6 @@
 <# :
 @echo off
-SETLOCAL EnableDelayedExpansion
+setlocal EnableDelayedExpansion
 
 :set_application_path
 echo select the main game exe you would like to configure
