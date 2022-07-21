@@ -153,7 +153,11 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
     - [Librewolf](https://librewolf.net) (fork of Firefox) recommended
 
-        - Install ``C:\prerequisites\librewolf-99.0.1.2.en-US.win64-setup.exe``
+        - Open CMD & enter the command below.
+
+            ```bat
+            C:\prerequisites\scripts\librewolf-web-installer
+            ```
 
         - Remove the following from ``C:\Program Files\LibreWolf``
 
@@ -190,15 +194,15 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
         - Alternatively, the following lines can be added to ``"%userprofile%\AppData\Roaming\librewolf\Profiles\<profile>\prefs.js"``, ensure librewolf is closed before editing prefs.js
 
-        ```
-        user_pref("browser.uidensity", 1);
-        user_pref("full-screen-api.transition-duration.enter", "0");
-        user_pref("full-screen-api.transition-duration.leave", "0");
-        user_pref("full-screen-api.warning.timeout", "0");
-        user_pref("nglayout.enable_drag_images", false);
-        user_pref("reader.parse-on-load.enabled", false);
-        user_pref("privacy.resistFingerprinting", false);
-        ```
+            ```
+            user_pref("browser.uidensity", 1);
+            user_pref("full-screen-api.transition-duration.enter", "0");
+            user_pref("full-screen-api.transition-duration.leave", "0");
+            user_pref("full-screen-api.warning.timeout", "0");
+            user_pref("nglayout.enable_drag_images", false);
+            user_pref("reader.parse-on-load.enabled", false);
+            user_pref("privacy.resistFingerprinting", false);
+            ```
 
     - Install [uBlock Origin](https://github.com/gorhill/uBlock), Librewolf already ships with it
 
