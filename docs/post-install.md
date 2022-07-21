@@ -23,16 +23,6 @@ Once you have begun the OOBE process, follow the steps in the video.
 
 - You may establish an internet connection after you have restarted as the Windows update policies will take effect.
 
-## Download Prerequisites
-
-This only applies if you are using the base images provided in [docs/pre-install.md](./pre-install.md#obtaining-a-base-image).
-
-- Open CMD & enter the command below.
-
-    ```bat
-    C:\get-prerequisites.bat
-    ```
-
 ## Visual Cleanup
 
 - Disable features on the taskbar, unpin shortcuts & tiles from the taskbar & start menu.
