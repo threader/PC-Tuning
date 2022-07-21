@@ -486,16 +486,18 @@ slmgr /ato
 
             ```bat
             @echo off
+            setlocal EnableDelayedExpansion
+
             set "afterburner_path=C:\Program Files (x86)\MSI Afterburner\MSIAfterburner.exe"
             set "profile=1"
 
-            if not exist "%afterburner_path%" (
+            if not exist "!afterburner_path!" (
                 echo error: afterburner path invalid
                 pause
                 exit /b 1
             )
 
-            start "" "%afterburner_path%" -Profile%profile%
+            start "" "!afterburner_path!" -Profile!profile!
             timeout -t 8 /nobreak
             powershell -command stop-process -name "MSIAfterburner" -force
             exit /b 0
