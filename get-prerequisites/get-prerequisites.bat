@@ -8,11 +8,11 @@ pushd "%~dp0"
 
 set "path_err=0"
 for %%i in (
-    "7z.exe"
-    "7z.dll"
-    "aria2c.exe",
+    "7z.exe",
+    "7z.dll",
+    "aria2c.exe"
 ) do (
-    where %%i > NUL
+    where %%i
     if not !errorlevel! == 0 (
         set "path_err=1"
         echo error: %%i not found in path
@@ -20,7 +20,7 @@ for %%i in (
 )
 if not !path_err! == 0 exit /b
 
-ping archlinux.org > NUL
+ping archlinux.org
 if not !errorlevel! == 0 (
     echo error: no internet connection
     pause

@@ -1,6 +1,6 @@
 @echo off
 
-sc query Winmgmt | findstr "RUNNING" > NUL
+sc query Winmgmt | findstr "RUNNING"
 if not %errorlevel% == 0 (
     echo error: WMI Service is disabled
     pause

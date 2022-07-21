@@ -6,7 +6,7 @@ set "link=https://gitlab.com/librewolf-community/browser/windows/uploads/d384544
 set "sha1=b63be6feaaaaa7d50d51e94aa2ace3821e38aad6"
 set "working_dir=!temp!\librewolf"
 
-ping archlinux.org > NUL
+ping archlinux.org
 if not !errorlevel! == 0 (
     echo error: no internet connection
     pause
