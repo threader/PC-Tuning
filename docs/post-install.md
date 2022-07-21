@@ -135,8 +135,11 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
 - [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist/releases)
 
-    - Run ``C:\prerequisites\visual-cpp-runtimes\VisualCppRedist_AIO_x86_x64.exe``
+    - Open CMD & enter the command below.
 
+        ```bat
+        C:\prerequisites\scripts\vcredist-web-installer.bat
+        ```
 - Web Browser
 
     - See https://privacytests.org/
@@ -146,7 +149,7 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
         - Open CMD & enter the command below.
 
             ```bat
-            C:\prerequisites\scripts\librewolf-web-installer
+            C:\prerequisites\scripts\librewolf-web-installer.bat
             ```
 
         - Remove the following from ``C:\Program Files\LibreWolf``
