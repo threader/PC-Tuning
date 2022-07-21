@@ -15,24 +15,9 @@ It is recommended to configure at least a [dual-boot](https://en.wikipedia.org/w
     Generally, Windows 7 & 8 are superior for real-time tasks compared to it's successors but lacks USB & NVME driver support for newer hardware. Earlier versions of Windows lack GPU driver & anticheat support so some users are forced on newer builds. Microsoft implemented a fixed 10mhz QueryPerformanceFrequency on Windows 10 1809+ which was intended to make developing applications easier but many users reported worse performance. Windows 10 1903+ has an updated scheduler for multi CCX Ryzen CPUs [[1](https://i.redd.it/y8nxtm08um331.png)]. Microsoft changed the way timer resolution functions as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change/) on Windows 10 2004+ & was [further developed in Windows 11](https://twitter.com/amitxv/status/1491357305535070211) which I assume is an attempt to improve power efficiency. However it's not all doom and gloom with newer builds, there are a few noteworthy improvements such as newer WDDMs & improvements to the flip model [[1](https://devblogs.microsoft.com/directx/dxgi-flip-model/)]. 
 
 
-The post-installation instructions are based on configuring a stock Windows image along a few modifications made to the image beforehand. You can either:
+The post-installation instructions are based on configuring a stock Windows image along a few modifications made to the image beforehand.
 
-- See [docs/building.md](../docs/building.md)
-
-    OR
-
-- Download an already-prepared image to follow the post-installation instructions (to be expanded):
-
-    <details>
-    <summary>Download Links</summary>
-
-    - By downloading & using any of the images provided, you agree to [Microsoft's Terms](https://www.microsoft.com/en-us/Useterms/Retail/Windows/10/UseTerms_Retail_Windows_10_English.htm). None of these images are preactivated.
-
-    - [Windows 10 21H2](https://drive.google.com/u/1/uc?id=1fJC2J5nXYJFvS2iEmshkfc8sW9c_iGBW&export=download)
-
-        - SHA-1: ``f1bd993d6d143e7578768f04e06cbdbd06e9e4a7``
-
-    </details>
+- See [docs/building.md](../docs/building.md) to create the base image.
 
 ## Preparing the USB
 
