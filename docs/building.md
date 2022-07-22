@@ -35,7 +35,7 @@ Use the [download links spreadsheet](https://docs.google.com/spreadsheets/d/1zTF
 - If the environment was configured correctly, the commands below should return ``true``.
 
     ```bat
-    if exist "%EXTRACTED_IMAGE%" (echo true) else (echo false)
+    if exist "%EXTRACTED_IMAGE%\sources\install.wim" (echo true) else (echo false)
 
     if exist "%MOUNT_DIR%" (echo true) else (echo false)
 
