@@ -1,13 +1,5 @@
 Windows Registry Editor Version 5.00
 
-; this registry file contains registry keys for the eva project and for all windows versions.
-; i am aware that many registry keys in this file are specific to a windows version and will
-; be obsolete when imported on a different windows version. i plan to split the files in the
-; future however it is not a priority due to the immense time it will take to find out what
-; keys work on what windows versions. there is no harm with importing obsolete keys on a
-; unsupported windows version, if you disagree, feel free to contribute by submitting a
-; pull requests with the registry keys split into several files for specific windows versions 
-
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options]
 
 [-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Device Metadata]
@@ -78,12 +70,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings]
 "ExcludeWUDriversInQualityUpdate"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc]
-"Start"=dword:00000004
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\UsoSvc]
-"Start"=dword:00000004
 
 ; set user account control to never notify
 ; disable sign-in and lock last interactive user after a restart
@@ -938,11 +924,6 @@ C2,0A,01,D2,1E,26,4D,00,69,00,63,00,72,00,6F,00,73,00,6F,00,66,00,74,00,2E,\
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\DiagTrack]
 "Start"=dword:00000004
-
-; disable virtualization based security
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard]
-"EnableVirtualizationBasedSecurity"=dword:00000000
 
 ; disable play windows startup sound
 
