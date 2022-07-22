@@ -817,6 +817,8 @@ Now is a good time to install whatever programs you commonly use to prepare us f
 
 - Cap your framerate at a multiple of your monitor refresh rate to prevent frame mistiming [[1](https://youtu.be/_73gFgNrYVQ)]. E.g possible framerate caps with a 144hz monitor include 72, 144, 288, 432 ...
 
+- Capping your framerate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the ingame limiter will result in consistent frametimes & a smoother experience but at the cost of noticeably higher latency.
+
 - Carry out maintenance tasks yourself on a weekly basis. This includes:
 
     - Trimming your SSD
