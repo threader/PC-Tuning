@@ -41,12 +41,16 @@ def main():
 
     apply_registry(f"{registry_dir}\\registry.reg")
 
+    print(f"info: applying registry file for {args.winver}")
+
     if args.winver == 7:
         pass
     elif args.winver == 8:
-        pass
+        apply_registry(f"{registry_dir}\\windows8.reg")
     elif args.winver == 10:
         apply_registry(f"{registry_dir}\\windows10+.reg")
+
+    print("info: done")
 
     return 0
 
