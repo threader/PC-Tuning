@@ -44,6 +44,8 @@
 
 - Disable Secure Boot.
 
+- Disable fast boot or similar options. 
+
 ## Minimizing Interference
 
 - Move devices that emit RF/EMF/EMI away from your setup & bedroom such as radios, mobile phones & routers. They have the potential to increase latency due to unintended behaviour of electrical components.
