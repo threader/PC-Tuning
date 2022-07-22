@@ -61,7 +61,6 @@ Once you have begun the OOBE process, follow the steps in the video.
 
     - Note: This section is named ``Security and Maintenance`` on Windows 10+
 
-
 ## Removing Bloatware
 
 Before we remove bloatware via bruteforce on linux, we may as well uninstall what Windows allows us to.
@@ -605,52 +604,50 @@ The service list configuration is not intended for laptop, Wi-Fi & webcam functi
 
     - USB Selective Suspend - Disabled
 
-## Interrupt & IRQ Management
+## Message Signaled Interrupts
 
-- ## Message Signaled Interrupts
-
-    - MSIs are faster than traditional line-based interrupts & may also resolve the issue of shared interrupts which are often the cause of high interrupt latency & stability
+Message signaled interrupts (MSIs) are faster than traditional line-based interrupts & may also resolve the issue of shared interrupts which are often the cause of high interrupt latency & stability
 issues [[1](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitations/Windows%20Internals%20Part%201_6th%20Edition.pdf)].
 
-    - Open ``C:\prerequisites\MSIUtil.exe``
+- Open ``C:\prerequisites\MSIUtil.exe``
 
-        - Enable Message Signaled Interrupts (MSI) on devices that support it
+    - Enable Message Signaled Interrupts (MSI) on devices that support it
 
-            - You will BSOD if you enable MSI for the **stock** Windows 7 sata driver which you should have updated as mentioned in the [Installing Drivers](#installing-drivers) section
+        - You will BSOD if you enable MSI for the **stock** Windows 7 sata driver which you should have updated as mentioned in the [Installing Drivers](#installing-drivers) section
         
-        - Be careful as to what you choose to prioritize as more harm than good may be done. E.g you will likely stutter in a open-world game that utilizes texture streaming if the GPU IRQ priority is set higher than the storage controller priority
+    - Be careful as to what you choose to prioritize as more harm than good may be done. E.g you will likely stutter in a open-world game that utilizes texture streaming if the GPU IRQ priority is set higher than the storage controller priority
 
-    - Restart your PC, you can verify if a device is utilizing MSIs by checking if it has a negative IRQ in MSIUtil
+- Restart your PC, you can verify if a device is utilizing MSIs by checking if it has a negative IRQ in MSIUtil
 
-    - Ensure that there is no IRQ sharing on your system by checking win + r, ``msinfo32`` ``Hardware Resources > Conflicts/Sharing`` section
+- Ensure that there is no IRQ sharing on your system by checking win + r, ``msinfo32`` ``Hardware Resources > Conflicts/Sharing`` section
 
-- ## Interrupt Affinity
+## Interrupt Affinity
 
-    - By default, CPU 0 handles the majority of DPCs & interrupts for several devices which can be viewed in a xperf dpcisr trace. We can use ``C:\prerequisites\Interrupt-Affinity-Tool.exe`` to set an interrupt affinity policy to the USB & GPU driver, which are two of many devices responsible for the most DPCs/ISRs, to offload them onto another core. They both require testing as you may do more harm than good if it is set to a weaker or equally as busy core. Feel free to skip this step if you are not comfortable with doing so.
+By default, CPU 0 handles the majority of DPCs & interrupts for several devices which can be viewed in a xperf dpcisr trace. This is not desirable as there will be a latency penalty because many processes & system activities are scheduled on the same core. We can use ``C:\prerequisites\Interrupt-Affinity-Tool.exe`` to set an interrupt affinity policy to the USB, GPU & NIC driver, which are two of many devices responsible for the most DPCs/ISRs, to offload them onto another core. They all require testing as you may do more harm than good if it is set to a weaker or equally as busy core.
 
-        - The correct device can be identified by cross-checking the ``Location Info`` with the ``Location`` in the ``properties > general`` section of a device in device manager
+- The correct device can be identified by cross-checking the ``Location Info`` with the ``Location`` in the ``properties > general`` section of a device in device manager
 
-        - Ideally you should use [AutoGpuAffinity](https://github.com/amitxv/AutoGpuAffinity) to benchmark the GPU affinity
+- Ideally you should use [AutoGpuAffinity](https://github.com/amitxv/AutoGpuAffinity) to benchmark the GPU affinity
 
-        - Use [Mouse Tester](https://github.com/microe1/MouseTester) to compare polling stability between the USB controller on different cores
+- Use [Mouse Tester](https://github.com/microe1/MouseTester) to compare polling stability between the USB controller on different cores
 
-            - Ideally this should be done with some sort of realistic load such as a game running in the background as idle benchmarks may be misleading, but as we do not have any games installed yet, you can come back & test this later
+    - Ideally this should be done with some sort of realistic load such as a game running in the background as idle benchmarks may be misleading, but as we do not have any games installed yet, you can come back & test this later
 
-    - Note: Restart your PC instead of an individual driver to avoid issues
+- Note: Restart your PC instead of an individual driver to avoid issues
 
-    - Open CMD & enter the command below to configure what CPU handles DPCs/ISRs for the network driver. Ensure to change the driver key to suit your needs.
+- Open CMD & enter the command below to configure what CPU handles DPCs/ISRs for the network driver. Ensure to change the driver key to suit your needs.
 
-        - Run ``C:\prerequisites\scripts\get-driver-keys.bat`` to get the driver keys on your system
+    - Run ``C:\prerequisites\scripts\get-driver-keys.bat`` to get the driver keys on your system
 
-            ```bat
-            reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000" /v "*RssBaseProcNumber" /t REG_SZ /d "2" /f
-            ```
+        ```bat
+        reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000" /v "*RssBaseProcNumber" /t REG_SZ /d "2" /f
+        ```
 
-    - You can ensure interrupt affinity policies have been configured correctly by analyzing a xperf trace while the device is busy
+- You can ensure interrupt affinity policies have been configured correctly by analyzing a xperf trace while the device is busy
 
-## Memory Cleaner
+## Memory Cleaner (Windows 10 1909 & Under)
 
-Feel free to skip this step as it is not required, Microsoft fixed the standby list memory management issues in a later version of Windows. [Memory Cleaner](https://github.com/danskee/MemoryCleaner) ([alternative link](https://git.zusier.xyz/Zusier/MemoryCleaner)) also allows us to set the kernel timer-resolution globally however the behaviour of timer-resolution changed in 2004+ as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change/), rendering these methods useless.
+Feel free to skip this step as it is not required, Microsoft fixed the standby list memory management issues in a later version of Windows. [Memory Cleaner](https://github.com/danskee/MemoryCleaner) ([alternative link](https://git.zusier.xyz/Zusier/MemoryCleaner)) also allows us to set the kernel timer-resolution globally however the behaviour of timer-resolution changed in 2004+ as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change/), rendering this trick useless.
 
 - Place ``C:\prerequisites\Memory-Cleaner.exe`` in win + r, ``shell:startup`` & open it.
 
@@ -732,13 +729,13 @@ Feel free to skip this step as it is not required, Microsoft fixed the standby l
 
 ## Disable Hidden Power Saving
 
-- All hidden means is not visible to the user, many driver INF configuration files contain these registry entries that are clearly labeled power saving, however I have not been able to prove the benifit of this script so feel free to skip this step.
+All hidden means is not visible to the user, many driver INF configuration files contain these registry entries that are clearly labeled power saving, however I have not been able to prove the benifit of this script so feel free to skip this step.
 
-    - Run the ``C:\prerequisites\scripts\disable-hidden-powersaving.bat`` script
+- Run the ``C:\prerequisites\scripts\disable-hidden-powersaving.bat`` script
 
 ## Installing Games & Applications
 
-- Now is a good time to install whatever programs you commonly use to prepare us for the next steps.
+Now is a good time to install whatever programs you commonly use to prepare us for the next steps.
 
 ## Configure FSE & QoS for Games
 
@@ -804,7 +801,7 @@ Feel free to skip this step as it is not required, Microsoft fixed the standby l
 
         - Use ``ctrl + shift + esc`` to open task manager then use ``File > Run`` to start the ``explorer.exe`` shell again
 
-    - Disabling idle states which will force C-State 0 & eliminate jitter due to the process of state transition. After all, C1 is still power saving [[1](https://www.dell.com/support/kbdoc/en-uk/000060621/what-is-the-c-state)].
+    - Disabling idle states (PBO users excluded) which will force C-State 0 & eliminate jitter due to the process of state transition. After all, C1 is still power saving [[1](https://www.dell.com/support/kbdoc/en-uk/000060621/what-is-the-c-state)].
 
         - Drag & drop the scripts in ``C:\prerequisites\scripts\idle-scripts`` to the desktop for easy access. This way you can disable idle before launching a game & re-enable it after you close your game
 

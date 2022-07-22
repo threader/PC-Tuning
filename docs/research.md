@@ -171,14 +171,14 @@ Conclusion: During online matches, at most two Rss queues/cores are being utiliz
         +0x281 QuantumReset : 6 ''
     ```
 
-    System (windows kernel):
+    System (Windows kernel):
 
     ```
     lkd> $$>a< "script.txt"
         +0x281 QuantumReset : 6 ''
     ```
 
-    Audiodg (windows audio):
+    Audiodg (Windows audio):
 
     ```
     lkd> $$>a< "script.txt"
@@ -201,7 +201,7 @@ Conclusion: During online matches, at most two Rss queues/cores are being utiliz
         +0x281 QuantumReset : 6 ''
     ```
 
-    System (windows kernel):
+    System (Windows kernel):
     ```
     lkd> $$>a< "script.txt"
         +0x281 QuantumReset : 6 ''
