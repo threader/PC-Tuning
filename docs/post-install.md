@@ -500,6 +500,8 @@ slmgr /ato
 
         - Try to delete every resolution & the other bloatware (audio blocks) apart from your native resolution, this may be a work around for the 1 second black screen when alt-tabbing in FSE, feel free to skip this step if you do not want to risk a black screen or are not comfortable with doing this
 
+        - See [How to setup Display Scaling, works with all games | KajzerD](https://www.youtube.com/watch?v=50itBs-sz1w)
+
         - Restart your PC
 
     - Ensure your resolution is configured properly in Display Adapter Settings
