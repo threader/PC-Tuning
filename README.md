@@ -44,6 +44,12 @@ The guidance is currently updated & have been tested on the following versions o
 
 - Windows 10 21H2
 
+## Contributing
+
+At the moment, i need help with splitting the keys in [registry.reg](./prerequisites/scripts/registry/registry.reg) for specific windows versions, this would prevent bloating other windows versions with keys that do not exist or are not supported.
+
+You can contribute by looking over that registry file and check if the keys are supported on all windows versions or specific windows version and letting me know, i have began the process of splitting the registry keys into seperate files. Feel free to make the changes yourself and submit a PR.
+
 ## Requirements
 
 - USB Storage Device (8gb minimum)
