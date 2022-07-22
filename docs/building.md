@@ -146,6 +146,12 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
     DISM /Unmount-wim /MountDir:"%MOUNT_DIR%" /Commit
     ```
 
+- Delete the mount dir folder
+
+    ```bat
+    rd /s /q "%MOUNT_DIR%"
+    ```
+
 ## Replace Windows 7 Boot Wim (Windows 7)
 
 As you are aware, Windows 7 lacks driver support for modern hardware & you should have already integrated drivers into the install.wim however we have not yet touched the boot.wim (installer). We *could* integrate the same drivers into the boot.wim as we did before but in my experience this still leads to a problematic installation. Instead, we can use the Windows 10 boot.wim which already has modern hardware support to install our Windows 7 install.wim.
