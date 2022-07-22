@@ -144,6 +144,7 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
     - See https://privacytests.org/
 
     - [Librewolf](https://librewolf.net) (fork of Firefox) recommended
+    - The [Arkenfox user.js](https://github.com/arkenfox/user.js/) is a more customizable alternative for Librewolf. 
 
         - Open CMD & enter the command below.
 
