@@ -14,11 +14,14 @@ Once you have begun the OOBE process, follow the steps in the video.
 
 ## Merge the Registry Files
 
-- Open CMD as Administrator & enter the command below to merge the registry files. Replace ``<winver>`` with the Windows version you are configuring (e.g 7, 8, 10 etc).
+- Open CMD as administrator & enter the command below to merge the registry files. Replace ``<winver>`` with the Windows version you are configuring (e.g 7, 8, 10 etc).
 
     ```bat
     C:\prerequisites\scripts\registry\apply-registry.exe --winver <winver>
     ```
+
+- Please ensure that the program prints a "done" message to the console, if it has not then command prompt was probably not opened with administrator privileges & the registry files were not successfully merged.
+
 - Restart your PC (important).
 
 - You may establish an internet connection after you have restarted as the Windows update policies will take effect.
