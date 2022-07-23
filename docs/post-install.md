@@ -200,7 +200,7 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
     - Install [uBlock Origin](https://github.com/gorhill/uBlock), Librewolf already ships with it
 
-        - Recommended filters in [Final Thoughts & Tips](#final-thoughts--tips)
+        - I would also recommend importing [ClearURL's filter list](https://raw.githubusercontent.com/DandelionSprout/adfilt/master/ClearURLs%20for%20uBo/clear_urls_uboified.txt) along with [Dreammjow's filter list](https://raw.githubusercontent.com/dreammjow/MyFilters/main/src/filters.txt) & installing the [Skip Redirect](https://addons.mozilla.org/firefox/addon/skip-redirect/) extension
 
 - Install [.NET 4.8 Runtimes](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48)
 
@@ -815,7 +815,7 @@ Now is a good time to install whatever programs you commonly use to prepare us f
 
 - Try to favour FOSS (free & open source software). Stay away from proprietary software where you can.
 
-- You do not need an antivirus. I would also recommend importing [ClearURL's filter list](https://raw.githubusercontent.com/DandelionSprout/adfilt/master/ClearURLs%20for%20uBo/clear_urls_uboified.txt) along with [Dreammjow's filter list](https://raw.githubusercontent.com/dreammjow/MyFilters/main/src/filters.txt) into uBlock origin & installing the [Skip Redirect](https://addons.mozilla.org/firefox/addon/skip-redirect/) extension. Ensure to scan files with [VirusTotal](https://www.virustotal.com/gui/home/upload) before running them.
+- Ensure to scan files with [VirusTotal](https://www.virustotal.com/gui/home/upload) before running them.
 
 - Cap your framerate at a multiple of your monitor refresh rate to prevent frame mistiming [[1](https://youtu.be/_73gFgNrYVQ)]. E.g possible framerate caps with a 144hz monitor include 72, 144, 288, 432 ...
 
