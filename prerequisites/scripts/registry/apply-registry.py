@@ -16,14 +16,12 @@ def apply_registry(file_path: str) -> None:
 def main():
     """CLI Entrypoint"""
 
-    supported_winvers = [7, 8, 10]
     registry_dir = "C:\\prerequisites\\scripts\\registry"
-    registry_files = ["registry.reg"]
 
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--winver",
-        choices=supported_winvers,
+        choices=[7, 8, 10],
         help="specify windows version to be configured",
         required=True,
         type=int,
@@ -35,13 +33,19 @@ def main():
         print(f"error: {nsudo_path} not exists")
         return 1
 
+    registry_files = [
+        "registry.reg",
+        "windows8.reg",
+        "windows10+.reg"
+    ]
+
     if not all(os.path.exists(f"{registry_dir}\\{x}") for x in registry_files):
         print("error: registry files not found")
         return 1
 
     apply_registry(f"{registry_dir}\\registry.reg")
 
-    print(f"info: applying registry file for {args.winver}")
+    print(f"info: applying registry file for windows {args.winver}")
 
     if args.winver == 7:
         pass
