@@ -4,6 +4,7 @@ setlocal EnableDelayedExpansion
 set "aria2c=C:\prerequisites\aria2c.exe"
 set "link=https://gitlab.com/librewolf-community/browser/windows/uploads/d38454411b712bef93312c8dc2ef98b7/librewolf-102.0.1-1.en-US.win64-setup.exe"
 set "sha1=b63be6feaaaaa7d50d51e94aa2ace3821e38aad6"
+set "file_name=librewolf-102.0.1-1.en-US.win64-setup.exe"
 set "working_dir=!temp!\librewolf"
 
 ping archlinux.org
@@ -25,15 +26,15 @@ if exist !working_dir! (
 mkdir "!working_dir!"
 
 echo info: downloading librewolf
-"!aria2c!" "!link!" -d "!working_dir!" -o "librewolf.exe"
+"!aria2c!" "!link!" -d "!working_dir!" -o "!file_name!"
 
-if not exist "!working_dir!\librewolf.exe" (
+if not exist "!working_dir!\!file_name!" (
     echo error: download unsuccessful, please download librewolf manually
     pause
     exit /b 1
 )
 
-for /f "delims=" %%a in ('certutil -hashfile "!working_dir!\librewolf.exe" SHA1 ^| find /i /v "SHA1" ^| find /i /v "Certutil"') do (
+for /f "delims=" %%a in ('certutil -hashfile "!working_dir!\!file_name!" SHA1 ^| find /i /v "SHA1" ^| find /i /v "Certutil"') do (
     set "file_sha1=%%a"
 )
 
@@ -41,7 +42,7 @@ if not "!file_sha1!" == "!sha1!" (
     echo error: sha1 mismatch, binary may be corrupted
 )
 
-start "" "!working_dir!\librewolf.exe"
+start "" "!working_dir!\!file_name!"
 
 pause
 exit /b 0
