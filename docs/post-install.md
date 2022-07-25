@@ -12,6 +12,12 @@ Once you have begun the OOBE process, follow the steps in the video.
 - See [media/oobe-windows8-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows8-example.mp4)
 - See [media/oobe-windows10-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows10-example.mp4)
 
+## Install [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist/releases)
+
+```
+C:\prerequisites\VisualCppRedist_AIO_x86_x64.exe
+```
+
 ## Merge the Registry Files
 
 - Open CMD as administrator & enter the command below to merge the registry files. Replace ``<winver>`` with the Windows version you are configuring (e.g 7, 8, 10 etc).
@@ -68,7 +74,7 @@ Once you have begun the OOBE process, follow the steps in the video.
 
 Before we remove bloatware via bruteforce on linux, we may as well uninstall what Windows allows us to.
 
-- Uninstall bloatware in ``Control Panel > Programs > Programs and Features``.
+- Uninstall bloatware in ``Control Panel > Programs > Programs and Features`` (do not uninstall the vcredists).
 
     - In the ``Turn Windows features on or off`` section, disable everything **except** for:
 
@@ -82,7 +88,7 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
 - Windows 10+ Only:
 
-    - Uninstall bloatware in ``Settings > Apps > Apps & Features``
+    - Uninstall bloatware in ``Settings > Apps > Apps & Features`` (do not uninstall the vcredists)
 
         - In the ``Optional features`` section, uninstall everything apart from ``Microsoft Paint``, ``Notepad`` & ``WordPad``
 
@@ -135,13 +141,6 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
         - Open ``C:\Program Files\7-Zip\7zFM.exe``, to go ``Tools > Options`` & associate 7-Zip with all file extensions by clicking the + button. You may need to click it twice to override existing associated extensions
 
-- [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist/releases)
-
-    - Open CMD & enter the command below.
-
-        ```bat
-        C:\prerequisites\scripts\vcredist-web-installer.bat
-        ```
 - Web Browser
 
     - See https://privacytests.org/
