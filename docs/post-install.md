@@ -563,7 +563,7 @@ The service list configuration is not intended for laptop, Wi-Fi & webcam functi
 
 - In ``C:\prerequisites\bare_services.ini``...
 
-    - Remove ``pcw`` from ``[Drivers_To_Disable]`` if you did not replace task manager with process explorer
+    - Remove ``pcw`` from ``[Drivers_To_Disable]`` if you did not replace task manager with process explorer, you can also view the commented services & drivers to fine tune the list to your needs
 
 - On Windows 7 & 8, remove ``MMCSS`` from the ``DependOnService`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Audiosrv``.
 
