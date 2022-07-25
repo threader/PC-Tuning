@@ -35,6 +35,8 @@ mkdir "!PROJECT_DIR!"
 python -m venv "!BUILD_ENV!"
 call "!BUILD_ENV!\Scripts\activate.bat"
 
+pip install pyinstaller==5.1
+
 copy /y "!CURRENT_DIR!\disable-tasks.py" "!PROJECT_DIR!"
 cd "!PROJECT_DIR!"
 
