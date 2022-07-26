@@ -14,6 +14,12 @@ Use the [download links spreadsheet](https://docs.google.com/spreadsheets/d/1zTF
 
 - Ensure to cross-check the hashes for the image with other online sources such as the [adguard hash database](https://files.rg-adguard.net/version/f0bd8307-d897-ef77-dbd6-216fefbe94c5?lang=en-us) to verify that the image is genuine & not corrupted.
 
+    - Use the command below to get the hash of the image file
+
+        ```bat
+        certutil -hashfile <path\to\file> SHA1
+        ```
+
 ## Preparing the Build Environment
 
 - Extract the image to a directory of your choice with 7-Zip. In the examples below, I am using ``C:\Win10_21H2_English_x64``.
