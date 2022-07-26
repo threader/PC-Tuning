@@ -37,6 +37,7 @@ if not exist "!working_dir!\!file_name!" (
 for /f "delims=" %%a in ('certutil -hashfile "!working_dir!\!file_name!" SHA1 ^| find /i /v "SHA1" ^| find /i /v "Certutil"') do (
     set "file_sha1=%%a"
 )
+set "file_sha1=!file_sha1: =!"
 
 if not "!file_sha1!" == "!sha1!" (
     echo error: sha1 mismatch, binary may be corrupted
