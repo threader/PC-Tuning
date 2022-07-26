@@ -80,12 +80,10 @@ Use the [download links spreadsheet](https://docs.google.com/spreadsheets/d/1zTF
 
 - Download the updates from the [microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the kb identifier. Place the updates somewhere easily accessible such as ``C:\updates``.
 
-- Integrate the updates into the install.wim with the command below.
-
-    - The servicing stack must be installed before installing the Cumulative Update, this generally only applies to Windows 8+
+- Integrate the updates into the install.wim with the command below. Change the package path to suit your needs.
 
     ```bat
-    DISM /Image:"%MOUNT_DIR%" /Add-Package /PackagePath="C:\updates\KB2670838.msu"
+    DISM /Image:"%MOUNT_DIR%" /Add-Package /PackagePath="C:\updates"
     ```
 
 ## Enable .NET 3.5 (Windows 8+)
