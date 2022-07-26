@@ -10,8 +10,6 @@
 
 Use the [download links spreadsheet](https://docs.google.com/spreadsheets/d/1zTF5uRJKfZ3ziLxAZHh47kF85ja34_OFB5C5bVSPumk/edit#gid=0) to download stock images.
 
-- For Windows 7 I recommend ``en_windows_7_professional_with_sp1_x64_dvd_u_676939.iso``.
-
 - Ensure to cross-check the hashes for the image with other online sources such as the [adguard hash database](https://files.rg-adguard.net/version/f0bd8307-d897-ef77-dbd6-216fefbe94c5?lang=en-us) to verify that the image is genuine & not corrupted.
 
 ## Preparing the Build Environment
