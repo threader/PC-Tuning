@@ -100,7 +100,7 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
     - Right click an empty space & select ``Open in Terminal``. This will open the bash terminal in the directory of the script for us so we do not need to CD to it manually
 
-    - Type ``sudo bash debloat.sh`` to run the script & wait for it to finish
+    - Type ``sudo bash debloat.sh`` to run the script & wait for it to finish. Ignore any ``No such file or directory`` errors
 
     - Windows 8+ Only:
 
@@ -133,6 +133,14 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
 - Open ``C:\prerequisites\sysinternals\Autoruns.exe`` & delete all obsolete entries with a yellow label. Run with NSudo if you encounter any permission errors.
 
+## Installing Drivers
+
+- Install any drivers your system requires, avoid installing chipset drivers.
+
+- Try to obtain the bare driver so it can be installed in Device Manager as executable installers usually come with extra unnecessary bloatware. Most of the time, you can extract the installer's executable to obtain the driver.
+
+- I would recommend updating & installing ethernet, USB, sata (required on Windows 7 as enabling MSI on the stock sata driver will result in a BSOD), NVME & potentially the audio controller drivers.
+
 ## Installing Recommended Packages
 
 - Install [7-Zip](https://www.7-zip.org)
@@ -158,7 +166,6 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
         - Remove the following from ``C:\Program Files\LibreWolf``
 
             - ``pingsender.exe``
-            - ``updater.exe``
 
         - If you would like to set the search engine to Google, open [this link](https://www.linuxmint.com/searchengines.php), scroll to the bottom, click the Google icon & right click the URL to add the search engine to settings
 
@@ -247,14 +254,6 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 - Place ``C:\prerequisites\sysinternals\procexp.exe`` into ``C:\Windows`` & open it.
 
 - Go to ``Options`` & select ``Replace Task Manager``. I also configure ``Confirm Kill`` & ``Allow Only One Instance``.
-
-## Installing Drivers
-
-- Install any drivers your system requires, avoid installing chipset drivers.
-
-- Try to obtain the bare driver so it can be installed in Device Manager as executable installers usually come with extra unnecessary bloatware. Most of the time, you can open the installer's executable in 7-Zip to obtain the driver.
-
-- I would recommend updating & installing ethernet, USB, sata (required on Windows 7 as enabling MSI on the stock sata driver will result in a BSOD), NVME & potentially the audio controller drivers.
 
 ## Activating Windows
 
