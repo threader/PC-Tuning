@@ -36,13 +36,7 @@ The objective is to end up with a relatively *bare*, reliable & consistent syste
 
 Some elements of this guide are not directly performance related & are just personalization related as i cover configuring the operating system from start to finish. Very rarely, some elements may also be highly opinionated however i have tried my best to provide technical references, evidence, my own research & a valid justification to the information provided to prevent making changes that would otherwise make your system perform worse than stock. Feel free to challenge any given information so that it can be reviewed.
 
-The guidance is currently updated & have been tested on the following versions of Windows:
-
-- Windows 7 SP1
-
-- Windows 8.1
-
-- Windows 10 21H2
+The guidance is currently updated & have been tested on Windows 7 through to Windows 10. Configuring Windows 11 with this guide currently has major issues. 
 
 ## Contributing
 

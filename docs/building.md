@@ -42,14 +42,14 @@ Use the [download links spreadsheet](https://docs.google.com/spreadsheets/d/1zTF
 
 ## Stripping Non-Essential Editions
 
-- Remove every edition except the pro edition, by retrieving the indexes of every other edition & removing it with the commands below.
+- Remove every edition except the desired edition (pro edition recommended), by retrieving the indexes of every other edition & removing it with the commands below.
 
     ```bat
     DISM /Get-WimInfo /WimFile:"%EXTRACTED_IMAGE%\sources\install.wim"
     DISM /Delete-Image /ImageFile:"%EXTRACTED_IMAGE%\sources\install.wim" /Index:[INDEX]
     ```
 
-- Once completed, the only edition available should be the pro edition at index 1.
+- Once completed, the only edition to exist should be the desired edition at index 1.
 
 ## Mounting the Image
 
