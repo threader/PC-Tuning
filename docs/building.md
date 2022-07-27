@@ -28,13 +28,10 @@ Use the [download links spreadsheet](https://docs.google.com/spreadsheets/d/1zTF
 
     ```bat
     set "EXTRACTED_IMAGE=C:\Win10_21H2_English_x64"
-
     set "MOUNT_DIR=C:\temp"
-
     set "OSCDIMG=C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\amd64\Oscdimg\oscdimg.exe"
 
     if exist "%MOUNT_DIR%" (rd /s /q "%MOUNT_DIR%")
-
     mkdir "%MOUNT_DIR%"
     ```
 
@@ -42,9 +39,7 @@ Use the [download links spreadsheet](https://docs.google.com/spreadsheets/d/1zTF
 
     ```bat
     if exist "%EXTRACTED_IMAGE%\sources\install.wim" (echo true) else (echo false)
-
     if exist "%MOUNT_DIR%" (echo true) else (echo false)
-
     if exist "%OSCDIMG%" (echo true) else (echo false)
     ```
 
@@ -144,7 +139,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
 
 ## Unmount & Commit
 
-- Run the command below to save the changes to the image.
+- Run the command below twice to save the changes to the image.
 
     ```bat
     DISM /Unmount-wim /MountDir:"%MOUNT_DIR%" /Commit
