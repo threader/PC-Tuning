@@ -361,155 +361,56 @@ slmgr /ato
 
         - Ensure Desktop Composition is disabled on Windows 7
 
-## Configure the Graphics Card
+## Configure the Graphics Driver
 
-- Select the dropdown for NVIDIA or AMD.
+- See [docs/configure-nvidia.md](../docs/configure-nvidia.md).
 
-    <details>
-    <summary>NVIDIA GPU</summary>
+- See [docs/configure-amd.md](../docs/configure-amd.md).
 
-    - I recommend using the 472.12 ([W7/W8](https://www.nvidia.com/en-us/drivers/results/180551), [W10](https://www.nvidia.com/download/driverResults.aspx/180555/en-us/)) as it is the latest non-DCH driver.
+## Configure MSI Afterburner
 
-    - Extract the driver executable package with 7-Zip & remove all folders **except** the following:
+If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards) to configure the clock speed, fan speed & other settings, download and install it.
 
-        ```
-        Display.Driver
-        NVI2
-        EULA.txt
-        ListDevices.txt
-        setup.cfg
-        setup.exe
-        ```
-        
-    - Remove the following lines from ``setup.cfg`` (near the bottom):
+- Disable update checks & the low-level IO driver in settings.
 
-        ```
-        <file name="${{EulaHtmlFile}}"/>
-        <file name="${{FunctionalConsentFile}}"/>
-        <file name="${{PrivacyPolicyFile}}"/>
-        ```
+- I would recommend configuring a static fan speed as using the fan curve feature requires the program to run continually.
 
-    - In ``NVI2\presentations.cfg`` set the value for ``ProgressPresentationUrl`` & ``ProgressPresentationSelectedPackageUrl`` to an empty string: ``value=""``.
+- To automatically load a profile at startup, create a batch script in win + r, ``shell:startup`` containing the following, edit to suit your needs:
 
-    - Run setup.exe to install the driver.
+    ```bat
+    @echo off
+    setlocal EnableDelayedExpansion
 
-    - Open CMD & enter the commands below to remove & disable telemetry.
+    set "afterburner_path=C:\Program Files (x86)\MSI Afterburner\MSIAfterburner.exe"
+    set "profile=1"
 
-        ```bat
-        for /f "delims=" %a in ('where /r C:\ *NvTelemetry*') do (if exist "%a" (del /f /q /s "%a"))
+    if not exist "!afterburner_path!" (
+        echo error: afterburner path invalid
+        pause
+        exit /b 1
+    )
 
-        reg.exe add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v "OptInOrOutPreference" /t REG_DWORD /d 0 /f 
+    start "" "!afterburner_path!" -Profile!profile!
+    timeout -t 8 /nobreak
+    powershell -command stop-process -name "MSIAfterburner" -force
+    exit /b 0
+    ```
 
-        reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup" /v "SendTelemetryData" /t REG_DWORD /d 0 /f
+## Configure CRU
 
-        rd /s /q "C:\Program Files\NVIDIA Corporation\Display.NvContainer\plugins\LocalSystem\DisplayDriverRAS"
+If you usually use [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU) to configure display resolutions, download and extract it.
 
-        rd /s /q "C:\Program Files\NVIDIA Corporation\DisplayDriverRAS"
+- See [How to setup Display Scaling, works with all games | KajzerD](https://www.youtube.com/watch?v=50itBs-sz1w).
 
-        rd /s /q "C:\ProgramData\NVIDIA Corporation\DisplayDriverRAS"
-        ```
+- Use the exact timing for an integer refresh rate.
 
-    - HDCP Can be disabled with the [following registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-are-there-any-configuration-options-that-allow-you-to-disable-hdcp-when-using-nvidia-based-graphics-cards) (reboot required), ensure to change the driver key to suit your needs:
+- Try to delete every resolution & the other bloatware (audio blocks) apart from your native resolution, this may be a work around for the 1 second black screen when alt-tabbing in FSE, feel free to skip this step if you do not want to risk a black screen or are not comfortable with doing this.
 
-        - Run ``C:\prerequisites\scripts\get-driver-keys.bat`` to get the driver keys on your system
-        
-            ```bat
-            reg.exe add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "RMHdcpKeyglobZero" /t REG_DWORD /d "1" /f
-            ```
-    
-    - Force P-State 0 with the [following registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-is-there-a-registry-setting-that-can-force-your-display-adapter-to-remain-at-its-highest-performance-state-pstate-p0) to reduce render time & jitter caused by frequency transitions (reboot required), ensure to change the driver key to suit your needs:
+- Restart your PC instead of using ``restart64.exe`` as it may result in a black screen.
 
-        - Run ``C:\prerequisites\scripts\get-driver-keys.bat`` to get the driver keys on your system
+- Ensure your resolution is configured properly in Display Adapter Settings.
 
-            ```bat
-            reg.exe add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "DisableDynamicPstate" /t REG_DWORD /d "1" /f
-            ```
-
-    - NVIDIA Control Panel
-
-        - Enable ``Desktop > Enable Developer Settings``, I also like to disable the notification tray icon
-
-        - In the ``3D Settings > Manage 3D settings`` section, configure the following (don't change anything else):
-
-            - **Anisotropic filtering** - Off
-
-            - **Antialiasing - Gamma correction** - Off
-
-            - **Low Latency Mode** - On (limits prerendered frames to 1)
-
-            - **Power management mode** - Prefer maximum performance
-
-            - **Texture filtering - Quality** - High performance
-
-            - [Threaded Optimization offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html), it usually hurts frametime consistency but feel free to test it yourself. You should also consider whether or not you are already CPU bottlenecked if you do choose to enable the setting
-
-        - In the ``Developer > Manage GPU Performance Counters``, enable ``Allow access to the GPU performance counters to all users``
-
-        - In the ``Display > Adjust desktop size and position`` section, set the scaling mode to ``No Scaling`` & set perform scaling on to ``Display``. Configure your resolution & refresh rate.
-
-        - Consider disabling G-Sync, it has the potential to increase input latency due to extra processing however it has supposedly improved over time so feel free to test it yourself. Your mileage may vary.
-
-    - Disable Ansel with ``C:\prerequisites\nvidia-ansel-configurator\NvCameraConfiguration_v1.0.0.6.exe``
-
-    - Nvidia Inspector
-
-        - Disable [Cuda P2 States](https://babeltechreviews.com/nvidia-cuda-force-p2-state) in ``C:\prerequisites\nvidia-profile-inspector\nvidiaProfileInspector.exe``. Feel free to skip this step as I have not verified it affects anything as of yet but there should be no harm disabling it.
-
-        - Disable [SILK Smoothness](https://www.avsim.com/forums/topic/552651-nvidia-setting-silk-smoothness), feel free to skip this step as many games reportedly do not utilize it but no harm should be done disabling it. This setting was removed in newer driver versions.
-
-    </details>
-
-    <details>
-    <summary>AMD GPU</summary>
-
-    - To be expanded in the future, follow [this guide](https://docs.google.com/document/d/1Vd5WKWhm77sG8o9xBoSNRuAWRTavLqynJ7aQhVrsa8Y/edit#heading=h.hgpjx6g7xmp6) for now.
-
-    - Disable HDCP in the Display section under overrides in the radeonsoftware.
-
-    - Disable FreeSync, it's poorly implemented compared to NVIDIA's G-Sync.
-    </details>
-    
-- ## Related GPU Settings
-
-    - configure [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards) as you usually would
-
-        - Disable update checks & the low-level IO driver in settings
-
-        - I would recommend configuring a static fan speed as using the fan curve feature requires the program to run in the background all the time
-
-        - To automatically load a profile at startup, create a batch script containing the following, edit to suit your needs:
-
-            ```bat
-            @echo off
-            setlocal EnableDelayedExpansion
-
-            set "afterburner_path=C:\Program Files (x86)\MSI Afterburner\MSIAfterburner.exe"
-            set "profile=1"
-
-            if not exist "!afterburner_path!" (
-                echo error: afterburner path invalid
-                pause
-                exit /b 1
-            )
-
-            start "" "!afterburner_path!" -Profile!profile!
-            timeout -t 8 /nobreak
-            powershell -command stop-process -name "MSIAfterburner" -force
-            exit /b 0
-            ```
-        - Save & place the batch script in win + r, ``shell:startup``
-
-    - Configure ``C:\prerequisites\CRU\CRU.exe`` as you usually would
-
-        - Try to delete every resolution & the other bloatware (audio blocks) apart from your native resolution, this may be a work around for the 1 second black screen when alt-tabbing in FSE, feel free to skip this step if you do not want to risk a black screen or are not comfortable with doing this
-
-        - See [How to setup Display Scaling, works with all games | KajzerD](https://www.youtube.com/watch?v=50itBs-sz1w)
-
-        - Restart your PC
-
-    - Ensure your resolution is configured properly in Display Adapter Settings
-
-        - Use the ``C:\prerequisites\Change Resolution.lnk`` shortcut on Windows 8+
+    - Use the ``C:\prerequisites\Change Resolution.lnk`` shortcut on Windows 8+
 
 ## Configure Device Manager
 
