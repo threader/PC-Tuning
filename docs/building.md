@@ -99,11 +99,11 @@ DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:NetFx3 /All /LimitAccess 
 DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:DirectPlay /All
  ```
 
- ## Integrating & Obtaining Drivers
+## Integrating & Obtaining Drivers
 
- - This is generally required for users installing Windows 7 to integrate USB/ NVME drivers so that setup can proceed.
+- This is generally required for users installing Windows 7 to integrate USB/ NVME drivers so that setup can proceed.
 
- - Place all of the drivers to be integrated somewhere easily accessible such as ``C:\drivers`` & use the command below to integrate them into the install.wim.
+- Place all of the drivers to be integrated somewhere easily accessible such as ``C:\drivers`` & use the command below to integrate them into the install.wim.
 
 ```bat
 DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
