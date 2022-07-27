@@ -79,6 +79,7 @@ Since it is quite tedious to obtain a Windows 10+ image with no updates, we can 
     if exist "%EXTRACTED_IMAGE%\sources\install.wim" (echo true) else (echo false)
     if exist "%MOUNT_DIR%" (echo true) else (echo false)
     if exist "%OSCDIMG%" (echo true) else (echo false)
+    where win-wallpaper.exe > nul 2>&1 && echo true || echo false
     ```
 
 ## Stripping Non-Essential Editions
