@@ -62,7 +62,7 @@ Since it is quite tedious to obtain a Windows 10+ image with no updates, we can 
 
     <img src="../media/uupdump-choose-edition.png" width="750">
 
-- Uncheck include updates & click create download package.
+- Copy the configuration below, ensure include updates is checked & click create download package.
 
     <img src="../media/uupdump-download-options.png" width="750">
 
