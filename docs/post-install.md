@@ -155,7 +155,7 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
     - [Librewolf](https://librewolf.net) (fork of Firefox) recommended
 
-    - The [Arkenfox user.js](https://github.com/arkenfox/user.js) is an alternative for Librewolf and applicable to a default Firefox installation
+    - The [Arkenfox user.js](https://github.com/arkenfox/user.js) is an alternative for Librewolf & applicable to a default Firefox installation
 
         - Open CMD & enter the command below.
 
@@ -237,7 +237,7 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
     - Windows 8 Only:
 
-        - Open ``"C:\Program Files\Open-Shell\Start Menu Settings.lnk"``, enable ``Show all settings`` then go to the Windows 8.1 Settings section & set ``Disable active corners`` to All
+        - Open ``"C:\Program Files\Open-Shell\Start Menu Settings.lnk"``, enable ``Show all settings`` then go to the Windows 8 Settings section & set ``Disable active corners`` to All
 
 ## Replace Task Manager with Process Explorer
 
@@ -369,7 +369,7 @@ slmgr /ato
 
 ## Configure MSI Afterburner
 
-If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards) to configure the clock speed, fan speed & other settings, download and install it.
+If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards) to configure the clock speed, fan speed & other settings, download & install it.
 
 - Disable update checks & the low-level IO driver in settings.
 
@@ -398,7 +398,7 @@ If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/gra
 
 ## Configure CRU
 
-If you usually use [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU) to configure display resolutions, download and extract it.
+If you usually use [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU) to configure display resolutions, download & extract it.
 
 - See [How to setup Display Scaling, works with all games | KajzerD](https://www.youtube.com/watch?v=50itBs-sz1w).
 

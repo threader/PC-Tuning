@@ -6,19 +6,57 @@
 - [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases)
 - Deployment Tools from the [Windows ADK](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install)
 
-## Downloading an Image
+## Downloading Stock Images
 
-Use the [download links spreadsheet](https://docs.google.com/spreadsheets/d/1zTF5uRJKfZ3ziLxAZHh47kF85ja34_OFB5C5bVSPumk/edit#gid=0) or [MVS Collection](https://isofiles.bd581e55.workers.dev) to download stock images.
+The recommended links & methods below will ensure that we can work with a base image with no additional updates. Ensure to cross-check the hashes for the image to verify that the image is genuine & not corrupted. Use the command ``certutil -hashfile <path\to\file> SHA1`` to get the hash of the image file.
 
-- Try to obtain a image with few updates as possible.
+<details>
+<summary>Windows 7</summary>
 
-- Ensure to cross-check the hashes for the image with other online sources such as the [adguard hash database](https://files.rg-adguard.net/version/f0bd8307-d897-ef77-dbd6-216fefbe94c5?lang=en-us) to verify that the image is genuine & not corrupted.
+- ``en_windows_7_professional_with_sp1_x64_dvd_u_676939.iso``
 
-    - Use the command below to get the hash of the image file
+    - [link 1](https://isofiles.bd581e55.workers.dev/Windows%207/Windows%207%20Professional%20with%20SP1/en_windows_7_professional_with_sp1_x64_dvd_u_676939.iso), [link 2](https://msnp0-my.sharepoint.com/personal/tuanthanh1_p0_msnvn_org/_layouts/15/download.aspx?SourceUrl=%2Fpersonal%2Ftuanthanh1%5Fp0%5Fmsnvn%5Forg%2FDocuments%2FWindows%2FWindows%207%2Fen%5Fwindows%5F7%5Fprofessional%5Fwith%5Fsp1%5Fx64%5Fdvd%5Fu%5F676939%2Eiso)
+    
+    - [Adguard image hashes](https://files.rg-adguard.net/file/11ad6502-c2aa-261c-8c3f-c81477b21dd2)
 
-        ```bat
-        certutil -hashfile <path\to\file> SHA1
-        ```
+</details>
+
+<details>
+<summary>Windows 8</summary>
+
+- ``en_windows_8.1_with_update_x64_dvd_6051480.iso``
+
+    - [link 1](https://isofiles.bd581e55.workers.dev/Windows%208/Windows%208.1%20with%20Update/en_windows_8.1_with_update_x64_dvd_6051480.iso), [link 2](https://msnp0-my.sharepoint.com/personal/tuanthanh1_p0_msnvn_org/_layouts/15/download.aspx?SourceUrl=%2Fpersonal%2Ftuanthanh1%5Fp0%5Fmsnvn%5Forg%2FDocuments%2FWindows%2FWindows%208%2E1%2Fen%5Fwindows%5F8%2E1%5Fwith%5Fupdate%5Fx64%5Fdvd%5F6051480%2Eiso)
+
+    - [Adguard image hashes](https://files.rg-adguard.net/file/feeb8cae-fb0b-42b9-6f69-50c71f0e5415)
+
+</details>
+
+<details>
+<summary>Windows 10+</summary>
+<br>
+
+Since it is quite tedious to obtain a Windows 10+ image with no updates, we can build our own using [UUP dump](https://uupdump.net).
+
+- Search for the Windows version you desire & download the latest instance.
+   
+    <img src="../media/uupdump-search-image.png" width="750">
+
+- Choose the desired language & click next.
+
+    <img src="../media/uupdump-choose-language.png" width="750">
+
+- Uncheck all editions except the pro edition & click next.
+
+    <img src="../media/uupdump-choose-edition.png" width="750">
+
+- Uncheck include updates & click create download package.
+
+    <img src="../media/uupdump-download-options.png" width="750">
+
+- Extract the downloaded package & run ``uup_download_windows.cmd``. The final image file will be created in the same directory as the script.
+
+</details>
 
 ## Preparing the Build Environment
 
@@ -75,9 +113,13 @@ Use the [download links spreadsheet](https://docs.google.com/spreadsheets/d/1zTF
     KB3087873 - NVME/M.2
     ```
 
-- Windows 8+ recommended updates:
+- Windows 8 recommended updates:
 
-    - Download the latest, non-security cumulative update along with the servicing stack for that specific update (specified in the update page). The update page should also specify if the update is non-security or a security update, if it does not, then download the latest update. Use the official Windows update history page ([W8](https://support.microsoft.com/en-us/topic/july-21-2016-kb3172614-dcf9bea5-47b0-b574-2929-4f9e130f5192), [W10](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b)).
+    - Download the latest, non-security cumulative update along with the servicing stack for that specific update (specified in the update page). The update page should also specify if the update is non-security or a security update, if it does not, then download the latest update. Use the official [Windows update history page](https://support.microsoft.com/en-us/topic/july-21-2016-kb3172614-dcf9bea5-47b0-b574-2929-4f9e130f5192)
+
+- Windows 10+ recommended updates:
+
+    - Download the latest, non-security cumulative update along with the servicing stack for that specific update (specified in the update page). The update page should also specify if the update is non-security or a security update, if it does not, then download the latest update. Use the official [Windows update history page](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b)
 
 - Download the updates from the [microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the kb identifier. Place the updates somewhere easily accessible such as ``C:\updates``.
 

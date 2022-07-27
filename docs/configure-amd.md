@@ -6,7 +6,7 @@
 
 - Disable FreeSync, it's poorly implemented compared to NVIDIA's G-Sync.
 
-- Open CMD and run the commands below. Ensure to change the driver key to suit your needs.
+- Open CMD & run the commands below. Ensure to change the driver key to suit your needs.
 
     - Run ``C:\prerequisites\scripts\get-driver-keys.bat`` to get the driver keys on your system
 
