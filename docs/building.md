@@ -136,10 +136,12 @@ Since it is quite tedious to obtain a Windows 10+ image with no updates, we can 
 
 - Download the updates from the [microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the kb identifier. Place the updates somewhere easily accessible such as ``C:\updates``.
 
-- Integrate the updates into the install.wim with the command below. Change the package path to suit your needs.
+- Integrate the updates into the install.wim with the command below.
+
+    - The servicing stack must be installed before installing the cumulative updates
 
     ```bat
-    DISM /Image:"%MOUNT_DIR%" /Add-Package /PackagePath="C:\updates"
+    DISM /Image:"%MOUNT_DIR%" /Add-Package /PackagePath="C:\updates\KB2670838.msu"
     ```
 
 ## Enable .NET 3.5 (Windows 8+)
