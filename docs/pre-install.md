@@ -2,7 +2,7 @@
 
 ## Activation
 
-Consider activating before configuring the image as the key will be permanently linked to your motherboard & you will not be forced to run activation scripts once booted into the image. This can be done with a legitimate key or with [massgravel's scripts](https://github.com/massgravel/Microsoft-Activation-Scripts).
+Consider activating before configuring the image as the key will be permanently linked to your motherboard. This can be done with a legitimate key.
 
 ## Configure Partitions
 

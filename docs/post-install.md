@@ -12,6 +12,15 @@ Once you have begun the OOBE process, follow the steps in the video.
 - See [media/oobe-windows8-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows8-example.mp4)
 - See [media/oobe-windows10-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows10-example.mp4)
 
+## Activating Windows
+
+As previously mentioned, you should have already linked a key to your motherboard but if you have not, now would be a good time to do so. Open CMD & enter the command below.
+
+```bat
+slmgr /ipk <25 digit key>
+slmgr /ato
+```
+
 ## Install [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist/releases)
 
 ```
@@ -254,15 +263,6 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 - Place ``C:\prerequisites\sysinternals\procexp.exe`` into ``C:\Windows`` & open it.
 
 - Go to ``Options`` & select ``Replace Task Manager``. I also configure ``Confirm Kill`` & ``Allow Only One Instance``.
-
-## Activating Windows
-
-As previously mentioned, you should have linked a key to your motherboard but if you have not now would be a good time to enter it. Open CMD & enter the command below.
-
-```bat
-slmgr /ipk [YOUR 25 DIGIT KEY]
-slmgr /ato
-```
 
 ## Configure the BCD Store
 
