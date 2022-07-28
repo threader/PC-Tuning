@@ -2,15 +2,15 @@
 
 ## Build Requirements
 
-- [7-Zip](https://www.7-zip.org)
+- [7-Zip](https://www.7-zip.org).
 
-- [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases)
+- [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases).
 
     - Place the program in ``C:\Windows``
 
-- Deployment Tools from the [Windows ADK](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install)
+- Deployment Tools from the [Windows ADK](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install).
 
-- Latest Servicing Stack Update for the host machine
+- Latest Servicing Stack Update for the host machine.
 
     - Configuring an image while the host's DISM version is outdated will likely result in errors. Manually search & download the latest SSU from the update [microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) and use the following command to apply it to the host's machine.
 

@@ -680,7 +680,7 @@ Now is a good time to install whatever programs you commonly use to prepare us f
         reg.exe add "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f
         ```
 
-- Open ````C:\prerequisites\sysinternals\Autoruns.exe```` & remove any unwanted programs such as game launchers from starting automatically.
+- Open ```C:\prerequisites\sysinternals\Autoruns.exe``` & remove any unwanted programs such as game launchers from starting automatically.
 
 - Configure Disk Cleanup:
 
