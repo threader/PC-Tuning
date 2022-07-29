@@ -44,7 +44,7 @@
 
 - Disable Secure Boot.
 
-- Disable fast boot or similar options. 
+- Disable Fast Boot or similar options. 
 
 ## Minimizing Interference
 
