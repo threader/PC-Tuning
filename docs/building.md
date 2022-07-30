@@ -117,13 +117,16 @@ Since it is quite tedious to obtain a Windows 10+ image with no updates, we can 
 
 - Windows 7 recommended updates:
 
+    You may not need all updates listed below depending on your needs, if you are unsure then integrate all mentioned. NVME Users may be able to get away with only integrating the storage controller driver in the [Integrating & Obtaining Drivers](#integrating--obtaining-drivers) section while excluding ``KB2990941`` & ``KB3087873``.
+
     ```
-    KB2670838 - platform update + directX 11.1
-    KB2864202 - required for the generic USB driver (if you use it)
-    KB4474419 - SHA signing update
-    KB4490628 - SHA signing update
-    KB2990941 - NVME/M.2
-    KB3087873 - NVME/M.2
+    KB4490628 - Servicing Stack Update
+    KB4474419 - SHA-2 Code Signing Update
+    KB2670838 - Platform Update & DirectX 11.1
+    KB2990941 - NVME Support
+    KB3087873 - NVME Support & Language Pack Hotfix
+    KB2864202 - KMDF Update (required for USB 3/XHCI driver stack)
+    KB4534314 - Easy Anti-Cheat Support
     ```
 
 - Windows 8 recommended updates:
