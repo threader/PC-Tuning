@@ -212,6 +212,26 @@ Conclusion: During online matches, at most two Rss queues/cores are being utiliz
 
 ---
 
+#### Microsoft USB drivers driver latency penalty 
+
+<details>
+<summary>Read More</summary>
+<br>
+
+On a stock Windows 10 installation, the Wdf01000.sys driver handles USB connectivity but using it comes with a major latency penalty compared to using vendor USB drivers. See results below.
+
+Wdf01000.sys:
+
+<img src="../media/wdf01000-usb-xperf-report.png" width="500">
+
+amdxhc31.sys (vendor USB drivers):
+
+<img src="../media/amdxhc31-usb-xperf-report.png" width="500">
+
+Excluding benchmark variation, ISR/DPC count & ISR latency is identical. However, with the vendor drivers, DPC latency was positively impacted & for this reason it would be appropriate to update the USB driver if applicable but your milage may vary so feel free to test it on your own system.
+
+</details>
+
 
 <!-- #### Title
 
