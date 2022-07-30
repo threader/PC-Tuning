@@ -63,7 +63,7 @@ C:\prerequisites\VisualCppRedist_AIO_x86_x64.exe
     C:\prerequisites\scripts\miscellaneous.bat
     ```
 
-- Enable ``Launching applications and unsafe files`` in ``Internet Options > Security > Custom Level``. This prevents [this annoying warning](https://gearupwindows.com/how-to-disable-open-file-security-warning-in-windows-10/). Feel free to skip this step as security may be reduced.
+- Enable ``Launching applications & unsafe files`` in ``Internet Options > Security > Custom Level``. This prevents [this annoying warning](https://gearupwindows.com/how-to-disable-open-file-security-warning-in-windows-10/). Feel free to skip this step as security may be reduced.
 
 - In ``Advanced System Settings``, do the following:
 
@@ -73,17 +73,17 @@ C:\prerequisites\VisualCppRedist_AIO_x86_x64.exe
 
     - In ``Remote``, disable **Remote Assistance**
     
-- In ``Defragment and Optimize Drives``, disable **Run on a schedule**. More details on doing maintenance tasks ourself in [Final Thoughts & Tips](#final-thoughts--tips).
+- In ``Defragment & Optimize Drives``, disable **Run on a schedule**. More details on doing maintenance tasks ourself in [Final Thoughts & Tips](#final-thoughts--tips).
 
-- Disable all messages in ``Control Panel> System and Security > Action Center > Change Action Center settings > Change Security and Maintenance settings``.
+- Disable all messages in ``Control Panel> System & Security > Action Center > Change Action Center settings > Change Security & Maintenance settings``.
 
-    - Note: This section is named ``Security and Maintenance`` on Windows 10+
+    - Note: This section is named ``Security & Maintenance`` on Windows 10+
 
 ## Removing Bloatware
 
 Before we remove bloatware via bruteforce on linux, we may as well uninstall what Windows allows us to.
 
-- Uninstall bloatware in ``Control Panel > Programs > Programs and Features`` (do not uninstall the vcredists).
+- Uninstall bloatware in ``Control Panel > Programs > Programs & Features`` (do not uninstall the vcredists).
 
     - In the ``Turn Windows features on or off`` section, disable everything **except** for:
 
@@ -273,7 +273,7 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
         ```bat
         bcdedit /timeout 0
         ```
-    - Configure [Data Execution Prevention](https://docs.microsoft.com/en-us/windows/win32/memory/data-execution-prevention) for ``essential Windows programs and services only``
+    - Configure [Data Execution Prevention](https://docs.microsoft.com/en-us/windows/win32/memory/data-execution-prevention) for ``essential Windows programs & services only``
 
         ```bat
         bcdedit /set nx optin
@@ -333,7 +333,7 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
 ## Configure the Network Adapter
 
-- Open ``Network and Sharing Center > Change adapter settings``.
+- Open ``Network & Sharing Center > Change adapter settings``.
 
 - Right click your main network adapter & select properties.
 
@@ -491,7 +491,7 @@ The service list configuration is not intended for laptop, Wi-Fi & webcam functi
 
 ## Configure Power Options
 
-- Set the power plan to high performance in ``Control Panel > Hardware and Sound > Power Options`` (PBO users excluded).
+- Set the power plan to high performance in ``Control Panel > Hardware & Sound > Power Options`` (PBO users excluded).
 
 - Open CMD & enter the command below to remove every powerplan except the active power scheme, ignore errors.
 
