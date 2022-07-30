@@ -212,7 +212,7 @@ Conclusion: During online matches, at most two Rss queues/cores are being utiliz
 
 ---
 
-#### Microsoft USB drivers driver latency penalty 
+#### Microsoft USB driver latency penalty 
 
 <details>
 <summary>Read More</summary>
