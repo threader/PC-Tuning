@@ -27,6 +27,8 @@ I recommend using the 472.12 ([Windows 7/Windows 8](https://www.nvidia.com/en-us
 
 - Run setup.exe to install the driver.
 
+    - If setup fails however you followed the steps above correctly, try redownload the driver & follow the steps again. Some users have reported this is due to a corrupted download.
+
 - Open CMD & enter the commands below to remove & disable telemetry.
 
     ```bat
@@ -69,7 +71,7 @@ HDCP Can be disabled with the [following registry key](https://github.com/djdall
 
 - In the ``Developer > Manage GPU Performance Counters``, enable ``Allow access to the GPU performance counters to all users``.
 
-- In the ``Display > Adjust desktop size and position`` section, set the scaling mode to ``No Scaling`` & set perform scaling on to ``Display``. Configure your resolution & refresh rate.
+- In the ``Display > Adjust desktop size & position`` section, set the scaling mode to ``No Scaling`` & set perform scaling on to ``Display``. Configure your resolution & refresh rate.
 
 - Consider disabling G-Sync, it has the potential to increase input latency due to extra processing however it has supposedly improved over time so feel free to test it yourself. Your mileage may vary.
 
