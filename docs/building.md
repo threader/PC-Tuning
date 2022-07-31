@@ -142,7 +142,7 @@ Since it is quite tedious to obtain a Windows 10+ image with no updates, we can 
 - Integrate the updates into the install.wim with the command below. The servicing stack must be installed before installing the cumulative updates.
 
     ```bat
-    DISM /Image:"%MOUNT_DIR%" /Add-Package /PackagePath="C:\updates\KB2670838.msu"
+    DISM /Image:"%MOUNT_DIR%" /Add-Package /PackagePath=<path\to\update>
     ```
 
 ## Enable .NET 3.5 (Windows 8+)
@@ -217,7 +217,7 @@ As you are aware, Windows 7 lacks driver support for modern hardware & you shoul
 
     - Download the [latest Windows 10 image](https://www.microsoft.com/en-gb/software-download/windows10) & extract it, I would recommend renaming the extracted folder to avoid confusion. In the examples below, I have extracted it to ``C:\W10_image``
 
-    - Replace ``sources\install.wim`` or ``sources\install.esd``) in the extracted Windows 10 image with the Windows 7 ``install.wim``
+    - Replace ``sources\install.wim`` or ``sources\install.esd`` in the extracted Windows 10 image with the Windows 7 ``install.wim``
 
 - We need to update a variable since our extracted directory has changed. Enter the path of your new extracted directory, mine is ``C:\W10_image``.
 
