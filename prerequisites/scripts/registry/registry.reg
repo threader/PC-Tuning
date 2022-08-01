@@ -72,11 +72,9 @@ Windows Registry Editor Version 5.00
 "ExcludeWUDriversInQualityUpdate"=dword:00000001
 
 ; set user account control to never notify
-; disable sign-in and lock last interactive user after a restart
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
 "EnableLUA"=dword:00000000
-"DisableAutomaticRestartSignOn"=dword:00000001
 
 ; disable automatic maintenance
 
