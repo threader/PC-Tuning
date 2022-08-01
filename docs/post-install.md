@@ -573,29 +573,10 @@ Feel free to skip this step as it is not required, Microsoft fixed the standby l
 
 - Open CMD & enter the commands below.
 
-    - Prevents characters from the extended character set (including diacritic characters) to be used in 8.3 character-length short file names on NTFS volumes
-
-        ```bat
-        fsutil behavior set allowextchar 0
-        ```
-
-    - Disable generation of a bug check when there is corruption on an NTFS volume. This feature can be used to prevent NTFS from silently deleting data
-
-        ```bat
-        fsutil behavior set Bugcheckoncorrupt 0
-        ```
-
     - Disables the creation of 8.3 character-length file names on FAT- & NTFS-formatted volumes
 
         ```bat
         fsutil behavior set disable8dot3 1
-        ```
-
-    - Disable NTFS compression
-    
-        ```bat
-        fsutil behavior set disablecompression 1
-        ```
 
     - Disable the encryption of folders & files on NTFS volumes
 
@@ -608,18 +589,6 @@ Feel free to skip this step as it is not required, Microsoft fixed the standby l
         ```bat
         fsutil behavior set disablelastaccess 1
         ```
-    
-    - Disable spot corruption handling. It is better to debug manually as this feature does more harm than good
-
-        ```bat
-        fsutil behavior set disablespotcorruptionhandling 1
-        ```
-
-    - Disable memory paging file encryption
-
-        ```bat
-        fsutil behavior set encryptpagingfile 0
-        ```
 
     - Configure NTFS quota violations to be reported in the system log every 3 hours instead of every hour
 
@@ -627,7 +596,7 @@ Feel free to skip this step as it is not required, Microsoft fixed the standby l
         fsutil behavior set quotanotify 10800
         ```
 
-    - Enables delete notifications (also known as trim or unmap)
+    - Enables delete notifications (also known as trim or unmap), should be enabled by default but here for safe measure
 
         ```bat
         fsutil behavior set disabledeletenotify 0
