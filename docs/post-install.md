@@ -14,32 +14,12 @@ Once you have begun the OOBE process, follow the steps in the video.
 
 ## Activating Windows
 
-As previously mentioned, you should have already linked a key to your motherboard but if you have not, now would be a good time to do so. Open CMD & enter the command below.
+As previously mentioned, you should have already linked a key to your motherboard but if you have not, now would be a good time to do so. Open CMD as administrator & enter the command below.
 
 ```bat
 slmgr /ipk <25 digit key>
 slmgr /ato
 ```
-
-## Install [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist/releases)
-
-```
-C:\prerequisites\VisualCppRedist_AIO_x86_x64.exe
-```
-
-## Merge the Registry Files
-
-- Open CMD as administrator & enter the command below to merge the registry files. Replace ``<winver>`` with the Windows version you are configuring (e.g 7, 8, 10 etc).
-
-    ```bat
-    C:\prerequisites\scripts\registry\apply-registry.exe --winver <winver>
-    ```
-
-- Please ensure that the program prints a "done" message to the console, if it has not then command prompt was probably not opened with administrator privileges & the registry files were not successfully merged.
-
-- Restart your PC (important).
-
-- You may establish an internet connection after you have restarted as the Windows update policies will take effect.
 
 ## Visual Cleanup
 
@@ -49,39 +29,15 @@ C:\prerequisites\VisualCppRedist_AIO_x86_x64.exe
     - See [media/visual-cleanup-windows8-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/visual-cleanup-windows8-example.mp4)
     - See [media/visual-cleanup-windows10-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/visual-cleanup-windows10-example.mp4)
 
-## Miscellaneous
-
-- Allow users full control of the ``C:\`` drive. This resolves an issue with xperf etl processing on Windows 7.
-
-    - See [media/full-control-example.png](../media/full-control-example.png)
-
-    - Click continue & ignore errors
-
-- Open CMD & enter the command below.
-
-    ```bat
-    C:\prerequisites\scripts\miscellaneous.bat
-    ```
-
-- Enable ``Launching applications & unsafe files`` in ``Internet Options > Security > Custom Level``. This prevents [this annoying warning](https://gearupwindows.com/how-to-disable-open-file-security-warning-in-windows-10/). Feel free to skip this step as security may be reduced.
-
-- In ``Advanced System Settings``, do the following:
-
-    - In ``Computer Name > Change`` configure the PC name
-
-    - In ``System Protection``, disable & delete system restore points. It has been proven to be very unreliable
-
-    - In ``Remote``, disable **Remote Assistance**
-    
-- In ``Defragment & Optimize Drives``, disable **Run on a schedule**. More details on doing maintenance tasks ourself in [Final Thoughts & Tips](#final-thoughts--tips).
-
-- Disable all messages in ``Control Panel> System & Security > Action Center > Change Action Center settings > Change Security & Maintenance settings``.
-
-    - Note: This section is named ``Security & Maintenance`` on Windows 10+
-
 ## Removing Bloatware
 
 Before we remove bloatware via bruteforce on linux, we may as well uninstall what Windows allows us to.
+
+- Open CMD as administrator & enter the command below.
+
+    ```bat
+    C:\prerequisites\scripts\remove-edge-onedrive.bat
+    ```
 
 - Uninstall bloatware in ``Control Panel > Programs > Programs & Features`` (do not uninstall the vcredists).
 
@@ -134,13 +90,61 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
     - Once finished, empty the ``Trash`` in the file explorer & restart to boot back into Windows
 
-- Once back into the Windows desktop, open CMD & enter the command below to remove leftover scheduled tasks.
+- Once back into the Windows desktop, open CMD as administrator & enter the command below to remove leftover scheduled tasks.
 
     ```bat
     C:\prerequisites\scripts\scheduled-tasks\disable-tasks.exe
     ```
 
 - Open ``C:\prerequisites\sysinternals\Autoruns.exe`` & delete all obsolete entries with a yellow label. Run with NSudo if you encounter any permission errors.
+
+## Install [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist/releases)
+
+```
+C:\prerequisites\VisualCppRedist_AIO_x86_x64.exe
+```
+
+## Merge the Registry Files
+
+- Open CMD as administrator & enter the command below to merge the registry files. Replace ``<winver>`` with the Windows version you are configuring (e.g 7, 8, 10 etc).
+
+    ```bat
+    C:\prerequisites\scripts\registry\apply-registry.exe --winver <winver>
+    ```
+
+- Please ensure that the program prints a "done" message to the console, if it has not then command prompt was probably not opened with administrator privileges & the registry files were not successfully merged.
+
+- Restart your PC (important).
+
+- You may establish an internet connection after you have restarted as the Windows update policies will take effect.
+
+## Miscellaneous
+
+- Allow users full control of the ``C:\`` drive. This resolves an issue with xperf etl processing on Windows 7.
+
+    - See [media/full-control-example.png](../media/full-control-example.png)
+
+    - Click continue & ignore errors
+
+- Open CMD & enter the command below.
+
+    ```bat
+    C:\prerequisites\scripts\miscellaneous.bat
+    ```
+
+- Enable ``Launching applications & unsafe files`` in ``Internet Options > Security > Custom Level``. This prevents [this annoying warning](https://gearupwindows.com/how-to-disable-open-file-security-warning-in-windows-10/). Feel free to skip this step as security may be reduced.
+
+- In ``Advanced System Settings``, do the following:
+
+    - In ``Computer Name > Change`` configure the PC name
+
+    - In ``System Protection``, disable & delete system restore points. It has been proven to be very unreliable
+
+- In ``Defragment & Optimize Drives``, disable **Run on a schedule**. More details on doing maintenance tasks ourself in [Final Thoughts & Tips](#final-thoughts--tips).
+
+- Disable all messages in ``Control Panel> System & Security > Action Center > Change Action Center settings > Change Security & Maintenance settings``.
+
+    - Note: This section is named ``Security & Maintenance`` on Windows 10+
 
 ## Installing Drivers
 
