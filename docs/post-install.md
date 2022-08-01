@@ -250,6 +250,8 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
 ## Replace Task Manager with Process Explorer
 
+This step is not optional, pcw.sys will be disabled which breaks the stock Task Manager functionality.
+
 <details>
 <summary>Reasons not to use Task Manager</summary>
 
@@ -459,10 +461,6 @@ If you usually use [Custom Resolution Utility](https://www.monitortests.com/foru
 The service list configuration is not intended for laptop, Wi-Fi & webcam functionality. I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming & use default services for everything else.
 
 - Download [Service-List-Builder](https://github.com/amitxv/Service-List-Builder/releases)
-
-- In ``C:\prerequisites\bare_services.ini``...
-
-    - Remove ``pcw`` from ``[Drivers_To_Disable]`` if you did not replace task manager with process explorer, you can also view the commented services & drivers to fine tune the list to your needs
 
 - On Windows 7 & 8, remove ``MMCSS`` from the ``DependOnService`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Audiosrv``.
 
