@@ -152,13 +152,13 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
 ## Installing Recommended Packages
 
-- Install [7-Zip](https://www.7-zip.org)
+- Install [7-Zip](https://www.7-zip.org).
 
     - Run ``C:\prerequisites\7-Zip\7z2200-x64.exe``
 
         - Open ``C:\Program Files\7-Zip\7zFM.exe``, to go ``Tools > Options`` & associate 7-Zip with all file extensions by clicking the + button. You may need to click it twice to override existing associated extensions
 
-- Web Browser
+- Web Browser.
 
     - See https://privacytests.org/
 
@@ -166,7 +166,7 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
     - The [Arkenfox user.js](https://github.com/arkenfox/user.js) is an alternative for Librewolf & applicable to a default Firefox installation
 
-        - Open CMD & enter the command below.
+        - Open CMD & enter the command below
 
             ```bat
             C:\prerequisites\scripts\librewolf-web-installer.bat
@@ -220,23 +220,23 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
         - I would also recommend importing [ClearURL's filter list](https://raw.githubusercontent.com/DandelionSprout/adfilt/master/ClearURLs%20for%20uBo/clear_urls_uboified.txt) along with [Dreammjow's filter list](https://raw.githubusercontent.com/dreammjow/MyFilters/main/src/filters.txt) & installing the [Skip Redirect](https://addons.mozilla.org/firefox/addon/skip-redirect/) extension
 
-- Install [.NET 4.8 Runtimes](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48)
+- Install [.NET 4.8 Runtimes](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48).
 
     - Run ``C:\prerequisites\ndp48-web.exe``
 
-- Install [DirectX Runtimes](https://www.microsoft.com/en-gb/download/details.aspx?id=35)
+- Install [DirectX Runtimes](https://www.microsoft.com/en-gb/download/details.aspx?id=35).
 
     - Run ``C:\prerequisites\dxwebsetup.exe``, ensure to uncheck the bing bar option
 
-- Media Player
+- Media Player.
 
     - [mpv](https://mpv.io) or [mpc-hc](https://mpc-hc.org) ([alternative link](https://github.com/clsid2/mpc-hc)) recommended
 
-- Install [OpenShell](https://github.com/Open-Shell/Open-Shell-Menu) (Windows 8+)
+- Install [OpenShell](https://github.com/Open-Shell/Open-Shell-Menu) (Windows 8+).
 
     - This is required as we removed the bloated stock start menu
 
-    - Run ``C:\prerequisites\open-shell\OpenShellSetup.exe``
+    - Run ``OpenShellSetup.exe`` in ``C:\prerequisites\open-shell``
 
         - Only install the ``Open-Shell Menu``. Disable everything else to prevent installing bloatware
 
@@ -251,7 +251,7 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 ## Replace Task Manager with Process Explorer
 
 <details>
-<summary>What is wrong with Task Manager?</summary>
+<summary>Reasons not to use Task Manager</summary>
 
 - It relies on a kernel mode driver (pcw.sys) to operate (additional overhead).
 
@@ -323,13 +323,13 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
 ## Disable Process Mitigations (Windows 10 1709+)
 
-- Run the ``C:\prerequisites\scripts\disable-process-mitigations.bat`` script to disable [process mitigations](https://docs.microsoft.com/en-us/powershell/module/processmitigations/set-processmitigation?view=windowsserver2019-ps)
+- Run the ``C:\prerequisites\scripts\disable-process-mitigations.bat`` script to disable [process mitigations](https://docs.microsoft.com/en-us/powershell/module/processmitigations/set-processmitigation?view=windowsserver2019-ps).
 
-- Effects can be viewed with the command below in powershell:
+    - Effects can be viewed with the command below in powershell
 
-    ```powershell
-    Get-ProcessMitigation -System
-    ```
+        ```powershell
+        Get-ProcessMitigation -System
+        ```
 
 ## Configure the Network Adapter
 
