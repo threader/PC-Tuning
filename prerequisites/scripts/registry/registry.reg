@@ -316,22 +316,19 @@ Windows Registry Editor Version 5.00
 ; disable spectre and meltdown
 ; disable prefetch
 ; disable superfetch
-; unclear as to what the correct path for the prefetch and superfetch keys are, to be investigated
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\SysMain]
-"Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
 "DisablePagingExecutive"=dword:00000001
 "DisablePageCombining"=dword:00000001
 "FeatureSettingsOverride"=dword:00000003
 "FeatureSettingsOverrideMask"=dword:00000003
-"EnablePrefetcher"=dword:00000000
-"EnableSuperfetch"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters]
 "EnablePrefetcher"=dword:00000000
 "EnableSuperfetch"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\SysMain]
+"Start"=dword:00000004
 
 ; hide frequent folders in quick access
 ; hide recent folders in quick access
