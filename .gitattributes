@@ -1,2 +1,2 @@
-perform CRLF normalization
-debloat.sh text eol=crlf
+perform LF normalization
+debloat.sh text eol=lf
