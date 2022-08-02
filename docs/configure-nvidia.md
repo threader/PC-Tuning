@@ -34,7 +34,7 @@ I recommend using the 472.12 ([Windows 7/Windows 8](https://www.nvidia.com/en-us
     ```bat
     for /f "delims=" %a in ('where /r C:\ *NvTelemetry*') do (if exist "%a" (del /f /q /s "%a"))
 
-    for %a in ("C:\Program Files\NVIDIA Corporation\Display.NvContainer\plugins\LocalSystem\DisplayDriverRAS", "C:\Program Files\NVIDIA Corporation\DisplayDriverRAS", "C:\ProgramData\NVIDIA Corporation\DisplayDriverRAS") do (if exist "%a" (rd /s /q "%a"))
+    for %a in ("C:\Program Files\NVIDIA Corporation\Display.NvContainer\plugins\LocalSystem\DisplayDriverRAS", "C:\Program Files\NVIDIA Corporation\DisplayDriverRAS", "C:\ProgramData\NVIDIA Corporation\DisplayDriverRAS") do (if exist %a (rd /s /q %a))
 
     reg.exe add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v "OptInOrOutPreference" /t REG_DWORD /d 0 /f 
 
