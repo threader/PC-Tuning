@@ -168,7 +168,7 @@ This step is required as we removed the spyware stock start menu
 
 - Install any drivers your system requires, avoid installing chipset drivers.
 
-- Try to obtain the bare driver so it can be installed in Device Manager as executable installers usually come with extra unnecessary bloatware. Most of the time, you can extract the installer's executable to obtain the driver.
+- Try to obtain the bare driver so it can be installed in device manager as executable installers usually come with extra unnecessary bloatware. Most of the time, you can extract the installer's executable to obtain the driver.
 
 - I would recommend updating & installing ethernet, USB, sata (required on Windows 7 as enabling MSI on the stock sata driver will result in a BSOD), NVME & potentially the audio controller drivers.
 
@@ -420,35 +420,61 @@ If you usually use [Custom Resolution Utility](https://www.monitortests.com/foru
 
     - Use the ``C:\prerequisites\change-resolution.lnk`` shortcut on Windows 8+
 
-## Configure Device Manager
+## Configure Services & Drivers
+
+The service list configuration is not intended for laptop, Wi-Fi & webcam functionality. I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming & use default services for everything else.
+
+- Download [Service-List-Builder](https://github.com/amitxv/Service-List-Builder/releases)
+
+- On Windows 7 & 8, remove ``MMCSS`` from the ``DependOnService`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Audiosrv``.
+
+- On 1607 & 1703, delete the ``ErrorControl`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Schedule`` to prevent an unresponsive explorer shell.
+
+- Once configured, use the following command. The scripts will be built in the ``build`` folder & NSudo is required to run the batch scripts.
+
+    ```bat
+    service-list-builder.exe --config C:\prerequisites\bare-services.ini
+    ```
+
+- Move the scripts somewhere safe such as in the C:\ drive & do not share it with other people as it is specific to your system.
+
+- Run ``Services-Disable.bat`` with NSudo, ensure ``Enable All Privileges`` is enabled (important).
+
+## Configure Audio Devices
 
 - Open the sound control panel, can be opened with win + r, ``mmsys.cpl``.
 
-    - Disable unused Playback & Recording devices 
+- Disable unused Playback & Recording devices.
     
-    - Disable audio enhancements as they waste cpu time
+- Disable audio enhancements as they waste cpu time.
 
-        - See [media/audio enhancements-benchmark.png](../media/audio%20enhancements-benchmark.png)
+    - See [media/audio enhancements-benchmark.png](../media/audio%20enhancements-benchmark.png)
     
-    - Disable Exclusive Mode in the Advanced section
+- Disable Exclusive Mode in the Advanced section.
 
-    - I like to set the sound scheme to no sounds in the Sounds tab
+- I also like to set the sound scheme to no sounds in the Sounds tab.
+
+## Configure Device Manager
+
+Many devices in device manager will appear with a yellow icon as we ran the disable services script, **DO NOT** disable any device with a yellow icon however tempting it may be as as this will completely defeat the purpose of building toggle scripts. I would **highly** advise against asking other people for help with this step as they are almost guaranteed to tell you to "disable devices with a yellow icon" but as previously mentioned & i can not exaggerate this enough, this will completely defeat the purpose of building toggle scripts. I have reasons & specific methods for everything within this guide.
 
 - Open device manager, ``View > Devices by connection``.
 
-- Disable write-cache buffer flushing on all drives in the ``Properties > Policies`` section.
+    - Disable write-cache buffer flushing on all drives in the ``Properties > Policies`` section.
 
-- Go to your ``network adapter > properties > advanced``, disable any power saving & wake features.
+    - Go to your ``network adapter > properties > advanced``, disable any power saving & wake features.
 
-    - Related: [research.md - How many Rss Queues do you need?](research.md#how-many-rss-queues-do-you-need)
+        - Related: [research.md - How many Rss Queues do you need?](research.md#how-many-rss-queues-do-you-need)
 
-- Disable the ``High Definition Audio Controller`` on the same PCI port as your GPU.
+    - Disable the ``High Definition Audio Controller`` on the same PCI port as your GPU.
 
-- Go to ``View > Resources by connection``
+- Go to ``View > Resources by connection``.
 
-    - Disable any **unneeded** devices that are using an IRQ or I/O resources, always ask if unsure, take your time on this step. Windows should not allow you to disable any required devices but ensure you do not accidentally disable another important device such as your main USB controller or similar...
+    - Disable any **unneeded** devices that are using an IRQ or I/O resources, always ask if unsure, take your time on this step. Windows should not allow you to disable any required devices but ensure you do not accidentally disable another important device such as your main USB controller or similar. Once again, **DO NOT** disable any device with a yellow icon
 
-        - If there are multiple of the same devices & you are unsure which one is in use, refer back to the tree structure in ``View > Devices by connection``. Note that a single device can use many resources
+        - If there are multiple of the same devices & you are unsure which one is in use, refer back to the tree structure in ``View > Devices by connection``. Note that a single device can use many resources. You can also use ``C:\prerequisites\MSIUtil.exe`` to check for duplicate, unneeded devices incase you accidently miss any with the confusing device manager tree structure
+
+- Run ``Services-Enable.bat`` with NSudo, ensure ``Enable All Privileges`` is enabled (important).
 
 - Open CMD & enter the command below to disable power saving for various devices in device manager.
 
@@ -461,33 +487,6 @@ If you usually use [Custom Resolution Utility](https://www.monitortests.com/foru
     ```bat
     C:\prerequisites\device-cleanup\DeviceCleanup.exe -s -n *
     ```
-
-## Configure Services & Drivers
-
-The service list configuration is not intended for laptop, Wi-Fi & webcam functionality. I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming & use default services for everything else.
-
-- Download [Service-List-Builder](https://github.com/amitxv/Service-List-Builder/releases)
-
-- On Windows 7 & 8, remove ``MMCSS`` from the ``DependOnService`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Audiosrv``.
-
-- On 1607 & 1703, delete the ``ErrorControl`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Schedule`` to prevent an unresponsive explorer shell.
-
-- Once configured, use the following command. The scripts will be built in the ``build`` folder & NSudo is required to run them.
-
-    ```bat
-    service-list-builder.exe --config C:\prerequisites\bare-services.ini
-    ```
-
-- Results after running the services disable script on my system:
-    
-    - See [media/bare-services-windows7.png](../media/bare-services-windows7.png)
-    - See [media/bare-services-windows10.png](../media/bare-services-windows10.png)
-
-- Some devices in Device Manager may appear with a yellow icon after running the disable services script, do not disable these devices as this will defeat the purpose of building toggle scripts.
-
-- Keep the scripts somewhere safe such as in the C drive & do not share it with other people as it is specific to your system.
-
-- Enable services for now so we can continue with the rest of the steps.
 
 ## Configure Control Panel
 
