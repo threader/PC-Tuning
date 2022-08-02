@@ -39,7 +39,7 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
     C:\prerequisites\scripts\remove-edge-onedrive.bat
     ```
 
-- Uninstall bloatware in ``Control Panel > Programs > Programs & Features`` (do not uninstall the vcredists).
+- Uninstall bloatware in ``Control Panel > Programs > Programs & Features``.
 
     - In the ``Turn Windows features on or off`` section, disable everything **except** for:
 
@@ -53,9 +53,11 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
 - Windows 10+ Only:
 
-    - Uninstall bloatware in ``Settings > Apps > Apps & Features`` (do not uninstall the vcredists)
+    - Uninstall bloatware in ``Settings > Apps > Apps & Features``
 
         - In the ``Optional features`` section, uninstall everything apart from ``Microsoft Paint``, ``Notepad`` & ``WordPad``
+
+        - Restart your PC once before following the next steps (important)
 
 - ## Removing Bloatware with Linux
 
@@ -77,9 +79,9 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
             - ``/ProgramData/Packages``
 
-            - ``/Users/[USERNAME]/AppData/Local/Microsoft/WindowsApps``
+            - ``/Users/<username>/AppData/Local/Microsoft/WindowsApps``
 
-        - In ``/Users/[USERNAME]/AppData/Local/Packages`` delete everything except:
+        - In ``/Users/<username>/AppData/Local/Packages`` delete everything except:
 
             - **Microsoft.Windows.ShellExperienceHost_cw5n1h2txyewy**
             - **windows.immersivecontrolpanel_cw5n1h2txyewy**
@@ -95,8 +97,6 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
     ```bat
     C:\prerequisites\scripts\scheduled-tasks\disable-tasks.exe
     ```
-
-- Open ``C:\prerequisites\sysinternals\Autoruns.exe`` & delete all obsolete entries with a yellow label. Run with NSudo if you encounter any permission errors.
 
 ## Install [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist/releases)
 
@@ -117,6 +117,22 @@ C:\prerequisites\VisualCppRedist_AIO_x86_x64.exe
 - Restart your PC (important).
 
 - You may establish an internet connection after you have restarted as the Windows update policies will take effect.
+
+## Install [OpenShell](https://github.com/Open-Shell/Open-Shell-Menu) (Windows 8+)
+
+This step is required as we removed the spyware stock start menu
+
+- Run ``OpenShellSetup.exe`` in ``C:\prerequisites\open-shell``
+
+    - Only install the ``Open-Shell Menu``. Disable everything else to prevent installing bloatware
+
+- I have included a registry file that will apply a basic OpenShell skin along with a few other settings, feel free to use your own
+
+- Create a shortcut in win + r, ``shell:startup`` pointing to ``C:\Program Files\Open-Shell\StartMenu.exe``
+
+- Windows 8 Only:
+
+    - Open ``"C:\Program Files\Open-Shell\Start Menu Settings.lnk"``, enable ``Show all settings`` then go to the Windows 8 Settings section & set ``Disable active corners`` to All
 
 ## Miscellaneous
 
@@ -146,6 +162,8 @@ C:\prerequisites\VisualCppRedist_AIO_x86_x64.exe
 
     - Note: This section is named ``Security & Maintenance`` on Windows 10+
 
+- Restart your PC once before following the next steps (important)
+
 ## Installing Drivers
 
 - Install any drivers your system requires, avoid installing chipset drivers.
@@ -154,7 +172,7 @@ C:\prerequisites\VisualCppRedist_AIO_x86_x64.exe
 
 - I would recommend updating & installing ethernet, USB, sata (required on Windows 7 as enabling MSI on the stock sata driver will result in a BSOD), NVME & potentially the audio controller drivers.
 
-## Installing Recommended Packages
+## Installing Recommended Packages & Programs
 
 - Install [7-Zip](https://www.7-zip.org).
 
@@ -235,22 +253,6 @@ C:\prerequisites\VisualCppRedist_AIO_x86_x64.exe
 - Media Player.
 
     - [mpv](https://mpv.io) or [mpc-hc](https://mpc-hc.org) ([alternative link](https://github.com/clsid2/mpc-hc)) recommended
-
-- Install [OpenShell](https://github.com/Open-Shell/Open-Shell-Menu) (Windows 8+).
-
-    - This is required as we removed the bloated stock start menu
-
-    - Run ``OpenShellSetup.exe`` in ``C:\prerequisites\open-shell``
-
-        - Only install the ``Open-Shell Menu``. Disable everything else to prevent installing bloatware
-
-    - I have included a registry file that will apply a basic OpenShell skin along with a few other settings, feel free to use your own
-
-    - Create a shortcut in win + r, ``shell:startup`` pointing to ``C:\Program Files\Open-Shell\StartMenu.exe``
-
-    - Windows 8 Only:
-
-        - Open ``"C:\Program Files\Open-Shell\Start Menu Settings.lnk"``, enable ``Show all settings`` then go to the Windows 8 Settings section & set ``Disable active corners`` to All
 
 ## Replace Task Manager with Process Explorer
 
@@ -416,7 +418,7 @@ If you usually use [Custom Resolution Utility](https://www.monitortests.com/foru
 
 - Ensure your resolution is configured properly in Display Adapter Settings.
 
-    - Use the ``C:\prerequisites\Change Resolution.lnk`` shortcut on Windows 8+
+    - Use the ``C:\prerequisites\change-resolution.lnk`` shortcut on Windows 8+
 
 ## Configure Device Manager
 
@@ -473,7 +475,7 @@ The service list configuration is not intended for laptop, Wi-Fi & webcam functi
 - Once configured, use the following command. The scripts will be built in the ``build`` folder & NSudo is required to run them.
 
     ```bat
-    service-list-builder.exe --config bare_services.ini
+    service-list-builder.exe --config C:\prerequisites\bare-services.ini
     ```
 
 - Results after running the services disable script on my system:
@@ -651,7 +653,7 @@ Now is a good time to install whatever programs you commonly use to prepare us f
         reg.exe add "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f
         ```
 
-- Open ```C:\prerequisites\sysinternals\Autoruns.exe``` & remove any unwanted programs such as game launchers from starting automatically.
+- Open ```C:\prerequisites\sysinternals\Autoruns.exe``` & remove any unwanted programs such as game launchers from starting automatically. Remove all obsolete entries with a yellow label, run with NSudo if you encounter any permission errors.
 
 - Configure Disk Cleanup:
 
