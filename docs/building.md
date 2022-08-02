@@ -100,7 +100,7 @@ Since it is quite tedious to obtain a Windows 10+ image with no updates, we can 
 
     ```bat
     DISM /Get-WimInfo /WimFile:"%EXTRACTED_IMAGE%\sources\install.wim"
-    DISM /Delete-Image /ImageFile:"%EXTRACTED_IMAGE%\sources\install.wim" /Index:[INDEX]
+    DISM /Delete-Image /ImageFile:"%EXTRACTED_IMAGE%\sources\install.wim" /Index:<index>
     ```
 
 - Once completed, the only edition to exist should be the desired edition at index 1.
