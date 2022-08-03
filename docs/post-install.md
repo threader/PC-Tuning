@@ -572,39 +572,6 @@ Feel free to skip this step as it is not required, Microsoft fixed the standby l
 
 - Avoid using auto cleaning apps like ISLC/Memreduct, they consume alot of resources due to a frequent polling timer interval & cause stuttering due to autoclearing memory.
 
-## Optimizing the File System
-
-- Open CMD & enter the commands below.
-
-    - Disables the creation of 8.3 character-length file names on FAT- & NTFS-formatted volumes
-
-        ```bat
-        fsutil behavior set disable8dot3 1
-
-    - Disable the encryption of folders & files on NTFS volumes
-
-        ```bat
-        fsutil behavior set disableencryption 1
-        ```
-
-    - Disable updates to the Last Access Time stamp on each directory when directories are listed on an NTFS volume
-
-        ```bat
-        fsutil behavior set disablelastaccess 1
-        ```
-
-    - Configure NTFS quota violations to be reported in the system log every 3 hours instead of every hour
-
-        ```bat
-        fsutil behavior set quotanotify 10800
-        ```
-
-    - Enables delete notifications (also known as trim or unmap), should be enabled by default but here for safe measure
-
-        ```bat
-        fsutil behavior set disabledeletenotify 0
-        ```
-
 ## Disable Hidden Power Saving
 
 All hidden means is not visible to the user, many driver INF configuration files contain these registry entries that are clearly labeled power saving, however I have not been able to prove the benifit of this script so feel free to skip this step.
