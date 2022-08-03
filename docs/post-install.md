@@ -554,7 +554,7 @@ By default, CPU 0 handles the majority of DPCs & interrupts for several devices 
 
 - You can ensure interrupt affinity policies have been configured correctly by analyzing a xperf trace while the device is busy
 
-## Memory Cleaner (Windows 10 1909 & Under)
+## Memory Cleaner & Timer Resolution (Windows 10 1909 & Under)
 
 Feel free to skip this step as it is not required, Microsoft fixed the standby list memory management issues in a later version of Windows. [Memory Cleaner](https://github.com/danskee/MemoryCleaner) ([alternative link](https://git.zusier.xyz/Zusier/MemoryCleaner)) also allows us to set the kernel timer-resolution globally however the behaviour of timer-resolution changed in 2004+ as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change/), rendering this trick useless.
 
