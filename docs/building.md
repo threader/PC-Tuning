@@ -12,7 +12,7 @@
 
 - Latest Servicing Stack Update for the host machine.
 
-    - Configuring an image while the host's DISM version is outdated will likely result in errors. Manually search & download the latest SSU from the update [microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) & use the following command to apply it to the host's machine.
+    - Configuring an image while the host's DISM version is outdated will likely result in errors. Manually search & download the latest SSU from the update [microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx). Once downloaded, extract the .cab from the .msu & use the following command to apply it to the host's machine.
 
         ```bat
         DISM /Online /Add-Package /PackagePath=<path\to\latest\ssu>
