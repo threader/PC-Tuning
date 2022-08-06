@@ -40,7 +40,7 @@ pip install pyinstaller==5.1
 copy /y "!CURRENT_DIR!\apply-registry.py" "!PROJECT_DIR!"
 cd "!PROJECT_DIR!"
 
-pyinstaller "apply-registry.py" --onefile --uac-admin
+pyinstaller "apply-registry.py" --onefile
 
 call "!BUILD_ENV!\Scripts\deactivate.bat"
 

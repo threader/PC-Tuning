@@ -74,7 +74,7 @@ Since it is quite tedious to obtain a Windows 10+ image with no updates, we can 
 
 - Extract the contents of the .iso to a directory of your choice with 7-Zip, In the examples below, I am using C:\Win10_21H2_English_x64.
 
-- Open CMD as Administrator & configure these variables below. These variables are temporary for this session & will be discarded if you close the terminal window so ensure to keep it open throughout the build process.
+- Open CMD as administrator & configure these variables below. These variables are temporary for this session & will be discarded if you close the terminal window so ensure to keep it open throughout the build process.
 
     ```bat
     set "EXTRACTED_IMAGE=C:\Win10_21H2_English_x64"

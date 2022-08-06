@@ -40,7 +40,7 @@ pip install pyinstaller==5.1
 copy /y "!CURRENT_DIR!\disable-tasks.py" "!PROJECT_DIR!"
 cd "!PROJECT_DIR!"
 
-pyinstaller "disable-tasks.py" --onefile --uac-admin
+pyinstaller "disable-tasks.py" --onefile
 
 call "!BUILD_ENV!\Scripts\deactivate.bat"
 

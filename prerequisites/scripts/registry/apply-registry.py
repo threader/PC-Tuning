@@ -2,6 +2,7 @@ import sys
 import os
 import subprocess
 import argparse
+import ctypes
 
 nsudo_path = "C:\\prerequisites\\nsudo\\NSudo.exe"
 nsudo_args = [nsudo_path, "-U:T", "-P:E", "-Wait"]
@@ -13,8 +14,17 @@ def apply_registry(file_path: str) -> None:
     subprocess.run([*nsudo_args, "regedit.exe", "/s", file_path], check=False)
 
 
-def main():
+def is_admin() -> bool:
+    """check if script is ran with admin privileges"""
+    return ctypes.windll.shell32.IsUserAnAdmin() != 0
+
+
+def main() -> int:
     """cli entrypoint"""
+
+    if not is_admin():
+        print("error: administrator privileges required")
+        return 1
 
     registry_dir = "C:\\prerequisites\\scripts\\registry"
 
