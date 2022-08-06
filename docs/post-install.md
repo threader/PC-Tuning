@@ -63,11 +63,11 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
     - Boot into Ventoy on your USB in BIOS & select the Linux Mint image. Select ``Start Linux Mint`` when promted
 
-    - Open the file explorer which is pinned to the taskbar & in the left pane, navigate to the volume Windows is installed on. You can identify this by finding the drive that has the ``debloat.sh`` script in
+    - Open the file explorer which is pinned to the taskbar & in the left pane, navigate to the volume Windows is installed on. You can identify this by finding the drive that has the ``win-debloat.sh`` script in
 
     - Right click an empty space & select ``Open in Terminal``. This will open the bash terminal in the directory of the script for us so we do not need to CD to it manually
 
-    - Type ``sudo bash debloat.sh`` to run the script & wait for it to finish. Ignore any ``No such file or directory`` errors
+    - Type ``sudo bash win-debloat.sh`` to run the script & wait for it to finish. Ignore any ``No such file or directory`` errors
 
     - Windows 8+ Only:
 
@@ -524,7 +524,7 @@ All hidden means is not visible to the user, many driver INF configuration files
 Message signaled interrupts (MSIs) are faster than traditional line-based interrupts & may also resolve the issue of shared interrupts which are often the cause of high interrupt latency & stability
 issues [[1](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitations/Windows%20Internals%20Part%201_6th%20Edition.pdf)].
 
-- Open ``C:\prerequisites\MSIUtil.exe``
+- Open ``C:\prerequisites\MSIUtil.exe``.
 
     - Enable Message Signaled Interrupts (MSI) on devices that support it
 
@@ -532,23 +532,23 @@ issues [[1](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitatio
         
     - Be careful as to what you choose to prioritize as more harm than good may be done. E.g you will likely stutter in a open-world game that utilizes texture streaming if the GPU IRQ priority is set higher than the storage controller priority
 
-- Restart your PC, you can verify if a device is utilizing MSIs by checking if it has a negative IRQ in MSIUtil
+- Restart your PC, you can verify if a device is utilizing MSIs by checking if it has a negative IRQ in MSIUtil.
 
-- Ensure that there is no IRQ sharing on your system by checking win + r, ``msinfo32`` ``Hardware Resources > Conflicts/Sharing`` section
+- Ensure that there is no IRQ sharing on your system by checking win + r, ``msinfo32`` ``Hardware Resources > Conflicts/Sharing`` section.
 
 ## Interrupt Affinity
 
 By default, CPU 0 handles the majority of DPCs & interrupts for several devices which can be viewed in a xperf dpcisr trace. This is not desirable as there will be a latency penalty because many processes & system activities are scheduled on the same core. We can use ``C:\prerequisites\Interrupt-Affinity-Tool.exe`` to set an interrupt affinity policy to the USB, GPU & NIC driver, which are few of many devices responsible for the most DPCs/ISRs, to offload them onto another core. They all require testing as you may do more harm than good if it is set to a weaker or equally as busy core.
 
-- The correct device can be identified by cross-checking the ``Location Info`` with the ``Location`` in the ``properties > general`` section of a device in device manager
+- The correct device can be identified by cross-checking the ``Location Info`` with the ``Location`` in the ``properties > general`` section of a device in device manager.
 
-- Ideally you should use [AutoGpuAffinity](https://github.com/amitxv/AutoGpuAffinity) to benchmark the GPU affinity
+- Ideally you should use [AutoGpuAffinity](https://github.com/amitxv/AutoGpuAffinity) to benchmark the GPU affinity.
 
-- Use [Mouse Tester](https://github.com/microe1/MouseTester) to compare polling stability between the USB controller on different cores
+- Use [Mouse Tester](https://github.com/microe1/MouseTester) to compare polling stability between the USB controller on different cores.
 
     - Ideally this should be done with some sort of realistic load such as a game running in the background as idle benchmarks may be misleading, but as we do not have any games installed yet, you can come back & test this later
 
-- Note: Restart your PC instead of an individual driver to avoid issues
+- Note: Restart your PC instead of an individual driver to avoid issues.
 
 - Open CMD & enter the command below to configure what CPU handles DPCs/ISRs for the network driver. Ensure to change the driver key to suit your needs.
 
@@ -558,7 +558,7 @@ By default, CPU 0 handles the majority of DPCs & interrupts for several devices 
         reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000" /v "*RssBaseProcNumber" /t REG_SZ /d "2" /f
         ```
 
-- You can ensure interrupt affinity policies have been configured correctly by analyzing a xperf trace while the device is busy
+- You can ensure interrupt affinity policies have been configured correctly by analyzing a xperf trace while the device is busy.
 
 ## Memory Cleaner & Timer Resolution (Windows 10 1909 & Under)
 
@@ -590,13 +590,13 @@ Now is a good time to install whatever programs you commonly use to prepare us f
 
     - Related: [research.md - How can you verify if a DSCP QoS policy is working?](research.md#how-can-you-verify-if-a-dscp-policy-is-working)
 
-- Run the ``C:\prerequisites\scripts\fse-qos-for-game-exes.bat`` script & follow the instructions in the console output
+- Run the ``C:\prerequisites\scripts\fse-qos-for-game-exes.bat`` script & follow the instructions in the console output.
 
 ## Cleanup
 
-- Clear the PATH user environment variable of locations pointing to Windows bloatware folders
+- Clear the PATH user environment variable of locations pointing to Windows bloatware folders.
 
-- Some locations you may want to review for leftover bloat & unwanted shortcuts
+- Some locations you may want to review for leftover bloat & unwanted shortcuts.
 
     - ``"%userprofile%\AppData"``
     - ``"%userprofile%\AppData\Local\Temp"``
@@ -610,7 +610,7 @@ Now is a good time to install whatever programs you commonly use to prepare us f
     - ``"C:\Windows\SoftwareDistribution\download"``
     - ``"C:\Windows\Temp"``
 
-- Reset Firewall rules:
+- Reset Firewall rules.
 
     - Open CMD & enter the command below
 
@@ -621,7 +621,7 @@ Now is a good time to install whatever programs you commonly use to prepare us f
 
 - Open ```C:\prerequisites\sysinternals\Autoruns.exe``` & remove any unwanted programs such as game launchers from starting automatically. Remove all obsolete entries with a yellow label, run with NSudo if you encounter any permission errors.
 
-- Configure Disk Cleanup:
+- Configure Disk Cleanup.
 
     - Open CMD & enter the command below, tick all of the boxes
 

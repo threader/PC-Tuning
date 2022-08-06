@@ -175,7 +175,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
     explorer "%MOUNT_DIR%"
     ```
 
-- Clone the repository & place the ``prerequisites`` folder & ``debloat.sh`` in the mounted directory.
+- Clone the repository & place the ``prerequisites`` folder & ``win-debloat.sh`` in the mounted directory.
 
 ## Remove Provisioned Appx Bloatware (Windows 8+)
 
