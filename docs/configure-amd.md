@@ -12,21 +12,21 @@
 
         ```bat
         set "key=0000"
-        set "path=HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}"
+        set "reg_path=HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}"
 
-        Reg.exe add "%path%\%key%" /v "DisableDMACopy" /t REG_DWORD /d "1" /f
-        Reg.exe add "%path%\%key%" /v "DisableBlockWrite" /t REG_DWORD /d "0" /f
-        Reg.exe add "%path%\%key%" /v "StutterMode" /t REG_DWORD /d "0" /f
-        Reg.exe add "%path%\%key%" /v "EnableUlps" /t REG_DWORD /d "0" /f
-        Reg.exe add "%path%\%key%" /v "PP_SclkDeepSleepDisable" /t REG_DWORD /d "1" /f
-        Reg.exe add "%path%\%key%" /v "PP_ThermalAutoThrottlingEnable" /t REG_DWORD /d "0" /f
-        Reg.exe add "%path%\%key%" /v "DisableDrmdmaPowerGating" /t REG_DWORD /d "1" /f
-        Reg.exe add "%path%\%key%\UMD" /v "Main3D_DEF" /t REG_SZ /d "1" /f
-        Reg.exe add "%path%\%key%\UMD" /v "Main3D" /t REG_BINARY /d "3100" /f
-        Reg.exe add "%path%\%key%\UMD" /v "FlipQueueSize" /t REG_BINARY /d "3100" /f
-        Reg.exe add "%path%\%key%\UMD" /v "ShaderCache" /t REG_BINARY /d "3200" /f
-        Reg.exe add "%path%\%key%\UMD" /v "Tessellation_OPTION" /t REG_BINARY /d "3200" /f
-        Reg.exe add "%path%\%key%\UMD" /v "Tessellation" /t REG_BINARY /d "3100" /f
-        Reg.exe add "%path%\%key%\UMD" /v "VSyncControl" /t REG_BINARY /d "3000" /f
-        Reg.exe add "%path%\%key%\UMD" /v "TFQ" /t REG_BINARY /d "3200" /f
+        Reg.exe add "%reg_path%\%key%" /v "DisableDMACopy" /t REG_DWORD /d "1" /f
+        Reg.exe add "%reg_path%\%key%" /v "DisableBlockWrite" /t REG_DWORD /d "0" /f
+        Reg.exe add "%reg_path%\%key%" /v "StutterMode" /t REG_DWORD /d "0" /f
+        Reg.exe add "%reg_path%\%key%" /v "EnableUlps" /t REG_DWORD /d "0" /f
+        Reg.exe add "%reg_path%\%key%" /v "PP_SclkDeepSleepDisable" /t REG_DWORD /d "1" /f
+        Reg.exe add "%reg_path%\%key%" /v "PP_ThermalAutoThrottlingEnable" /t REG_DWORD /d "0" /f
+        Reg.exe add "%reg_path%\%key%" /v "DisableDrmdmaPowerGating" /t REG_DWORD /d "1" /f
+        Reg.exe add "%reg_path%\%key%\UMD" /v "Main3D_DEF" /t REG_SZ /d "1" /f
+        Reg.exe add "%reg_path%\%key%\UMD" /v "Main3D" /t REG_BINARY /d "3100" /f
+        Reg.exe add "%reg_path%\%key%\UMD" /v "FlipQueueSize" /t REG_BINARY /d "3100" /f
+        Reg.exe add "%reg_path%\%key%\UMD" /v "ShaderCache" /t REG_BINARY /d "3200" /f
+        Reg.exe add "%reg_path%\%key%\UMD" /v "Tessellation_OPTION" /t REG_BINARY /d "3200" /f
+        Reg.exe add "%reg_path%\%key%\UMD" /v "Tessellation" /t REG_BINARY /d "3100" /f
+        Reg.exe add "%reg_path%\%key%\UMD" /v "VSyncControl" /t REG_BINARY /d "3000" /f
+        Reg.exe add "%reg_path%\%key%\UMD" /v "TFQ" /t REG_BINARY /d "3200" /f
         ```
