@@ -1,0 +1,7 @@
+Windows Registry Editor Version 5.00
+
+; disable windows update
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+"DoNotConnectToWindowsUpdateInternetLocations"=dword:00000001
+"DisableOSUpgrade"=dword:00000001

@@ -317,7 +317,7 @@ This step is not optional, pcw.sys will be disabled which breaks the stock Task 
 
 ## Configure Memory Management Settings (Windows 8+)
 
-- Open powershell & enter the command below.
+- Open PowerShell & enter the command below.
 
     ```powershell
     Get-MMAgent
@@ -333,7 +333,7 @@ This step is not optional, pcw.sys will be disabled which breaks the stock Task 
 
 - Run the ``C:\prerequisites\scripts\disable-process-mitigations.bat`` script to disable [process mitigations](https://docs.microsoft.com/en-us/powershell/module/processmitigations/set-processmitigation?view=windowsserver2019-ps).
 
-    - Effects can be viewed with the command below in powershell
+    - Effects can be viewed with the command below in PowerShell
 
         ```powershell
         Get-ProcessMitigation -System
@@ -400,7 +400,7 @@ If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/gra
 
     start "" "!afterburner_path!" -Profile!profile!
     timeout -t 8 /nobreak
-    powershell -command stop-process -name "MSIAfterburner" -force
+    PowerShell -Command Stop-Process -Name "MSIAfterburner" -Force
     exit /b 0
     ```
 
@@ -513,6 +513,12 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 
     - USB Selective Suspend - Disabled
 
+## Disable Hidden Power Saving
+
+All hidden means is not visible to the user, many driver INF configuration files contain these registry entries that are clearly labeled power saving, however I have not been able to prove the benifit of this script so feel free to skip this step.
+
+- Run the ``C:\prerequisites\scripts\disable-hidden-powersaving.bat`` script
+
 ## Message Signaled Interrupts
 
 Message signaled interrupts (MSIs) are faster than traditional line-based interrupts & may also resolve the issue of shared interrupts which are often the cause of high interrupt latency & stability
@@ -571,12 +577,6 @@ Feel free to skip this step as it is not required, Microsoft fixed the standby l
         - Check ``Start minimized`` & ``Start timer resolution automatically``
 
 - Avoid using auto cleaning apps like ISLC/Memreduct, they consume alot of resources due to a frequent polling timer interval & cause stuttering due to autoclearing memory.
-
-## Disable Hidden Power Saving
-
-All hidden means is not visible to the user, many driver INF configuration files contain these registry entries that are clearly labeled power saving, however I have not been able to prove the benifit of this script so feel free to skip this step.
-
-- Run the ``C:\prerequisites\scripts\disable-hidden-powersaving.bat`` script
 
 ## Installing Games & Applications
 

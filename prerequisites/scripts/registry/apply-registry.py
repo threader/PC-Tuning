@@ -8,13 +8,13 @@ nsudo_args = [nsudo_path, "-U:T", "-P:E", "-Wait"]
 
 
 def apply_registry(file_path: str) -> None:
-    """Function to merge registry files"""
+    """function to merge registry files"""
     subprocess.run(["regedit.exe", "/s", file_path], check=False)
     subprocess.run([*nsudo_args, "regedit.exe", "/s", file_path], check=False)
 
 
 def main():
-    """CLI Entrypoint"""
+    """cli entrypoint"""
 
     registry_dir = "C:\\prerequisites\\scripts\\registry"
 
@@ -34,8 +34,9 @@ def main():
         return 1
 
     registry_files = [
-        "registry.reg",
+        "windows7+.reg",
         "windows8.reg",
+        "windows8+.reg",
         "windows10+.reg"
     ]
 
@@ -43,15 +44,17 @@ def main():
         print("error: registry files not found")
         return 1
 
-    apply_registry(f"{registry_dir}\\registry.reg")
-
     print(f"info: applying registry file for windows {args.winver}")
 
     if args.winver == 7:
-        pass
+        apply_registry(f"{registry_dir}\\windows7+.reg")
     elif args.winver == 8:
+        apply_registry(f"{registry_dir}\\windows7+.reg")
         apply_registry(f"{registry_dir}\\windows8.reg")
+        apply_registry(f"{registry_dir}\\windows8+.reg")
     elif args.winver == 10:
+        apply_registry(f"{registry_dir}\\windows7+.reg")
+        apply_registry(f"{registry_dir}\\windows8+.reg")
         apply_registry(f"{registry_dir}\\windows10+.reg")
 
     print("info: done")

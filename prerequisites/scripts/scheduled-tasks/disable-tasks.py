@@ -5,7 +5,7 @@ import io
 
 
 def main():
-    """CLI Entrypoint"""
+    """cli entrypoint"""
 
     nsudo_path = "C:\\prerequisites\\nsudo\\NSudo.exe"
     if not os.path.exists(nsudo_path):
