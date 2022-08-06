@@ -252,7 +252,7 @@ This step is required as we removed the spyware stock start menu
 
 - Media Player.
 
-    - [mpv](https://mpv.io) or [mpc-hc](https://mpc-hc.org) ([alternative link](https://github.com/clsid2/mpc-hc)) recommended
+    - [mpv](https://mpv.io) / [mpv.net](https://github.com/stax76/mpv.net) or [mpc-hc](https://mpc-hc.org) ([alternative link](https://github.com/clsid2/mpc-hc)) recommended
 
 ## Replace Task Manager with Process Explorer
 
