@@ -41,7 +41,7 @@ I recommend using the 472.12 ([Windows 7/Windows 8](https://www.nvidia.com/en-us
     reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup" /v "SendTelemetryData" /t REG_DWORD /d 0 /f
     ```
 
-## Disable HDCP
+## Disable HDCP (required for DRM content)
 
 HDCP Can be disabled with the [following registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-are-there-any-configuration-options-that-allow-you-to-disable-hdcp-when-using-nvidia-based-graphics-cards) (reboot required), ensure to change the driver key to suit your needs:
 
@@ -55,7 +55,7 @@ HDCP Can be disabled with the [following registry key](https://github.com/djdall
 
 - Enable ``Desktop > Enable Developer Settings``, I also like to disable the notification tray icon
 
-- In the ``3D Settings > Manage 3D settings`` section, configure the following (don't change anything else):
+- In the ``3D Settings > Manage 3D settings`` section, configure the following:
 
     - **Anisotropic filtering** - Off
 

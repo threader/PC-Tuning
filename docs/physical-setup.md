@@ -38,7 +38,7 @@
 
     - On AMD systems with newer AGESA firmware, disabling this setting will have no effect
 
-- Disable integrated graphics if not in use.
+- Disable the integrated GPU if not in use.
 
 - Windows 7 requires Compatibility Support Module (CSM) to be enabled.
 
