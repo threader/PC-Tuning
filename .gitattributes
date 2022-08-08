@@ -1,2 +1,2 @@
-perform LF normalization
+# Perform LF normalization
 win-debloat.sh text eol=lf
