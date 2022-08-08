@@ -1,6 +1,8 @@
 @echo off
 setlocal EnableDelayedExpansion
 
+dism > nul 2>&1 || echo error: administrator privileges required && pause && exit /b 1
+
 where xperf.exe
 if not !errorlevel! == 0 (
     echo error: xperf not found in path
@@ -8,13 +10,13 @@ if not !errorlevel! == 0 (
     exit /b 1
 )
 
-echo starting in 5s
+echo info: starting in 5s
 timeout -t 5
 xperf -on base+interrupt+dpc
-echo recording for 5s
+echo info: recording for 5s
 timeout -t 5
 xperf -d "!userprofile!\Desktop\kernel.etl"
-echo recording stopped
+echo info: recording stopped
 xperf -quiet -i "!userprofile!\Desktop\kernel.etl" -o "!userprofile!\Desktop\report.txt" -a dpcisr
 pause
 exit /b 0

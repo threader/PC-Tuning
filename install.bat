@@ -1,6 +1,8 @@
 @echo off
 setlocal EnableDelayedExpansion
 
+dism > nul 2>&1 || echo error: administrator privileges required && pause && exit /b 1
+
 pushd "%~dp0"
 
 set "install_wim="
@@ -37,8 +39,8 @@ if defined install_dir (
 		)
 
 		if !err! == 0 (
-			bcdboot "!install_dir!:\Windows"
-			echo info: reboot pc
+			bcdboot "!install_dir!:\Windows" > nul 2>&1
+			echo info: restart pc
 			pause
 			exit /b 0
 		) else (

@@ -76,6 +76,4 @@
 
 - It is highly recommended that you ensure your CPU, RAM & GPU are completely stable before configuring a new operating system (or using your PC at all) as crashes can lead to data corruption or irreversible damage to hardware.
 
-- Stress testing involves running a heavy load on a specific hardware component to ensure that it can withstand the load without crashing, temperatures of the component will increase during this stage [[1](https://youtu.be/CNj0x_R20tY)].
-
-- There are many tools to stress different components, & every tool may have different algorithms which is why it is a good idea to use a variety of tools. There are countless factors that contribute to stability such as temperature, power quality, quality of VRMs, silicon lottery etc. It is also important to stress the component for a sufficient amount of time.
+- Stress testing involves running a heavy load on a specific hardware component to ensure that it can withstand the load without crashing, temperatures of the component will increase during this stage [[1](https://youtu.be/CNj0x_R20tY)]. There are many tools to stress different components, & every tool may have different algorithms which is why it is a good idea to use a variety of tools. There are countless factors that contribute to stability such as temperature, power quality, quality of VRMs, silicon lottery etc. It is also important to stress the component for a sufficient amount of time

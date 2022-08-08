@@ -1,6 +1,8 @@
 @echo off
 setlocal EnableDelayedExpansion
 
+dism > nul 2>&1 || echo error: administrator privileges required && pause && exit /b 1
+
 echo info: setting PowerShell executionpolicy to unrestricted
 PowerShell Set-ExecutionPolicy Unrestricted -force
 

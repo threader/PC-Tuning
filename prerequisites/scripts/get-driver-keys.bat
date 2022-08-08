@@ -1,7 +1,7 @@
 @echo off
 setlocal EnableDelayedExpansion
 
-sc query Winmgmt | findstr "RUNNING"
+sc query Winmgmt | findstr "RUNNING" > nul 2>&1
 if not !errorlevel! == 0 (
     echo error: WMI Service is disabled
     pause

@@ -1,6 +1,8 @@
 @echo off
 setlocal EnableDelayedExpansion
 
+dism > nul 2>&1 || echo error: administrator privileges required && pause && exit /b 1
+
 if exist "C:\Program Files (x86)\Microsoft\Edge\Application" (
     echo info: uninstalling microsoft edge
     for /f "delims=" %%a in ('where /r "C:\Program Files (x86)\Microsoft\Edge\Application" *setup.exe*') do (
