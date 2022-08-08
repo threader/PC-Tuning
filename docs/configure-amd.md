@@ -16,9 +16,9 @@ I no longer have or use a AMD GPU so this page may be outdated as time passes.
 
     - See [media/replace-ccc2_install-example.png](../media/replace-ccc2_install-example.png)
 
-- Open device manager and install the driver by right clicking the display adapter, browse my computer for driver software & select the driver folder.
+- Open device manager & install the driver by right clicking the display adapter, browse my computer for driver software & select the driver folder.
 
-- Once the driver has installed, extract ``ccc2_install.exe`` with 7-Zip and run ``.\CN\cnext\cnext64\ccc-next64.msi`` to install the radeon software control panel.
+- Once the driver has installed, extract ``ccc2_install.exe`` with 7-Zip & run ``.\CN\cnext\cnext64\ccc-next64.msi`` to install the radeon software control panel.
 
 - Ensure to disable the bloat AMD services in win + r, ``services.msc``.
 
@@ -34,7 +34,7 @@ I no longer have or use a AMD GPU so this page may be outdated as time passes.
 
 - In the ``Settings > Display`` section, configure the following:
 
-    - FreeSync - Has the potential to increase input latency due to extra processing however it has supposedly improved over time so feel free to test it yourself. Your mileage may vary.
+    - FreeSync - Has the potential to increase input latency due to extra processing however it has supposedly improved over time so feel free to test it yourself, your mileage may vary.
 
     - **GPU Scaling** - Off
     
@@ -46,7 +46,7 @@ I no longer have or use a AMD GPU so this page may be outdated as time passes.
 
 ## Configure Flip Queue Size & ULPS
 
-The following commands disable ultra low power states and set the flip queue size to 1.
+The following commands disable ultra low power states & set the flip queue size to 1.
 
 - Run ``C:\prerequisites\scripts\get-driver-keys.bat`` to get the driver keys on your system
 

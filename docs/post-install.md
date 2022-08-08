@@ -347,7 +347,7 @@ This step is not optional, pcw.sys will be disabled which breaks the stock Task 
 
 - Disable all items except ``QoS Packet Scheduler`` & ``Internet Protocol Version 4 (TCP/IPv4)``.
 
-- [Configure a Static IP address](https://youtu.be/5iRp1Nug0PU?t=36), ths is required as we will be disabling the network services that waste cpu time.
+- [Configure a Static IP address](https://youtu.be/5iRp1Nug0PU?t=36), ths is required as we will be disabling the network services that waste CPU time.
 
 - Disable ``NetBIOS over TCP/IP`` in ``General > Advanced > WINS`` to [prevent unnecessary system listening](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/DOCS/NETWORK/README.md).
 
@@ -446,7 +446,7 @@ The service list configuration is not intended for laptop, Wi-Fi & webcam functi
 
 - Disable unused Playback & Recording devices.
     
-- Disable audio enhancements as they waste cpu time.
+- Disable audio enhancements as they waste CPU time.
 
     - See [media/audio enhancements-benchmark.png](../media/audio%20enhancements-benchmark.png)
     
@@ -650,7 +650,7 @@ Now is a good time to install whatever programs you commonly use to prepare us f
 
         - Drag & drop the scripts in ``C:\prerequisites\scripts\idle-scripts`` to the desktop for easy access. This way you can disable idle before launching a game & re-enable it after you close your game
 
-    - Kill other processes that waste cpu time such as game clients
+    - Kill other processes that waste CPU time such as game clients
 
 - Don't run random tweaks, tweaking programs or fall for the "fps boost" marketing nonsense. If you have a question about a specific option or setting, just ask.
 
@@ -658,9 +658,13 @@ Now is a good time to install whatever programs you commonly use to prepare us f
 
 - Ensure to scan files with [VirusTotal](https://www.virustotal.com/gui/home/upload) before running them.
 
-- Cap your framerate at a multiple of your monitor refresh rate to prevent frame mistiming [[1](https://youtu.be/_73gFgNrYVQ)]. E.g possible framerate caps with a 144hz monitor include 72, 144, 288, 432 ...
+- Cap your framerate at a multiple of your monitor refresh rate to prevent frame mistiming [[1](https://youtu.be/_73gFgNrYVQ)]. E.g possible framerate caps with a 144hz monitor include 72, 144, 288, 432 etc. Consider capping at your minimum fps threshold for increased smoothness & ensure the GPU is not maxed out as lower GPU utilization reduces system latency [[1](https://youtu.be/8ZRuFaFZh5M?t=859), [2](https://youtu.be/7CKnJ5ujL_Q?t=333), [3](https://youtu.be/N8ZUqT6Tfiw?t=74)].
+
+- Consider [NVIDIA Reflex](https://www.nvidia.com/en-gb/geforce/news/reflex-low-latency-platform) if your game has support for it.
 
 - Capping your framerate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the ingame limiter will result in consistent frametimes & a smoother experience but at the cost of noticeably higher latency.
+
+- Consider removing your game off the GPU core by setting an affinity to the game process to prevent them being serviced on the same CPU as it improves frametime stability [[1](../media/isolate-gpu-core.png)]. This will not apply to everyone & every game as average framerate may take a severe hit, your mileage may vary but it's definitely something worth mentioning.
 
 - Carry out maintenance tasks yourself on a weekly basis. This includes:
 
