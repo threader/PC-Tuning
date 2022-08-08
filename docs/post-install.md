@@ -367,7 +367,7 @@ This step is not optional, pcw.sys will be disabled which breaks the stock Task 
 
         - I usually just hit ``Adjust for best performance``
 
-        - Ensure Desktop Composition is disabled on Windows 7
+        - Ensure Desktop Composition is disabled on Windows 7 (unless you use more than one display)
 
 ## Configure the Graphics Driver
 

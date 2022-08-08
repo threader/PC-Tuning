@@ -14,7 +14,7 @@ I no longer have or use a AMD GPU so this page may be outdated as time passes.
 
 - Open notepad file & save it as ``ccc2_install.exe`` to the driver folder as shown below.
 
-    - [media/replace-ccc2_install-example.png](../media/replace-ccc2_install-example.png)
+    - See [media/replace-ccc2_install-example.png](../media/replace-ccc2_install-example.png)
 
 - Open device manager and install the driver by right clicking the display adapter, browse my computer for driver software & select the driver folder.
 
