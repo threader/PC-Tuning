@@ -32,8 +32,8 @@ if defined binary_path (
 				Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "Remote IP Prefix Length" /t REG_SZ /d "*" /f
 				Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "DSCP Value" /t REG_SZ /d "46" /f
 				Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "Throttle Rate" /t REG_SZ /d "-1" /f
-				echo info: DSCP 46 QoS policy applied
 			)
+			echo info: DSCP 46 QoS policy applied
 
 		)
 			
