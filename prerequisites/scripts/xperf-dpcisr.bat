@@ -6,7 +6,8 @@ dism > nul 2>&1 || echo error: administrator privileges required && pause && exi
 where xperf.exe
 if not !errorlevel! == 0 (
     echo error: xperf not found in path
-    pause
+	echo info: press any key to continue
+	pause > nul 2>&1
     exit /b 1
 )
 
@@ -18,5 +19,6 @@ timeout -t 5
 xperf -d "!userprofile!\Desktop\kernel.etl"
 echo info: recording stopped
 xperf -quiet -i "!userprofile!\Desktop\kernel.etl" -o "!userprofile!\Desktop\report.txt" -a dpcisr
-pause
+echo info: press any key to continue
+pause > nul 2>&1
 exit /b 0

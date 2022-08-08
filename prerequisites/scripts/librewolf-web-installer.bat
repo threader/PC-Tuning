@@ -10,13 +10,15 @@ set "working_dir=!temp!\librewolf"
 ping archlinux.org
 if not !errorlevel! == 0 (
     echo error: no internet connection
-    pause
+	echo info: press any key to continue
+	pause > nul 2>&1
     exit /b 1
 )
 
 if not exist "!aria2c!" (
     echo error: !aria2c! not exists
-    pause
+	echo info: press any key to continue
+	pause > nul 2>&1
     exit /b 1
 )
 
@@ -30,7 +32,8 @@ echo info: downloading librewolf
 
 if not exist "!working_dir!\!file_name!" (
     echo error: download unsuccessful, please download librewolf manually
-    pause
+	echo info: press any key to continue
+	pause > nul 2>&1
     exit /b 1
 )
 
@@ -45,6 +48,7 @@ if not "!file_sha1!" == "!sha1!" (
 
 start "" "!working_dir!\!file_name!"
 
-pause
+echo info: press any key to continue
+pause > nul 2>&1
 exit /b 0
 

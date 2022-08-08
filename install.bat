@@ -13,7 +13,8 @@ if exist "sources\install.wim" (
 		set "install_wim=sources\install.esd"
 	) else (
 		echo error: directory does not appear to be a windows image
-		pause
+		echo info: press any key to continue
+		pause > nul 2>&1
 		exit /b 1
 	)
 )
@@ -29,7 +30,12 @@ if defined install_dir (
 			if not !errorlevel! == 0 (
 				set "err=1"
 			) else (
-				copy /y "autounattend.xml" "!install_dir!:\Windows\System32\Sysprep\unattend.xml"
+				if exist "!install_dir!:\Windows\System32\Sysprep\unattend.xml" (
+					copy /y "autounattend.xml" "!install_dir!:\Windows\System32\Sysprep\unattend.xml" > nul 2>&1
+				) else (
+					echo error: sysprep folder does not exist
+					set "err=1"
+				)
 			)
 		) else (
 			DISM /Apply-Image /ImageFile:"!install_wim!" /Index:1 /ApplyDir:"!install_dir!:"
@@ -41,11 +47,13 @@ if defined install_dir (
 		if !err! == 0 (
 			bcdboot "!install_dir!:\Windows" > nul 2>&1
 			echo info: restart pc
-			pause
+			echo info: press any key to continue
+			pause > nul 2>&1
 			exit /b 0
 		) else (
 			echo error: dism apply-image unsuccessful
-			pause
+			echo info: press any key to continue
+			pause > nul 2>&1
 			exit /b 1
 		)
 	)

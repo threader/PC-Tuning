@@ -36,9 +36,9 @@ I recommend using the 472.12 ([Windows 7/Windows 8](https://www.nvidia.com/en-us
 
     for %a in ("C:\Program Files\NVIDIA Corporation\Display.NvContainer\plugins\LocalSystem\DisplayDriverRAS", "C:\Program Files\NVIDIA Corporation\DisplayDriverRAS", "C:\ProgramData\NVIDIA Corporation\DisplayDriverRAS") do (if exist %a (rd /s /q %a))
 
-    reg.exe add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v "OptInOrOutPreference" /t REG_DWORD /d 0 /f 
+    Reg.exe add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v "OptInOrOutPreference" /t REG_DWORD /d 0 /f 
 
-    reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup" /v "SendTelemetryData" /t REG_DWORD /d 0 /f
+    Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup" /v "SendTelemetryData" /t REG_DWORD /d 0 /f
     ```
 
 ## Disable HDCP (required for DRM content)
@@ -48,7 +48,7 @@ HDCP Can be disabled with the [following registry key](https://github.com/djdall
 - Run ``C:\prerequisites\scripts\get-driver-keys.bat`` to get the driver keys on your system
         
     ```bat
-    reg.exe add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "RMHdcpKeyglobZero" /t REG_DWORD /d "1" /f
+    Reg.exe add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "RMHdcpKeyglobZero" /t REG_DWORD /d "1" /f
     ```
 
 ## Configure NVIDIA Control Panel
@@ -82,7 +82,7 @@ Force P-State 0 with the [following registry key](https://github.com/djdallmann/
 - Run ``C:\prerequisites\scripts\get-driver-keys.bat`` to get the driver keys on your system
 
     ```bat
-    reg.exe add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "DisableDynamicPstate" /t REG_DWORD /d "1" /f
+    Reg.exe add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "DisableDynamicPstate" /t REG_DWORD /d "1" /f
     ```
 
 ## Disable Ansel

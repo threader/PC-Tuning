@@ -7,7 +7,8 @@ dism > nul 2>&1 || echo error: administrator privileges required && pause && exi
 PowerShell Set-ProcessMitigation -System -Disable CFG
 if not !errorlevel! == 0 (
 	echo error: unsupported windows version
-	pause
+	echo info: press any key to continue
+	pause > nul 2>&1
 	exit /b 1
 )
 
@@ -24,9 +25,10 @@ for /L %%a in (0,1,9) do (
 echo info: modified mask - !mitigation_mask!
 
 :: apply mask to kernel
-Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationOptions" /t REG_BINARY /d "!mitigation_mask!" /f
-Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationAuditOptions" /t REG_BINARY /d "!mitigation_mask!" /f
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationOptions" /t REG_BINARY /d "!mitigation_mask!" /f > nul 2>&1
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationAuditOptions" /t REG_BINARY /d "!mitigation_mask!" /f > nul 2>&1
 
 echo info: done
-pause
+echo info: press any key to continue
+pause > nul 2>&1
 exit /b 0

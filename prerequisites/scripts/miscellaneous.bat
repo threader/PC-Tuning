@@ -20,5 +20,6 @@ echo info: disabling reserved storage, ignore errors
 DISM /Online /Set-ReservedStorageState /State:Disabled
 
 echo info: done
-pause
+echo info: press any key to continue
+pause > nul 2>&1
 exit /b 0
