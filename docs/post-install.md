@@ -343,6 +343,24 @@ This step is not optional, pcw.sys will be disabled which breaks the stock Task 
         Get-ProcessMitigation -System
         ```
 
+## Memory Cleaner & Timer Resolution (Windows 10 1909 & Under)
+
+Feel free to skip this step as it is not required, Microsoft fixed the standby list memory management issues in a later version of Windows. [Memory Cleaner](https://github.com/danskee/MemoryCleaner) ([alternative link](https://git.zusier.xyz/Zusier/MemoryCleaner)) also allows us to set the kernel timer-resolution globally however the behaviour of timer-resolution changed in 2004+ as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change/), rendering this trick useless.
+
+- Place ``C:\prerequisites\Memory-Cleaner.exe`` in win + r, ``shell:startup`` & open it.
+
+    - Go to ``File > Settings`` & configure:
+    
+        - The hotkey to clean the standby list & working set
+
+        - The desired timer-resolution, 10000 (1ms) recommended
+
+        - Uncheck ``Enable timer``
+
+        - Check ``Start minimized`` & ``Start timer resolution automatically``
+
+- Avoid using auto cleaning apps like ISLC/Memreduct, they consume alot of resources due to a frequent polling timer interval & cause stuttering due to autoclearing memory.
+
 ## Configure the Network Adapter
 
 - Open ``Network & Sharing Center > Change adapter settings``.
@@ -563,24 +581,6 @@ By default, CPU 0 handles the majority of DPCs & interrupts for several devices 
         ```
 
 - You can ensure interrupt affinity policies have been configured correctly by analyzing a xperf trace while the device is busy.
-
-## Memory Cleaner & Timer Resolution (Windows 10 1909 & Under)
-
-Feel free to skip this step as it is not required, Microsoft fixed the standby list memory management issues in a later version of Windows. [Memory Cleaner](https://github.com/danskee/MemoryCleaner) ([alternative link](https://git.zusier.xyz/Zusier/MemoryCleaner)) also allows us to set the kernel timer-resolution globally however the behaviour of timer-resolution changed in 2004+ as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change/), rendering this trick useless.
-
-- Place ``C:\prerequisites\Memory-Cleaner.exe`` in win + r, ``shell:startup`` & open it.
-
-    - Go to ``File > Settings`` & configure:
-    
-        - The hotkey to clean the standby list & working set
-
-        - The desired timer-resolution, 10000 (1ms) recommended
-
-        - Uncheck ``Enable timer``
-
-        - Check ``Start minimized`` & ``Start timer resolution automatically``
-
-- Avoid using auto cleaning apps like ISLC/Memreduct, they consume alot of resources due to a frequent polling timer interval & cause stuttering due to autoclearing memory.
 
 ## Installing Games & Applications
 
