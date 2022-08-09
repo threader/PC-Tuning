@@ -166,11 +166,15 @@ This step is required as we removed the spyware stock start menu
 
 ## Installing Drivers
 
-- Install any drivers your system requires, avoid installing chipset drivers.
+- Install any drivers your system requires, avoid installing chipset drivers. I would recommend updating & installing ethernet, USB, sata (required on Windows 7 as enabling MSI on the stock sata driver will result in a BSOD) & NVME.
 
 - Try to obtain the bare driver so it can be installed in device manager as executable installers usually come with extra unnecessary bloatware. Most of the time, you can extract the installer's executable to obtain the driver.
 
-- I would recommend updating & installing ethernet, USB, sata (required on Windows 7 as enabling MSI on the stock sata driver will result in a BSOD), NVME & potentially the audio controller drivers.
+    - [Snappy Driver Installer Origin](https://www.snappy-driver-installer.org/) can be used to install drivers on a live system. Open the program with the command below.
+
+        ```bat
+        start "" C:\prerequisites\SDIO\SDIO_x64_R746.exe
+        ```
 
 ## Installing Recommended Packages & Programs
 
