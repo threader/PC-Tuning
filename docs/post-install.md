@@ -424,6 +424,20 @@ If you usually use [Custom Resolution Utility](https://www.monitortests.com/foru
 
     - Use the ``C:\prerequisites\change-resolution.lnk`` shortcut on Windows 8+
 
+## Configure Audio Devices
+
+- Open the sound control panel, can be opened with win + r, ``mmsys.cpl``.
+
+- Disable unused Playback & Recording devices.
+    
+- Disable audio enhancements as they waste CPU time.
+
+    - See [media/audio enhancements-benchmark.png](../media/audio%20enhancements-benchmark.png)
+    
+- Disable Exclusive Mode in the Advanced section.
+
+- I also like to set the sound scheme to no sounds in the Sounds tab.
+
 ## Configure Services & Drivers
 
 The service list configuration is not intended for laptop, Wi-Fi & webcam functionality. I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming & use default services for everything else.
@@ -443,20 +457,6 @@ The service list configuration is not intended for laptop, Wi-Fi & webcam functi
 - Move the scripts somewhere safe such as in the C:\ drive & do not share it with other people as it is specific to your system.
 
 - Run ``Services-Disable.bat`` with NSudo, ensure ``Enable All Privileges`` is enabled (important).
-
-## Configure Audio Devices
-
-- Open the sound control panel, can be opened with win + r, ``mmsys.cpl``.
-
-- Disable unused Playback & Recording devices.
-    
-- Disable audio enhancements as they waste CPU time.
-
-    - See [media/audio enhancements-benchmark.png](../media/audio%20enhancements-benchmark.png)
-    
-- Disable Exclusive Mode in the Advanced section.
-
-- I also like to set the sound scheme to no sounds in the Sounds tab.
 
 ## Configure Device Manager
 
