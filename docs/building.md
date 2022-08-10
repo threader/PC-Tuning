@@ -159,7 +159,17 @@ DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:DirectPlay /All
 
 ## Integrating & Obtaining Drivers
 
-- This is generally required for users installing Windows 7 to integrate USB/ NVME drivers so that setup can proceed.
+This step is generally required for users installing Windows 7 to integrate USB/ NVME drivers so that setup can proceed.
+
+- You can usually find drivers by searching or asking others for drivers that are compatible with your device HWID.
+
+    - See [media/device-hwid-example.png](../media/device-hwid-example.png)
+
+- [Win-Raid USB driver collection](https://winraid.level1techs.com/t/usb-3-0-3-1-drivers-original-and-modded/30871).
+
+    - If you can not find a USB driver, try using the [generic USB driver](https://forums.mydigitallife.net/threads/usb-3-xhci-driver-stack-for-windows-7.81934/)
+
+- [Win-Raid AHCI & NVME driver collection](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310).
 
 - Place all of the drivers to be integrated somewhere easily accessible such as ``C:\drivers`` & use the command below to integrate them into the install.wim.
 
