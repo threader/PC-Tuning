@@ -174,7 +174,7 @@ This step is generally required for users installing Windows 7 to integrate USB/
 - Place all of the drivers to be integrated somewhere easily accessible such as ``C:\drivers`` & use the command below to integrate them into the install.wim.
 
 ```bat
-DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
+DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsigned
 ```
 
 ## Integrating Required Files
