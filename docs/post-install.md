@@ -369,7 +369,7 @@ Feel free to skip this step as it is not required, Microsoft fixed the standby l
 
 - Disable all items except ``QoS Packet Scheduler`` & ``Internet Protocol Version 4 (TCP/IPv4)``.
 
-- [Configure a Static IP address](https://youtu.be/5iRp1Nug0PU?t=36), ths is required as we will be disabling the network services that waste CPU time.
+- [Configure a Static IP address](https://youtu.be/5iRp1Nug0PU?t=36), this is required as we will be disabling the network services that waste CPU time.
 
 - Disable ``NetBIOS over TCP/IP`` in ``General > Advanced > WINS`` to [prevent unnecessary system listening](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/DOCS/NETWORK/README.md).
 
