@@ -33,7 +33,7 @@ slmgr /ato
 
 Before we remove bloatware via bruteforce on linux, we may as well uninstall what Windows allows us to.
 
-- Open CMD as administrator & enter the command below.
+- Open CMD as administrator & enter the command below. Note that this script only removes the chromium version of edge, the legacy version (if present) will be stripped in linux shortly.
 
     ```bat
     C:\prerequisites\scripts\remove-edge-onedrive.bat
