@@ -1,5 +1,17 @@
 # Physical Setup
 
+## Cooling
+
+A non-exhaustive list of cooling considerations, to be expanded.
+
+- Consider not using a case (open bench), best case cooling scenario. If you must use a case, at least remove the side panels.
+
+- Remove the heatsink from your RAM & mount a fan over it using zipties.
+
+- Mount your AIO properly.
+
+    - See [Stop Doing It Wrong: How to Kill Your CPU Cooler | Gamers Nexus](https://www.youtube.com/watch?v=BbGomv195sk)
+
 ## USB Port configuration
 
 - Plug your mouse & keyboard into the first two ports on your first usb controller. This can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html#download) with trial & error. Use the motherboard ports & avoid companion ports (indicated on the right section of the program).
