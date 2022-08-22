@@ -2,13 +2,17 @@
 
 ## USB Port configuration
 
-- Plug your mouse & keyboard into the first two ports on your first usb controller. This can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html#download) with trial & error.
+- Plug your mouse & keyboard into the first two ports on your first usb controller. This can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html#download) with trial & error. Use the motherboard ports & avoid companion ports (indicated on the right section of the program).
 
     - Ryzen systems have a usb port that is directly connected to the CPU which can be identified through the motherboard manual
 
 - If you have more than one usb controller, you can isolate devices such as DACs, headsets & other devices onto another controller to prevent them interfering with polling consistency.
 
 ## BIOS
+
+- You can use UEFI or grub to change both visible & hidden bios settings. I recommend configuring what you can in UEFI then use [this method](https://github.com/BoringBoredom/UEFI-Editor) to change hidden settings.
+
+    - On some BIOSs, you can enable ``Hidden OC Item`` or ``Hide Item`` to unlock a vast amount of settings in UEFI
 
 - Disable [Hyper-Threading](https://en.wikipedia.org/wiki/Hyper-threading) & [Simultaneous Multithreading](https://en.wikipedia.org/wiki/Simultaneous_multithreading). This feature is beneficial for highly threaded operations such as video editing, compiling & rendering however using multiple execution threads per core requires resource sharing & is a potential source of system latency & jitter [[1](https://developer.amd.com/wordpress/media/2013/12/PerformanceTuningGuidelinesforLowLatencyResponse.pdf), [2](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-1-configuring-the-hardware.html)]. Other drawbacks include limited overclocking potential & increased core package temperatures.
 
@@ -20,11 +24,11 @@
 
 - Set a static all-core frequency & voltage for the CPU. Variation in hardware clocks can introduce jitter due to the frequency transitions of cores [[1](https://developer.amd.com/wordpress/media/2013/12/PerformanceTuningGuidelinesforLowLatencyResponse.pdf)].
 
-    - Configure load-line calibration to minimize voltage fluctuation under load
+    - Configure load-line calibration to minimize voltage fluctuation under load (try to aim for a flat line), this setting varies between motherboards so do your own research
 
 - Disable [Virtualization](https://en.wikipedia.org/wiki/Desktop_virtualization) & [IOMMU](https://en.wikipedia.org/wiki/Input%E2%80%93output_memory_management_unit) if applicable, it can cause differences in latency for memory access [[1](https://developer.amd.com/wordpress/media/2013/12/PerformanceTuningGuidelinesforLowLatencyResponse.pdf), [2](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-1-configuring-the-hardware.html)].
 
-- Disable [Active State Power Management](https://en.wikipedia.org/wiki/Active_State_Power_Management) & any other power saving features you can locate in BIOS.
+- Disable [ASPM/Active State Power Management](https://en.wikipedia.org/wiki/Active_State_Power_Management) & any other power saving features you can locate in BIOS.
 
 - Disable unnecessary devices such as the Wireless LAN Controller, Bluetooth, unused USB controllers & unused PCI ports. They saturate interrupt request lines which can be viewed with ``msinfo32`` in the ``Hardware Resources > IRQs`` section.
 
@@ -40,11 +44,13 @@
 
 - Disable the integrated GPU if not in use.
 
-- Windows 7 requires Compatibility Support Module (CSM) to be enabled.
+- Windows 7 requires CSM/Compatibility Support Module to be enabled (can be disabled after installing GPU drivers, safe mode will not work).
 
 - Disable Secure Boot.
 
-- Disable Fast Boot or similar options. 
+- Disable Fast Boot or similar options.
+
+- Disable DRAM Power Down Mode.
 
 ## Minimizing Interference
 
@@ -76,4 +82,4 @@
 
 - It is highly recommended that you ensure your CPU, RAM & GPU are completely stable before configuring a new operating system (or using your PC at all) as crashes can lead to data corruption or irreversible damage to hardware.
 
-- Stress testing involves running a heavy load on a specific hardware component to ensure that it can withstand the load without crashing, temperatures of the component will increase during this stage [[1](https://youtu.be/CNj0x_R20tY)]. There are many tools to stress different components, & every tool may have different algorithms which is why it is a good idea to use a variety of tools. There are countless factors that contribute to stability such as temperature, power quality, quality of VRMs, silicon lottery etc. It is also important to stress the component for a sufficient amount of time
+- Stress testing involves running a heavy load on a specific hardware component to ensure that it can withstand the load without crashing [[1](https://youtu.be/CNj0x_R20tY)]. There are many tools to stress different components, & every tool may have different algorithms which is why it is a good idea to use a variety of tools. There are countless factors that contribute to stability such as temperature, power quality, quality of VRMs, silicon lottery etc.
