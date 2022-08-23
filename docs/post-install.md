@@ -539,6 +539,8 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 
     - USB Selective Suspend - Disabled
 
+    - Turn off display after - 0 minutes
+
 ## Disable Hidden Power Saving
 
 All hidden means is not visible to the user, many driver INF configuration files contain these registry entries that are clearly labeled power saving, however I have not been able to prove the benifit of this script so feel free to skip this step.
