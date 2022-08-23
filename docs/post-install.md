@@ -529,6 +529,10 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 
 - Open ``C:\prerequisites\PowerSettingsExplorer.exe`` & configure the following.
 
+    - Primary/Secondary NVMe Idle Timeout - Maximum
+
+    - NVMe NOPPME - Off
+
     - Allow Throttle States - Off
 
     - USB 3 Link Powermanagement - Off
