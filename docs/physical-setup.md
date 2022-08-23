@@ -12,6 +12,8 @@ A non-exhaustive list of cooling considerations, to be expanded.
 
     - See [Stop Doing It Wrong: How to Kill Your CPU Cooler | Gamers Nexus](https://www.youtube.com/watch?v=BbGomv195sk)
 
+    - See [media/aio-orientation.png](../media/aio-orientation.png)
+
 ## USB Port configuration
 
 - Plug your mouse & keyboard into the first two ports on your first usb controller. This can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html#download) with trial & error. Use the motherboard ports & avoid companion ports (indicated on the right section of the program).
@@ -19,6 +21,8 @@ A non-exhaustive list of cooling considerations, to be expanded.
     - Ryzen systems have a usb port that is directly connected to the CPU which can be identified through the motherboard manual
 
 - If you have more than one usb controller, you can isolate devices such as DACs, headsets & other devices onto another controller to prevent them interfering with polling consistency.
+
+- Unplug any other unnecessary devices (charge your phone somewhere else for goodness sake).
 
 ## BIOS
 

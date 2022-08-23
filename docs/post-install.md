@@ -120,7 +120,7 @@ C:\prerequisites\VisualCppRedist_AIO_x86_x64.exe
 
 ## Install [OpenShell](https://github.com/Open-Shell/Open-Shell-Menu) (Windows 8+)
 
-This step is required as we removed the spyware stock start menu
+This step is required as we removed the spyware stock start menu.
 
 - Run ``OpenShellSetup.exe`` in ``C:\prerequisites\open-shell``
 
