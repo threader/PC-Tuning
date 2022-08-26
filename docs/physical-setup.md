@@ -60,7 +60,7 @@ A non-exhaustive list of cooling considerations, to be expanded.
 
 - Disable the integrated GPU if not in use.
 
-- Windows 7 requires CSM/Compatibility Support Module to be enabled (can be disabled after installing GPU drivers, safe mode will not work).
+- Windows 7 requires CSM/Compatibility Support Module to be enabled, disable it if configuring Windows 8+.
 
 - Disable Secure Boot.
 
