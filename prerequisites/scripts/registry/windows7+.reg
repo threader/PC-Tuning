@@ -1,6 +1,10 @@
 Windows Registry Editor Version 5.00
 
+; Clear Image File Execution Options
+
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options]
 
 [-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Device Metadata]
 
@@ -244,11 +248,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager]
 "EnthusiastMode"=dword:00000001
-
-; set csrss (responsible for input) to high priority
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csrss.exe\PerfOptions]
-"CpuPriorityClass"=dword:00000003
 
 ; disable crash dumping
 ; do not automatically reboot after a BSOD
