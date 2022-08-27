@@ -482,13 +482,13 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 
 - Open device manager, ``View > Devices by connection``.
 
-    - Disable write-cache buffer flushing on all drives in the ``Properties > Policies`` section.
+    - Disable write-cache buffer flushing on all drives in the ``Properties > Policies`` section
 
-    - Go to your ``Network adapter > properties > advanced``, disable any power saving & wake features.
+    - Go to your ``Network adapter > properties > advanced``, disable any power saving & wake features
 
         - Related: [research.md - How many Rss Queues do you need?](research.md#how-many-rss-queues-do-you-need)
 
-    - Disable the ``High Definition Audio Controller`` and the USB controller on the same PCI port as your GPU.
+    - Disable the ``High Definition Audio Controller`` and the USB controller on the same PCI port as your GPU
 
     - Disable any PCI & USB controllers with nothing connected to them
 
