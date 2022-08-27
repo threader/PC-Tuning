@@ -32,12 +32,9 @@ I recommend using the 472.12 ([Windows 7/Windows 8](https://www.nvidia.co.uk/Dow
 - Open CMD & enter the commands below to remove & disable telemetry.
 
     ```bat
-    for /f "delims=" %a in ('where /r C:\ *NvTelemetry*') do (if exist "%a" (del /f /q /s "%a"))
-
-    for %a in ("C:\Program Files\NVIDIA Corporation\Display.NvContainer\plugins\LocalSystem\DisplayDriverRAS", "C:\Program Files\NVIDIA Corporation\DisplayDriverRAS", "C:\ProgramData\NVIDIA Corporation\DisplayDriverRAS") do (if exist %a (rd /s /q %a))
-
     Reg.exe add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v "OptInOrOutPreference" /t REG_DWORD /d 0 /f 
-
+    ```
+    ```bat
     Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup" /v "SendTelemetryData" /t REG_DWORD /d 0 /f
     ```
 

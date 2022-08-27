@@ -152,7 +152,13 @@ This step is required as we removed the spyware stock start menu.
 
 - In ``Advanced System Settings``, do the following:
 
-    - In ``Computer Name > Change`` configure the PC name
+    - In ``Computer Name > Change``, configure the PC name
+
+    - In ``Advanced > Performance > Settings``, configure visual effects & pagefile (optional).
+
+        - I usually just hit ``Adjust for best performance``
+
+        - Ensure Desktop Composition is disabled on Windows 7 (unless you use more than one display)
 
     - In ``System Protection``, disable & delete system restore points. It has been proven to be very unreliable
 
@@ -385,12 +391,6 @@ Feel free to skip this step as it is not required, Microsoft fixed the standby l
 
     - Taskbar Settings
 
-    - Visual Effects & Pagefile
-
-        - I usually just hit ``Adjust for best performance``
-
-        - Ensure Desktop Composition is disabled on Windows 7 (unless you use more than one display)
-
 ## Configure the Graphics Driver
 
 - See [docs/configure-nvidia.md](../docs/configure-nvidia.md).
@@ -484,11 +484,13 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 
     - Disable write-cache buffer flushing on all drives in the ``Properties > Policies`` section.
 
-    - Go to your ``network adapter > properties > advanced``, disable any power saving & wake features.
+    - Go to your ``Network adapter > properties > advanced``, disable any power saving & wake features.
 
         - Related: [research.md - How many Rss Queues do you need?](research.md#how-many-rss-queues-do-you-need)
 
-    - Disable the ``High Definition Audio Controller`` on the same PCI port as your GPU.
+    - Disable the ``High Definition Audio Controller`` and the USB controller on the same PCI port as your GPU.
+
+    - Disable any PCI & USB controllers with nothing connected to them
 
 - Go to ``View > Resources by connection``.
 
@@ -606,6 +608,8 @@ Now is a good time to install whatever programs you commonly use to prepare us f
 
 - Clear the PATH user environment variable of locations pointing to Windows bloatware folders.
 
+- Open ```C:\prerequisites\sysinternals\Autoruns.exe``` & remove any unwanted programs such as game launchers from starting automatically. Remove all obsolete entries with a yellow label, run with NSudo if you encounter any permission errors.
+
 - Some locations you may want to review for leftover bloat & unwanted shortcuts.
 
     - ``"%userprofile%\AppData"``
@@ -628,8 +632,6 @@ Now is a good time to install whatever programs you commonly use to prepare us f
         Reg.exe delete "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f
         Reg.exe add "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f
         ```
-
-- Open ```C:\prerequisites\sysinternals\Autoruns.exe``` & remove any unwanted programs such as game launchers from starting automatically. Remove all obsolete entries with a yellow label, run with NSudo if you encounter any permission errors.
 
 - Configure Disk Cleanup.
 
