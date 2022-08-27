@@ -2,17 +2,17 @@
 
 ## Build Requirements
 
-- [7-Zip](https://www.7-zip.org).
+- [7-Zip](https://www.7-zip.org)
 
-- [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases).
+- [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases)
 
     - Place the program in ``C:\Windows``
 
-- Deployment Tools from the [Windows ADK](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install).
+- Deployment Tools from the [Windows ADK](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install)
 
-- Latest Servicing Stack Update for the host machine.
+- Latest Servicing Stack Update for the host machine
 
-    - Configuring an image while the host's DISM version is outdated will likely result in errors. Manually search & download the latest SSU from the update [microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx). Once downloaded, extract the .cab from the .msu & use the following command to apply it to the host's machine.
+    - Configuring an image while the host's DISM version is outdated will likely result in errors. Manually search & download the latest SSU from the [Microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx). Once downloaded, extract the .cab from the .msu & use the command below to apply it to the host machine
 
         ```bat
         DISM /Online /Add-Package /PackagePath=<path\to\latest\ssu>
@@ -20,12 +20,12 @@
 
 ## Downloading Stock Images
 
-The recommended links & methods below will ensure that we can work with a base image with no additional updates. Ensure to cross-check the hashes for the image to verify that the image is genuine & not corrupted. Use the command ``certutil -hashfile <path\to\file> SHA1`` to get the hash of the image file.
+The recommended links & methods below will ensure that we can work with a base image with no additional updates. Ensure to cross-check the hashes for the image to verify that the image is genuine & not corrupted (not required when building an image from UUP dump). Use the command ``certutil -hashfile <path\to\file> SHA1`` to get the hash of the ISO file
 
 <details>
 <summary>Windows 7</summary>
 
-- ``en_windows_7_professional_with_sp1_x64_dvd_u_676939.iso``
+- **en_windows_7_professional_with_sp1_x64_dvd_u_676939.iso**
 
     - [link 1](https://isofiles.bd581e55.workers.dev/Windows%207/Windows%207%20Professional%20with%20SP1/en_windows_7_professional_with_sp1_x64_dvd_u_676939.iso), [link 2](https://msnp0-my.sharepoint.com/personal/tuanthanh1_p0_msnvn_org/_layouts/15/download.aspx?SourceUrl=%2Fpersonal%2Ftuanthanh1%5Fp0%5Fmsnvn%5Forg%2FDocuments%2FWindows%2FWindows%207%2Fen%5Fwindows%5F7%5Fprofessional%5Fwith%5Fsp1%5Fx64%5Fdvd%5Fu%5F676939%2Eiso)
     
@@ -36,7 +36,7 @@ The recommended links & methods below will ensure that we can work with a base i
 <details>
 <summary>Windows 8</summary>
 
-- ``en_windows_8.1_with_update_x64_dvd_6051480.iso``
+- **en_windows_8.1_with_update_x64_dvd_6051480.iso**
 
     - [link 1](https://isofiles.bd581e55.workers.dev/Windows%208/Windows%208.1%20with%20Update/en_windows_8.1_with_update_x64_dvd_6051480.iso), [link 2](https://msnp0-my.sharepoint.com/personal/tuanthanh1_p0_msnvn_org/_layouts/15/download.aspx?SourceUrl=%2Fpersonal%2Ftuanthanh1%5Fp0%5Fmsnvn%5Forg%2FDocuments%2FWindows%2FWindows%208%2E1%2Fen%5Fwindows%5F8%2E1%5Fwith%5Fupdate%5Fx64%5Fdvd%5F6051480%2Eiso)
 
@@ -48,33 +48,33 @@ The recommended links & methods below will ensure that we can work with a base i
 <summary>Windows 10+</summary>
 <br>
 
-Since it is quite tedious to obtain a Windows 10+ image with no updates, we can build our own using [UUP dump](https://uupdump.net).
+Since it is quite tedious to obtain a Windows 10+ image with no updates, we can build our own using [UUP dump](https://uupdump.net)
 
-- Search for the Windows version you desire & download the latest instance.
+- Search for the Windows version you desire & download the latest instance
    
     <img src="../media/uupdump-search-image.png" width="750">
 
-- Choose the desired language & click next.
+- Choose the desired language & click next
 
     <img src="../media/uupdump-choose-language.png" width="750">
 
-- Uncheck all editions except the pro edition & click next.
+- Uncheck all editions except the pro edition & click next
 
     <img src="../media/uupdump-choose-edition.png" width="750">
 
-- Copy the configuration below, ensure include updates is checked & click create download package.
+- Copy the configuration below, ensure include updates is checked & click create download package
 
     <img src="../media/uupdump-download-options.png" width="750">
 
-- Extract the downloaded package & run ``uup_download_windows.cmd``. The final image file will be created in the same directory as the script.
+- Extract the downloaded package & run **uup_download_windows.cmd**. The final ISO file will be created in the same directory as the script
 
 </details>
 
 ## Preparing the Build Environment
 
-- Extract the contents of the .iso to a directory of your choice with 7-Zip, In the examples below, I am using C:\Win10_21H2_English_x64.
+- Extract the contents of the .ISO to a directory of your choice with 7-Zip, In the examples below, I am using ``C:\Win10_21H2_English_x64``
 
-- Open CMD as administrator & configure these variables below. These variables are temporary for this session & will be discarded if you close the terminal window so ensure to keep it open throughout the build process.
+- Open CMD as administrator & configure these variables below. These variables are temporary for this session & will be discarded if you close the terminal window so ensure to keep it open throughout the build process
 
     ```bat
     set "EXTRACTED_IMAGE=C:\Win10_21H2_English_x64"
@@ -85,7 +85,7 @@ Since it is quite tedious to obtain a Windows 10+ image with no updates, we can 
     mkdir "%MOUNT_DIR%"
     ```
 
-- If the environment was configured correctly, the commands below should return ``true``.
+- If the environment was configured correctly, the commands below should return **true**
 
     ```bat
     if exist "%EXTRACTED_IMAGE%\sources\install.wim" (echo true) else (echo false)
@@ -96,18 +96,16 @@ Since it is quite tedious to obtain a Windows 10+ image with no updates, we can 
 
 ## Stripping Non-Essential Editions
 
-- Remove every edition except the desired edition (pro edition recommended), by retrieving the indexes of every other edition & removing it with the commands below.
+- Remove every edition except the desired edition (pro edition recommended), by retrieving the indexes of every other edition & removing it with the commands below. Once completed, the only edition to exist should be the desired edition at index 1
 
     ```bat
     DISM /Get-WimInfo /WimFile:"%EXTRACTED_IMAGE%\sources\install.wim"
     DISM /Delete-Image /ImageFile:"%EXTRACTED_IMAGE%\sources\install.wim" /Index:<index>
     ```
 
-- Once completed, the only edition to exist should be the desired edition at index 1.
-
 ## Mounting the Image
 
-- Mounting the image with the command below will allow us to carry out a few tasks.
+- Mounting the image with the command below will allow us to carry out a few tasks
 
     ```bat
     DISM /Mount-Wim /WimFile:"%EXTRACTED_IMAGE%\sources\install.wim" /Index:1 /MountDir:"%MOUNT_DIR%"
@@ -117,7 +115,7 @@ Since it is quite tedious to obtain a Windows 10+ image with no updates, we can 
 
 - Windows 7 recommended updates:
 
-    You may not need all updates listed below depending on your needs, if you are unsure then integrate all mentioned. NVME Users may be able to get away with only integrating the storage controller driver in the [Integrating & Obtaining Drivers](#integrating--obtaining-drivers) section while excluding ``KB2990941`` & ``KB3087873``.
+    You may not need all updates listed below depending on your needs, if you are unsure then integrate all mentioned
 
     ```
     KB4490628 - Servicing Stack Update
@@ -137,9 +135,9 @@ Since it is quite tedious to obtain a Windows 10+ image with no updates, we can 
 
     - Download the latest, non-security cumulative update along with the servicing stack for that specific update (specified in the update page). The update page should also specify if the update is non-security or a security update, if it does not, then download the latest update. Use the official [Windows 10 update history page](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b)
 
-- Download the updates from the [microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the kb identifier. Place the updates somewhere easily accessible such as ``C:\updates``.
+- Download the updates from the [microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the KB identifier. Place the updates somewhere easily accessible such as ``C:\updates``
 
-- Integrate the updates into the install.wim with the command below. The servicing stack must be installed before installing the cumulative updates.
+- Integrate the updates into the mounted image with the command below. The servicing stack must be installed before installing the cumulative updates
 
     ```bat
     DISM /Image:"%MOUNT_DIR%" /Add-Package /PackagePath=<path\to\update>
@@ -159,9 +157,9 @@ DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:DirectPlay /All
 
 ## Integrating & Obtaining Drivers
 
-This step is generally required for users installing Windows 7 to integrate USB/ NVME drivers so that setup can proceed.
+This step is generally required for users installing Windows 7 to integrate USB & NVME drivers so that setup can proceed
 
-- You can usually find drivers by searching or asking others for drivers that are compatible with your device HWID.
+- You can usually find drivers by searching or asking others for drivers that are compatible with your device HWID
 
     - See [media/device-hwid-example.png](../media/device-hwid-example.png)
 
@@ -171,7 +169,7 @@ This step is generally required for users installing Windows 7 to integrate USB/
 
 - [Win-Raid AHCI & NVME driver collection](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310).
 
-- Place all of the drivers to be integrated somewhere easily accessible such as ``C:\drivers`` & use the command below to integrate them into the install.wim.
+- Place all of the drivers to be integrated somewhere easily accessible such as ``C:\drivers`` & use the command below to integrate them into the mounted image
 
 ```bat
 DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsigned
@@ -179,17 +177,17 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsign
 
 ## Integrating Required Files
 
-- Open the mounted directory with the command below.
+- Open the mounted directory with the command below
 
     ```bat
     explorer "%MOUNT_DIR%"
     ```
 
-- Clone the repository & place the ``prerequisites`` folder & ``win-debloat.sh`` in the mounted directory.
+- Clone the repository & place the **prerequisites** folder & **win-debloat.sh**  in the mounted directory
 
 ## Remove Provisioned Appx Bloatware (Windows 8+)
 
-- This command removes the majority of Windows apps such as microsoft store, maps, camera etc that nobody uses & potentially jeopardizes privacy.
+- This command removes the majority of Windows apps such as Microsoft store, maps, camera etc that nobody uses & potentially jeopardizes privacy
 
     ```bat
     for /f "tokens=3" %i in ('DISM /Image:"%MOUNT_DIR%" /Get-ProvisionedAppxPackages ^| findstr "PackageName"') do (DISM /Image:"%MOUNT_DIR%" /Remove-ProvisionedAppxPackage /PackageName:%i)
@@ -197,9 +195,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsign
 
 ## Replacing Wallpapers
 
-- Run the command below to replace all backgrounds & user profile images with solid black images.
-
-    - Note: Also use the ``--win7`` argument if building Windows 7
+- Run the command below to replace all backgrounds & user profile images with solid black images. Use the **--win7** argument if building Windows 7
 
     ```bat
     win-wallpaper.exe --dir "%MOUNT_DIR%" --rgb #000000
@@ -207,7 +203,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsign
 
 ## Unmount & Commit
 
-- Run the command below twice to save the changes to the image.
+- Run the command below twice to save the changes to the mounted image
 
     ```bat
     DISM /Unmount-wim /MountDir:"%MOUNT_DIR%" /Commit
@@ -221,15 +217,13 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsign
 
 ## Replace Windows 7 Boot Wim (Windows 7)
 
-As you are aware, Windows 7 lacks driver support for modern hardware & you should have already integrated drivers into the install.wim however we have not yet touched the boot.wim (installer). We *could* integrate the same drivers into the boot.wim as we did before but in my experience this still leads to a problematic installation. Instead, we can use the Windows 10 boot.wim which already has modern hardware support to install our Windows 7 install.wim.
+As you are aware, Windows 7 lacks driver support for modern hardware & you should have already integrated drivers into the **install.wim** however we have not yet touched the **boot.wim** (installer). We could integrate the same drivers into the **boot.wim** as we did before but in my experience this still leads to a problematic installation. Instead, we can use the Windows 10 **boot.wim** which already has modern hardware support to install our Windows 7 **install.wim**
 
-- The process is quite simple:
+- Download the [latest Windows 10 image](https://www.microsoft.com/en-gb/software-download/windows10) & extract it, I would recommend renaming the extracted folder to avoid confusion. In the examples below, I have extracted it to ``C:\W10_image``
 
-    - Download the [latest Windows 10 image](https://www.microsoft.com/en-gb/software-download/windows10) & extract it, I would recommend renaming the extracted folder to avoid confusion. In the examples below, I have extracted it to ``C:\W10_image``
+- Replace ``sources\install.wim`` or ``sources\install.esd`` in the extracted Windows 10 image with the Windows 7 **install.wim**
 
-    - Replace ``sources\install.wim`` or ``sources\install.esd`` in the extracted Windows 10 image with the Windows 7 ``install.wim``
-
-- We need to update a variable since our extracted directory has changed. Enter the path of your new extracted directory, mine is ``C:\W10_image``.
+- We need to update a variable since our extracted directory has changed. Enter the path of your new extracted directory, mine is ``C:\W10_image``
 
     ```bat
     set "EXTRACTED_IMAGE=C:\W10_image"
@@ -237,7 +231,7 @@ As you are aware, Windows 7 lacks driver support for modern hardware & you shoul
 
 ## Insert DISM Apply-Image Script
 
-Use the command below to open the extracted directory, place the ``install.bat`` script in the directory.
+Use the command below to open the extracted directory, place the **install.bat** script in the directory
 
 ```bat
 explorer "%EXTRACTED_IMAGE%"
@@ -245,7 +239,7 @@ explorer "%EXTRACTED_IMAGE%"
 
 ## Image compression (Optional)
 
-Use the commands below to compress the image, this may take a while.
+Use the command below to compress the image, this may take a while
 
 ```bat
 DISM /Export-Image /SourceImageFile:"%EXTRACTED_IMAGE%\sources\install.wim" /SourceIndex:1 /DestinationImageFile:"%EXTRACTED_IMAGE%\sources\install.esd" /Compress:recovery /CheckIntegrity && del /f /q "%EXTRACTED_IMAGE%\sources\install.wim"
@@ -253,7 +247,7 @@ DISM /Export-Image /SourceImageFile:"%EXTRACTED_IMAGE%\sources\install.wim" /Sou
 
 ## Convert to ISO
 
-- Use the following command to convert the extracted image to a iso which will be created on the desktop:
+- Use the command below to convert the extracted image to a iso which will be created on the desktop
 
 ```bat
 "%OSCDIMG%" -m -o -u2 -udfver102 -l"final_iso" -bootdata:2#p0,e,b"%EXTRACTED_IMAGE%\boot\etfsboot.com"#pEF,e,b"%EXTRACTED_IMAGE%\efi\microsoft\boot\efisys.bin" "%EXTRACTED_IMAGE%" "%userprofile%\Desktop\final_iso.iso"
