@@ -20,7 +20,7 @@ The post-installation instructions are based on configuring a stock Windows imag
 
 ## Preparing the USB
 
-- Download [Ventoy](https://github.com/ventoy/Ventoy/releases) & [Linux Mint Xfce Edition](https://linuxmint.com/edition.php?id=294) if you have not already.
+- Download [Ventoy](https://github.com/ventoy/Ventoy/releases) & [Linux Mint Xfce Edition](https://www.linuxmint.com/download.php) if you have not already.
 
 - Insert your USB stick into a USB port & extract Ventoy.
 
