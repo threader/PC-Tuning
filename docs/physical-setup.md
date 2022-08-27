@@ -14,6 +14,10 @@ A non-exhaustive list of cooling considerations, to be expanded.
 
     - See [media/aio-orientation.png](../media/aio-orientation.png)
 
+- Configure fan curves or set a static fan speed for the CPU & case fans. I personally set all fans to a reasonably high, constant, noise-acceptable speed.
+
+- Ensure not to overload the motherboard fan header if using splitters, check your motherborad manual for the maximum current supported by each header (i believe it is usually 1A).
+
 ## USB Port configuration
 
 - Plug your mouse & keyboard into the first two ports on your first usb controller. This can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html#download) with trial & error. Use the motherboard ports & avoid companion ports (indicated on the right section of the program).
@@ -45,8 +49,6 @@ A non-exhaustive list of cooling considerations, to be expanded.
 - Disable [ASPM/Active State Power Management](https://en.wikipedia.org/wiki/Active_State_Power_Management) & any other power saving features you can locate in BIOS.
 
 - Disable unnecessary devices such as the Wireless LAN Controller, Bluetooth, unused USB controllers & unused PCI ports. They saturate interrupt request lines which can be viewed with ``msinfo32`` in the ``Hardware Resources > IRQs`` section.
-
-- Configure fan curves or set a static fan speed for the CPU & case fans. I personally set all fans to a reasonably high, constant, noise-acceptable speed.
 
 - Disable TPM.
 
