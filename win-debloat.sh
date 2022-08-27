@@ -77,7 +77,16 @@ rm -rf Windows/WinSxS/Temp/PendingDeletes/*
 for i in "${wildcard_names[@]}"
 do
     echo info: removing $i
-    find . -iname *$i* -exec rm -rf "{}" \;
+    find . -ipath "*$i*" -delete
+done
+
+echo info: searching for files that are supposed to be removed...
+echo info: if any file paths appear below any "searching" message, it is likely that the process failed
+
+for i in "${wildcard_names[@]}"
+do
+    echo info: searching for $i
+    find . -iname *$i*
 done
 
 echo info: done

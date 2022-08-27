@@ -65,9 +65,7 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
     - Open the file explorer which is pinned to the taskbar & in the left pane, navigate to the volume Windows is installed on. You can identify this by finding the drive that has the ``win-debloat.sh`` script in
 
-    - Right click an empty space & select ``Open in Terminal``. This will open the bash terminal in the directory of the script for us so we do not need to CD to it manually
-
-    - Type ``sudo bash win-debloat.sh`` to run the script & wait for it to finish. Ignore any ``No such file or directory`` errors
+    - Right click an empty space & select ``Open in Terminal``. This will open the bash terminal in the directory of the script for us so we do not need to CD to it manually. Type ``sudo bash win-debloat.sh`` to run the script & wait for it to finish.
 
     - Windows 8+ Only:
 
@@ -92,17 +90,19 @@ Before we remove bloatware via bruteforce on linux, we may as well uninstall wha
 
     - Once finished, empty the ``Trash`` in the file explorer & restart to boot back into Windows
 
-- Once back into the Windows desktop, open CMD as administrator & enter the command below to remove leftover scheduled tasks.
-
-    ```bat
-    C:\prerequisites\scripts\scheduled-tasks\disable-tasks.exe
-    ```
-
 ## Install [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist/releases)
 
 ```
 C:\prerequisites\VisualCppRedist_AIO_x86_x64.exe
 ```
+
+## Disable Residual Scheduled Tasks
+
+- Open CMD as administrator & enter the command below to remove leftover scheduled tasks.
+
+    ```bat
+    C:\prerequisites\scripts\scheduled-tasks\disable-tasks.exe
+    ```
 
 ## Merge the Registry Files
 
