@@ -75,7 +75,7 @@ HDCP Can be disabled with the [following registry key](https://github.com/djdall
 
 - Consider disabling G-Sync, it has the potential to increase input latency due to extra processing however it has supposedly improved over time so feel free to test it yourself, your mileage may vary.
 
-## Force P-State 0
+## Locking Clocks/ P-State 0
     
 Force P-State 0 with the [following registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-is-there-a-registry-setting-that-can-force-your-display-adapter-to-remain-at-its-highest-performance-state-pstate-p0) to reduce render time & jitter caused by frequency transitions (reboot required), ensure to change the driver key to suit your needs:
 
