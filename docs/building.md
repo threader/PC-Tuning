@@ -22,6 +22,9 @@
 
 The recommended links & methods below will ensure that we can work with a base image with no additional updates. Ensure to cross-check the hashes for the image to verify that the image is genuine & not corrupted (not required when building an image from UUP dump). Use the command ``certutil -hashfile <path\to\file> SHA1`` to get the hash of the ISO file
 
+Generally, Windows 7 is superior for real-time tasks compared to it's successors but lacks USB & NVME driver support for newer hardware. Earlier versions of Windows lack GPU driver & anticheat support so some users are forced on newer builds. Microsoft implemented a fixed 10mhz QueryPerformanceFrequency on Windows 10 1809+ which was intended to make developing applications easier but many users reported worse performance. Windows 10 1903+ has an updated scheduler for multi CCX Ryzen CPUs [[1](https://i.redd.it/y8nxtm08um331.png)]. Microsoft changed how timer resolution functions as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change/) on Windows 10 2004+ & was [further developed in Windows 11](../media/windows11-timeapi-changes.png) which I assume is an attempt to improve power efficiency.
+
+
 <details>
 <summary>Windows 7</summary>
 

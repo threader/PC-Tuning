@@ -148,6 +148,16 @@ This step is required as we removed the spyware stock start menu.
     C:\prerequisites\scripts\miscellaneous.bat
     ```
 
+- Go through the ``C:\prerequisites\preference`` folder to configure the following:
+
+    - Configure Pointer Scheme
+
+    - Desktop Icon Settings
+
+    - Region & language
+
+    - Taskbar Settings
+
 - Enable ``Launching applications & unsafe files`` in ``Internet Options > Security > Custom Level``. This prevents [this annoying warning](https://gearupwindows.com/how-to-disable-open-file-security-warning-in-windows-10/). Feel free to skip this step as security may be reduced.
 
 - In ``Advanced System Settings``, do the following:
@@ -378,18 +388,6 @@ Feel free to skip this step as it is not required, Microsoft fixed the standby l
 - [Configure a Static IP address](https://youtu.be/5iRp1Nug0PU?t=36), this is required as we will be disabling the network services that waste CPU time.
 
 - Disable ``NetBIOS over TCP/IP`` in ``General > Advanced > WINS`` to [prevent unnecessary system listening](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/DOCS/NETWORK/README.md).
-
-## Preferences
-
-- Go through the ``C:\prerequisites\preference`` folder to configure the following:
-
-    - Configure Pointer Scheme
-
-    - Desktop Icon Settings
-
-    - Region & language
-
-    - Taskbar Settings
 
 ## Configure the Graphics Driver
 

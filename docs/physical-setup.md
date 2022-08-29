@@ -16,7 +16,7 @@
 
 - Ensure not to overload the motherboard fan header if using splitters, check your motherborad manual for the maximum current supported by each header
 
-## USB Port configuration
+## USB Port Configuration
 
 - Plug your mouse & keyboard into the first two ports on your first USB controller. This can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html#download) with trial & error. Use the motherboard ports & avoid companion ports (indicated on the right section of the program)
 
@@ -24,7 +24,7 @@
 
 - If you have more than one USB controller, you can isolate devices such as DACs, headsets & other devices onto another controller to prevent them interfering with polling consistency
 
-- Unplug any other unnecessary devices (charge your phone somewhere else for goodness sake).
+- Unplug any other unnecessary devices (charge your phone somewhere else for goodness sake)
 
 ## BIOS
 
@@ -36,21 +36,15 @@
 
 - Limit C-States, P-States & S-States to the minimum or disable them. It is a source of jitter due to the process of state transition
 
-- Set a static all-core frequency & voltage for the CPU. Variation in hardware clocks can introduce jitter due to the frequency transitions of cores [[1](https://developer.amd.com/wordpress/media/2013/12/PerformanceTuningGuidelinesforLowLatencyResponse.pdf)]. Enable XMP for your RAM or configure the frequency & timings manually (see MemTestHelper). While raising the clock frequency or changing timings, ensure that the changes are positive in benchmarks such as [liblava](https://github.com/liblava/liblava) & [MLC](https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html). Core/uncore/memory affect each other in terms of stability, see the [Stability & Hardware Clocking](#stability--hardware-clocking) section for more information
-
-    - Configure load-line calibration to minimize vcore fluctuation under load (try to aim for a flat line), this setting varies between motherboards so do your own research
-
-    - See [integralfx/MemTestHelper](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md)
-
 - Disable [Virtualization](https://en.wikipedia.org/wiki/Desktop_virtualization) & [IOMMU](https://en.wikipedia.org/wiki/Input%E2%80%93output_memory_management_unit) if applicable, it can cause differences in latency for memory access [[1](https://developer.amd.com/wordpress/media/2013/12/PerformanceTuningGuidelinesforLowLatencyResponse.pdf), [2](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-1-configuring-the-hardware.html)]
 
 - Disable [ASPM/Active State Power Management](https://en.wikipedia.org/wiki/Active_State_Power_Management) & any other power saving features you can locate in BIOS
 
-- Disable unnecessary devices such as the WLAN, bluetooth c ontroller, unused USB controllers & unused PCI ports.
+- Disable unnecessary devices such as WLAN, bluetooth, unused USB controllers & unused PCI ports
 
-- Disable TPM
+- Disable TPM/Trusted Platform Module
 
-    - You can verify that it is disabled in win + r, ``tpm.msc``
+    - You can verify that it is disabled in win + r, **tpm.msc**
 
 - Keep HPET/High Precision Event Timer enabled
 
@@ -65,6 +59,12 @@
 - Disable Fast Boot or similar options
 
 - Disable DRAM Power Down Mode
+
+- Set a static all-core frequency & voltage for the CPU. Variation in hardware clocks can introduce jitter due to the frequency transitions of cores [[1](https://developer.amd.com/wordpress/media/2013/12/PerformanceTuningGuidelinesforLowLatencyResponse.pdf)]. Enable XMP for your RAM or configure the frequency & timings manually (see MemTestHelper). While raising the clock frequency or changing timings, ensure that the changes are positive in benchmarks such as [liblava](https://github.com/liblava/liblava) & [MLC](https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html). Core/uncore/memory affect each other in terms of stability, see the [Stability & Hardware Clocking](#stability--hardware-clocking) section for more information
+
+    - Configure load-line calibration to minimize vcore fluctuation under load (try to aim for a flat line), this setting varies between motherboards so do your own research
+
+    - See [integralfx/MemTestHelper](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md)
 
 ## Minimizing Interference
 
@@ -90,7 +90,7 @@
 
 - Buy a small [air dust blower](https://www.amazon.co.uk/s?k=air+dust+blower) to remove dirt & debris from the mouse sensor lens often
 
-- Factory reset your monitor & reconfigure the settings. Avoid post-processing effects & set overdrive/ AMA to an acceptably high setting as it reduces latency but comes with a penalty of overshoot [[1](https://twitter.com/CaIypto/status/1464236780190851078)]
+- Factory reset your monitor & reconfigure the settings. Avoid post-processing effects & set overdrive/AMA to an acceptably high setting as it reduces latency but comes with a penalty of overshoot [[1](https://twitter.com/CaIypto/status/1464236780190851078)]
 
 ## Stability & Hardware Clocking
 
