@@ -68,7 +68,7 @@ HDCP Can be disabled with the [following registry key](https://github.com/djdall
 
 - In the **Developer > Manage GPU Performance Counters**, enable **Allow access to the GPU performance counters to all users**
 
-- In the **Display > Adjust desktop size & position** section, set the scaling mode to **No Scaling** & set perform scaling on to **Display**. Configure your resolution & refresh rate
+- In the **Display > Adjust Desktop size & position** section, set the scaling mode to **No Scaling** & set perform scaling on to **Display**. Configure your resolution & refresh rate
 
 - Consider disabling G-Sync, it has the potential to increase input latency due to extra processing however it has supposedly improved over time so feel free to test it yourself, your mileage may vary
 

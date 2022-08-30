@@ -4,11 +4,11 @@
 
 - Download & extract the latest driver from the [AMD drivers & support page](https://www.amd.com/en/support)
 
-- Move ``\Packages\Drivers\Display\XXXX_INF`` to the desktop (folder may be named differently on other driver versions). Delete everything apart from the following:
+- Move ``\Packages\Drivers\Display\XXXX_INF`` to the Desktop (folder may be named differently on other driver versions). Delete everything apart from the following:
 
     - See [media/amd-driver-example.png](../media/amd-driver-example.png)
 
-- In the folder of the driver directory (mine is **B381690** in the example above), move **ccc2_install.exe** to the desktop. This will be used in a later step
+- In the folder of the driver directory (mine is **B381690** in the example above), move **ccc2_install.exe** to the Desktop. This will be used in a later step
 
 - Open notepad file & save it as **ccc2_install.exe** to the driver folder as shown below
 

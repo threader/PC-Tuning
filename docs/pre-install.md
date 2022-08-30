@@ -38,7 +38,7 @@ You can either:
 
     - Drag & drop the ISO into the same location where Linux Mint is & select the USB storage device in the boot options in BIOS
 
-    - Note: When installing Windows 8 with a USB, you may be required to enter a key. Use the generic key ``GCRJD-8NW9H-F2CDX-CCM8D-9D6T9`` to get past this step
+    - When installing Windows 8 with a USB, you may be required to enter a key. Use the generic key ``GCRJD-8NW9H-F2CDX-CCM8D-9D6T9`` to get past this step
 
 - Use DISM Apply-Image:
 

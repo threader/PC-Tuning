@@ -49,13 +49,13 @@ if defined install_dir (
 			echo info: restart pc
 			echo info: press any key to continue
 			pause > nul 2>&1
-			exit /b 0
 		) else (
 			echo error: dism apply-image unsuccessful
 			echo info: press any key to continue
 			pause > nul 2>&1
-			exit /b 1
 		)
+
+		exit /b !err!
 	)
 )
 
