@@ -97,6 +97,17 @@ slmgr /ato
 
 - You may establish an internet connection after you have restarted as the Windows update policies will take effect
 
+## Spectre & Meltdown
+
+Open CMD & enter the command below. Ensure **System is Spectre/Meltdown protected** is **NO**. AMD is unaffected by Meltdown
+
+```bat
+C:\prerequisites\inspectre.exe
+```
+
+- See [media/meltdown-spectre-example.png](../media/meltdown-spectre-example.png)
+
+
 ## Install [OpenShell](https://github.com/Open-Shell/Open-Shell-Menu) (Windows 8+)
 
 This step is required as we removed the spyware stock start menu
@@ -464,7 +475,7 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 
         - Related: [research.md - How many Rss Queues do you need?](research.md#how-many-rss-queues-do-you-need)
 
-    - Disable **High Definition Audio Controller** and the USB controller on the same PCI port as your GPU
+    - Disable **High Definition Audio Controller** & the USB controller on the same PCI port as your GPU
 
     - Disable any PCI & USB controllers with nothing connected to them
 

@@ -64,6 +64,8 @@ wildcard_names=(
 rm -rf "Program Files/WindowsApps"
 rm -rf "ProgramData/Packages"
 rm -rf Users/*/AppData/Local/Microsoft/WindowsApps
+rm -rf Users/*/AppData/Local/Packages/!("Microsoft.Windows.ShellExperienceHost_cw5n1h2txyewy"|"windows.immersivecontrolpanel_cw5n1h2txyewy")
+rm -rf Windows/SystemApps/!("ShellExperienceHost_cw5n1h2txyewy")
 rm -rf "Program Files/Windows Defender"
 rm -rf "Program Files (x86)/Microsoft"
 rm -rf "Program Files (x86)/Windows Defender"
@@ -77,8 +79,6 @@ rm -rf "Windows/System32/SecurityHealthAgent.dll"
 rm -rf "Windows/System32/SecurityHealthService.exe"
 rm -rf "Windows/System32/SecurityHealthSystray.exe"
 rm -rf Windows/WinSxS/Temp/PendingDeletes/*
-rm -rf Users/*/AppData/Local/Packages/!("Microsoft.Windows.ShellExperienceHost_cw5n1h2txyewy"|"windows.immersivecontrolpanel_cw5n1h2txyewy")
-rm -rf Windows/SystemApps/!("ShellExperienceHost_cw5n1h2txyewy")
 
 for i in "${wildcard_names[@]}"
 do
