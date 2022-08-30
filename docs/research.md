@@ -127,7 +127,19 @@ Conclusion: During online matches, at most two Rss queues/cores are being utiliz
 
     ``0c 18 24`` is equivalent to ``12 24 36`` & PsPrioritySeparation returns ``1`` which corresponds to long, variable, 2:1. Nothing special as it seems, this is actually equivalent to values less than the maximum documented value as shown in [this csv](https://raw.githubusercontent.com/djdallmann/GamingPCSetup/master/CONTENT/RESEARCH/FINDINGS/win32prisep0to271.csv). I had the same results while testing various other values
 
-    Conclusion: Why does Windows allow us to enter values greater than 0x3F (63 decimal) if any value greater than this is equivalent to values less than the maximum documented value? The reason behind this is because the maximum value for a REG_DWORD is 0xFFFFFFFF (4294967295 decimal) [[1](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-dtyp/262627d8-3418-4627-9218-4ffe110850b2)] & there are no restrictions in place to prevent users to entering a illogical value, so when the kernel reads the Win32PrioritySeparation registry key, it must account for invalid values so it only reads a portion of the entered value. The portion it chooses to read is the first 6-bits of the bitmask which means values greater than 63 are recurring values
+    Conclusion: Why does Windows allow us to enter values greater than 0x3F (63 decimal) if any value greater than this is equivalent to values less than the maximum documented value? The reason behind this is because the maximum value for a REG_DWORD is 0xFFFFFFFF (4294967295 decimal) [[1](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-dtyp/262627d8-3418-4627-9218-4ffe110850b2)] & there are no restrictions in place to prevent users to entering a illogical value, so when the kernel reads the Win32PrioritySeparation registry key, it must account for invalid values so it only reads a portion of the entered value. The portion it chooses to read is the first 6-bits of the bitmask which means values greater than 63 are recurring values. The table below consists of all possible values (consistent between client and server editions of Windows). The time in milliseconds are based on the modern x86/x64 multiprocessors clock interrupt frequency.
+
+    | **Hexadecimal** | **Decimal** | **Binary** | **Interval** | **Length** | **Foreground QU** | **Background QU** | **Foreground Time (Ms)** | **Background Time(Ms)** |
+    |-----------------|-------------|------------|--------------|------------|-------------------|-------------------|--------------------------|-------------------------|
+    | 0x14            | 20          | 010100     | Long         | Variable   | 12                | 12                | 62.50                    | 62.50                   |
+    | 0x15            | 21          | 010101     | Long         | Variable   | 24                | 12                | 125.00                   | 62.50                   |
+    | 0x16            | 22          | 010110     | Long         | Variable   | 36                | 12                | 187.50                   | 62.50                   |
+    | 0x18            | 24          | 011000     | Long         | Fixed      | 36                | 36                | 187.50                   | 187.50                  |
+    | 0x24            | 36          | 100100     | Short        | Variable   | 6                 | 6                 | 31.25                    | 31.25                   |
+    | 0x25            | 37          | 100101     | Short        | Variable   | 12                | 6                 | 62.50                    | 31.25                   |
+    | 0x26            | 38          | 100110     | Short        | Variable   | 18                | 6                 | 93.75                    | 31.25                   |
+    | 0x28            | 40          | 101000     | Short        | Fixed      | 18                | 18                | 93.75                    | 93.75                   |
+
     </details>
 
 - #### No foreground boost may be superior
