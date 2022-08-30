@@ -65,28 +65,7 @@ slmgr /ato
     sudo bash win-debloat.sh
     ```
 
-- Windows 8+ Only:
-
-    - Change the view to list view to make the contents more readable by selecting **View > List View**
-
-    - Delete the following folders:
-
-        - ``/Program Files/WindowsApps``
-
-        - ``/ProgramData/Packages``
-
-        - ``/Users/<username>/AppData/Local/Microsoft/WindowsApps``
-
-    - In ``/Users/<username>/AppData/Local/Packages`` delete everything except:
-
-        - Microsoft.Windows.ShellExperienceHost_cw5n1h2txyewy
-        - windows.immersivecontrolpanel_cw5n1h2txyewy
-
-    - In ``/Windows/SystemApps`` delete everything except:
-
-        - ShellExperienceHost_cw5n1h2txyewy
-
-- Once finished, empty the **Trash** in the file explorer & restart to boot back into Windows
+- Once finished, restart to boot back into Windows
 
 ## Install [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist/releases)
 
