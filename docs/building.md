@@ -240,7 +240,7 @@ Use the command below to open the extracted directory, place the **install.bat**
 explorer "%EXTRACTED_IMAGE%"
 ```
 
-## Image compression (Optional) (Windows 8+)
+## Image compression (Optional)
 
 Use the command below to compress the image, this may take a while
 
