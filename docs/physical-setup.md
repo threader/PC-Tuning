@@ -26,6 +26,16 @@
 
 - Unplug any other unnecessary devices (charge your phone somewhere else for goodness sake)
 
+## Minimizing Interference
+
+- Move devices that emit RF/EMF/EMI away from your setup & bedroom such as radios, mobile phones & routers. They have the potential to increase latency due to unintended behaviour of electrical components
+
+- Always favor wired over cordless
+
+- Ensure there is a moderate amount of space between cables to reduce the risk of [coupling](https://en.wikipedia.org/wiki/Coupling_(electronics))
+
+- Disconnect unnecessary devices from your motherboard such as LEDs, case USB ports, extra unused drives & RGB light strips
+
 ## BIOS
 
 - You can use UEFI or grub to change both visible & hidden BIOS settings. I recommend configuring what you can in UEFI then use [this method](https://github.com/BoringBoredom/UEFI-Editor) to change hidden settings
@@ -65,16 +75,6 @@
     - Configure load-line calibration to minimize vcore fluctuation under load (try to aim for a flat line), this setting varies between motherboards so do your own research
 
     - See [integralfx/MemTestHelper](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md)
-
-## Minimizing Interference
-
-- Move devices that emit RF/EMF/EMI away from your setup & bedroom such as radios, mobile phones & routers. They have the potential to increase latency due to unintended behaviour of electrical components
-
-- Always favor wired over cordless
-
-- Ensure there is a moderate amount of space between cables to reduce the risk of [coupling](https://en.wikipedia.org/wiki/Coupling_(electronics))
-
-- Disconnect unnecessary devices from your motherboard such as LEDs, case USB ports, extra unused drives & RGB light strips
 
 ## Configure Peripherals
 
