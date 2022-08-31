@@ -20,9 +20,9 @@
 
 ## Downloading Stock Images
 
-The recommended links & methods below will ensure that we can work with a base image with no additional updates. Ensure to cross-check the hashes for the image to verify that the image is genuine & not corrupted (not required when building an image from UUP dump). Use the command ``certutil -hashfile <path\to\file> SHA1`` to get the hash of the ISO file
+The recommended links & methods below will ensure that we can work with a base image with no additional updates. Ensure to cross-check the hashes for the image to verify that the image is genuine & not corrupted (not required when building an image from UUP dump). Use the command ``certutil -hashfile <path\to\file>`` to get the hash of the ISO file
 
-Generally, Windows 7 is superior for real-time tasks compared to it's successors but lacks USB & NVME driver support for newer hardware. Earlier versions of Windows lack GPU driver & anticheat support so some users are forced on newer builds. Microsoft implemented a fixed 10mhz QueryPerformanceFrequency on Windows 10 1809+ which was intended to make developing applications easier but many users reported worse performance. Windows 10 1903+ has an updated scheduler for multi CCX Ryzen CPUs [[1](https://i.redd.it/y8nxtm08um331.png)]. Microsoft changed how timer resolution functions as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change/) on Windows 10 2004+ & was [further developed in Windows 11](../media/windows11-timeapi-changes.png) which I assume is an attempt to improve power efficiency.
+Generally, Windows 7 is superior for real-time tasks compared to its successors but lacks USB & NVME driver support for newer hardware. Earlier versions of Windows lack GPU driver & anticheat support so some users are forced on newer builds. Microsoft implemented a fixed 10mhz QueryPerformanceFrequency on Windows 10 1809+ which was intended to make developing applications easier but many users reported worse performance. Windows 10 1903+ has an updated scheduler for multi CCX Ryzen CPUs [[1](https://i.redd.it/y8nxtm08um331.png)]. Microsoft changed how timer resolution functions as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change/) on Windows 10 2004+ & was [further developed in Windows 11](../media/windows11-timeapi-changes.png) which I assume is an attempt to improve power efficiency.
 
 
 <details>
@@ -51,7 +51,7 @@ Generally, Windows 7 is superior for real-time tasks compared to it's successors
 <summary>Windows 10+</summary>
 <br>
 
-Since it is quite tedious to obtain a Windows 10+ image with no updates, we can build our own using [UUP dump](https://uupdump.net)
+Since it is quite tedious to obtain a Windows 10+ image with minimal updates, we can build our own using [UUP dump](https://uupdump.net)
 
 - Search for the Windows version you desire & download the latest instance
    
@@ -220,7 +220,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsign
 
 ## Replace Windows 7 Boot Wim (Windows 7)
 
-As you are aware, Windows 7 lacks driver support for modern hardware & you should have already integrated drivers into the **install.wim** however we have not yet touched the **boot.wim** (installer). We could integrate the same drivers into the **boot.wim** as we did before but in my experience this still leads to a problematic installation. Instead, we can use the Windows 10 **boot.wim** which already has modern hardware support to install our Windows 7 **install.wim**
+As you are aware, Windows 7 lacks driver support for modern hardware & you should have already integrated drivers into the **install.wim** however we have not yet touched the **boot.wim** (installer). We could integrate the same drivers into the **boot.wim** as we did before however this may still lead to a problematic installation. Instead, we can use the Windows 10 **boot.wim** which already has modern hardware support to install our Windows 7 **install.wim**
 
 - Download the [latest Windows 10 image](https://www.microsoft.com/en-gb/software-download/windows10) & extract it, I would recommend renaming the extracted folder to avoid confusion. In the examples below, I have extracted it to ``C:\W10_image``
 
@@ -240,7 +240,7 @@ Use the command below to open the extracted directory, place the **install.bat**
 explorer "%EXTRACTED_IMAGE%"
 ```
 
-## Image compression (Optional)
+## Image compression (Optional) (Windows 8+)
 
 Use the command below to compress the image, this may take a while
 
@@ -250,7 +250,7 @@ DISM /Export-Image /SourceImageFile:"%EXTRACTED_IMAGE%\sources\install.wim" /Sou
 
 ## Convert to ISO
 
-- Use the command below to convert the extracted image to a iso which will be created on the Desktop
+- Use the command below to convert the extracted image to an iso which will be created on the Desktop
 
 ```bat
 "%OSCDIMG%" -m -o -u2 -udfver102 -l"final_iso" -bootdata:2#p0,e,b"%EXTRACTED_IMAGE%\boot\etfsboot.com"#pEF,e,b"%EXTRACTED_IMAGE%\efi\microsoft\boot\efisys.bin" "%EXTRACTED_IMAGE%" "%userprofile%\Desktop\final_iso.iso"
