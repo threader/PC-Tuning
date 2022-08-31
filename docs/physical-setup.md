@@ -30,7 +30,7 @@
 
 - You can use UEFI or grub to change both visible & hidden BIOS settings. I recommend configuring what you can in UEFI then use [this method](https://github.com/BoringBoredom/UEFI-Editor) to change hidden settings
 
-    - On some BIOSs, you can enable ``Hidden OC Item`` or ``Hide Item`` to unlock a vast amount of settings in UEFI
+    - On some BIOSs, you can enable **Hidden OC Item** or **Hide Item** to unlock a vast amount of settings in UEFI
 
 - Disable [Hyper-Threading](https://en.wikipedia.org/wiki/Hyper-threading)/[Simultaneous Multithreading](https://en.wikipedia.org/wiki/Simultaneous_multithreading). This feature is beneficial for highly threaded operations such as video editing, compiling & rendering however using multiple execution threads per core requires resource sharing & is a potential source of system latency & jitter [[1](https://developer.amd.com/wordpress/media/2013/12/PerformanceTuningGuidelinesforLowLatencyResponse.pdf), [2](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-1-configuring-the-hardware.html)]. Other drawbacks include limited overclocking potential & increased core package temperatures
 
@@ -82,7 +82,7 @@
 
 - Increasing DPI reduces latency [[1](https://www.youtube.com/watch?v=6AoRfv9W110)]. Most mice are able to handle 1600 DPI without [sensor smoothing](https://www.reddit.com/r/MouseReview/comments/5haxn4/sensor_smoothing)
 
-- Higher polling rate reduces jitter [[1](https://youtu.be/gOQNRvJbpmk?t=540), [2](https://www.youtube.com/watch?app=desktop&v=djCLZ6qEVuA)]. Depending on your hardware, 8khz may heavily impact performance while in use, in this case, consider downclocking slightly (4khz, 2khz & 1khz options are commonly available)
+- Higher polling rate reduces jitter [[1](https://youtu.be/gOQNRvJbpmk?t=540), [2](https://www.youtube.com/watch?app=desktop&v=djCLZ6qEVuA)]. Depending on your hardware, 8kHz may heavily impact performance while in use, in this case, consider downclocking slightly (4kHz, 2kHz & 1kHz options are commonly available)
 
 - USB output is limited to roughly 7A & RGB requires unnecessary power. Turn off RGB where you can or strip the LED from the peripheral as running a RGB effect/animation can take a great toll on the MCU. It requires a lot of processing power & will delay other processes [[1](https://blog.wooting.nl/what-influences-keyboard-speed)]
 
@@ -96,4 +96,4 @@
 
 - Ensure your CPU, RAM & GPU are completely stable before configuring a new operating system as crashes can lead to data corruption or irreversible damage to hardware
 
-- There are many tools to stress different components, & every tool may have different algorithms which is why it is a good idea to use a variety of tools. There are countless factors that contribute to stability such as temperature, power quality, quality of VRMs, silicon lottery etc
+- There are many tools to stress different components & every tool may have different algorithms which is why it is a good idea to use a variety of tools. There are countless factors that contribute to stability such as temperature, power quality, quality of VRMs, silicon lottery etc
