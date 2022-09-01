@@ -170,7 +170,7 @@ This step is required as we removed the spyware stock start menu
 
 ## Installing Drivers
 
-- Install any drivers your system requires, avoid installing chipset drivers. I would recommend updating & installing ethernet, USB, sata (required on Windows 7 as enabling MSI on the stock sata driver will result in a BSOD) & NVME
+- Install any drivers your system requires, avoid installing chipset drivers. I would recommend updating & installing ethernet, USB, SATA (required on Windows 7 as enabling MSI on the stock SATA driver will result in a BSOD) & NVME
 
 - Try to obtain the bare driver so it can be installed in device manager as executable installers usually come with extra unnecessary bloatware. Most of the time, you can extract the installer's executable to obtain the driver
 
@@ -234,7 +234,7 @@ This step is required as we removed the spyware stock start menu
 
                 - privacy.resistFingerprinting = false
 
-        - Alternatively, the following lines can be added to ``"%userprofile%\AppData\Roaming\librewolf\Profiles\<profile>\prefs.js"``, ensure librewolf is closed before editing prefs.js
+        - Alternatively, the following lines can be added to ``"%userprofile%\AppData\Roaming\librewolf\Profiles\<profile>\prefs.js"``, ensure Librewolf is closed before editing prefs.js
 
             ```
             user_pref("browser.uidensity", 1);
@@ -344,7 +344,7 @@ This step is not optional, pcw.sys will be disabled which breaks the stock Task 
     - Configure [Data Execution Prevention](https://docs.microsoft.com/en-us/windows/win32/memory/data-execution-prevention) for **essential Windows programs & services only**
 
         ```bat
-        bcdedit /set nx optin
+        bcdedit /set nx Optin
         ```
 
     - Configure the operating system name, I usually name it to whatever Windows version I am using e.g **W10 1803**
@@ -415,7 +415,7 @@ Feel free to skip this step as it is not required, Microsoft fixed the standby l
 
         - Check **Start minimized** & **Start timer resolution automatically**
 
-- Avoid using auto cleaning apps like ISLC/Memreduct, they consume alot of resources due to a frequent polling timer interval & cause stuttering due to autoclearing memory
+- Avoid using auto cleaning apps like ISLC/MemReduct, they consume a lot of resources due to a frequent polling timer interval & cause stuttering due to autoclearing memory
 
 ## Configure the Network Adapter
 
@@ -532,7 +532,7 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 
 ## Disable Hidden Power Saving
 
-All hidden means is not visible to the user, many drivers contain these registry entries that are clearly labeled power saving, however I have not been able to prove the benifit of this script so feel free to skip this step
+All hidden means is not visible to the user, many drivers contain these registry entries that are clearly labeled power saving although I have not been able to prove the benifit of this script so feel free to skip this step
 
 - Run the ``C:\prerequisites\scripts\disable-hidden-powersaving.bat`` script
 
@@ -545,7 +545,7 @@ issues [[1](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitatio
 
     - Enable Message Signaled Interrupts on all devices that support it
 
-        - You will BSOD if you enable MSIs for the **stock** Windows 7 sata driver which you should have updated as mentioned in the [Installing Drivers](#installing-drivers) section
+        - You will BSOD if you enable MSIs for the **stock** Windows 7 SATA driver which you should have updated as mentioned in the [Installing Drivers](#installing-drivers) section
         
     - Be careful as to what you choose to prioritize. As an example, you will likely stutter in a open-world game that utilizes texture streaming if the GPU IRQ priority is set higher than the storage controller priority
 
@@ -609,7 +609,7 @@ Now is a good time to install whatever programs & game launchers you commonly us
     - ``"%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs"``
     - ``"%userprofile%\Downloads"``
 
-- Reset Firewall rules.
+- Reset Firewall rules
 
     - Open CMD & enter the command below
 
@@ -618,14 +618,14 @@ Now is a good time to install whatever programs & game launchers you commonly us
         Reg.exe add "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f
         ```
 
-- Configure Disk Cleanup.
+- Configure Disk Cleanup
 
     - Open CMD & enter the command below, tick all of the boxes, press **OK**
 
         ```bat
         cleanmgr /sageset:50
         ```
-    - Run Disk Cleanup:
+    - Run Disk Cleanup
 
         ```bat
         cleanmgr /sagerun:50
