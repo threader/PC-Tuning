@@ -1,6 +1,6 @@
 Windows Registry Editor Version 5.00
 
-; Clear Image File Execution Options
+; clear image file execution options
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options]
 
@@ -458,7 +458,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Shared Tools\MsConfig]
 "NoRebootUI"=dword:00000001
 
-; disable the save promt in snipping tool
+; disable the save prompt in snipping tool
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\TabletPC\Snipping Tool]
 "PromptToSave"=dword:00000000
@@ -626,7 +626,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
 "DisableWindowsConsumerFeatures"=dword:00000001
 
-; do not let windows apps run i nthe background
+; do not let windows apps run in the background
 ; do not let windows apps access notifications
 ; do not let windows apps control radios
 ; do not let windows apps access diagnostic information about other apps
@@ -720,7 +720,7 @@ Windows Registry Editor Version 5.00
 "SubscribedContent-353696Enabled"=dword:00000001
 "SubscribedContent-338393Enabled"=dword:00000001
 
-; configure privacy settings in immersive control panel
+; configure privacy settings in the immersive control panel
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam]
 "Value"="Deny"
