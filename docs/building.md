@@ -61,7 +61,7 @@ Since it is quite tedious to obtain a Windows 10+ image with minimal updates, we
 
     <img src="../media/uupdump-choose-language.png" width="750">
 
-- Uncheck all editions except the pro edition & click next
+- Uncheck all editions except the professional edition & click next
 
     <img src="../media/uupdump-choose-edition.png" width="750">
 
@@ -99,7 +99,7 @@ Since it is quite tedious to obtain a Windows 10+ image with minimal updates, we
 
 ## Stripping Non-Essential Editions
 
-- Remove every edition except the desired edition (pro edition recommended), by retrieving the indexes of every other edition & removing it with the commands below. Once completed, the only edition to exist should be the desired edition at index 1
+- Remove every edition except the desired edition (professional edition recommended), by retrieving the indexes of every other edition & removing it with the commands below. Once completed, the only edition to exist should be the desired edition at index 1
 
     ```bat
     DISM /Get-WimInfo /WimFile:"%EXTRACTED_IMAGE%\sources\install.wim"
