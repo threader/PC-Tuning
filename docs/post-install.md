@@ -655,7 +655,7 @@ Now is a good time to install whatever programs & game launchers you commonly us
 
 - Ensure to scan files with [VirusTotal](https://www.virustotal.com/gui/home/upload) before running them
 
-- Cap your framerate at a multiple of your monitor refresh rate to prevent frame mistiming [[1](https://youtu.be/_73gFgNrYVQ)]. E.g possible framerate caps with a 144hz monitor include 72, 144, 288, 432. Consider capping at your minimum fps threshold for increased smoothness & ensure the GPU is not maxed out as lower GPU utilization reduces system latency [[1](https://youtu.be/8ZRuFaFZh5M?t=859), [2](https://youtu.be/7CKnJ5ujL_Q?t=333), [3](https://youtu.be/N8ZUqT6Tfiw?t=74)]
+- Cap your framerate at a multiple of your monitor refresh rate to prevent frame mistiming [[1](https://youtu.be/_73gFgNrYVQ)]. E.g possible framerate caps with a 144Hz monitor include 72, 144, 288, 432. Consider capping at your minimum fps threshold for increased smoothness & ensure the GPU is not maxed out as lower GPU utilization reduces system latency [[1](https://youtu.be/8ZRuFaFZh5M?t=859), [2](https://youtu.be/7CKnJ5ujL_Q?t=333), [3](https://youtu.be/N8ZUqT6Tfiw?t=74)]
 
 - Consider [NVIDIA Reflex](https://www.nvidia.com/en-gb/geforce/news/reflex-low-latency-platform) if your game has support for it
 
