@@ -27,11 +27,11 @@ if exist !working_dir! (
 )
 mkdir "!working_dir!"
 
-echo info: downloading Librewolf
+echo info: downloading librewolf
 "!aria2c!" "!link!" -d "!working_dir!" -o "!file_name!"
 
 if not exist "!working_dir!\!file_name!" (
-    echo error: download unsuccessful, please download Librewolf manually
+    echo error: download unsuccessful, please download librewolf manually
     echo info: press any key to continue
     pause > nul 2>&1
     exit /b 1
