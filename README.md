@@ -6,7 +6,7 @@ A highly structured & technical hardware, BIOS & Windows optimization guide.
 
 ## Requirements
 
-- USB Storage Device (8gb minimum)
+- USB Storage Device (8GB minimum)
 - [Ventoy](https://github.com/ventoy/Ventoy/releases)
 - [Linux Mint Xfce Edition](https://www.linuxmint.com/download.php)
 - Familiarity with the command-line interface
