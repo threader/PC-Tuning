@@ -2,7 +2,7 @@
 
 ## Stripping & Installing the Driver
 
-- Download & extract the latest driver from the [AMD drivers & support page](https://www.amd.com/en/support)
+- Download & extract the latest recommended driver from the [AMD drivers & support page](https://www.amd.com/en/support)
 
 - Move ``\Packages\Drivers\Display\XXXX_INF`` to the Desktop (folder may be named differently on other driver versions). Delete everything apart from the following:
 
