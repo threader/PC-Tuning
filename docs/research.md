@@ -15,7 +15,7 @@
    
 - Press F5 to start logging. After 30 seconds or so press F7 to stop the log
    
-- In the left hand pane, click on the game executable name & click on a packet header. Expand the packet info under "Frame Details" & finally expand the subcategory "Ipv4". This will reveal the current DSCP value of each frame
+- In the left hand pane, click on the game executable name & click on a packet header. Expand the packet info under **Frame Details** & finally expand the subcategory **Ipv4**. This will reveal the current DSCP value of each frame
 
     <img src="../media/network-monitor-dscp-value.png" width="400">
 
@@ -29,32 +29,32 @@
 <summary>Read More</summary>
 <br>
 
-After searching through the decompiled **ntoskrnl.exe** pseudocode in [Hex-Rays IDA](https://hex-rays.com/products/idahome/), I noticed that ``HalpTscSyncPolicy`` is changed when TscSyncPolicy is configured via the BCD store. Despite many claims of enhanced being the default value, there has no been evidence so I decided to find out myself
+After searching through the decompiled **ntoskrnl.exe** pseudocode in [Hex-Rays IDA](https://hex-rays.com/products/idahome/), I noticed that **HalpTscSyncPolicy** is changed when **TscSyncPolicy** is configured via the BCD store. Despite many claims of enhanced being the default value, there has no been evidence so I decided to find out myself
 
-We can read ``HalpTscSyncPolicy`` in a local kernel debugger such as [WinDbg](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/debugger-download-tools) in realtime to find out the different values it returns with different bcd store configurations. See results below.
+We can read **HalpTscSyncPolicy** in a local kernel debugger such as [WinDbg](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/debugger-download-tools) in realtime to find out the different values it returns with different bcd store configurations. See results below
 
-bcdedit.exe /deletevalue tscsyncpolicy (Windows default):
+**bcdedit.exe /deletevalue tscsyncpolicy** (Windows default)
 ```
 lkd> dd HalpTscSyncPolicy l1
 fffff801`2de4a3ac  00000000
 ```
-bcdedit.exe /set tscsyncpolicy default:
+**bcdedit.exe /set tscsyncpolicy default**
 ```
 lkd> dd HalpTscSyncPolicy l1
 fffff803`1dc4a3ac  00000000
 ```
-bcdedit.exe /set tscsyncpolicy legacy:
+**bcdedit.exe /set tscsyncpolicy legacy**
 ```
 lkd> dd HalpTscSyncPolicy l1
 fffff805`1dc4a3ac  00000001
 ```
-bcdedit.exe /set tscsyncpolicy enhanced:
+**bcdedit.exe /set tscsyncpolicy enhanced**
 ```
 lkd> dd HalpTscSyncPolicy l1
 fffff802`2864a3ac  00000002
 ```
 
-Conclusion: By default, Windows uses the default value, not enhanced or legacy
+Conclusion: By default, Windows uses the **default** value, not **enhanced** or **legacy**
 
 </details>
 
@@ -169,28 +169,28 @@ Conclusion: During online matches, at most two Rss queues/cores are being utiliz
 
     ---
     
-    Valorant (game):
+    **Valorant** (game)
 
     ```
     lkd> $$>a< "script.txt"
         +0x281 QuantumReset : 18 ''
     ```
 
-    Csrss (responsible for input):
+    **Csrss** (responsible for input)
 
     ```
     lkd> $$>a< "script.txt"
         +0x281 QuantumReset : 6 ''
     ```
 
-    System (Windows kernel):
+    **System** (Windows kernel)
 
     ```
     lkd> $$>a< "script.txt"
         +0x281 QuantumReset : 6 ''
     ```
 
-    Audiodg (Windows audio):
+    **Audiodg** (Windows audio)
 
     ```
     lkd> $$>a< "script.txt"
@@ -199,21 +199,21 @@ Conclusion: During online matches, at most two Rss queues/cores are being utiliz
 
     As you can see above, despite their importance, the game gets three times more CPU time than csrss, kernel & audio threads which can be problematic. If we use no foreground boost, all processes will get as much CPU time as each other (see below). The same result can be achieved with a fixed quantum because it automatically implies no foreground boost can be used
 
-    Valorant (game):
+    **Valorant** (game)
 
     ```
     lkd> $$>a< "script.txt"
         +0x281 QuantumReset : 6 ''
     ```
 
-    Csrss (responsible for input):
+    **Csrss** (responsible for input)
 
     ```
     lkd> $$>a< "script.txt"
         +0x281 QuantumReset : 6 ''
     ```
 
-    System (Windows kernel):
+    **System** (Windows kernel)
     ```
     lkd> $$>a< "script.txt"
         +0x281 QuantumReset : 6 ''
@@ -231,11 +231,11 @@ Conclusion: During online matches, at most two Rss queues/cores are being utiliz
 
 On a stock Windows 10 installation, the Wdf01000.sys driver handles USB connectivity but using it comes with a major latency penalty compared to using vendor USB drivers. See results below
 
-Wdf01000.sys:
+**Wdf01000.sys**
 
 <img src="../media/wdf01000-usb-xperf-report.png" width="500">
 
-amdxhc31.sys (vendor USB drivers):
+**amdxhc31.sys** (vendor USB drivers)
 
 <img src="../media/amdxhc31-usb-xperf-report.png" width="500">
 
