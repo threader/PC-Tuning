@@ -12,15 +12,15 @@
 
 - Latest Servicing Stack Update for the host machine
 
-    - Configuring an image while the host's DISM version is outdated will likely result in errors. Manually search & download the latest SSU from the [Microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx). Once downloaded, extract the .cab from the .msu & use the command below to apply it to the host machine
+    - Configuring an ISO while the host's DISM version is outdated will likely result in errors. Manually search & download the latest SSU from the [Microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx). Once downloaded, extract the .cab from the .msu & use the command below to apply it to the host machine
 
         ```bat
         DISM /Online /Add-Package /PackagePath=<path\to\latest\ssu>
         ```
 
-## Downloading Stock Images
+## Downloading Stock ISOs
 
-The recommended links & methods below will ensure that we can work with a base image with no additional updates. Ensure to cross-check the hashes for the image to verify that the image is genuine & not corrupted (not required when building an image from UUP dump). Use the command ``certutil -hashfile <path\to\file>`` to get the hash of the ISO file
+The recommended links & methods below will ensure that we can work with a base ISO with no additional updates. Ensure to cross-check the hashes for the ISO to verify that it is genuine & not corrupted (not required when building an ISO from UUP dump). Use the command ``certutil -hashfile <path\to\file>`` to get the hash of the ISO file
 
 Generally, Windows 7 is superior for real-time tasks compared to its successors but lacks USB & NVME driver support for newer hardware. Earlier versions of Windows lack GPU driver & anticheat support so some users are forced on newer builds. Microsoft implemented a fixed 10mHz QueryPerformanceFrequency on Windows 10 1809+ which was intended to make developing applications easier but many users reported worse performance. Windows 10 1903+ has an updated scheduler for multi CCX Ryzen CPUs [[1](https://i.redd.it/y8nxtm08um331.png)]. Microsoft changed how timer resolution functions as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change/) on Windows 10 2004+ & was [further developed in Windows 11](../media/windows11-timeapi-changes.png) which I assume is an attempt to improve power efficiency
 
@@ -32,7 +32,7 @@ Generally, Windows 7 is superior for real-time tasks compared to its successors 
 
     - [link 1](https://isofiles.bd581e55.workers.dev/Windows%207/Windows%207%20Professional%20with%20SP1/en_windows_7_professional_with_sp1_x64_dvd_u_676939.iso), [link 2](https://msnp0-my.sharepoint.com/personal/tuanthanh1_p0_msnvn_org/_layouts/15/download.aspx?SourceUrl=%2Fpersonal%2Ftuanthanh1%5Fp0%5Fmsnvn%5Forg%2FDocuments%2FWindows%2FWindows%207%2Fen%5Fwindows%5F7%5Fprofessional%5Fwith%5Fsp1%5Fx64%5Fdvd%5Fu%5F676939%2Eiso)
     
-    - [Adguard image hashes](https://files.rg-adguard.net/file/11ad6502-c2aa-261c-8c3f-c81477b21dd2)
+    - [Adguard ISO hashes](https://files.rg-adguard.net/file/11ad6502-c2aa-261c-8c3f-c81477b21dd2)
 
 </details>
 
@@ -43,7 +43,7 @@ Generally, Windows 7 is superior for real-time tasks compared to its successors 
 
     - [link 1](https://isofiles.bd581e55.workers.dev/Windows%208/Windows%208.1%20with%20Update/en_windows_8.1_with_update_x64_dvd_6051480.iso), [link 2](https://msnp0-my.sharepoint.com/personal/tuanthanh1_p0_msnvn_org/_layouts/15/download.aspx?SourceUrl=%2Fpersonal%2Ftuanthanh1%5Fp0%5Fmsnvn%5Forg%2FDocuments%2FWindows%2FWindows%208%2E1%2Fen%5Fwindows%5F8%2E1%5Fwith%5Fupdate%5Fx64%5Fdvd%5F6051480%2Eiso)
 
-    - [Adguard image hashes](https://files.rg-adguard.net/file/feeb8cae-fb0b-42b9-6f69-50c71f0e5415)
+    - [Adguard ISO hashes](https://files.rg-adguard.net/file/feeb8cae-fb0b-42b9-6f69-50c71f0e5415)
 
 </details>
 
@@ -51,7 +51,7 @@ Generally, Windows 7 is superior for real-time tasks compared to its successors 
 <summary>Windows 10+</summary>
 <br>
 
-Since it is quite tedious to obtain a Windows 10+ image with minimal updates, we can build our own using [UUP dump](https://uupdump.net)
+Since it is quite tedious to obtain a Windows 10+ ISO with minimal updates, we can build our own using [UUP dump](https://uupdump.net)
 
 - Search for the Windows version you desire & download the latest instance
    
@@ -80,7 +80,7 @@ Since it is quite tedious to obtain a Windows 10+ image with minimal updates, we
 - Open CMD as administrator & configure these variables below. These variables are temporary for this session & will be discarded if you close the terminal window so ensure to keep it open throughout the build process
 
     ```bat
-    set "EXTRACTED_IMAGE=C:\Win10_21H2_English_x64"
+    set "EXTRACTED_ISO=C:\Win10_21H2_English_x64"
     set "MOUNT_DIR=C:\temp"
     set "OSCDIMG=C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\amd64\Oscdimg\oscdimg.exe"
 
@@ -91,7 +91,7 @@ Since it is quite tedious to obtain a Windows 10+ image with minimal updates, we
 - If the environment was configured correctly, the commands below should return **true**
 
     ```bat
-    if exist "%EXTRACTED_IMAGE%\sources\install.wim" (echo true) else (echo false)
+    if exist "%EXTRACTED_ISO%\sources\install.wim" (echo true) else (echo false)
     if exist "%MOUNT_DIR%" (echo true) else (echo false)
     if exist "%OSCDIMG%" (echo true) else (echo false)
     where win-wallpaper.exe > nul 2>&1 && echo true || echo false
@@ -102,16 +102,16 @@ Since it is quite tedious to obtain a Windows 10+ image with minimal updates, we
 - Remove every edition except the desired edition (professional edition recommended), by retrieving the indexes of every other edition & removing it with the commands below. Once completed, the only edition to exist should be the desired edition at index 1
 
     ```bat
-    DISM /Get-WimInfo /WimFile:"%EXTRACTED_IMAGE%\sources\install.wim"
-    DISM /Delete-Image /ImageFile:"%EXTRACTED_IMAGE%\sources\install.wim" /Index:<index>
+    DISM /Get-WimInfo /WimFile:"%EXTRACTED_ISO%\sources\install.wim"
+    DISM /Delete-Image /ImageFile:"%EXTRACTED_ISO%\sources\install.wim" /Index:<index>
     ```
 
-## Mounting the Image
+## Mounting the ISO
 
-- Mounting the image with the command below will allow us to carry out a few tasks
+- Mounting the ISO with the command below will allow us to carry out a few tasks
 
     ```bat
-    DISM /Mount-Wim /WimFile:"%EXTRACTED_IMAGE%\sources\install.wim" /Index:1 /MountDir:"%MOUNT_DIR%"
+    DISM /Mount-Wim /WimFile:"%EXTRACTED_ISO%\sources\install.wim" /Index:1 /MountDir:"%MOUNT_DIR%"
     ```
 
 ## Integrating Updates
@@ -140,7 +140,7 @@ Since it is quite tedious to obtain a Windows 10+ image with minimal updates, we
 
 - Download the updates from the [microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the KB identifier. Place the updates somewhere easily accessible such as ``C:\updates``
 
-- Integrate the updates into the mounted image with the command below. The servicing stack must be installed before installing the cumulative updates
+- Integrate the updates into the mounted ISO with the command below. The servicing stack must be installed before installing the cumulative updates
 
     ```bat
     DISM /Image:"%MOUNT_DIR%" /Add-Package /PackagePath=<path\to\update>
@@ -149,7 +149,7 @@ Since it is quite tedious to obtain a Windows 10+ image with minimal updates, we
 ## Enable .NET 3.5 (Windows 8+)
 
 ```bat
-DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:NetFx3 /All /LimitAccess /Source:"%EXTRACTED_IMAGE%\sources\sxs"
+DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:NetFx3 /All /LimitAccess /Source:"%EXTRACTED_ISO%\sources\sxs"
 ```
 
 ## Enable Legacy Components for older games (Windows 8+)
@@ -172,7 +172,7 @@ This step is generally required for users installing Windows 7 to integrate USB 
 
 - [Win-Raid AHCI & NVME driver collection](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310).
 
-- Place all of the drivers to be integrated somewhere easily accessible such as ``C:\drivers`` & use the command below to integrate them into the mounted image
+- Place all of the drivers to be integrated somewhere easily accessible such as ``C:\drivers`` & use the command below to integrate them into the mounted ISO
 
 ```bat
 DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsigned
@@ -198,7 +198,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsign
 
 ## Replacing Wallpapers
 
-- Run the command below to replace all backgrounds & user profile images with solid black images. Use the **--win7** argument if building Windows 7
+- Run the command below to replace all backgrounds & user profile ISO with solid black ISOs. Use the **--win7** argument if building Windows 7
 
     ```bat
     win-wallpaper.exe --dir "%MOUNT_DIR%" --rgb #000000
@@ -206,7 +206,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsign
 
 ## Unmount & Commit
 
-- Run the command below twice to save the changes to the mounted image
+- Run the command below twice to save the changes to the mounted ISO
 
     ```bat
     DISM /Unmount-wim /MountDir:"%MOUNT_DIR%" /Commit
@@ -222,14 +222,14 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsign
 
 As you are aware, Windows 7 lacks driver support for modern hardware & you should have already integrated drivers into the **install.wim** however we have not yet touched the **boot.wim** (installer). We could integrate the same drivers into the **boot.wim** as we did before however this may still lead to a problematic installation. Instead, we can use the Windows 10 **boot.wim** which already has modern hardware support to install our Windows 7 **install.wim**
 
-- Download the [latest Windows 10 image](https://www.microsoft.com/en-gb/software-download/windows10) & extract it, I would recommend renaming the extracted folder to avoid confusion. In the examples below, I have extracted it to ``C:\W10_image``
+- Download the [latest Windows 10 ISO](https://www.microsoft.com/en-gb/software-download/windows10) & extract it, I would recommend renaming the extracted folder to avoid confusion. In the examples below, I have extracted it to ``C:\W10_ISO``
 
-- Replace ``sources\install.wim`` or ``sources\install.esd`` in the extracted Windows 10 image with the Windows 7 **install.wim**
+- Replace ``sources\install.wim`` or ``sources\install.esd`` in the extracted Windows 10 ISO with the Windows 7 **install.wim**
 
-- We need to update a variable since our extracted directory has changed. Enter the path of your new extracted directory, mine is ``C:\W10_image``
+- We need to update a variable since our extracted directory has changed. Enter the path of your new extracted directory, mine is ``C:\W10_ISO``
 
     ```bat
-    set "EXTRACTED_IMAGE=C:\W10_image"
+    set "EXTRACTED_ISO=C:\W10_ISO"
     ```
 
 ## Insert DISM Apply-Image Script
@@ -237,21 +237,21 @@ As you are aware, Windows 7 lacks driver support for modern hardware & you shoul
 Use the command below to open the extracted directory, place the **install.bat** script in the directory
 
 ```bat
-explorer "%EXTRACTED_IMAGE%"
+explorer "%EXTRACTED_ISO%"
 ```
 
-## Image compression (Optional)
+## ISO compression (Optional)
 
-Use the command below to compress the image, this may take a while
+Use the command below to compress the ISO, this may take a while
 
 ```bat
-DISM /Export-Image /SourceImageFile:"%EXTRACTED_IMAGE%\sources\install.wim" /SourceIndex:1 /DestinationImageFile:"%EXTRACTED_IMAGE%\sources\install.esd" /Compress:recovery /CheckIntegrity && del /f /q "%EXTRACTED_IMAGE%\sources\install.wim"
+DISM /Export-Image /SourceImageFile:"%EXTRACTED_ISO%\sources\install.wim" /SourceIndex:1 /DestinationImageFile:"%EXTRACTED_ISO%\sources\install.esd" /Compress:recovery /CheckIntegrity && del /f /q "%EXTRACTED_ISO%\sources\install.wim"
 ```
 
 ## Convert to ISO
 
-- Use the command below to convert the extracted image to an iso which will be created on the Desktop
+- Use the command below to convert the extracted ISO to an iso which will be created on the Desktop
 
 ```bat
-"%OSCDIMG%" -m -o -u2 -udfver102 -l"final_iso" -bootdata:2#p0,e,b"%EXTRACTED_IMAGE%\boot\etfsboot.com"#pEF,e,b"%EXTRACTED_IMAGE%\efi\microsoft\boot\efisys.bin" "%EXTRACTED_IMAGE%" "%userprofile%\Desktop\final_iso.iso"
+"%OSCDIMG%" -m -o -u2 -udfver102 -l"FINAL" -bootdata:2#p0,e,b"%EXTRACTED_ISO%\boot\etfsboot.com"#pEF,e,b"%EXTRACTED_ISO%\efi\microsoft\boot\efisys.bin" "%EXTRACTED_ISO%" "%userprofile%\Desktop\FINAL.iso"
 ```

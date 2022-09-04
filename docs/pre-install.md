@@ -2,17 +2,17 @@
 
 ## Activation
 
-Consider activating before configuring the image as the key will be permanently linked to your motherboard. This can be done with a legitimate key
+Consider activating before configuring the ISO as the key will be permanently linked to your motherboard. This can be done with a legitimate key
 
 ## Configure Partitions
 
 It is recommended to configure at least a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate work & gaming environments. This way you will not be forced to install bloatware on your gaming partition & full functionality of the operating system will be guaranteed for when you need it. You can do this by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) in disk management
 
-## Obtaining a Base Image
+## Obtaining a Base ISO
 
-The post-installation instructions are based on configuring a stock Windows image along a few modifications made to the image beforehand
+The post-installation instructions are based on configuring a stock Windows ISO along a few modifications made to it beforehand
 
-- See [docs/building.md](../docs/building.md) to create the base image
+- See [docs/building.md](../docs/building.md) to create the base ISO
 
 ## Preparing the USB
 
@@ -28,7 +28,7 @@ The post-installation instructions are based on configuring a stock Windows imag
 
 - Once Ventoy has installed on your USB storage device, simply drag & drop the Linux Mint ISO file into the USB in file explorer
 
-## Booting Into the Image
+## Booting Into the ISO
 
 For the next steps, it is **vital** that you unplug your ethernet cable & are not connected to the internet. This will allow us to bypass the forced Microsoft login during OOBE & will prevent Windows from fetching updates
 
@@ -42,4 +42,4 @@ You can either:
 
 - Use DISM Apply-Image:
 
-    - Create a new partition by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) & assign it a drive letter. Extract the image & run **install.bat**
+    - Create a new partition by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) & assign it a drive letter. Extract the ISO & run **install.bat**

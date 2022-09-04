@@ -55,7 +55,7 @@ slmgr /ato
 
 ## Removing Bloatware with Linux
 
-- Boot into Ventoy on your USB in BIOS & select the Linux Mint image. Select **Start Linux Mint** when promted
+- Boot into Ventoy on your USB in BIOS & select the Linux Mint ISO. Select **Start Linux Mint** when promted
 
 - Open the file explorer which is pinned to the taskbar & navigate to the volume Windows is installed on. You can identify this by finding the volume that has the **win-debloat.sh** script in
 
