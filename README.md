@@ -4,12 +4,11 @@ A highly structured & technical hardware, BIOS & Windows optimization guide.
 
 [![Discord](https://discord.com/api/guilds/994887453599076422/widget.png?style=shield)](https://discord.gg/yrAnChXXZw) [![Twitter Follow](https://img.shields.io/twitter/follow/amitxv?label=Follow%20me%20for%20updates%21&style=social)](https://twitter.com/amitxv)
 
-EVA is no longer a custom Windows ISO. Instead I have created a guide in hope of teaching you how to create your own ISO & optimize other aspects of your setup. Nothing in this guide is branded, I have chosen to use the old project's name so that it acts as a direct replacement. Please do not ask for the ISO from the old project, they have been recreated with malicious content by other people & you will definitely get better results by following the guide instead
+## Introduction
 
-The setup & build process is similar to [AME's](https://ameliorated.info) in terms of removing telemetry & bloatware with a live Linux ISO, i have used elements of their shell script in my own - [win-debloat.sh](./win-debloat.sh)
+EVA is no longer a custom Windows ISO. Instead I have created a guide in hope of teaching you how to create your own ISO & optimize other aspects of your setup. Nothing in this guide is branded, I have chosen to use the old project's name so that it acts as a direct replacement to the pre-made image which is no longer available. Please do not ask for it or trust other sources as they have been recreated with malicious content by other people
 
-
-It is important to note that you should be comfortable with reinstalling Windows if anything goes wrong. Some elements of this guide are not directly performance related & are personal preference as i cover configuring the operating system from start to finish. I have tried my best to provide technical references, evidence, my own research & a valid justification to the information provided to prevent making changes that would otherwise make your system perform worse than stock but also provide a solid baseline for experimenting in the future
+It is important to note that you should be comfortable with reinstalling Windows if anything goes wrong. Some elements of this guide are not directly performance related & are personal preference as i cover configuring the operating system from start to finish. I have tried my best to provide technical references, evidence, my own research & a valid justification to the information provided to prevent making changes that would otherwise make your system perform worse than stock but simultaneously also provide a solid baseline for experimenting with other settings in the future
 
 The guidance is currently updated & have been tested on Windows 7 through to Windows 10. Configuring Windows 11 with this guide currently has major issues
 
