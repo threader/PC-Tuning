@@ -518,7 +518,7 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 
 - Open ``C:\prerequisites\PowerSettingsExplorer.exe`` & configure the following:
 
-    - Primary/Secondary NVMe Idle Timeout - Maximum
+    - Primary/Secondary NVMe Idle Timeout - 0
 
     - NVMe NOPPME - Off
 

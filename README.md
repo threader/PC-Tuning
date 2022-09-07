@@ -1,6 +1,6 @@
 # EVA
 
-A highly structured & technical hardware, BIOS & Windows optimization guide.
+A highly structured & technical hardware, BIOS & Windows optimization guide
 
 [![Discord](https://discord.com/api/guilds/994887453599076422/widget.png?style=shield)](https://discord.gg/yrAnChXXZw) [![Twitter Follow](https://img.shields.io/twitter/follow/amitxv?label=Follow%20me%20for%20updates%21&style=social)](https://twitter.com/amitxv)
 
