@@ -4,11 +4,13 @@
 
 - See [Low Latency Hardware | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit#bookmark=kix.alwwrke7e395)
 
+- Ensure your GPU is in the top slot & check that it is running at it's rated bandwith while running the built-in render test
+
+    - See [media/gpuz-bus-interface.png](../media/gpuz-bus-interface.png)
+
 ## Cooling
 
 - Consider not using a case (open bench), best case cooling scenario. If you must use a case, at least remove the side panels
-
-- Remove the heatsink from your RAM & mount a fan over it using zipties
 
 - Mount your AIO properly
 
@@ -16,9 +18,17 @@
 
     - See [media/aio-orientation.png](../media/aio-orientation.png)
 
-- Configure fan curves or set a static fan speed for the CPU & case fans. I personally set all fans to a reasonably high, constant, noise-acceptable speed
+- Get some quality fans with a high static pressure. Avoid RGB
 
-- Ensure not to overload the motherboard fan header if using splitters, check your motherborad manual for the maximum current supported by each header
+    - See [PC Fans | Calypto](https://docs.google.com/spreadsheets/d/1AydYHI_M6ov9a3OgVuYXhLEGps0J55LniH9htAHy2wU/edit#gid=0)
+
+    - The document above also mentions this but ensure not to overload the motherboard fan header if using splitters, check your motherborad manual for the maximum current supported by each header
+
+- Remove the heatsink from your RAM & mount a fan over it using zipties
+
+- Optionally place 40mm, 60mm or 120mm fan(s) on your NVME, you can also buy a heatsink for it but i am not sure if it provides any further benifit over only having a fan pointing at it. A heatsink alone was quite impactful for me
+
+- Configure fan curves or set a static fan speed for the CPU & case fans. I personally set all fans to a reasonably high, constant, noise-acceptable speed
 
 ## USB Port Configuration
 
@@ -98,6 +108,16 @@
 
 ## Stability & Hardware Clocking
 
-- Ensure your CPU, RAM & GPU are completely stable before configuring a new operating system as crashes can lead to data corruption or irreversible damage to hardware
+- Ensure your CPU, RAM & GPU (with overclock/undervolt applied) are completely stable before configuring a new operating system as crashes can lead to data corruption or irreversible damage to hardware
 
-- There are many tools to stress different components & every tool may have different algorithms which is why it is a good idea to use a variety of tools. There are countless factors that contribute to stability such as temperature, power quality, quality of VRMs, silicon lottery etc
+- There are many tools to stress different components & every tool may have different algorithms which is why it is a good idea to use a variety of tools. There are countless factors that contribute to stability such as temperature (increases with time, ensure there is no thermal throttling), power quality, quality of VRMs, silicon lottery etc. Recommended tools are listed below
+
+    - [Linpack Xtreme](https://www.techpowerup.com/download/linpack-xtreme)/[Linpack-Extended](https://github.com/BoringBoredom/Linpack-Extended)
+
+        - A single residual mismatch = not stable
+
+        - GFLOP variation should be minimal 
+
+    - [Prime95](https://www.mersenne.org/download)
+
+    - [Memory Testing Software](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md#memory-testing-software)

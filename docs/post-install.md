@@ -669,7 +669,7 @@ Now is a good time to install whatever programs & game launchers you commonly us
 
 - Capping your framerate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the ingame limiter will result in consistent frametimes & a smoother experience but at the cost of noticeably higher latency
 
-- Consider removing your game off the GPU core by setting an affinity to the game process to prevent them being serviced on the same CPU as it improves frametime stability [[1](../media/isolate-gpu-core.png)]. This will not apply to everyone & every game as average framerate may take a severe hit, your mileage may vary but it's definitely something worth mentioning
+- Consider removing your game off the GPU core by setting an affinity to the game process to prevent them being serviced on the same CPU as it improves frametime stability [[1](../media/isolate-gpu-core.png)]. This will not apply to everyone & every game as average framerate may take a severe hit, your mileage may vary but it is definitely something worth mentioning
 
 - Carry out maintenance tasks yourself on a weekly basis. This includes:
 

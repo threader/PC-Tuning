@@ -6,9 +6,9 @@ A highly structured & technical hardware, BIOS & Windows optimization guide
 
 ## Introduction
 
-EVA is no longer a custom Windows ISO. Instead I have created a guide in hope of teaching you how to create your own ISO & optimize other aspects of your setup. Nothing in this guide is branded, I have chosen to use the old project's name so that it acts as a direct replacement to the pre-made image which is no longer available. Please do not ask for it or trust other sources as they have been recreated with malicious content by other people
+EVA is no longer a custom Windows ISO. Instead I have created a guide in hope of teaching you how to create your own ISO, optimize other aspects of your setup & overall point you in the correct direction in terms of resources. Nothing in this guide is branded, I have chosen to use the old project's name so that it acts as a direct replacement to the pre-made image which is no longer available. Please do not ask for it or trust other sources as they have been recreated with malicious content by other people.
 
-It is important to note that you should be comfortable with reinstalling Windows if anything goes wrong. Some elements of this guide are not directly performance related & are personal preference as i cover configuring the operating system from start to finish. I have tried my best to provide technical references, evidence, my own research & a valid justification to the information provided to prevent making changes that would otherwise make your system perform worse than stock but simultaneously also provide a solid baseline for experimenting with other settings in the future
+Some elements of this guide are not directly performance related & are personal preference as i cover configuring the operating system from start to finish. I have tried my best to provide technical references, evidence, my own research & a valid justification to the information provided to prevent making changes that would otherwise make your system perform worse than stock but simultaneously also provide a solid baseline for experimenting with other settings in the future
 
 The guidance is currently updated & have been tested on Windows 7 through to Windows 10. Configuring Windows 11 with this guide currently has major issues
 
