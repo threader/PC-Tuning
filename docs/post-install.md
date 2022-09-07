@@ -609,6 +609,14 @@ Now is a good time to install whatever programs & game launchers you commonly us
     - ``"%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs"``
     - ``"%userprofile%\Downloads"``
 
+    OR
+
+    - Open CMD & the command below to open all folders listed above at once
+
+        ```bat
+        for %a in ("C:\", "C:\ProgramData\Microsoft\Windows\Start Menu\Programs", "C:\Program Files", "C:\ProgramData", "C:\Windows\Prefetch", "C:\Windows\SoftwareDistribution\download", "C:\Windows\Temp", "%userprofile%\AppData", "%userprofile%\AppData\Local\Temp", "%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs", "%userprofile%\Downloads") do (explorer %a)
+        ```
+
 - Reset Firewall rules
 
     - Open CMD & enter the command below
