@@ -190,7 +190,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsign
 
 ## Remove Provisioned Appx Bloatware (Windows 8+)
 
-- This command removes the majority of Windows apps such as Microsoft store, maps, camera etc that nobody uses & potentially jeopardizes privacy
+- This command removes the majority of Windows apps such as Microsoft Store, maps, camera etc that nobody uses & potentially jeopardizes privacy
 
     ```bat
     for /f "tokens=3" %i in ('DISM /Image:"%MOUNT_DIR%" /Get-ProvisionedAppxPackages ^| findstr "PackageName"') do (DISM /Image:"%MOUNT_DIR%" /Remove-ProvisionedAppxPackage /PackageName:%i)
@@ -209,7 +209,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsign
 - Run the command below twice to save the changes to the mounted ISO
 
     ```bat
-    DISM /Unmount-wim /MountDir:"%MOUNT_DIR%" /Commit
+    DISM /Unmount-Wim /MountDir:"%MOUNT_DIR%" /Commit
     ```
 
 - Delete the mount dir folder
@@ -240,7 +240,7 @@ Use the command below to open the extracted directory, place the **install.bat**
 explorer "%EXTRACTED_ISO%"
 ```
 
-## ISO compression (Optional)
+## ISO Compression (Optional)
 
 Use the command below to compress the ISO, this may take a while
 
