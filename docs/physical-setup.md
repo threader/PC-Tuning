@@ -26,7 +26,7 @@
 
 - Remove the heatsink from your RAM & mount a fan over it using zipties
 
-- Optionally place 40mm, 60mm or 120mm fan(s) on your NVME, you can also buy a heatsink for it but i am not sure if it provides any further benifit over only having a fan pointing at it. A heatsink alone was quite impactful for me
+- Optionally place 40mm, 60mm or 120mm fan(s) on your NVME, you can also buy a heatsink for it but I am not sure if it provides any further benifit over only having a fan pointing at it. A heatsink alone was quite impactful for me
 
 - Configure fan curves or set a static fan speed for the CPU & case fans. I personally set all fans to a reasonably high, constant, noise-acceptable speed
 

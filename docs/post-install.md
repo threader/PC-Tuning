@@ -19,6 +19,8 @@ slmgr /ipk <25 digit key>
 slmgr /ato
 ```
 
+- Ensure that the activation process was successful by checking the activation status in computuer properties
+
 ## Visual Cleanup
 
 - Disable features on the taskbar, unpin shortcuts & tiles from the taskbar & start menu
@@ -126,15 +128,15 @@ This step is required as we removed the spyware stock start menu
 
 ## Miscellaneous
 
-- Allow users full control of the ``C:\`` drive. This resolves an issue with xperf etl processing on Windows 7
-
-    - See [media/full-control-example.png](../media/full-control-example.png), continue & ignore errors
-
-- Open CMD & enter the command below
+- Open CMD & enter the command below. If you would like to, you can view the contents of this script before running it. The commands are placed in a script instead of this document as it will be tedious to copy & paste each one without a web browser installed
 
     ```bat
     C:\prerequisites\scripts\miscellaneous.bat
     ```
+
+- Allow users full control of the ``C:\`` drive. This resolves an issue with xperf etl processing on Windows 7
+
+    - See [media/full-control-example.png](../media/full-control-example.png), continue & ignore errors
 
 - Go through the ``C:\prerequisites\preference`` folder to configure the following:
 
@@ -645,17 +647,15 @@ Now is a good time to install whatever programs & game launchers you commonly us
 
 ## Final Thoughts & Tips
 
-- While gaming, consider the following:
+- Kill **explorer.exe** after you launch your game, it uses a ton of cycles
 
-    - Killing **explorer.exe** after you launch your game, it uses a ton of cycles
+    - Use **Ctrl + Shift + Esc** to open process explorer then use **File > Run** to start the **explorer.exe** shell again
 
-        - Use **Ctrl + Shift + Esc** to open process explorer then use **File > Run** to start the **explorer.exe** shell again
+- Disable idle states which will force C-State 0 & eliminate jitter due to the process of state transition. After all, C1 is still power saving [[1](https://www.dell.com/support/kbdoc/en-uk/000060621/what-is-the-c-state)]
 
-    - Disabling idle states which will force C-State 0 & eliminate jitter due to the process of state transition. After all, C1 is still power saving [[1](https://www.dell.com/support/kbdoc/en-uk/000060621/what-is-the-c-state)]
+    - Drag & drop the scripts in ``C:\prerequisites\scripts\idle-scripts`` to the Desktop for easy access. This way you can disable idle before launching a game & re-enable it after you close your game
 
-        - Drag & drop the scripts in ``C:\prerequisites\scripts\idle-scripts`` to the Desktop for easy access. This way you can disable idle before launching a game & re-enable it after you close your game
-
-    - Kill other processes that waste CPU time such as game clients
+- Kill other processes that waste CPU time such as game clients
 
 - Don't run random tweaks, tweaking programs or fall for the "fps boost" marketing nonsense. If you have a question about a specific option or setting, just ask
 

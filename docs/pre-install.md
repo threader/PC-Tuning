@@ -43,3 +43,5 @@ You can either:
 - Use DISM Apply-Image:
 
     - Create a new partition by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) & assign it a drive letter. Extract the ISO & run **install.bat**
+
+- From this point forward, you will need to open [docs/post-install.md](./post-install.md) on another device (phone) to follow up until a web browser is installed. After than you can open the guide on the same OS you are configuring
