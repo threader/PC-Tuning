@@ -526,7 +526,7 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 
     - Allow Throttle States - Off
 
-    - USB 3 Link Powermanagement - Off
+    - USB 3 Link Power Management - Off
 
     - USB Selective Suspend - Disabled
 
