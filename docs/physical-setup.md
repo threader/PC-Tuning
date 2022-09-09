@@ -68,6 +68,8 @@
 
 ## BIOS
 
+- Reset all settings to default, there should be a option in the exit page or similar
+
 - You can use UEFI or grub to change both visible & hidden BIOS settings. I recommend configuring what you can in UEFI then use [this method](https://github.com/BoringBoredom/UEFI-Editor) to change hidden settings
 
     - On some BIOSs, you can enable **Hidden OC Item** or **Hide Item** to unlock a vast amount of settings in UEFI

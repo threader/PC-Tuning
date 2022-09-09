@@ -4,6 +4,8 @@ setlocal EnableDelayedExpansion
 
 dism > nul 2>&1 || echo error: administrator privileges required && pause && exit /b 1
 
+mode 300, 1000
+
 :set_binary_path
 echo info: select the main game exe you would like to configure
 for /f "delims=" %%a in ('PowerShell "iex (${%~f0} | out-string)"') do set "binary_path=%%a"
