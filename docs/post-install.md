@@ -19,7 +19,7 @@ slmgr /ipk <25 digit key>
 slmgr /ato
 ```
 
-- Ensure that the activation process was successful by checking the activation status in computuer properties
+- Ensure that the activation process was successful by checking the activation status in computer properties
 
 ## Visual Cleanup
 
