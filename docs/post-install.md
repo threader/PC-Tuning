@@ -186,7 +186,7 @@ This step is required as we removed the spyware stock start menu
 
 - [7-Zip](https://www.7-zip.org)
 
-    - Run ``C:\prerequisites\7-Zip\7z2200-x64.exe``
+    - Run ``C:\prerequisites\7-Zip\7z2201-x64.exe``
 
     - Open ``C:\Program Files\7-Zip\7zFM.exe``, to go **Tools > Options** & associate 7-Zip with all file extensions by clicking the **+** button. You may need to click it twice to override existing associated extensions
 
