@@ -178,16 +178,6 @@ This step is generally required for users installing Windows 7 to integrate USB 
 DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsigned
 ```
 
-## Integrating Required Files
-
-- Open the mounted directory with the command below
-
-    ```bat
-    explorer "%MOUNT_DIR%"
-    ```
-
-- Clone the repository & place the **prerequisites** folder & **win-debloat.sh**  in the mounted directory
-
 ## Remove Provisioned Appx Bloatware (Windows 8+)
 
 - This command removes the majority of Windows apps such as Microsoft Store, maps, camera etc that nobody uses & potentially jeopardizes privacy
@@ -198,11 +188,21 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsign
 
 ## Replacing Wallpapers
 
-- Run the command below to replace all backgrounds & user profile ISO with solid black ISOs. Use the **--win7** argument if building Windows 7
+- Run the command below to replace all backgrounds & user profile ISO with solid black images. Use the **--win7** argument if building Windows 7
 
     ```bat
     win-wallpaper.exe --dir "%MOUNT_DIR%" --rgb #000000
     ```
+
+## Integrating Required Files
+
+- Open the mounted directory with the command below
+
+    ```bat
+    explorer "%MOUNT_DIR%"
+    ```
+
+- Clone the repository & place the **prerequisites** folder & **win-debloat.sh**  in the mounted directory
 
 ## Unmount & Commit
 
