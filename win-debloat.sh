@@ -76,8 +76,6 @@ rm -rf "Windows/System32/smartscreenps.dll"
 rm -rf "Windows/System32/SecurityHealthAgent.dll"
 rm -rf "Windows/System32/SecurityHealthService.exe"
 rm -rf "Windows/System32/SecurityHealthSystray.exe"
-rm -rf Windows/System32/wua*
-rm -rf Windows/System32/wups*
 rm -rf Windows/WinSxS/Temp/PendingDeletes/*
 
 for i in "${wildcard_names[@]}"
