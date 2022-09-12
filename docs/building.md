@@ -188,7 +188,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsign
 
 ## Replacing Wallpapers
 
-- Run the command below to replace all backgrounds & user profile ISO with solid black images. Use the **--win7** argument if building Windows 7
+- Run the command below to replace all backgrounds & user profile pictures with solid black images. Use the **--win7** argument if building Windows 7
 
     ```bat
     win-wallpaper.exe --dir "%MOUNT_DIR%" --rgb #000000
