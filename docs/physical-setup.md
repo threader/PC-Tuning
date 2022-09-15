@@ -38,7 +38,7 @@
 
 - If you have more than one USB controller, you can isolate devices such as DACs, headsets & other devices onto another controller to prevent them interfering with polling consistency
 
-- Unplug any other unnecessary devices (charge your phone somewhere else for goodness sake)
+- Unplug any other unnecessary devices such as portable device chargers
 
 ## Configure Peripherals
 
@@ -114,11 +114,13 @@
 
 - There are many tools to stress different components & every tool may have different algorithms which is why it is a good idea to use a variety of tools. There are countless factors that contribute to stability such as temperature (increases with time, ensure there is no thermal throttling), power quality, quality of VRMs, silicon lottery etc. Recommended tools are listed below
 
-    - [Linpack Xtreme](https://www.techpowerup.com/download/linpack-xtreme)/[Linpack-Extended](https://github.com/BoringBoredom/Linpack-Extended)
+    - [Linpack-Extended](https://github.com/BoringBoredom/Linpack-Extended)
 
-        - A single residual mismatch = not stable
+        - Residuals should match, otherwise it may be a sign of instability
 
         - GFLOP variation should be minimal 
+
+        - Use a range of problem sizes while testing for stability
 
     - [Prime95](https://www.mersenne.org/download)
 

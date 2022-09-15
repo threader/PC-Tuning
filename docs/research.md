@@ -54,7 +54,7 @@ lkd> dd HalpTscSyncPolicy l1
 fffff802`2864a3ac  00000002
 ```
 
-Conclusion: By default, Windows uses the **default** value, not **enhanced** or **legacy**
+Conclusion: By default, Windows uses the **default** value, not **enhanced** or **legacy**. Although, the **default** value may correspond to another value which is not exposed by reading the output of **HalpTscSyncPolicy**
 
 </details>
 
