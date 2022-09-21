@@ -44,10 +44,10 @@ def main() -> int:
         return 1
 
     registry_files = [
-        "windows7+.reg",
-        "windows8.reg",
-        "windows8+.reg",
-        "windows10+.reg"
+        "7+.reg",
+        "8.reg",
+        "8+.reg",
+        "10+.reg"
     ]
 
     if not all(os.path.exists(f"{registry_dir}\\{x}") for x in registry_files):
@@ -56,16 +56,12 @@ def main() -> int:
 
     print(f"info: applying registry file for windows {args.winver}")
 
-    if args.winver == 7:
-        apply_registry(f"{registry_dir}\\windows7+.reg")
-    elif args.winver == 8:
-        apply_registry(f"{registry_dir}\\windows7+.reg")
-        apply_registry(f"{registry_dir}\\windows8.reg")
-        apply_registry(f"{registry_dir}\\windows8+.reg")
-    elif args.winver == 10:
-        apply_registry(f"{registry_dir}\\windows7+.reg")
-        apply_registry(f"{registry_dir}\\windows8+.reg")
-        apply_registry(f"{registry_dir}\\windows10+.reg")
+    for file in registry_files:
+        if "+" in file:
+            if int(file.rpartition("+")[0]) <= args.winver:
+                apply_registry(f"{registry_dir}\\{file}")
+        elif int(file.rpartition(".reg")[0]) == args.winver:
+            apply_registry(f"{registry_dir}\\{file}")
 
     print("info: done")
 
