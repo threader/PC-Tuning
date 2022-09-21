@@ -54,10 +54,10 @@ wildcard_names=(
     "mcupdate_authenticamd"
     "mcupdate_genuineintel"
     "skype"
-    "microsoftedge"
+    "microsoftedge" # nts: "edge" is linked
     "edge"
     "usocore"
-    "usocoreworker"
+    "usocoreworker" # nts: "usocore" is linked
     "securitycenter"
 )
 
@@ -66,13 +66,13 @@ rm -rf "ProgramData/Packages"
 rm -rf Users/*/AppData/Local/Microsoft/WindowsApps
 rm -rf Users/*/AppData/Local/Packages/!("Microsoft.Windows.ShellExperienceHost_cw5n1h2txyewy"|"windows.immersivecontrolpanel_cw5n1h2txyewy")
 rm -rf Windows/SystemApps/!("ShellExperienceHost_cw5n1h2txyewy")
-rm -rf "Program Files/Windows Defender"
+rm -rf "Program Files/Windows Defender" # nts: "defender" is linked
 rm -rf "Program Files (x86)/Microsoft"
-rm -rf "Program Files (x86)/Windows Defender"
-rm -rf "Program Files/Windows Defender Advanced Threat Protection"
+rm -rf "Program Files (x86)/Windows Defender" # nts: "defender" is linked
+rm -rf "Program Files/Windows Defender Advanced Threat Protection" # nts: "defender" is linked
 rm -rf "Windows/diagnostics/system/Apps"
-rm -rf "Windows/diagnostics/system/WindowsUpdate"
-rm -rf "Windows/System32/smartscreenps.dll"
+rm -rf "Windows/diagnostics/system/WindowsUpdate" # nts: "windowsupdate" is linked
+rm -rf "Windows/System32/smartscreenps.dll" # nts: "smartscreen" is linked
 rm -rf "Windows/System32/SecurityHealthAgent.dll"
 rm -rf "Windows/System32/SecurityHealthService.exe"
 rm -rf "Windows/System32/SecurityHealthSystray.exe"

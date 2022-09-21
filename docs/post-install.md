@@ -567,7 +567,7 @@ By default, CPU 0 handles the majority of DPCs & ISRs for several devices which 
 
     - Ideally this should be done with some sort of realistic load such as a game running in the background as idle benchmarks may be misleading, but as we do not have any games installed yet, you can come back & test this later
 
-- Open CMD & enter the command below to configure what CPU handles DPCs/ISRs for the network driver. Ensure to change the driver key to suit your needs.
+- Open CMD & enter the command below to configure what CPU handles DPCs/ISRs for the network driver. Ensure to change the driver key to suit your needs
 
     - Run ``C:\prerequisites\scripts\get-driver-keys.bat`` to get the driver keys on your system
 

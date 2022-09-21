@@ -4,6 +4,8 @@
 
 - See [Low Latency Hardware | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit#bookmark=kix.alwwrke7e395)
 
+- Avoid Single-Channel & mixing and matching memory
+
 - Ensure your GPU is in the top slot & check that it is running at it's rated bandwith while running the built-in render test
 
     - See [media/gpuz-bus-interface.png](../media/gpuz-bus-interface.png)

@@ -16,7 +16,7 @@
 
 - Open device manager & install the driver by right clicking the display adapter, browse my computer for driver software & select the driver folder
 
-- Once the driver has installed, extract **ccc2_install.exe** with 7-Zip & run ``\CN\cnext\cnext64\ccc-next64.msi`` to install the radeon software control panel.
+- Once the driver has installed, extract **ccc2_install.exe** with 7-Zip & run ``\CN\cnext\cnext64\ccc-next64.msi`` to install the radeon software control panel
 
 - Ensure to disable the bloat AMD services in win + r, **services.msc**
 
