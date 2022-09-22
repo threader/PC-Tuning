@@ -39,11 +39,11 @@ slmgr /ato
 
 - Uninstall bloatware in **Control Panel > Programs > Programs & Features**
 
-    - In the **Turn Windows features on or off** section, disable everything **except** for:
+- In win + r, **OptionalFeatures**, disable everything **except** for:
 
-        - See [media/windows7-features-example.png](../media/windows7-features-example.png)
+    - See [media/windows7-features-example.png](../media/windows7-features-example.png)
 
-        - See [media/windows8+-features-example.png](../media/windows8+-features-example.png)
+    - See [media/windows8+-features-example.png](../media/windows8+-features-example.png)
 
 	- Restart your PC once before following the next steps (important)
 

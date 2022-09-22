@@ -4,7 +4,7 @@
 
 - See [Low Latency Hardware | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit#bookmark=kix.alwwrke7e395)
 
-- Avoid Single-Channel & mixing and matching memory
+- Avoid Single-Channel & mixing/matching memory
 
 - Ensure your GPU is in the top slot & check that it is running at it's rated bandwith while running the built-in render test
 
@@ -96,7 +96,7 @@
 
 - Disable the integrated GPU if not in use
 
-- Windows 7 requires CSM/Compatibility Support Module & the OpROMs to be enabled, disable it if configuring Windows 8+. Typically, only the storage and PCI OpROMs are required but you can enable all of them if unsure
+- Windows 7 requires CSM/Compatibility Support Module & the OpROMs to be enabled, disable it if configuring Windows 8+. Typically, only the storage & PCI OpROMs are required but you can enable all of them if unsure
 
 - Disable Secure Boot
 
