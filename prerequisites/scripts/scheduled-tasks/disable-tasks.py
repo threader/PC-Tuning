@@ -78,6 +78,8 @@ def main() -> int:
                     [nsudo_path, "-U:T", "-P:E", "-ShowWindowMode:Hide", *schtasks_args], check=False, **subprocess_null
                 )
 
+    print("info: done")
+
     return 0
 
 

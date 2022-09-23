@@ -71,7 +71,7 @@ slmgr /ato
 
 ## Install [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist/releases)
 
-- Open CMD as administrator & enter the command below
+- Run the package below to install the redistributables
 
     ```
     C:\prerequisites\VisualCppRedist_AIO_x86_x64.exe
@@ -79,7 +79,7 @@ slmgr /ato
 
 ## Disable Residual Scheduled Tasks
 
-- Open CMD as administrator & enter the command below
+- As we stripped the start menu, you will need to navigate to ``C:\Windows\System32`` & open **cmd.exe** as administrator by right-clicking the executable then enter the command below
 
     ```bat
     C:\prerequisites\scripts\scheduled-tasks\disable-tasks.exe
@@ -108,7 +108,6 @@ C:\prerequisites\inspectre.exe
 ```
 
 - See [media/meltdown-spectre-example.png](../media/meltdown-spectre-example.png)
-
 
 ## Install [OpenShell](https://github.com/Open-Shell/Open-Shell-Menu) (Windows 8+)
 
@@ -449,11 +448,11 @@ Feel free to skip this step as it is not required, Microsoft fixed the standby l
 
 The service list configuration is not intended for Wi-Fi & webcam functionality. I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming & use default services for everything else
 
-- Download [Service-List-Builder](https://github.com/amitxv/Service-List-Builder/releases)
-
 - On Windows 7 & 8, remove **MMCSS** from the **DependOnService** registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Audiosrv``
 
 - On 1607 & 1703, delete the **ErrorControl** registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Schedule`` to prevent an unresponsive explorer shell after disabling the task scheduler service
+
+- Download & extract the latest [Service-List-Builder](https://github.com/amitxv/Service-List-Builder/releases) release. Open CMD & CD to the exracted folder where the executable is located
 
 - Use the command below to build the scripts in the **build** folder. NSudo is required to run the batch scripts
 
@@ -479,7 +478,7 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 
     - Disable **High Definition Audio Controller** & the USB controller on the same PCI port as your GPU
 
-    - Disable any PCI & USB controllers with nothing connected to them
+    - Disable any PCI, SATA, NVME & USB controllers with nothing connected to them
 
 - Go to **View > Resources by connection**
 

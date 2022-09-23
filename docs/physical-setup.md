@@ -6,7 +6,7 @@
 
 - Avoid Single-Channel & mixing/matching memory
 
-- Ensure your GPU is in the top slot & check that it is running at it's rated bandwith while running the built-in render test
+- Ensure your GPU is in the top slot & check that it is running at it's rated bandwith in GPU-Z while running the built-in render test
 
     - See [media/gpuz-bus-interface.png](../media/gpuz-bus-interface.png)
 
