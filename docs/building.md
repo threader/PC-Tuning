@@ -20,7 +20,7 @@
 
 ## Downloading Stock ISOs
 
-The recommended links & methods below will ensure that we can work with a base ISO with no additional updates. Ensure to cross-check the hashes for the ISO to verify that it is genuine & not corrupted (not required when building an ISO from UUP dump). Use the command ``certutil -hashfile <path\to\file>`` to get the hash of the ISO file
+The recommended links & methods below will ensure that we can work with a base ISO, with no additional updates. Ensure to cross-check the hashes for the ISO to verify that it is genuine & not corrupted (not required when building an ISO from UUP dump). Use the command ``certutil -hashfile <path\to\file>`` to get the SHA1 hash of the ISO file
 
 Generally, Windows 7 is superior for real-time tasks compared to its successors but lacks USB & NVME driver support for newer hardware. Earlier versions of Windows lack GPU driver & anticheat support so some users are forced on newer builds. Microsoft implemented a fixed 10mHz QueryPerformanceFrequency on Windows 10 1809+ which was intended to make developing applications easier but many users reported worse performance. Windows 10 1903+ has an updated scheduler for multi CCX Ryzen CPUs [[1](https://i.redd.it/y8nxtm08um331.png)]. Microsoft changed how timer resolution functions as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change/) on Windows 10 2004+ & was [further developed in Windows 11](../media/windows11-timeapi-changes.png) which I assume is an attempt to improve power efficiency
 
@@ -30,7 +30,7 @@ Generally, Windows 7 is superior for real-time tasks compared to its successors 
 
     - Windows 8: **en_windows_8.1_with_update_x64_dvd_6051480.iso** - [Adguard ISO hashes](https://files.rg-adguard.net/file/feeb8cae-fb0b-42b9-6f69-50c71f0e5415)
 
-    - Windows 10+: Try to obtain a ISO with minimal updates or get it from the official download page
+    - Windows 10+: Try to obtain an ISO with minimal updates or get it from the official Microsoft download page
 
 - ISO Sources
 
@@ -108,7 +108,7 @@ Generally, Windows 7 is superior for real-time tasks compared to its successors 
 
 - Windows 7 recommended updates:
 
-    You may not need all updates listed below depending on your needs, if you are unsure then integrate all mentioned
+    You may not need all updates listed below depending on your needs, if you are unsure, then integrate all mentioned
 
     ```
     KB4490628 - Servicing Stack Update
@@ -128,7 +128,7 @@ Generally, Windows 7 is superior for real-time tasks compared to its successors 
 
     - Download the latest, non-security cumulative update along with the servicing stack for that specific update (specified in the update page). The update page should also specify if the update is non-security or a security update, if it does not, then download the latest update. Use the official [Windows 10 update history page](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b)
 
-- Download the updates from the [microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the KB identifier. Place the updates somewhere easily accessible such as ``C:\updates``
+- Download the updates from the [Microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the KB identifier. Place the updates somewhere easily accessible such as ``C:\updates``
 
 - Integrate the updates into the mounted ISO with the command below. The servicing stack must be installed before installing the cumulative updates
 
@@ -178,9 +178,9 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsign
 
 ## Replacing Wallpapers
 
-- Run the command below to replace all backgrounds & user profile pictures with solid black images. Use the **--win7** argument if building Windows 7
+- Run the command below to replace all backgrounds & user profile pictures with solid black images. Use the **--win7** argument if building Windows 7    
 
-    ```bat
+    ```
     win-wallpaper.exe --dir "%MOUNT_DIR%" --rgb #000000
     ```
 
