@@ -24,54 +24,44 @@ The recommended links & methods below will ensure that we can work with a base I
 
 Generally, Windows 7 is superior for real-time tasks compared to its successors but lacks USB & NVME driver support for newer hardware. Earlier versions of Windows lack GPU driver & anticheat support so some users are forced on newer builds. Microsoft implemented a fixed 10mHz QueryPerformanceFrequency on Windows 10 1809+ which was intended to make developing applications easier but many users reported worse performance. Windows 10 1903+ has an updated scheduler for multi CCX Ryzen CPUs [[1](https://i.redd.it/y8nxtm08um331.png)]. Microsoft changed how timer resolution functions as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change/) on Windows 10 2004+ & was [further developed in Windows 11](../media/windows11-timeapi-changes.png) which I assume is an attempt to improve power efficiency
 
+- Recommended ISOs
 
-<details>
-<summary>Windows 7</summary>
+    - Windows 7: **en_windows_7_professional_with_sp1_x64_dvd_u_676939.iso** - [Adguard ISO hashes](https://files.rg-adguard.net/file/11ad6502-c2aa-261c-8c3f-c81477b21dd2)
 
-- **en_windows_7_professional_with_sp1_x64_dvd_u_676939.iso**
+    - Windows 8: **en_windows_8.1_with_update_x64_dvd_6051480.iso** - [Adguard ISO hashes](https://files.rg-adguard.net/file/feeb8cae-fb0b-42b9-6f69-50c71f0e5415)
 
-    - [link 1](https://isofiles.bd581e55.workers.dev/Windows%207/Windows%207%20Professional%20with%20SP1/en_windows_7_professional_with_sp1_x64_dvd_u_676939.iso), [link 2](https://msnp0-my.sharepoint.com/personal/tuanthanh1_p0_msnvn_org/_layouts/15/download.aspx?SourceUrl=%2Fpersonal%2Ftuanthanh1%5Fp0%5Fmsnvn%5Forg%2FDocuments%2FWindows%2FWindows%207%2Fen%5Fwindows%5F7%5Fprofessional%5Fwith%5Fsp1%5Fx64%5Fdvd%5Fu%5F676939%2Eiso)
-    
-    - [Adguard ISO hashes](https://files.rg-adguard.net/file/11ad6502-c2aa-261c-8c3f-c81477b21dd2)
+    - Windows 10+: Try to obtain a ISO with minimal updates or get it from the official download page
 
-</details>
+- ISO Sources
 
-<details>
-<summary>Windows 8</summary>
+    - [MVS Collection](https://isofiles.bd581e55.workers.dev)
 
-- **en_windows_8.1_with_update_x64_dvd_6051480.iso**
+    - [New Download Links](https://docs.google.com/spreadsheets/d/1zTF5uRJKfZ3ziLxAZHh47kF85ja34_OFB5C5bVSPumk/edit)
 
-    - [link 1](https://isofiles.bd581e55.workers.dev/Windows%208/Windows%208.1%20with%20Update/en_windows_8.1_with_update_x64_dvd_6051480.iso), [link 2](https://msnp0-my.sharepoint.com/personal/tuanthanh1_p0_msnvn_org/_layouts/15/download.aspx?SourceUrl=%2Fpersonal%2Ftuanthanh1%5Fp0%5Fmsnvn%5Forg%2FDocuments%2FWindows%2FWindows%208%2E1%2Fen%5Fwindows%5F8%2E1%5Fwith%5Fupdate%5Fx64%5Fdvd%5F6051480%2Eiso)
+    - [UUP dump](https://uupdump.net)
 
-    - [Adguard ISO hashes](https://files.rg-adguard.net/file/feeb8cae-fb0b-42b9-6f69-50c71f0e5415)
+        <details>
+        <summary>Methodology</summary>
 
-</details>
+        - Search for the Windows version you desire & download the latest feature update instance
+        
+            <img src="../media/uupdump-search-image.png" width="750">
 
-<details>
-<summary>Windows 10+</summary>
-<br>
+        - Choose the desired language & click next
 
-Since it is quite tedious to obtain a Windows 10+ ISO with minimal updates, we can build our own using [UUP dump](https://uupdump.net)
+            <img src="../media/uupdump-choose-language.png" width="750">
 
-- Search for the Windows version you desire & download the latest feature update instance
-   
-    <img src="../media/uupdump-search-image.png" width="750">
+        - Uncheck all editions except the professional edition & click next
 
-- Choose the desired language & click next
+            <img src="../media/uupdump-choose-edition.png" width="750">
 
-    <img src="../media/uupdump-choose-language.png" width="750">
+        - Copy the configuration below, ensure include updates is checked & click create download package
 
-- Uncheck all editions except the professional edition & click next
+            <img src="../media/uupdump-download-options.png" width="750">
 
-    <img src="../media/uupdump-choose-edition.png" width="750">
+        - Extract the downloaded package & run **uup_download_windows.cmd**. The final ISO file will be created in the same directory as the script
 
-- Copy the configuration below, ensure include updates is checked & click create download package
-
-    <img src="../media/uupdump-download-options.png" width="750">
-
-- Extract the downloaded package & run **uup_download_windows.cmd**. The final ISO file will be created in the same directory as the script
-
-</details>
+        </details>
 
 ## Preparing the Build Environment
 
@@ -166,11 +156,11 @@ This step is generally required for users installing Windows 7 to integrate USB 
 
     - See [media/device-hwid-example.png](../media/device-hwid-example.png)
 
-- [Win-Raid USB driver collection](https://winraid.level1techs.com/t/usb-3-0-3-1-drivers-original-and-modded/30871).
+- [Win-Raid USB driver collection](https://winraid.level1techs.com/t/usb-3-0-3-1-drivers-original-and-modded/30871)
 
     - If you can not find a USB driver, try using the [generic USB driver](https://forums.mydigitallife.net/threads/usb-3-xhci-driver-stack-for-windows-7.81934/)
 
-- [Win-Raid AHCI & NVME driver collection](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310).
+- [Win-Raid AHCI & NVME driver collection](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310)
 
 - Place all of the drivers to be integrated somewhere easily accessible such as ``C:\drivers`` & use the command below to integrate them into the mounted ISO
 
