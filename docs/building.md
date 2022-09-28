@@ -41,6 +41,7 @@ Generally, Windows 7 is superior for real-time tasks compared to its successors 
     - [UUP dump](https://uupdump.net)
 
         <details>
+		
         <summary>Methodology</summary>
 
         - Search for the Windows version you desire & download the latest feature update instance
@@ -120,13 +121,9 @@ Generally, Windows 7 is superior for real-time tasks compared to its successors 
     KB4534314 - Easy Anti-Cheat Support
     ```
 
-- Windows 8 recommended updates:
+- Windows 8+ recommended updates:
 
-    - Download the latest, non-security cumulative update along with the servicing stack for that specific update (specified in the update page). The update page should also specify if the update is non-security or a security update, if it does not, then download the latest update. Use the official [Windows 8 update history page](https://support.microsoft.com/en-us/topic/july-21-2016-kb3172614-dcf9bea5-47b0-b574-2929-4f9e130f5192)
-
-- Windows 10+ recommended updates:
-
-    - Download the latest, non-security cumulative update along with the servicing stack for that specific update (specified in the update page). The update page should also specify if the update is non-security or a security update, if it does not, then download the latest update. Use the official [Windows 10 update history page](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b)
+    - Download the latest, non-security cumulative update along with the servicing stack for that specific update (specified in the update page). The update page should also specify if the update is non-security or a security update, if it does not, then download the latest update. Use the official update history page ([Windows 8](https://support.microsoft.com/en-us/topic/july-21-2016-kb3172614-dcf9bea5-47b0-b574-2929-4f9e130f5192), [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b))
 
 - Download the updates from the [Microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the KB identifier. Place the updates somewhere easily accessible such as ``C:\updates``
 
@@ -240,7 +237,7 @@ DISM /Export-Image /SourceImageFile:"%EXTRACTED_ISO%\sources\install.wim" /Sourc
 
 ## Convert to ISO
 
-- Use the command below to convert the extracted ISO to an ISO file which will be created on the Desktop
+This step is not required if you are [installing using DISM Apply-Image](./pre-install.md#booting-into-the-iso). Use the command below to convert the extracted ISO to an ISO file which will be created on the Desktop
 
 ```bat
 "%OSCDIMG%" -m -o -u2 -udfver102 -l"FINAL" -bootdata:2#p0,e,b"%EXTRACTED_ISO%\boot\etfsboot.com"#pEF,e,b"%EXTRACTED_ISO%\efi\microsoft\boot\efisys.bin" "%EXTRACTED_ISO%" "%userprofile%\Desktop\FINAL.iso"

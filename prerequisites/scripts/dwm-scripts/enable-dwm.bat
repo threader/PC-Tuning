@@ -9,7 +9,7 @@ echo info: press any key to continue
 pause > nul 2>&1
 
 echo info: enabling dwm
-Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\dwm.exe" /v "Debugger" /f
+reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\dwm.exe" /v "Debugger" /f
 
 for %%a in (UIRibbon, UIRibbonRes, Windows.UI.Logon) do (
     if exist "!windir!\System32\%%a.dlll" (

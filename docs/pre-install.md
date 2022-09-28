@@ -30,18 +30,16 @@ The post-installation instructions are based on configuring a stock Windows ISO 
 
 ## Booting Into the ISO
 
-For the next steps, it is **vital** that you unplug your ethernet cable & are not connected to the internet. This will allow us to bypass the forced Microsoft login during OOBE & will prevent Windows from fetching updates
+For the next steps, it is **vital** that you unplug your Ethernet cable & are not connected to the internet. This will allow us to bypass the forced Microsoft login during OOBE & will prevent Windows from fetching updates
 
-You can either:
+From this point forward, you will need to open [docs/post-install.md](./post-install.md) on another device (phone) to follow up until a web browser is installed. After that you can open the guide on the same OS you are configuring
 
-- Use a USB:
+- Install using a USB storage device:
 
     - Drag & drop the ISO into the same location where Linux Mint is & select the USB storage device in the boot options in BIOS
 
     - When installing Windows 8 with a USB, you may be required to enter a key. Use the generic key ``GCRJD-8NW9H-F2CDX-CCM8D-9D6T9`` to get past this step
 
-- Use DISM Apply-Image:
+- Install using DISM Apply-Image:
 
-    - Create a new partition by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) & assign it a drive letter. Extract the ISO & run **install.bat**
-
-- From this point forward, you will need to open [docs/post-install.md](./post-install.md) on another device (phone) to follow up until a web browser is installed. After that you can open the guide on the same OS you are configuring
+    - Create a new partition by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) & assign it a drive letter. Extract the ISO if required & run **install.bat**

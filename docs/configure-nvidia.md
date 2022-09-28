@@ -32,10 +32,10 @@ I recommend using the 472.12 ([Windows 7/Windows 8](https://www.nvidia.co.uk/Dow
 - Open CMD & enter the commands below to disable telemetry
 
     ```bat
-    Reg.exe add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v "OptInOrOutPreference" /t REG_DWORD /d 0 /f 
+    reg.exe add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v "OptInOrOutPreference" /t REG_DWORD /d 0 /f 
     ```
     ```bat
-    Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup" /v "SendTelemetryData" /t REG_DWORD /d 0 /f
+    reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup" /v "SendTelemetryData" /t REG_DWORD /d 0 /f
     ```
 
 ## Disable HDCP (required for DRM content)
@@ -45,7 +45,7 @@ HDCP Can be disabled with the [following registry key](https://github.com/djdall
 - Run ``C:\prerequisites\scripts\get-driver-keys.bat`` to get the driver keys on your system
         
     ```bat
-    Reg.exe add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "RMHdcpKeyglobZero" /t REG_DWORD /d "1" /f
+    reg.exe add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "RMHdcpKeyglobZero" /t REG_DWORD /d "1" /f
     ```
 
 ## Configure NVIDIA Control Panel
@@ -79,7 +79,7 @@ Force P-State 0 with the [following registry key](https://github.com/djdallmann/
 - Run ``C:\prerequisites\scripts\get-driver-keys.bat`` to get the driver keys on your system
 
     ```bat
-    Reg.exe add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "DisableDynamicPstate" /t REG_DWORD /d "1" /f
+    reg.exe add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "DisableDynamicPstate" /t REG_DWORD /d "1" /f
     ```
 
 ## Disable Ansel
@@ -88,6 +88,6 @@ Force P-State 0 with the [following registry key](https://github.com/djdallmann/
 
 ## Configure NVIDIA Inspector
 
-Feel free to skip this step as I have not verified it affects anything as of yet but there should be no harm following along.
+Feel free to skip this step as I have not verified it affects anything as of yet but there should be no harm following along
 
 - Disable [Cuda P2 States](https://babeltechreviews.com/nvidia-cuda-force-p2-state) & [SILK Smoothness](https://www.avsim.com/forums/topic/552651-nvidia-setting-silk-smoothness) in ``C:\prerequisites\nvidia-profile-inspector\nvidiaProfileInspector.exe``

@@ -2,7 +2,7 @@
 
 ## OOBE Setup
 
-Do not connect to the internet until after the [Merge the Registry Files](#merge-the-registry-files) section, once you have begun the OOBE process, follow the steps in the video
+- Do not connect to the internet until after the [Merge the Registry Files](#merge-the-registry-files) section, once you have begun the OOBE process, follow the steps in the video
 
 - Do not enter a password by simply pressing enter, the service list recommended will break user password functionality & you will not be able to login again
 
@@ -12,7 +12,7 @@ Do not connect to the internet until after the [Merge the Registry Files](#merge
 
 ## Activating Windows
 
-As previously mentioned, you should have already linked a key to your motherboard but if you have not, now would be a good time to do so. Open CMD as administrator & enter the command below
+- As previously mentioned, you should have already linked a key to your motherboard but if you have not, now would be a good time to do so. Open CMD as administrator & enter the command below
 
 ```bat
 slmgr /ipk <25 digit key>
@@ -101,7 +101,7 @@ slmgr /ato
 
 ## Spectre & Meltdown
 
-Open CMD & enter the command below. Ensure **System is Spectre/Meltdown protected** is **NO**. AMD is unaffected by Meltdown
+- Open CMD & enter the command below. Ensure **System is Spectre/Meltdown protected** is **NO**. AMD is unaffected by Meltdown
 
 ```bat
 C:\prerequisites\inspectre.exe
@@ -110,8 +110,6 @@ C:\prerequisites\inspectre.exe
 - See [media/meltdown-spectre-example.png](../media/meltdown-spectre-example.png)
 
 ## Install [OpenShell](https://github.com/Open-Shell/Open-Shell-Menu) (Windows 8+)
-
-This step is required as we removed the spyware stock start menu
 
 - Run **OpenShellSetup.exe** in ``C:\prerequisites\open-shell``
 
@@ -171,7 +169,7 @@ This step is required as we removed the spyware stock start menu
 
 ## Installing Drivers
 
-- Install any drivers your system requires, avoid installing chipset drivers. I would recommend updating & installing ethernet, USB, SATA (required on Windows 7 as enabling MSI on the stock SATA driver will result in a BSOD) & NVME
+- Install any drivers your system requires, avoid installing chipset drivers. I would recommend updating & installing Ethernet, USB, SATA (required on Windows 7 as enabling MSI on the stock SATA driver will result in a BSOD) & NVME
 
 - Try to obtain the bare driver so it can be installed in device manager as executable installers usually come with extra unnecessary bloatware. Most of the time, you can extract the installer's executable to obtain the driver
 
@@ -191,7 +189,7 @@ This step is required as we removed the spyware stock start menu
 
 - Web Browser
 
-    - See https://privacytests.org/
+    - See https://privacytests.org
 
     - [Librewolf](https://librewolf.net) (fork of Firefox) recommended
 
@@ -263,6 +261,76 @@ This step is required as we removed the spyware stock start menu
 
     - [mpv](https://mpv.io) / [mpv.net](https://github.com/stax76/mpv.net) or [mpc-hc](https://mpc-hc.org) ([alternative link](https://github.com/clsid2/mpc-hc)) recommended
 
+## Configure Power Options
+
+- Set the power plan to **High performance** in **Control Panel > Hardware & Sound > Power Options**
+
+- Open CMD & enter the command below to remove every power plan except the active power scheme, ignore errors
+
+    ```bat
+	powercfg -delete 381b4222-f694-41f0-9685-ff5bb260df2e
+	powercfg -delete 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
+	powercfg -delete a1841308-3541-4fab-bc81-f71556f20b4a
+	powercfg -delete e9a42b02-d5df-448d-aa00-03f14749eb61
+	```
+
+- Open ``C:\prerequisites\PowerSettingsExplorer.exe`` & configure the following:
+
+    - Primary/Secondary NVMe Idle Timeout - 0
+
+    - NVMe NOPPME - Off
+
+    - Allow Throttle States - Off
+
+    - USB 3 Link Power Management - Off
+
+    - USB Selective Suspend - Disabled
+
+    - Turn off display after - 0 minutes
+
+## Configure the BCD Store
+
+- Open CMD & enter the commands below
+
+    - Disable the boot manager timeout when dual booting (does not affect single boot times)
+
+        ```bat
+        bcdedit /timeout 0
+        ```
+    - Configure [Data Execution Prevention](https://docs.microsoft.com/en-us/windows/win32/memory/data-execution-prevention) for **essential Windows programs & services only**
+
+        ```bat
+        bcdedit /set nx Optin
+        ```
+
+    - Configure the operating system name, I usually name it to whatever Windows version I am using e.g **Windows 10 1803**
+
+        ```bat
+        bcdedit /set {current} description "OSNAME"
+        ```
+
+    - Windows 8+ Only
+        
+        - Implemented as a power saving feature for laptops & tablets, you absolutely do not want a [tickless kernel](https://en.wikipedia.org/wiki/Tickless_kernel) on a desktop
+
+            ```bat
+            bcdedit /set disabledynamictick yes
+            ```
+
+        - Forces the clock to be backed by a platform source, no synthetic timers are allowed. Have not been able to prove the benifits of this, feel free to skip or test yourself
+
+            ```bat
+            bcdedit /set useplatformtick yes
+            ```
+
+        - Configure the TSC synchronization policy. Have not been able to prove the benifits of this, feel free to skip or test yourself
+
+            ```bat
+            bcdedit /set tscsyncpolicy [legacy | enhanced]
+            ```
+
+            - Related: [research.md - What TscSyncPolicy does Windows use by default?](research.md#what-tscsyncpolicy-does-windows-use-by-default)
+
 ## Configure the Graphics Driver
 
 - See [docs/configure-nvidia.md](../docs/configure-nvidia.md)
@@ -320,6 +388,7 @@ If you usually use [Custom Resolution Utility](https://www.monitortests.com/foru
 This step is not optional, pcw.sys will be disabled which breaks the stock Task Manager functionality
 
 <details>
+
 <summary>Reasons not to use Task Manager</summary>
 
 - It relies on a kernel mode driver to operate (additional overhead)
@@ -327,54 +396,12 @@ This step is not optional, pcw.sys will be disabled which breaks the stock Task 
 - Does not provide performance metrics such as cycles/ context switches delta & other useful details
 
 - On Windows 8+, [Task Manager reports CPU utility in %](https://aaron-margosis.medium.com/task-managers-cpu-numbers-are-all-but-meaningless-2d165b421e43) which provides misleading CPU utilization details, on the other hand, Windows 7's Task Manager & process explorer report time-based busy utilization. This also explains why the disable idle power plan option results in 100% CPU utilization on Windows 8+
+
 </details>
 
-- Place ``C:\prerequisites\sysinternals\procexp.exe`` into ``C:\Windows`` & open it
+- Place **procexp.exe** from ``C:\prerequisites\sysinternals`` into ``C:\Windows`` & open it
 
 - Go to **Options** & select **Replace Task Manager**. I also configure **Confirm Kill** & **Allow Only One Instance**
-
-## Configure the BCD Store
-
-- Open CMD & enter the commands below
-
-    - Disable the boot manager timeout when dual booting (does not affect single boot times)
-
-        ```bat
-        bcdedit /timeout 0
-        ```
-    - Configure [Data Execution Prevention](https://docs.microsoft.com/en-us/windows/win32/memory/data-execution-prevention) for **essential Windows programs & services only**
-
-        ```bat
-        bcdedit /set nx Optin
-        ```
-
-    - Configure the operating system name, I usually name it to whatever Windows version I am using e.g **W10 1803**
-
-        ```bat
-        bcdedit /set {current} description "OSNAME"
-        ```
-
-    - Windows 8+ Only
-        
-        - Implemented as a power saving feature for laptops & tablets, you absolutely do not want a [tickless kernel](https://en.wikipedia.org/wiki/Tickless_kernel) on a desktop
-
-            ```bat
-            bcdedit /set disabledynamictick yes
-            ```
-
-        - Forces the clock to be backed by a platform source, no synthetic timers are allowed. Have not been able to prove the benifits of this, feel free to skip or test yourself
-
-            ```bat
-            bcdedit /set useplatformtick yes
-            ```
-
-        - Configure the TSC synchronization policy. Have not been able to prove the benifits of this, feel free to skip or test yourself
-
-            ```bat
-            bcdedit /set tscsyncpolicy [legacy | enhanced]
-            ```
-
-            - Related: [research.md - What TscSyncPolicy does Windows use by default?](research.md#what-tscsyncpolicy-does-windows-use-by-default)
 
 ## Configure Memory Management Settings (Windows 8+)
 
@@ -452,7 +479,7 @@ The service list configuration is not intended for Wi-Fi & webcam functionality.
 
 - On 1607 & 1703, delete the **ErrorControl** registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Schedule`` to prevent an unresponsive explorer shell after disabling the task scheduler service
 
-- Download & extract the latest [Service-List-Builder](https://github.com/amitxv/Service-List-Builder/releases) release. Open CMD & CD to the exracted folder where the executable is located
+- Download & extract the latest [Service-List-Builder](https://github.com/amitxv/Service-List-Builder/releases) release. Open CMD & CD to the extracted folder where the executable is located
 
 - Use the command below to build the scripts in the **build** folder. NSudo is required to run the batch scripts
 
@@ -466,7 +493,7 @@ The service list configuration is not intended for Wi-Fi & webcam functionality.
 
 ## Configure Device Manager
 
-Many devices in device manager will appear with a yellow icon as we ran the disable services script, **DO NOT** disable any device with a yellow icon however tempting it may be as as this will completely defeat the purpose of building toggle scripts. I would **highly** advise against asking other people for help with this step without context as they are almost guaranteed to tell you to "disable devices with a yellow icon" but as previously mentioned & i can not exaggerate this enough, this will completely defeat the purpose of building toggle scripts. I have reasons & specific methods for everything within this guide
+Many devices in device manager will appear with a yellow icon as we ran the disable services script, **DO NOT** disable any device with a yellow icon as this will completely defeat the purpose of building toggle scripts. I would **highly** advise against asking other people for help with this step without context as they are almost guaranteed to tell you to "disable devices with a yellow icon" but as previously mentioned & i can not exaggerate this enough, this will completely defeat the purpose of building toggle scripts. My method for configuring services & device manager will ensure maximum compatibility while services are enabled
 
 - Open device manager, **View > Devices by connection**
 
@@ -504,38 +531,13 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 
 - It is not a bad idea to skim through both the legacy control panel & immersive control panel to ensure nothing is misconfigured (only takes a few minutes)
 
-## Configure Power Options
-
-- Set the power plan to **High performance** in **Control Panel > Hardware & Sound > Power Options**
-
-- Open CMD & enter the command below to remove every power plan except the active power scheme, ignore errors
-
-    ```bat
-	powercfg -delete 381b4222-f694-41f0-9685-ff5bb260df2e
-	powercfg -delete 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
-	powercfg -delete a1841308-3541-4fab-bc81-f71556f20b4a
-	powercfg -delete e9a42b02-d5df-448d-aa00-03f14749eb61
-	```
-
-- Open ``C:\prerequisites\PowerSettingsExplorer.exe`` & configure the following:
-
-    - Primary/Secondary NVMe Idle Timeout - 0
-
-    - NVMe NOPPME - Off
-
-    - Allow Throttle States - Off
-
-    - USB 3 Link Power Management - Off
-
-    - USB Selective Suspend - Disabled
-
-    - Turn off display after - 0 minutes
-
 ## Disable Hidden Power Saving
 
-All hidden means is not visible to the user, many drivers contain these registry entries that are clearly labeled power saving although I have not been able to prove the benifit of this script so feel free to skip this step
+- Open CMD & enter the command below to disable registry entries present in many drivers clearly labeled power saving, although I have not been able to prove the benifit of this script so feel free to skip this step
 
-- Run the ``C:\prerequisites\scripts\disable-hidden-powersaving.bat`` script
+    ```bat
+    C:\prerequisites\scripts\disable-hidden-powersaving.bat
+    ```
 
 ## Message Signaled Interrupts
 
@@ -556,7 +558,7 @@ issues [[1](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitatio
 
 ## Interrupt Affinity
 
-By default, CPU 0 handles the majority of DPCs & ISRs for several devices which can be viewed in a xperf dpcisr trace. This is not desirable as there will be a latency penalty because many processes & system activities are scheduled on the same core. We can use ``C:\prerequisites\Interrupt-Affinity-Tool.exe`` to set an interrupt affinity policy to the USB, GPU & NIC driver, which are few of many devices responsible for the most DPCs/ISRs, to offload them onto another core. They all require testing as you may do more harm than good if it is set to a weaker or equally as busy core.
+By default, CPU 0 handles the majority of DPCs & ISRs for several devices which can be viewed in a xperf dpcisr trace. This is not desirable as there will be a latency penalty because many processes & system activities are scheduled on the same core. We can use ``C:\prerequisites\Interrupt-Affinity-Tool.exe`` to set an interrupt affinity policy to the USB, GPU & NIC driver, which are few of many devices responsible for the most DPCs/ISRs, to offload them onto another core. They all require testing as you may do more harm than good if it is set to a weaker or equally as busy core
 
 - The correct device can be identified by cross-checking the **Location Info** with the **Location** in the **Properties > General** section of a device in device manager. Restart your PC instead of an individual driver to avoid issues
 
@@ -649,6 +651,8 @@ Now is a good time to install whatever programs & game launchers you commonly us
 - Kill **explorer.exe** after you launch your game, it uses a ton of cycles
 
     - Use **Ctrl + Shift + Esc** to open process explorer then use **File > Run** to start the **explorer.exe** shell again
+
+- If you are using Windows 8.1+ and [Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) (exclusive fullscreen) with your game, you *can* disable DWM using [prerequisites/scripts/dwm-scripts](../prerequisites/scripts/dwm-scripts) as the process wastes CPU time despite there being no composition. Beware as elements of the UI will be broken & somes games/programs will not be able to launch (you may need to disable hardware acceleration)
 
 - Disable idle states which will force C-State 0 & eliminate jitter due to the process of state transition. After all, C1 is still power saving [[1](https://www.dell.com/support/kbdoc/en-uk/000060621/what-is-the-c-state)]
 
