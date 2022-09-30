@@ -207,7 +207,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsign
 
 ## Replace Windows 7 Boot Wim (Windows 7)
 
-As you are aware, Windows 7 lacks driver support for modern hardware & you should have already integrated drivers into the **install.wim** however we have not yet touched the **boot.wim** (installer). We could integrate the same drivers into the **boot.wim** as we did before however this may still lead to a problematic installation. Instead, we can use the Windows 10 **boot.wim** which already has modern hardware support to install our Windows 7 **install.wim**. For this to work properly, you should only have 1 version of Windows 7 in your `install.wim`. 
+As you are aware, Windows 7 lacks driver support for modern hardware & you should have already integrated drivers into the **install.wim** however we have not yet touched the **boot.wim** (installer). We could integrate the same drivers into the **boot.wim** as we did before however this may still lead to a problematic installation. Instead, we can use the Windows 10 **boot.wim** which already has modern hardware support to install our Windows 7 **install.wim**. For this to work properly, you should only have one edition of Windows 7 in your **install.wim** which should already have been done in the [Stripping Non-Essential Editions](#stripping-non-essential-editions) section
 
 - Download the [latest Windows 10 ISO **that matches your Windows 7 ISO's language**](https://www.microsoft.com/en-gb/software-download/windows10) & extract it, I would recommend renaming the extracted folder to avoid confusion. In the examples below, I have extracted it to ``C:\W10_ISO``
 
