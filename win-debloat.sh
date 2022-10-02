@@ -40,8 +40,6 @@ wildcard_names=(
     "waas"
     "windowsmaps"
     "wsqmcons"
-    "wua"
-    "wus"
     "defender"
     "onedrive"
     "mcupdate_authenticamd"
