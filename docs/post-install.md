@@ -103,9 +103,9 @@ slmgr /ato
 
 - Open CMD & enter the command below. Ensure **System is Spectre/Meltdown protected** is **NO**. AMD is unaffected by Meltdown
 
-```bat
-C:\prerequisites\inspectre.exe
-```
+    ```bat
+    C:\prerequisites\inspectre.exe
+    ```
 
 - See [media/meltdown-spectre-example.png](../media/meltdown-spectre-example.png)
 

@@ -19,6 +19,11 @@ DISM /Online /Cleanup-Image /StartComponentCleanup /ResetBase
 echo info: disabling reserved storage, ignore errors
 DISM /Online /Set-ReservedStorageState /State:Disabled
 
+echo info: disabling sleepstudy
+wevtutil sl Microsoft-Windows-SleepStudy/Diagnostic /e:false
+wevtutil sl Microsoft-Windows-Kernel-Processor-Power/Diagnostic /e:false
+wevtutil sl Microsoft-Windows-UserModePowerService/Diagnostic /e:false
+
 echo info: done
 echo info: press any key to continue
 pause > nul 2>&1
