@@ -155,7 +155,7 @@ This step is generally required for users installing Windows 7 to integrate USB 
 
 - [Win-Raid USB driver collection](https://winraid.level1techs.com/t/usb-3-0-3-1-drivers-original-and-modded/30871)
 
-    - If you can not find a USB driver, try using the [generic USB driver](https://forums.mydigitallife.net/threads/usb-3-xhci-driver-stack-for-windows-7.81934/)
+    - If you can not find a USB driver, try using the [generic USB driver](https://forums.mydigitallife.net/threads/usb-3-xhci-driver-stack-for-windows-7.81934)
 
 - [Win-Raid AHCI & NVME driver collection](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310)
 

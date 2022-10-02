@@ -25,13 +25,11 @@ wildcard_names=(
     "upfc"
     "applocker"
     "autologger"
-    "clipsvc"
     "clipup"
     "deliveryoptimization"
     "devicecensus"
     "diagtrack"
     "dmclient"
-    "dosvc"
     "enhancedstorage"
     "hotspot"
     "invagent"
@@ -39,13 +37,8 @@ wildcard_names=(
     "sihclient"
     "slui"
     "startupscan"
-    "storsvc"
-    "usoapi"
-    "usoclient"
-    "usosvc"
     "waas"
     "windowsmaps"
-    "windowsupdate"
     "wsqmcons"
     "wua"
     "wus"
@@ -55,7 +48,6 @@ wildcard_names=(
     "mcupdate_genuineintel"
     "skype"
     "edge"
-    "usocore"
     "securitycenter"
 )
 
@@ -74,7 +66,7 @@ rm -rf Windows/WinSxS/Temp/PendingDeletes/*
 for i in "${wildcard_names[@]}"
 do
     echo info: removing $i
-    find . -ipath "*$i*" -delete
+    find . -ipath "*$i*" -not -ipath "./prerequisites/*" -delete
 done
 
 echo info: searching for files that are supposed to be removed...
@@ -83,7 +75,7 @@ echo info: if any file paths appear below any searching message, it is likely th
 for i in "${wildcard_names[@]}"
 do
     echo info: searching for $i
-    find . -iname *$i*
+    find . -ipath "*$i*" -not -ipath "./prerequisites/*"
 done
 
 echo info: done
