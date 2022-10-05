@@ -515,12 +515,6 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 
 - To prepare us for the next steps, run **Services-Enable.bat** with NSudo, ensure **Enable All Privileges** is enabled as mentioned
 
-- Open CMD & enter the command below to disable power saving for various devices in device manager
-
-    ```bat
-    C:\prerequisites\scripts\disable-pnp-powersaving.ps1
-    ```
-
 - Open CMD & enter the command below to cleanup hidden & unused devices
     
     ```bat
@@ -531,12 +525,16 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 
 - It is not a bad idea to skim through both the legacy control panel & immersive control panel to ensure nothing is misconfigured (only takes a few minutes)
 
-## Disable Hidden Power Saving
+## Disable Driver Power Saving
 
-- Open CMD & enter the command below to disable registry entries present in many drivers clearly labeled power saving, although I have not been able to prove the benifit of this script so feel free to skip this step
+- Open CMD & enter the command below to disable power saving on various devices in device manager & registry entries present in many drivers clearly labeled power saving
 
     ```bat
-    C:\prerequisites\scripts\disable-hidden-powersaving.bat
+    C:\prerequisites\scripts\disable-pnp-powersaving.ps1
+    ```
+
+    ```bat
+    C:\prerequisites\scripts\disable-driver-powersaving.bat
     ```
 
 ## Message Signaled Interrupts
@@ -573,7 +571,7 @@ By default, CPU 0 handles the majority of DPCs & ISRs for several devices which 
     - Run ``C:\prerequisites\scripts\get-driver-keys.bat`` to get the driver keys on your system
 
         ```bat
-        Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000" /v "*RssBaseProcNumber" /t REG_SZ /d "2" /f
+        reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000" /v "*RssBaseProcNumber" /t REG_SZ /d "2" /f
         ```
 
 - You can ensure interrupt affinity policies have been configured correctly by analyzing a xperf trace while the device is busy
@@ -581,6 +579,10 @@ By default, CPU 0 handles the majority of DPCs & ISRs for several devices which 
 ## Installing Games & Applications
 
 Now is a good time to install whatever programs & game launchers you commonly use to prepare us for the next steps
+
+## Configure Default Programs
+
+- Configure default programs in **Settings > Apps**
 
 ## Configure FSE & QoS for Games
 
@@ -620,15 +622,6 @@ Now is a good time to install whatever programs & game launchers you commonly us
         for %a in ("C:\", "C:\ProgramData\Microsoft\Windows\Start Menu\Programs", "C:\Program Files", "C:\ProgramData", "C:\Windows\Prefetch", "C:\Windows\SoftwareDistribution\download", "C:\Windows\Temp", "%userprofile%\AppData", "%userprofile%\AppData\Local\Temp", "%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs", "%userprofile%\Downloads") do (explorer %a)
         ```
 
-- Reset Firewall rules
-
-    - Open CMD & enter the command below
-
-        ```bat
-        Reg.exe delete "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f
-        Reg.exe add "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f
-        ```
-
 - Configure Disk Cleanup
 
     - Open CMD & enter the command below, tick all of the boxes, press **OK**
@@ -641,10 +634,6 @@ Now is a good time to install whatever programs & game launchers you commonly us
         ```bat
         cleanmgr /sagerun:50
         ```
-
-## Configure Default Programs
-
-- Configure default programs in **Settings > Apps**
 
 ## Final Thoughts & Tips
 
