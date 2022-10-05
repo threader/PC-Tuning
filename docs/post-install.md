@@ -539,7 +539,7 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 
 ## Configure Event Trace Sessions
 
-- Create registry files to toggle event trace sessions. Programs that rely on event tracers such as PresentMon will not be able to log data until the required sessions are restored which is the purpose of creating two registry files to toggle them (identical concept to the service scripts). Open CMD & enter the commands below to build the registry files in the ``C:\`` directory. As with the service scripts, these registry files must be ran with NSudo
+- Create registry files to toggle event trace sessions. Programs that rely on event tracers such as PresentMon will not be able to log data until the required sessions are restored which is the purpose of creating two registry files to toggle them (identical concept to the service scripts). Open CMD & enter the commands below to build the registry files in the ``C:\`` directory. As with the services scripts, these registry files must be ran with NSudo
 
     ```bat
     reg export "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger" "C:\ets-enable.reg"
