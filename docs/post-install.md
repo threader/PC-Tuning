@@ -288,6 +288,10 @@ slmgr /ato
 
     - Turn off display after - 0 minutes
 
+    - Processor idle disable - Disable idle
+
+        - If you do not want to run your CPU at C-State 0 all of the time, use the scripts in ``C:\prerequisites\scripts\idle-scripts`` (place on Desktop for easy access) to disable idle before launching a game & enable idle after you close your game. This will mitigate jitter due to the process of state transition. After all, C1 is still power saving [[1](https://www.dell.com/support/kbdoc/en-uk/000060621/what-is-the-c-state)]
+
 ## Configure the BCD Store
 
 - Open CMD & enter the commands below
@@ -576,23 +580,35 @@ By default, CPU 0 handles the majority of DPCs & ISRs for several devices which 
 
 - You can ensure interrupt affinity policies have been configured correctly by analyzing a xperf trace while the device is busy
 
-## Installing Games & Applications
+## Configuring Games & Applications
 
 Now is a good time to install whatever programs & game launchers you commonly use to prepare us for the next steps
+
+- Consider [NVIDIA Reflex](https://www.nvidia.com/en-gb/geforce/news/reflex-low-latency-platform) if your game has support for it
+
+- Cap your framerate at a multiple of your monitor refresh rate to prevent frame mistiming [[1](https://youtu.be/_73gFgNrYVQ)]. E.g possible framerate caps with a 144Hz monitor include 72, 144, 288, 432. Consider capping at your minimum fps threshold for increased smoothness & ensure the GPU is not maxed out as lower GPU utilization reduces system latency [[1](https://youtu.be/8ZRuFaFZh5M?t=859), [2](https://youtu.be/7CKnJ5ujL_Q?t=333), [3](https://youtu.be/N8ZUqT6Tfiw?t=74)]
+
+    - Capping your framerate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the ingame limiter will result in consistent frametimes & a smoother experience but at the cost of noticeably higher latency
+
+- Configure FSE & QoS
+
+    - Microsoft has claimed FSO/independent flip has improved in later Windows versions which has also been verified by members in the community with [Reflex Latency Analyzer](https://www.nvidia.com/en-gb/geforce/news/reflex-latency-analyzer-360hz-g-sync-monitors), however other users have claimed otherwise, my suggestion would be to test both & use whatever feels acceptable
+
+    - Configuring a QoS Policy will allow Windows to prioritize packets of an application over other devices on your network & PC
+
+        - Related: [research.md - How can you verify if a DSCP QoS policy is working?](research.md#how-can-you-verify-if-a-dscp-policy-is-working)
+
+    - Run the ``C:\prerequisites\scripts\fse-qos-for-game-exes.bat`` script & follow the instructions in the console output
+
+- Consider removing your game off the GPU core by setting an affinity to the game process to prevent them being serviced on the same CPU as it improves frametime stability [[1](../media/isolate-gpu-core.png)]. This will not apply to everyone & every game as average framerate may take a severe hit, your mileage may vary but it is definitely something worth mentioning
+
+- Kill processes that waste CPU cycles such as game clients & **explorer.exe**
+
+    - Use **Ctrl + Shift + Esc** to open process explorer then use **File > Run** to start the **explorer.exe** shell again
 
 ## Configure Default Programs
 
 - Configure default programs in **Settings > Apps**
-
-## Configure FSE & QoS for Games
-
-- Microsoft has claimed FSO/independent flip has improved in later Windows versions which has also been verified by members in the community with [Reflex Latency Analyzer](https://www.nvidia.com/en-gb/geforce/news/reflex-latency-analyzer-360hz-g-sync-monitors), however other users have claimed otherwise, my suggestion would be to test both & use whatever feels acceptable
-
-- Configuring a QoS Policy will allow Windows to prioritize packets of an application over other devices on your network & PC
-
-    - Related: [research.md - How can you verify if a DSCP QoS policy is working?](research.md#how-can-you-verify-if-a-dscp-policy-is-working)
-
-- Run the ``C:\prerequisites\scripts\fse-qos-for-game-exes.bat`` script & follow the instructions in the console output
 
 ## Cleanup
 
@@ -637,31 +653,11 @@ Now is a good time to install whatever programs & game launchers you commonly us
 
 ## Final Thoughts & Tips
 
-- Kill **explorer.exe** after you launch your game, it uses a ton of cycles
-
-    - Use **Ctrl + Shift + Esc** to open process explorer then use **File > Run** to start the **explorer.exe** shell again
-
-- If you are using Windows 8.1+ and [Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) (exclusive fullscreen) with your game, you *can* disable DWM using [prerequisites/scripts/dwm-scripts](../prerequisites/scripts/dwm-scripts) as the process wastes CPU time despite there being no composition. Beware as elements of the UI will be broken & somes games/programs will not be able to launch (you may need to disable hardware acceleration)
-
-- Disable idle states which will force C-State 0 & eliminate jitter due to the process of state transition. After all, C1 is still power saving [[1](https://www.dell.com/support/kbdoc/en-uk/000060621/what-is-the-c-state)]
-
-    - Drag & drop the scripts in ``C:\prerequisites\scripts\idle-scripts`` to the Desktop for easy access. This way you can disable idle before launching a game & re-enable it after you close your game
-
-- Kill other processes that waste CPU time such as game clients
+- If you are using Windows 8.1+ and [Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) (exclusive fullscreen) with your game, you *can* disable DWM using the scripts in ``C:\prerequisites\scripts\dwm-scripts`` as the process wastes CPU time despite there being no composition. Beware as elements of the UI will be broken & somes games/programs will not be able to launch (you may need to disable hardware acceleration)
 
 - Don't run random tweaks, tweaking programs or fall for the "fps boost" marketing nonsense. If you have a question about a specific option or setting, just ask
 
-- Try to favour FOSS (free & open source software). Stay away from proprietary software where you can
-
-- Ensure to scan files with [VirusTotal](https://www.virustotal.com/gui/home/upload) before running them
-
-- Cap your framerate at a multiple of your monitor refresh rate to prevent frame mistiming [[1](https://youtu.be/_73gFgNrYVQ)]. E.g possible framerate caps with a 144Hz monitor include 72, 144, 288, 432. Consider capping at your minimum fps threshold for increased smoothness & ensure the GPU is not maxed out as lower GPU utilization reduces system latency [[1](https://youtu.be/8ZRuFaFZh5M?t=859), [2](https://youtu.be/7CKnJ5ujL_Q?t=333), [3](https://youtu.be/N8ZUqT6Tfiw?t=74)]
-
-- Consider [NVIDIA Reflex](https://www.nvidia.com/en-gb/geforce/news/reflex-low-latency-platform) if your game has support for it
-
-- Capping your framerate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the ingame limiter will result in consistent frametimes & a smoother experience but at the cost of noticeably higher latency
-
-- Consider removing your game off the GPU core by setting an affinity to the game process to prevent them being serviced on the same CPU as it improves frametime stability [[1](../media/isolate-gpu-core.png)]. This will not apply to everyone & every game as average framerate may take a severe hit, your mileage may vary but it is definitely something worth mentioning
+- Try to favour FOSS (free & open source software). Stay away from proprietary software where you can & ensure to scan files with [VirusTotal](https://www.virustotal.com/gui/home/upload) before running them
 
 - Carry out maintenance tasks yourself on a weekly basis. This includes:
 
