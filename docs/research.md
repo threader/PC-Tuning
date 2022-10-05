@@ -202,7 +202,7 @@ Conclusion: During online matches, at most two Rss queues/cores are being utiliz
         +0x281 QuantumReset : 6 ''
     ```
 
-    As you can see above, despite their importance, the game gets three times more CPU time than csrss, kernel & audio threads which can be problematic. If we use no foreground boost, all processes will get as much CPU time as each other (see below). The same result can be achieved with a fixed quantum because it automatically implies no foreground boost can be used
+    As you can see above, despite their importance, the game gets three times more CPU cycles than csrss, kernel & audio threads which can be problematic. If we use no foreground boost, all processes will get as much CPU cycles as each other (see below). The same result can be achieved with a fixed quantum because it automatically implies no foreground boost can be used
 
     **Valorant** (game)
 

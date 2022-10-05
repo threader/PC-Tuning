@@ -457,7 +457,7 @@ Feel free to skip this step as it is not required, Microsoft fixed the standby l
 
 - Disable all items except **QoS Packet Scheduler** & **Internet Protocol Version 4 (TCP/IPv4)**
 
-- [Configure a Static IP address](https://youtu.be/5iRp1Nug0PU?t=36), this is required as we will be disabling the network services that waste CPU time
+- [Configure a Static IP address](https://youtu.be/5iRp1Nug0PU?t=36), this is required as we will be disabling the network services that waste CPU cycles
 
 - Disable **NetBIOS over TCP/IP** in **General > Advanced > WINS** to [prevent unnecessary system listening](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/DOCS/NETWORK/README.md)
 
@@ -467,7 +467,7 @@ Feel free to skip this step as it is not required, Microsoft fixed the standby l
 
 - Disable unused Playback & Recording devices
     
-- Disable audio enhancements as they waste CPU time
+- Disable audio enhancements as they waste CPU cycles
 
     - See [media/audio enhancements-benchmark.png](../media/audio%20enhancements-benchmark.png)
     
@@ -600,11 +600,13 @@ Now is a good time to install whatever programs & game launchers you commonly us
 
     - Run the ``C:\prerequisites\scripts\fse-qos-for-game-exes.bat`` script & follow the instructions in the console output
 
-- Consider removing your game off the GPU core by setting an affinity to the game process to prevent them being serviced on the same CPU as it improves frametime stability [[1](../media/isolate-gpu-core.png)]. This will not apply to everyone & every game as average framerate may take a severe hit, your mileage may vary but it is definitely something worth mentioning
+- Consider removing your game off the GPU core by setting an affinity to the game process to prevent them being serviced on the same CPU as it improves frametime stability [[1](../media/isolate-gpu-core.png)]. This will not apply to everyone & every game as framerate may take a severe hit, your mileage may vary but it is definitely something worth mentioning
 
 - Kill processes that waste CPU cycles such as game clients & **explorer.exe**
 
     - Use **Ctrl + Shift + Esc** to open process explorer then use **File > Run** to start the **explorer.exe** shell again
+
+- If you are using Windows 8.1+ and [FSE/Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) with your game, you *can* disable DWM using the scripts in ``C:\prerequisites\scripts\dwm-scripts`` as the process wastes CPU cycles despite there being no composition. Beware as elements of the UI will be broken & somes games/programs will not be able to launch (you may need to disable hardware acceleration)
 
 ## Configure Default Programs
 
@@ -652,8 +654,6 @@ Now is a good time to install whatever programs & game launchers you commonly us
         ```
 
 ## Final Thoughts & Tips
-
-- If you are using Windows 8.1+ and [Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) (exclusive fullscreen) with your game, you *can* disable DWM using the scripts in ``C:\prerequisites\scripts\dwm-scripts`` as the process wastes CPU time despite there being no composition. Beware as elements of the UI will be broken & somes games/programs will not be able to launch (you may need to disable hardware acceleration)
 
 - Don't run random tweaks, tweaking programs or fall for the "fps boost" marketing nonsense. If you have a question about a specific option or setting, just ask
 
