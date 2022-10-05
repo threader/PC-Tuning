@@ -491,7 +491,7 @@ The service list configuration is not intended for Wi-Fi & webcam functionality.
     service-list-builder.exe --config C:\prerequisites\bare-services.ini
     ```
 
-- Move the scripts somewhere safe such as in the ``C:\`` drive & do not share it with other people as it is specific to your system
+- Move the batch scripts & **NSudo.exe** somewhere safe such as in the ``C:\`` drive & do not share it with other people as it is specific to your system
 
 - To prepare us for the next steps, run **Services-Disable.bat** with NSudo, ensure **Enable All Privileges** is enabled as mentioned
 
@@ -525,13 +525,9 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
     C:\prerequisites\device-cleanup\DeviceCleanup.exe -s -n *
     ```
 
-## Configure Control Panel
-
-- It is not a bad idea to skim through both the legacy control panel & immersive control panel to ensure nothing is misconfigured (only takes a few minutes)
-
 ## Disable Driver Power Saving
 
-- Open CMD & enter the command below to disable power saving on various devices in device manager & registry entries present in many drivers clearly labeled power saving
+- Open CMD & enter the commands below to disable power saving on various devices in device manager & registry entries present in many drivers clearly labeled power saving
 
     ```bat
     C:\prerequisites\scripts\disable-pnp-powersaving.ps1
@@ -540,6 +536,21 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
     ```bat
     C:\prerequisites\scripts\disable-driver-powersaving.bat
     ```
+
+## Configure Event Trace Sessions
+
+- Create registry files to toggle event trace sessions. Programs that rely on event tracers such as PresentMon will not be able to log data until the required sessions are restored which is the purpose of creating two registry files to toggle them (identical concept to the service scripts). Open CMD & enter the commands below to build the registry files in the ``C:\`` directory. As with the service scripts, these registry files must be ran with NSudo
+
+    ```bat
+    reg export "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger" "C:\ets-enable.reg"
+    >> "C:\ets-disable.reg" echo Windows Registry Editor Version 5.00
+    >> "C:\ets-disable.reg" echo.
+    >> "C:\ets-disable.reg" echo [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger]
+    ```
+
+## Configure Control Panel
+
+- It is not a bad idea to skim through both the legacy control panel & immersive control panel to ensure nothing is misconfigured (only takes a few minutes)
 
 ## Message Signaled Interrupts
 
