@@ -1,3 +1,6 @@
+"""disable-tasks"""
+
+
 import sys
 import os
 import subprocess
@@ -5,15 +8,10 @@ import io
 import ctypes
 
 
-def is_admin() -> bool:
-    """check if script is ran with admin privileges"""
-    return ctypes.windll.shell32.IsUserAnAdmin() != 0
-
-
 def main() -> int:
     """cli entrypoint"""
 
-    if not is_admin():
+    if not ctypes.windll.shell32.IsUserAnAdmin():
         print("error: administrator privileges required")
         return 1
 
@@ -23,7 +21,6 @@ def main() -> int:
         return 1
 
     subprocess_null = {"stdout": subprocess.DEVNULL, "stderr": subprocess.DEVNULL}
-
     sch_tasks = []
 
     to_disable = [
