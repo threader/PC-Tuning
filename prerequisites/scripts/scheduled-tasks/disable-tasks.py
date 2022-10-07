@@ -56,9 +56,7 @@ def main() -> int:
         "autochk\\proxy"
     ]
 
-    process = subprocess.run(
-        ["schtasks", "/query", "/fo", "list"], capture_output=True, check=False, universal_newlines=True
-    )
+    process = subprocess.run(["schtasks", "/query", "/fo", "list"], capture_output=True, check=False, universal_newlines=True)
 
     for line in io.StringIO(process.stdout):
         if "TaskName:" in line:
@@ -71,9 +69,7 @@ def main() -> int:
                 print(f"info: disabling {task}")
                 schtasks_args = ["schtasks", "/change", "/disable", "/tn", task]
                 subprocess.run(schtasks_args, check=False, **subprocess_null)
-                subprocess.run(
-                    [nsudo_path, "-U:T", "-P:E", "-ShowWindowMode:Hide", *schtasks_args], check=False, **subprocess_null
-                )
+                subprocess.run([nsudo_path, "-U:T", "-P:E", "-ShowWindowMode:Hide", *schtasks_args], check=False, **subprocess_null)
 
     print("info: done")
 
