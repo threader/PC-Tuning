@@ -47,14 +47,12 @@ if defined install_dir (
         if !err! == 0 (
             bcdboot "!install_dir!:\Windows" > nul 2>&1
             echo info: restart pc
-            echo info: press any key to continue
-            pause > nul 2>&1
         ) else (
             echo error: dism apply-image unsuccessful
-            echo info: press any key to continue
-            pause > nul 2>&1
         )
 
+        echo info: press any key to continue
+        pause > nul 2>&1
         exit /b !err!
     )
 )
