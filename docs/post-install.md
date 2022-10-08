@@ -67,7 +67,11 @@ slmgr /ato
     sudo bash win-debloat.sh
     ```
 
-- Once finished, restart to boot back into Windows
+- Once finished, use the command below to reboot
+
+    ```
+    sudo reboot
+    ```
 
 ## Install [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist/releases)
 
