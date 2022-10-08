@@ -2,9 +2,9 @@
 setlocal EnableDelayedExpansion
 
 set "aria2c=C:\prerequisites\aria2c.exe"
-set "link=https://gitlab.com/librewolf-community/browser/windows/uploads/ba3112cbae76cc89c05240dd3d0f7c09/librewolf-105.0.2-1.en-US.win64-setup.exe"
-set "sha1=7717b982506f92fbccbbba89082d17e1bb1191ec"
-set "file_name=librewolf-105.0.2-1.en-US.win64-setup.exe"
+set "link=https://gitlab.com/librewolf-community/browser/windows/uploads/f5c35c96a94b78ac847f19f6c3d3e49e/librewolf-105.0.3-1.en-US.win64-setup.exe"
+set "sha1=d3504b303ef6a4b9ea243143595d801b13899072"
+set "file_name=librewolf-105.0.3-1.en-US.win64-setup.exe"
 set "working_dir=!temp!\librewolf"
 
 ping archlinux.org > nul 2>&1
