@@ -96,7 +96,9 @@
 
 - Disable the integrated GPU if not in use
 
-- Windows 7 requires CSM/Compatibility Support Module & the OpROMs to be enabled, disable it if configuring Windows 8+. Typically, only the storage & PCI OpROMs are required but you can enable all of them if unsure
+- MBR/Legacy requires CSM/Compatibility Support Module & typically, only the storage & PCI OpROMs are required but you can enable all of them if unsure. Disable CSM if using GPT/UEFI
+
+    - Windows 7 UEFI requires CSM & OpROMs unless using [uefiseven](https://github.com/manatails/uefiseven)
 
 - Disable Secure Boot
 
