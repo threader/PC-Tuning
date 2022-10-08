@@ -4,6 +4,8 @@
 
 - See [Low Latency Hardware | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit#bookmark=kix.alwwrke7e395)
 
+- As of October 2022, avoid Ryzen
+
 - Avoid Single-Channel & mixing/matching memory
 
 - Ensure your GPU is in the top slot & check that it is running at it's rated bandwith in GPU-Z while running the built-in render test
@@ -32,6 +34,16 @@
 
 - Configure fan curves or set a static fan speed for the CPU & case fans. I personally set all fans to a reasonably high, constant, noise-acceptable speed
 
+## Minimizing Interference
+
+- Move devices that emit RF/EMF/EMI away from your setup & bedroom such as radios, mobile phones & routers. They have the potential to increase latency due to unintended behaviour of electrical components
+
+- Always favor wired over cordless
+
+- Ensure there is a moderate amount of space between cables to reduce the risk of [coupling](https://en.wikipedia.org/wiki/Coupling_(electronics))
+
+- Disconnect unnecessary devices from your motherboard such as LEDs, case USB ports, extra unused drives & RGB light strips
+
 ## USB Port Configuration
 
 - Plug your mouse & keyboard into the first two ports on your first USB controller. This can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html#download) with trial & error. Use the motherboard ports & avoid companion ports (indicated on the right section of the program)
@@ -57,16 +69,6 @@
 - Buy a small [air dust blower](https://www.amazon.co.uk/s?k=air+dust+blower) to remove dirt & debris from the mouse sensor lens often
 
 - Factory reset your monitor & reconfigure the settings. Avoid post-processing effects & set overdrive/AMA to an acceptably high setting as it reduces latency but comes with a penalty of overshoot [[1](https://twitter.com/CaIypto/status/1464236780190851078)]
-
-## Minimizing Interference
-
-- Move devices that emit RF/EMF/EMI away from your setup & bedroom such as radios, mobile phones & routers. They have the potential to increase latency due to unintended behaviour of electrical components
-
-- Always favor wired over cordless
-
-- Ensure there is a moderate amount of space between cables to reduce the risk of [coupling](https://en.wikipedia.org/wiki/Coupling_(electronics))
-
-- Disconnect unnecessary devices from your motherboard such as LEDs, case USB ports, extra unused drives & RGB light strips
 
 ## BIOS
 
@@ -128,4 +130,8 @@
 
     - [Prime95](https://www.mersenne.org/download)
 
+    - [y-cruncher](http://www.numberworld.org/y-cruncher)
+
     - [Memory Testing Software](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md#memory-testing-software)
+
+    - [UNIGINE Superposition](https://benchmark.unigine.com/superposition)
