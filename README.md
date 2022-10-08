@@ -1,6 +1,6 @@
 # EVA
 
-A highly structured & technical hardware, BIOS & Windows optimization guide
+A systematic & technical hardware, BIOS & Windows optimization guide
 
 Contact: https://twitter.com/amitxv
 
