@@ -73,6 +73,16 @@ slmgr /ato
     sudo reboot
     ```
 
+## Install Xbox Game Bar
+
+- Some games, most notably Apex Legends, require Game Bar to be installed for [FSE/Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) to properly function. Open CMD as administrator & enter the command below
+
+    ```bat
+    C:\prerequisites\xbox-gamebar\install-gamebar.bat
+    ```
+
+- Don't worry about bloatware running in the background, the Game Bar related processes will get disabled in the [Configure Services & Drivers](#configure-services--drivers) section
+
 ## Install [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist/releases)
 
 - Run the package below to install the redistributables
