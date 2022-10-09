@@ -15,7 +15,6 @@ fi
 wildcard_names=(
     "flashplayer"
     "backgroundtaskhost"
-    "gamebarpresencewriter"
     "mobsync"
     "smartscreen"
     "wsclient"
