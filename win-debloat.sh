@@ -27,7 +27,6 @@ wildcard_names=(
     "clipup"
     "deliveryoptimization"
     "devicecensus"
-    "diagtrack"
     "dmclient"
     "enhancedstorage"
     "hotspot"
