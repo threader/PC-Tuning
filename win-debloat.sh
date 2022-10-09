@@ -24,8 +24,6 @@ wildcard_names=(
     "upfc"
     "applocker"
     "autologger"
-    "clipup"
-    "deliveryoptimization"
     "devicecensus"
     "dmclient"
     "enhancedstorage"
@@ -36,9 +34,7 @@ wildcard_names=(
     "slui"
     "startupscan"
     "waas"
-    "windowsmaps"
     "wsqmcons"
-    "defender"
     "onedrive"
     "mcupdate_authenticamd"
     "mcupdate_genuineintel"
@@ -52,12 +48,9 @@ rm -rf "ProgramData/Packages"
 rm -rf Users/*/AppData/Local/Microsoft/WindowsApps
 rm -rf Users/*/AppData/Local/Packages/!("Microsoft.Windows.ShellExperienceHost_cw5n1h2txyewy"|"windows.immersivecontrolpanel_cw5n1h2txyewy")
 rm -rf Windows/SystemApps/!("ShellExperienceHost_cw5n1h2txyewy")
-rm -rf "Program Files (x86)/Microsoft"
-rm -rf "Windows/diagnostics/system/Apps"
 rm -rf "Windows/System32/SecurityHealthAgent.dll"
 rm -rf "Windows/System32/SecurityHealthService.exe"
 rm -rf "Windows/System32/SecurityHealthSystray.exe"
-rm -rf Windows/WinSxS/Temp/PendingDeletes/*
 
 for i in "${wildcard_names[@]}"
 do
