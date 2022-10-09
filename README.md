@@ -10,7 +10,7 @@ EVA is no longer a custom Windows ISO. Instead, I have created a guide in hope o
 
 Some elements of this guide are not directly performance related & are personal preference as I cover configuring the operating system from start to finish. I have tried my best to provide technical references, evidence, my own research & a valid justification to the information provided to prevent making changes that would otherwise make your system perform worse than stock but simultaneously also provide a solid baseline for experimenting with other settings in the future
 
-The guidance is currently updated & have been tested on Windows 7 through to Windows 10. Configuring Windows 11 with this guide currently has major issues
+The guidance is currently updated & have been tested on Windows 7 through to Windows 10. Configuring Windows 11 with this guide currently has major problems. See a full list of [issues](https://github.com/amitxv/EVA/issues)
 
 ## Requirements
 
