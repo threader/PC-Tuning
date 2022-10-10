@@ -491,7 +491,7 @@ Feel free to skip this step as it is not required, Microsoft fixed the standby l
 
 ## Configure Services & Drivers
 
-The service list configuration is not intended for Wi-Fi & webcam functionality. I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming & use default services for everything else
+The service list configuration is not intended for Wi-Fi & webcam functionality. I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming & use default services for everything else. Feel free to customize the lists by editing  ``C:\prerequisites\bare-services.ini`` in notepad
 
 - On Windows 7 & 8, remove **MMCSS** from the **DependOnService** registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Audiosrv``
 
