@@ -196,13 +196,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsign
 - Run the command below twice to save the changes to the mounted ISO
 
     ```bat
-    DISM /Unmount-Wim /MountDir:"%MOUNT_DIR%" /Commit
-    ```
-
-- Delete the mount dir folder
-
-    ```bat
-    rd /s /q "%MOUNT_DIR%"
+    DISM /Unmount-Wim /MountDir:"%MOUNT_DIR%" /Commit && rd /s /q "%MOUNT_DIR%"
     ```
 
 ## Replace Windows 7 Boot Wim (Windows 7)
