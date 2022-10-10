@@ -344,11 +344,22 @@ Windows Registry Editor Version 5.00
 "AltTabSettings"=dword:00000001
 
 ; hide quick access from file explorer
-; disable defender smartscreen
+; disable smartscreen
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
 "HubMode"=dword:00000001
 "SmartScreenEnabled"="Off"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Local Settings\SOFTWARE\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\PhishingFilter]
+"Enabledv9"=dword:00000000
+"PreventOverride"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\PhishingFilter]
+"Enabledv9"=dword:00000000
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost]
+"EnableWebContentEvaluation"=dword:00000000
+"PreventOverride"=dword:00000000
 
 ; remove print from the context menu
 
@@ -569,12 +580,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\System\GameConfigStore] 
 "GameDVR_Enabled"=dword:00000000
 
-; disable smartscreen for microsoft store apps
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost]
-"EnableWebContentEvaluation"=dword:00000000
-"PreventOverride"=dword:00000000
-
 ; disable search the web or display web results in Search
 ; disable cloud search
 ; disable cortana
@@ -682,15 +687,6 @@ Windows Registry Editor Version 5.00
 "DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001
 "DisableWindowsSpotlightOnActionCenter"=dword:00000001
 "DisableWindowsSpotlightOnSettings"=dword:00000001
-
-; disable management of smartscreen filter
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes\Local Settings\SOFTWARE\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\PhishingFilter]
-"Enabledv9"=dword:00000000
-"PreventOverride"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\PhishingFilter]
-"Enabledv9"=dword:00000000
 
 ; disable automatic registry backup
 
