@@ -86,7 +86,7 @@
 
 - Disable [ASPM/Active State Power Management](https://en.wikipedia.org/wiki/Active_State_Power_Management) & any other power saving features you can locate in BIOS
 
-- Disable unnecessary devices such as WLAN, bluetooth, unused USB controllers & unused PCI ports
+- Disable unnecessary devices such as WLAN, Bluetooth, High Definition Audio Controller (if not using aux/line-in audio), unused USB controllers & unused PCI ports
 
 - Disable TPM/Trusted Platform Module
 
