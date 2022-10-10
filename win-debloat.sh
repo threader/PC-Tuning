@@ -19,7 +19,6 @@ wildcard_names=(
     "smartscreen"
     "wsclient"
     "wscollect"
-    "searchui"
     "comppkgsrv"
     "upfc"
     "applocker"
