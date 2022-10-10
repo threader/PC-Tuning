@@ -29,6 +29,40 @@ slmgr /ato
     - See [media/visual-cleanup-windows8-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/visual-cleanup-windows8-example.mp4)
     - See [media/visual-cleanup-windows10-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/visual-cleanup-windows10-example.mp4)
 
+## Miscellaneous
+
+- Open CMD as administrator & enter the command below. If you would like to, you can view the contents of this script before running it. The commands are placed in a script instead of this document as it will be tedious to copy & paste each one without a web browser installed
+
+    ```bat
+    C:\prerequisites\scripts\miscellaneous.bat
+    ```
+
+- Enable **Launching applications & unsafe files** in **Internet Options > Security > Custom Level**. This prevents [this annoying warning](https://gearupwindows.com/how-to-disable-open-file-security-warning-in-windows-10)
+
+- Allow users full control of the ``C:\`` drive. This resolves an issue with xperf etl processing on Windows 7
+
+    - See [media/full-control-example.png](../media/full-control-example.png), continue & ignore errors
+
+- In win + r, **sysdm.cpl** do the following:
+
+    - In **Computer Name > Change**, configure the PC name
+
+    - In **Advanced > Performance > Settings**, configure visual effects & optionally the pagefile
+
+        - I usually hit **Adjust for best performance**
+
+        - Ensure Desktop Composition is disabled on Windows 7, keep it enabled if you use more than one display
+
+    - In **System Protection**, disable & delete system restore points. It has been proven to be very unreliable
+
+- In win + r, **dfrgui** disable **Run on a schedule**. More details on doing maintenance tasks ourself in [Final Thoughts & Tips](#final-thoughts--tips)
+
+- Disable all messages in **Control Panel> System & Security > Action Center > Change Action Center settings > Change Security & Maintenance settings**
+
+    - This section is named **Security & Maintenance** on Windows 10+
+
+- Disable **Turn on fast startup** in **Control Panel > Hardware and Sound > Power Options > System Settings**
+
 ## Removing Bloatware Natively
 
 - Open CMD as administrator & enter the command below. Note that this script only removes the chromium version of edge, the legacy version (if present) will be stripped in Linux shortly
@@ -123,6 +157,18 @@ slmgr /ato
 
 - See [media/meltdown-spectre-example.png](../media/meltdown-spectre-example.png)
 
+## User Preference
+
+- Go through the ``C:\prerequisites\preference`` folder to configure the settings below
+
+    - Configure Pointer Scheme
+
+    - Desktop Icon Settings
+
+    - Region & language
+
+    - Taskbar Settings
+
 ## Install [OpenShell](https://github.com/Open-Shell/Open-Shell-Menu) (Windows 8+)
 
 - Run **OpenShellSetup.exe** in ``C:\prerequisites\open-shell``
@@ -136,50 +182,6 @@ slmgr /ato
 - Windows 8 Only:
 
     - Open ``"C:\Program Files\Open-Shell\Start Menu Settings.lnk"``, enable **Show all settings** then go to the Windows 8 Settings section & set **Disable active corners** to **All**
-
-## Miscellaneous
-
-- Open CMD & enter the command below. If you would like to, you can view the contents of this script before running it. The commands are placed in a script instead of this document as it will be tedious to copy & paste each one without a web browser installed
-
-    ```bat
-    C:\prerequisites\scripts\miscellaneous.bat
-    ```
-
-- Allow users full control of the ``C:\`` drive. This resolves an issue with xperf etl processing on Windows 7
-
-    - See [media/full-control-example.png](../media/full-control-example.png), continue & ignore errors
-
-- Go through the ``C:\prerequisites\preference`` folder to configure the following:
-
-    - Configure Pointer Scheme
-
-    - Desktop Icon Settings
-
-    - Region & language
-
-    - Taskbar Settings
-
-- Enable **Launching applications & unsafe files** in **Internet Options > Security > Custom Level**. This prevents [this annoying warning](https://gearupwindows.com/how-to-disable-open-file-security-warning-in-windows-10/)
-
-- In win + r, **sysdm.cpl** do the following:
-
-    - In **Computer Name > Change**, configure the PC name
-
-    - In **Advanced > Performance > Settings**, configure visual effects & optionally the pagefile
-
-        - I usually hit **Adjust for best performance**
-
-        - Ensure Desktop Composition is disabled on Windows 7, keep it enabled if you use more than one display
-
-    - In **System Protection**, disable & delete system restore points. It has been proven to be very unreliable
-
-- In win + r, **dfrgui** disable **Run on a schedule**. More details on doing maintenance tasks ourself in [Final Thoughts & Tips](#final-thoughts--tips)
-
-- Disable all messages in **Control Panel> System & Security > Action Center > Change Action Center settings > Change Security & Maintenance settings**
-
-    - This section is named **Security & Maintenance** on Windows 10+
-
-- Restart your PC once before following the next steps (important)
 
 ## Installing Drivers
 
