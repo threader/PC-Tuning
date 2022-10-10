@@ -892,11 +892,6 @@ C2,0A,01,D2,1E,26,4D,00,69,00,63,00,72,00,6F,00,73,00,6F,00,66,00,74,00,2E,\
 [HKEY_CURRENT_USER\Control Panel\Accessibility\StickyKeys]
 "Flags"="506"
 
-; disable toggle keys
-
-[HKEY_CURRENT_USER\Control Panel\Accessibility\ToggleKeys]
-"Flags"="0"
-
 ; disable connected user experiences and telemetry
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\DiagTrack]
