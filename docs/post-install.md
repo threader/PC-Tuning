@@ -73,7 +73,7 @@ slmgr /ato
     sudo reboot
     ```
 
-## Install Xbox Game Bar
+## Install Xbox Game Bar (Windows 10+)
 
 - Some games, most notably Apex Legends, require Game Bar to be installed for [FSE/Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) to properly function. Open CMD as administrator & enter the command below
 
