@@ -36,6 +36,12 @@ The guidance is currently updated & have been tested on Windows 7 through to Win
 
 - See [docs/research.md](./docs/research.md)
 
-## Credits
+## Further Reading
 
-[AME](https://ameliorated.info), [Bored](https://github.com/BoringBoredom/PC-Optimization-Hub), [Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit), [Phlegm](https://twitter.com/getggos), [Revision](https://sites.google.com/view/meetrevision) & [Timecard](https://github.com/djdallmann/GamingPCSetup) deserve recognition for their research, knowledge & overall contribution to the community. Please note that this guide may contain information similar to those of the projects listed below. However, it is not my intention to directly copy from them, in some circumstances it is unavoidable
+Please note that this guide may contain information similar to those of the projects listed below. However, it is not my intention to directly copy from them, in some circumstances it is unavoidable
+
+- [BoringBoredom/PC-Optimization-Hub](https://github.com/BoringBoredom/PC-Optimization-Hub)
+
+- [Calypto's Latency Guide](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit)
+
+- [Djdallmann/GamingPCSetup](https://github.com/djdallmann/GamingPCSetup)
