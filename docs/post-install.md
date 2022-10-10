@@ -14,10 +14,10 @@
 
 - As previously mentioned, you should have already linked a key to your motherboard but if you have not, now would be a good time to do so. Open CMD as administrator & enter the command below
 
-```bat
-slmgr /ipk <25 digit key>
-slmgr /ato
-```
+    ```bat
+    slmgr /ipk <25 digit key>
+    slmgr /ato
+    ```
 
 - Ensure that the activation process was successful by checking the activation status in computer properties
 
@@ -57,7 +57,7 @@ slmgr /ato
 
 - In win + r, **dfrgui** disable **Run on a schedule**. More details on doing maintenance tasks ourself in [Final Thoughts & Tips](#final-thoughts--tips)
 
-- Disable all messages in **Control Panel> System & Security > Action Center > Change Action Center settings > Change Security & Maintenance settings**
+- Disable all messages in **Control Panel > System & Security > Action Center > Change Action Center settings > Change Security & Maintenance settings**
 
     - This section is named **Security & Maintenance** on Windows 10+
 
@@ -107,6 +107,20 @@ slmgr /ato
     sudo reboot
     ```
 
+## Install [OpenShell](https://github.com/Open-Shell/Open-Shell-Menu) (Windows 8+)
+
+- Run **OpenShellSetup.exe** in ``C:\prerequisites\open-shell``
+
+    - Only install the **Open-Shell Menu**. Disable everything else to prevent installing bloatware
+
+- I have included a registry file that will apply a basic OpenShell skin along with a few other settings, feel free to use your own
+
+- Create a shortcut in win + r, **shell:startup** pointing to ``C:\Program Files\Open-Shell\StartMenu.exe``
+
+- Windows 8 Only:
+
+    - Open ``"C:\Program Files\Open-Shell\Start Menu Settings.lnk"``, enable **Show all settings** then go to the Windows 8 Settings section & set **Disable active corners** to **All**
+
 ## Install Xbox Game Bar (Windows 10+)
 
 - Some games, most notably Apex Legends, require Game Bar to be installed for [FSE/Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) to properly function. Open CMD as administrator & enter the command below
@@ -127,7 +141,7 @@ slmgr /ato
 
 ## Disable Residual Scheduled Tasks
 
-- As we stripped the start menu, you will need to navigate to ``C:\Windows\System32`` & open **cmd.exe** as administrator by right-clicking the executable then enter the command below
+- Open CMD as administrator & enter the command below
 
     ```bat
     C:\prerequisites\scripts\scheduled-tasks\disable-tasks.exe
@@ -168,20 +182,6 @@ slmgr /ato
     - Region & language
 
     - Taskbar Settings
-
-## Install [OpenShell](https://github.com/Open-Shell/Open-Shell-Menu) (Windows 8+)
-
-- Run **OpenShellSetup.exe** in ``C:\prerequisites\open-shell``
-
-    - Only install the **Open-Shell Menu**. Disable everything else to prevent installing bloatware
-
-- I have included a registry file that will apply a basic OpenShell skin along with a few other settings, feel free to use your own
-
-- Create a shortcut in win + r, **shell:startup** pointing to ``C:\Program Files\Open-Shell\StartMenu.exe``
-
-- Windows 8 Only:
-
-    - Open ``"C:\Program Files\Open-Shell\Start Menu Settings.lnk"``, enable **Show all settings** then go to the Windows 8 Settings section & set **Disable active corners** to **All**
 
 ## Installing Drivers
 
