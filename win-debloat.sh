@@ -58,14 +58,14 @@ do
     find . -ipath "*$i*" -not -ipath "./prerequisites/*" -delete
 done
 
-echo info: searching for files that are supposed to be removed...
-echo info: if any file paths appear below any searching message, it is likely that the process failed
+# echo info: searching for files that are supposed to be removed...
+# echo info: if any file paths appear below any searching message, it is likely that the process failed
 
-for i in "${wildcard_names[@]}"
-do
-    echo info: searching for $i
-    find . -ipath "*$i*" -not -ipath "./prerequisites/*"
-done
+# for i in "${wildcard_names[@]}"
+# do
+#     echo info: searching for $i
+#     find . -ipath "*$i*" -not -ipath "./prerequisites/*"
+# done
 
 echo info: done
 exit 0
