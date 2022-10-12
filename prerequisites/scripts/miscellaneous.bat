@@ -25,7 +25,7 @@ wevtutil sl Microsoft-Windows-Kernel-Processor-Power/Diagnostic /e:false
 wevtutil sl Microsoft-Windows-UserModePowerService/Diagnostic /e:false
 
 if exist "C:\Program Files (x86)\Microsoft\Edge\Application" (
-    echo info: uninstalling chromium (not legacy) microsoft edge
+    echo info: uninstalling chromium microsoft edge
     for /f "delims=" %%a in ('where /r "C:\Program Files (x86)\Microsoft\Edge\Application" *setup.exe*') do (
         if exist "%%a" (
             "%%a" --uninstall --system-level --verbose-logging --force-uninstall
