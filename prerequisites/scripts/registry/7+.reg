@@ -134,7 +134,7 @@ Windows Registry Editor Version 5.00
 "SaveZoneInformation"=dword:00000001
 
 ; reduce menu show delay time
-; automatically close any apps and continue to restart, shut down, or sign out of windows
+; automatically close any apps and continue to restart, shutdown, or sign out of windows
 
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "MenuShowDelay"="0"
@@ -147,7 +147,7 @@ Windows Registry Editor Version 5.00
 "DisableSearchBoxSuggestions"=dword:00000001
 "DisableNotificationCenter"=dword:00000001
 
-; disable shake To minimize
+; disable shake to minimize
 ; disable tooltips in file explorer
 ; hide status bar in file explorer
 ; disable sync provider notifications
@@ -920,7 +920,7 @@ C2,0A,01,D2,1E,26,4D,00,69,00,63,00,72,00,6F,00,73,00,6F,00,66,00,74,00,2E,\
 "DisableDeleteNotification"=dword:00000000
 "NtfsDisableEncryption"=dword:00000001
 
-; disable defender
+; disable windows defender
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
 "DisableAntiSpyware"=dword:00000001
