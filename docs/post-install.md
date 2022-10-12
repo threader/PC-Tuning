@@ -636,11 +636,3 @@ Configure default programs in **Settings -> Apps**.
     - Using a small [air dust blower](https://www.amazon.co.uk/s?k=air+dust+blower) to remove dirt and debris from the mouse sensor lens often
 
     - Removing dust from components often
-
-
-
-
-
-
-
-
