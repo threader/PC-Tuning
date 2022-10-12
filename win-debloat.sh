@@ -28,7 +28,7 @@ wildcard_names=(
     # "enhancedstorage"
     # "hotspot"
     # "invagent"
-    # "sihclient"
+    "sihclient"
     # "startupscan"
     # "waas"
     # "wsqmcons"
@@ -45,6 +45,9 @@ rm -rf "ProgramData/Packages"
 rm -rf Users/*/AppData/Local/Microsoft/WindowsApps
 rm -rf Users/*/AppData/Local/Packages/!("Microsoft.Windows.ShellExperienceHost_cw5n1h2txyewy"|"windows.immersivecontrolpanel_cw5n1h2txyewy")
 rm -rf Windows/SystemApps/!("ShellExperienceHost_cw5n1h2txyewy")
+rm -rf "Program Files/Windows Defender"
+rm -rf "Program Files (x86)/Windows Defender"
+rm -rf "Program Files/Windows Defender Advanced Threat Protection"
 rm -rf "Windows/System32/SecurityHealthAgent.dll"
 rm -rf "Windows/System32/SecurityHealthService.exe"
 rm -rf "Windows/System32/SecurityHealthSystray.exe"
