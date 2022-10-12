@@ -1,50 +1,46 @@
 # Configure the AMD Driver
 
-## Stripping & Installing the Driver
+## Strip and Install the Driver
 
-- Download & extract the latest recommended driver from the [AMD drivers & support page](https://www.amd.com/en/support)
+- Download and extract the latest recommended driver from the [AMD drivers and support page](https://www.amd.com/en/support)
 
-- Move ``\Packages\Drivers\Display\XXXX_INF`` to the Desktop (folder may be named differently on other driver versions). Delete everything apart from the following:
+- Move ``.\Packages\Drivers\Display\XXXX_INF`` to the desktop (folder may be named differently on other driver versions). Delete everything apart from the following:
 
     - See [media/amd-driver-example.png](../media/amd-driver-example.png)
 
-- In the folder of the driver directory (mine is **B381690** in the example above), move **ccc2_install.exe** to the Desktop. This will be used in a later step
+- In the folder of the driver directory (mine is **B381690** in the example above), move **ccc2_install.exe** to the desktop. This will be used in a later step
 
-- Open notepad file & save it as **ccc2_install.exe** to the driver folder as shown below
+- Open notepad file and save it as **ccc2_install.exe** to the driver folder as shown below
 
     - See [media/replace-ccc2_install-example.png](../media/replace-ccc2_install-example.png)
 
-- Open device manager & install the driver by right clicking the display adapter, browse my computer for driver software & select the driver folder
+- Open device manager and install the driver by right clicking the display adapter, browse my computer for driver software and select the driver folder
 
-- Once the driver has installed, extract **ccc2_install.exe** with 7-Zip & run ``\CN\cnext\cnext64\ccc-next64.msi`` to install the radeon software control panel
+- Once the driver has installed, extract **ccc2_install.exe** with 7-Zip and run ``.\CN\cnext\cnext64\ccc-next64.msi`` to install the Radeon software control panel
 
-- Ensure to disable the bloat AMD services in win + r, **services.msc**
+- Ensure to disable the bloatware AMD services in win + r, **services.msc**
 
 ## Configure AMD Control Panel
 
 - In the **Settings > Graphics** section, configure the following:
 
     - Texture Filtering Quality - Performance
-
     - Tessellation Mode - Override application settings
-
     - Maximum Tessellation Level - Off
 
 - In the **Settings > Display section**, configure the following:
 
     - FreeSync - Has the potential to increase input latency due to extra processing. However, it has supposedly improved over time so feel free to test it yourself, your mileage may vary
-
     - GPU Scaling - Off
-    
     - HDCP Support - Disable (required for DRM content)
 
-## Locking Clocks/P-State 0
+## Lock Clocks/P-State 0
 
-- Use [OverdriveNTool](https://forums.guru3d.com/threads/overdriventool-tool-for-amd-gpus.416116), [MoreClockTool](https://www.igorslab.de/en/the-moreclocktool-mct-for-free-download-the-practical-oc-attachment-to-the-morepowertool-replaces-the-wattman/) or [MorePowerTool](https://www.igorslab.de/en/red-bios-editor-and-morepowertool-adjust-and-optimize-your-vbios-and-even-more-stable-overclocking-navi-unlimited) to reduce render time & jitter caused by frequency transitions
+- Use [OverdriveNTool](https://forums.guru3d.com/threads/overdriventool-tool-for-amd-gpus.416116), [MoreClockTool](https://www.igorslab.de/en/the-moreclocktool-mct-for-free-download-the-practical-oc-attachment-to-the-morepowertool-replaces-the-wattman/) or [MorePowerTool](https://www.igorslab.de/en/red-bios-editor-and-morepowertool-adjust-and-optimize-your-vbios-and-even-more-stable-overclocking-navi-unlimited) to reduce render time and jitter caused by frequency transitions.
 
-## Configure Flip Queue Size & ULPS
+## Configure Flip Queue Size and ULPS
 
-The following commands disable ultra low power states & set the flip queue size to 1
+The following commands disable ultra low power states and set the flip queue size to 1.
 
 - Run ``C:\prerequisites\scripts\get-driver-keys.bat`` to get the driver keys on your system
 
