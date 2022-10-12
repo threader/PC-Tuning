@@ -12,7 +12,7 @@ for %%a in (
     Microsoft.VCLibs.140.00_14.0.30704.0_x64__8wekyb3d8bbwe.appx
     Microsoft.XboxGamingOverlay_5.822.9161.0_neutral_~_8wekyb3d8bbwe.appxbundle
 ) do (
-    if exist %%a (
+    if exist "C:\prerequisites\appx-packages\%%a" (
         PowerShell Add-AppxPackage -Path "C:\prerequisites\appx-packages\%%a"
     ) else (
         echo error: %%a not found
