@@ -42,7 +42,7 @@ C:\prerequisites\scripts\miscellaneous.bat
 
 - Enable **Launching applications and unsafe files** in **Internet Options -> Security -> Custom Level**. This prevents the [ridiculous warning when opening files](https://gearupwindows.com/how-to-disable-open-file-security-warning-in-windows-10)
 
-- In win + r, **dfrgui** disable **Run on a schedule**. More details on doing maintenance tasks ourselves in [Final Thoughts and Tips](#final-thoughts--tips)
+- In win + r, **dfrgui** disable **Run on a schedule**. More details on doing maintenance tasks ourselves in [Final Thoughts and Tips](#final-thoughts-and-tips)
 
 - Disable **Turn on fast startup** in **Control Panel -> Hardware and Sound -> Power Options -> System Settings**
 
@@ -105,7 +105,7 @@ C:\prerequisites\scripts\miscellaneous.bat
 
 ## Install Xbox Game Bar (Windows 10+)
 
-Some games such as Apex Legends require Game Bar to be installed for [FSE/Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) to properly function. The Game Bar related processes will get disabled in the [Configure Services and Drivers](#configure-services--drivers) section to prevent it from running in the background. Open CMD as administrator and enter the command below.
+Some games such as Apex Legends require Game Bar to be installed for [FSE/Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) to properly function. The Game Bar related processes will get disabled in the [Configure Services and Drivers](#configure-services-and-drivers) section to prevent it from running in the background. Open CMD as administrator and enter the command below.
 
 ```bat
 C:\prerequisites\scripts\install-game-bar.bat
