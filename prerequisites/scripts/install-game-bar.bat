@@ -3,8 +3,6 @@ setlocal EnableDelayedExpansion
 
 dism > nul 2>&1 || echo error: administrator privileges required && pause && exit /b 1
 
-pushd "%~dp0"
-
 set "err=0"
 for %%a in (
     Microsoft.UI.Xaml.2.7_7.2208.15002.0_x64__8wekyb3d8bbwe.appx
@@ -21,6 +19,7 @@ for %%a in (
 )
 if not !err! == 0 exit /b 1
 
+echo info: done
 echo info: press any key to continue
 pause > nul 2>&1
 exit /b 0

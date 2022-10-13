@@ -23,7 +23,12 @@ I recommend using the 472.12 ([Windows 7/Windows 8](https://www.nvidia.co.uk/Dow
     <file name="${{PrivacyPolicyFile}}"/>
     ```
 
-- In ``NVI2\presentations.cfg`` set the value for **ProgressPresentationUrl** and **ProgressPresentationSelectedPackageUrl** to an empty string: **value=""**
+- In ``.\NVI2\presentations.cfg`` set the value for **ProgressPresentationUrl** and **ProgressPresentationSelectedPackageUrl** to an empty string:
+
+    ```
+    <string name="ProgressPresentationUrl" value=""/>
+    <string name="ProgressPresentationSelectedPackageUrl" value=""/>
+    ```
 
 - Run setup.exe to install the driver
 
@@ -34,6 +39,7 @@ I recommend using the 472.12 ([Windows 7/Windows 8](https://www.nvidia.co.uk/Dow
     ```bat
     reg.exe add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v "OptInOrOutPreference" /t REG_DWORD /d 0 /f 
     ```
+
     ```bat
     reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup" /v "SendTelemetryData" /t REG_DWORD /d 0 /f
     ```

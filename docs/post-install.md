@@ -58,7 +58,7 @@ C:\prerequisites\scripts\miscellaneous.bat
 
 ## Remove Bloatware Natively
 
-- Although nothing should appear, as a precautionary measure, check and uninstall any bloatware that exists in **Control Panel -> Programs -> Programs and Features**.
+- Although nothing should appear, as a precautionary measure check and uninstall any bloatware that exists in **Control Panel -> Programs -> Programs and Features**.
 
 - In win + r, **OptionalFeatures**, disable everything except for the following:
 
@@ -134,6 +134,7 @@ Open CMD as administrator and enter the command below. Replace **<winver\>** wit
 ```bat
 C:\prerequisites\scripts\registry\apply-registry.exe --winver <winver>
 ```
+
 - Ensure that the program prints a "done" message to the console, if it has not then command prompt was probably not opened with administrator privileges and the registry files were not successfully merged
 - After a restart, you can establish an Internet connection as the Windows update policies will take effect
 
@@ -144,6 +145,7 @@ Ensure **System is Spectre/Meltdown protected** is **NO** with the program below
 ```
 C:\prerequisites\inspectre.exe
 ```
+
 - See [media/meltdown-spectre-example.png](../media/meltdown-spectre-example.png)
 
 ## User Preference
