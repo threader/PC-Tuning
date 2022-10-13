@@ -53,9 +53,9 @@ def main() -> int:
         "diagnosis",
         "file history",
         "bgtaskregistrationmaintenancetask",
-        "autochk\\proxy"
-        "siuf"
-        "device information"
+        "autochk\\proxy",
+        "siuf",
+        "device information",
         "edp policy manager"
     ]
 
@@ -66,10 +66,10 @@ def main() -> int:
             task_name = line.rpartition(":")[-1].strip("\n").strip().lower()
             sch_tasks.append(task_name)
 
-    for task in sch_tasks:
-        for wildcard in to_disable:
+    for wildcard in to_disable:
+        print(f"info: disabling {wildcard}")
+        for task in sch_tasks:
             if wildcard in task:
-                print(f"info: disabling {task}")
                 schtasks_args = ["schtasks", "/change", "/disable", "/tn", task]
                 subprocess.run(schtasks_args, check=False, **subprocess_null)
                 subprocess.run([nsudo_path, "-U:T", "-P:E", "-ShowWindowMode:Hide", *schtasks_args], check=False, **subprocess_null)

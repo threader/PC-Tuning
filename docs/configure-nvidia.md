@@ -37,7 +37,7 @@ I recommend using the 472.12 ([Windows 7/Windows 8](https://www.nvidia.co.uk/Dow
 - Open CMD and enter the commands below to disable telemetry
 
     ```bat
-    reg.exe add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v "OptInOrOutPreference" /t REG_DWORD /d 0 /f 
+    reg.exe add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v "OptInOrOutPreference" /t REG_DWORD /d 0 /f
     ```
 
     ```bat
