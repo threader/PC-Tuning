@@ -54,6 +54,9 @@ def main() -> int:
         "file history",
         "bgtaskregistrationmaintenancetask",
         "autochk\\proxy"
+        "siuf"
+        "device information"
+        "edp policy manager"
     ]
 
     process = subprocess.run(["schtasks", "/query", "/fo", "list"], capture_output=True, check=False, universal_newlines=True)
