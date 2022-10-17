@@ -1,6 +1,6 @@
 # EVA
 
-Performance, privacy and latency tuning guide.
+Windows oriented performance, privacy and latency tuning guide.
 
 Contact: https://twitter.com/amitxv
 
