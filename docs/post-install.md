@@ -171,6 +171,14 @@ C:\prerequisites\SDIO\SDIO_x64_R746.exe
 
 ## Installing Recommended Packages and Programs
 
+- [.NET 4.8 Runtimes](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48)
+
+    - Run ``C:\prerequisites\ndp48-web.exe`` - CHECK FEATURES, if it does then get offline installer for nfw and directx and put near c++ packages
+
+- [DirectX Runtimes](https://www.microsoft.com/en-gb/download/details.aspx?id=35)
+
+    - Run ``C:\prerequisites\dxwebsetup.exe``. ensure to uncheck the Bing bar option
+
 - [7-Zip](https://www.7-zip.org)
 
     - Run ``C:\prerequisites\7-Zip\7z2201-x64.exe``
@@ -223,14 +231,6 @@ C:\prerequisites\SDIO\SDIO_x64_R746.exe
         - **Disable ResistFingerprinting** (not recommended but the browser can become sluggish)
 
             - privacy.resistFingerprinting = false
-
-- [.NET 4.8 Runtimes](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48)
-
-    - Run ``C:\prerequisites\ndp48-web.exe``
-
-- [DirectX Runtimes](https://www.microsoft.com/en-gb/download/details.aspx?id=35)
-
-    - Run ``C:\prerequisites\dxwebsetup.exe``. ensure to uncheck the Bing bar option
 
 - Media Player
 
