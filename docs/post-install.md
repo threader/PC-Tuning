@@ -69,7 +69,8 @@ C:\prerequisites\scripts\miscellaneous.bat
 
     - Uninstall bloatware in **Settings -> Apps -> Apps and Features**
     - In the **Optional features** section, uninstall everything apart from **Microsoft Paint**, **Notepad** and **WordPad**
-    - Restart your PC once before following the next steps
+
+- Restart your PC once to apply the changes above (do not boot into Linux Mint without a full restart beforehand)
 
 ## Removing Bloatware with Linux
 
@@ -136,9 +137,10 @@ C:\prerequisites\scripts\registry\apply-registry.exe --winver <winver>
 ```
 
 - Ensure that the program prints a "done" message to the console, if it has not then command prompt was probably not opened with administrator privileges and the registry files were not successfully merged
+
 - After a restart, you can establish an Internet connection as the Windows update policies will take effect
 
-## Spectre and Meltdown
+## [Spectre and Meltdown](https://www.grc.com/inspectre.htm)
 
 Ensure **System is Spectre/Meltdown protected** is **NO** with the program below. AMD is unaffected by Meltdown.
 
@@ -524,7 +526,7 @@ It is not a bad idea to skim through both the legacy and immersive control panel
 
         - You will BSOD if you enable MSIs for the **stock** Windows 7 SATA driver which you should have updated as mentioned in the [Installing Drivers](#installing-drivers) section
         
-    - Be careful as to what you choose to prioritize. As an example, you will likely stutter in a open-world game that utilizes texture streaming if the GPU IRQ priority is set higher than the storage controller priority
+    - Be careful as to what you choose to prioritize. As an example, you will likely stutter in a open-world game that utilizes texture streaming if the GPU IRQ priority is set higher than the storage controller priority. For this reason, you can set all devices to undefined/normal priority
 
 - Restart your PC, you can verify if a device is utilizing MSIs by checking if it has a negative IRQ in MSIUtil
 
@@ -558,7 +560,7 @@ Install any programs and game launchers you commonly use to prepare us for the n
 
 - Cap your framerate at a multiple of your monitor refresh rate to prevent [frame mistiming](https://youtu.be/_73gFgNrYVQ). E.g possible framerate caps with a 144Hz monitor include 72, 144, 288, 432. Consider capping at your minimum fps threshold for increased smoothness and ensure the GPU is not maxed out as [lower GPU utilization reduces system latency](https://youtu.be/8ZRuFaFZh5M?t=859)
 
-    - Capping your framerate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the in-game limiter will result in consistent frametimes and a smoother experience but at the cost of noticeably higher latency
+    - Capping your framerate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the in-game limiter will result in consistent frametimes and a smoother experience but at the cost of [noticeably higher latency](https://youtu.be/T2ENf9cigSk?t=377)
 
 - Configure FSE and QoS
 
