@@ -114,7 +114,7 @@ for /f "tokens=3" %i in ('DISM /Image:"%MOUNT_DIR%" /Get-ProvisionedAppxPackages
 
 ## Integrate and Obtain Drivers
 
-This step is generally required for users installing Windows 7 to integrate USB and NVME drivers so that setup can proceed.
+As mentioned previously, this step is generally only required for users configuring Windows 7 so that the ISO can be equipped with modern hardware support. Typically, only NVME and USB drivers are required to boot into the desktop, other drivers can be installed later in the [post-installation instructions](./post-install.md#install-drivers).
 
 - You can usually find drivers by searching or asking others for drivers that are compatible with your device HWID
 
