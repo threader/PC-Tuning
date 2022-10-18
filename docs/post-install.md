@@ -267,7 +267,7 @@ C:\prerequisites\SDIO\SDIO_x64_R746.exe
 
     - Processor idle disable - Disable idle
 
-        - If you do not want to run your CPU at C-State 0 all of the time, use the scripts in ``C:\prerequisites\scripts\idle-scripts`` (place on desktop for easy access) to disable idle before launching a game and enable idle after you close your game. This will mitigate jitter due to the process of state transition. [C1 is still power saving](https://www.dell.com/support/kbdoc/en-uk/000060621/what-is-the-c-state)
+        - If you do not want to run your CPU at C-State 0 all of the time, use the scripts in ``C:\prerequisites\scripts\idle-scripts`` (place on desktop for easy access) to disable idle before launching a game and enable idle after you close your game. This will mitigate jitter due to the process of state transition. Beware of higher temperatures, you should not be thermal throttling to begin with after following [docs/physical-setup.md](./physical-setup.md)
 
 ## Configure the BCD Store
 
