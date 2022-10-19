@@ -312,8 +312,6 @@ Windows Registry Editor Version 5.00
 ; disable paging executive
 ; disable page combining
 ; disable spectre and meltdown
-; disable prefetch
-; disable superfetch
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
 "DisablePagingExecutive"=dword:00000001
@@ -321,9 +319,7 @@ Windows Registry Editor Version 5.00
 "FeatureSettingsOverride"=dword:00000003
 "FeatureSettingsOverrideMask"=dword:00000003
 
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters]
-"EnablePrefetcher"=dword:00000000
-"EnableSuperfetch"=dword:00000000
+; disable prefetch and superfetch
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\SysMain]
 "Start"=dword:00000004
