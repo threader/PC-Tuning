@@ -298,20 +298,6 @@ Open CMD and enter the commands below.
         ```bat
         bcdedit /set disabledynamictick yes
         ```
-
-    - Forces the clock to be backed by a platform source, no synthetic timers are allowed. Have not been able to prove the benefits of this, feel free to skip or test yourself
-
-        ```bat
-        bcdedit /set useplatformtick yes
-        ```
-
-    - Configure the TSC synchronization policy. Have not been able to prove the benefits of this, feel free to skip or test yourself
-
-        ```bat
-        bcdedit /set tscsyncpolicy [legacy | enhanced]
-        ```
-
-        - Related: [research.md - What TscSyncPolicy does Windows use by default?](research.md#what-tscsyncpolicy-does-windows-use-by-default)
     
 ## Configure the Graphics Driver
 
