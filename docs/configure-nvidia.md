@@ -67,8 +67,6 @@ HDCP Can be disabled with the [following registry key](https://github.com/djdall
     - Texture filtering - Quality - High performance
     - [Threaded Optimization offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html), it usually hurts frametime consistency but feel free to test it yourself. You should also consider whether or not you are already CPU bottlenecked if you do choose to enable the setting
 
-- In the **Developer > Manage GPU Performance Counters**, enable **Allow access to the GPU performance counters to all users**
-
 - In the **Display > Adjust Desktop size and position** section, set the scaling mode to **No Scaling** and set perform scaling on to **Display**. Configure your resolution and refresh rate
 
 - Consider disabling G-Sync, it has the potential to increase input latency due to extra processing however it has supposedly improved over time so feel free to test it yourself, your mileage may vary
@@ -89,6 +87,10 @@ Disable Ansel with ``C:\prerequisites\nvidia-ansel-configurator\NvCameraConfigur
 
 ## Configure NVIDIA Inspector
 
-Feel free to skip this step as I have not verified it affects anything as of yet but there should be no harm following along.
+During CUDA workloads, the memory clock frequency will downclock to P-State 2 despite following the [Lock Clocks/P-State 0](#lock-clocksp-state-0) step. For this reason, you should set **CUDA - Force P2 State** to **Off**. [**SILK Smoothness**](https://www.avsim.com/forums/topic/552651-nvidia-setting-silk-smoothness) can also be disabled.
 
-- Disable [Cuda P2 States](https://babeltechreviews.com/nvidia-cuda-force-p2-state) and [SILK Smoothness](https://www.avsim.com/forums/topic/552651-nvidia-setting-silk-smoothness) in ``C:\prerequisites\nvidia-profile-inspector\nvidiaProfileInspector.exe``
+- See [CUDA-force-p2-state-analysis](../media/cuda-force-p2-state-analysis.png)
+
+```
+C:\prerequisites\nvidia-profile-inspector\nvidiaProfileInspector.exe
+```

@@ -320,7 +320,7 @@ Open CMD and enter the commands below.
 
 ## Configure MSI Afterburner
 
-If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards) to configure the clock speed, fan speed and other settings, download and install it.
+If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards) to configure the clock/memory frequency, fan speed and other settings, download and install it.
 
 - Disable update checks and the low-level IO driver in settings
 
