@@ -498,6 +498,40 @@ reg export "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger" 
 >> "C:\ets-disable.reg" echo [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger]
 ```
 
+## Optimize the File System
+
+Open CMD & enter the commands below.
+
+- Disables the creation of 8.3 character-length file names on FAT- & NTFS-formatted volumes
+
+    ```bat
+    fsutil behavior set disable8dot3 1
+    ```
+
+- Disable the encryption of folders & files on NTFS volumes
+
+    ```bat
+    fsutil behavior set disableencryption 1
+    ```
+
+- Disable updates to the Last Access Time stamp on each directory when directories are listed on an NTFS volume
+
+    ```bat
+    fsutil behavior set disablelastaccess 1
+    ```
+
+- Configure NTFS quota violations to be reported in the system log every 3 hours instead of every hour
+
+    ```bat
+    fsutil behavior set quotanotify 10800
+    ```
+
+- Enables delete notifications (also known as trim or unmap), should be enabled by default but here for safe measure
+
+    ```bat
+    fsutil behavior set disabledeletenotify 0
+    ```
+
 ## Configure Control Panel
 
 It is not a bad idea to skim through both the legacy and immersive control panel to ensure nothing is misconfigured.
