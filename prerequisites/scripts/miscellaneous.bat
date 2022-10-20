@@ -36,6 +36,11 @@ if exist "C:\Program Files (x86)\Microsoft\Edge\Application" (
 if exist "!windir!\SysWOW64\OneDriveSetup.exe" (
     echo info: uninstalling onedrive
     "!windir!\SysWOW64\OneDriveSetup.exe" /uninstall
+) else (
+    if exist "!windir!\System32\OneDriveSetup.exe" (
+        echo info: uninstalling onedrive
+        "!windir!\System32\OneDriveSetup.exe" /uninstall
+    )
 )
 
 echo info: done

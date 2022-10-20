@@ -4,9 +4,11 @@
 
 Do not connect to the Internet until the [Merge the Registry Files](#merge-the-registry-files) section. Avoid using a password as the service list used will break user password functionality.
 
+If you are configuring Windows 11, press **Shift + F10** to open CMD and run the following command ``oobe\BypassNRO.cmd``.  This will unlock the **I don't have internet** option demonstrated in the video examples below.
+
 - See [media/oobe-windows7-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows7-example.mp4)
 - See [media/oobe-windows8-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows8-example.mp4)
-- See [media/oobe-windows10-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows10-example.mp4)
+- See [media/oobe-windows10+-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows10+-example.mp4)
 
 ## Activate Windows
 
@@ -26,7 +28,7 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
 - See [media/visual-cleanup-windows7-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/visual-cleanup-windows7-example.mp4)
 - See [media/visual-cleanup-windows8-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/visual-cleanup-windows8-example.mp4)
-- See [media/visual-cleanup-windows10-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/visual-cleanup-windows10-example.mp4)
+- See [media/visual-cleanup-windows10+-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/visual-cleanup-windows10+-example.mp4)
 
 ## Miscellaneous
 
@@ -67,8 +69,15 @@ C:\prerequisites\scripts\miscellaneous.bat
 
 - Windows 10+ Only:
 
-    - Uninstall bloatware in **Settings -> Apps -> Apps and Features**
-    - In the **Optional features** section, uninstall everything apart from **Microsoft Paint**, **Notepad** and **WordPad**
+    - Windows 10:
+
+        - Uninstall bloatware in **Settings -> Apps -> Apps and Features**
+        - In the **Optional features** section, uninstall everything apart from **Microsoft Paint**, **Notepad** and **WordPad**
+
+    - Windows 11:
+
+        - Uninstall bloatware in **Settings -> Apps -> Installed apps**
+        - In the **Settings -> Apps -> Optional features** section, uninstall everything apart from **WMIC**, **Notepad (system)** and **WordPad**
 
 - Restart your PC once to apply the changes above (do not boot into Linux Mint without a full restart beforehand)
 
@@ -89,6 +98,8 @@ C:\prerequisites\scripts\miscellaneous.bat
     ```
     sudo reboot
     ```
+
+- Open ```C:\prerequisites\sysinternals\Autoruns.exe``` and remove all obsolete entries with a yellow label, run with ``C:\prerequisites\nsudo\NSudo.exe`` if you encounter any permission errors
 
 ## Install [OpenShell](https://github.com/Open-Shell/Open-Shell-Menu) (Windows 8+)
 
@@ -175,7 +186,7 @@ C:\prerequisites\SDIO\SDIO_x64_R746.exe
 
 - [.NET 4.8 Runtimes](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48)
 
-    - Run ``C:\prerequisites\ndp48-web.exe`` - CHECK FEATURES, if it does then get offline installer for nfw and directx and put near c++ packages
+    - Run ``C:\prerequisites\ndp48-web.exe``
 
 - [DirectX Runtimes](https://www.microsoft.com/en-gb/download/details.aspx?id=35)
 
@@ -598,7 +609,7 @@ Configure default programs in **Settings -> Apps**.
 
 ## Cleanup
 
-- Open ```C:\prerequisites\sysinternals\Autoruns.exe``` and remove any unwanted programs such as game launchers. Remove all obsolete entries with a yellow label, run with NSudo if you encounter any permission errors
+- Open ```C:\prerequisites\sysinternals\Autoruns.exe``` and remove any unwanted programs such as game launchers. Remove all obsolete entries with a yellow label, run with ``C:\prerequisites\nsudo\NSudo.exe`` if you encounter any permission errors
 
 - Some locations you may want to review for leftover bloatware and unwanted shortcuts
 
@@ -639,7 +650,7 @@ Configure default programs in **Settings -> Apps**.
 
 ## Final Thoughts and Tips
 
-- Don't run random tweaks, tweaking programs or fall for the "fps boost" marketing nonsense. If you have a question about a specific option or setting, just ask
+- Avoid applying random tweaks, using tweaking programs or fall for the "fps boost" marketing nonsense. If you have a question about a specific option or setting, just ask
 
 - Try to favor free and open source software. Stay away from proprietary software where you can and ensure to scan files with [VirusTotal](https://www.virustotal.com/gui/home/upload) before running them
 

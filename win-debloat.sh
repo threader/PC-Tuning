@@ -40,11 +40,11 @@ wildcard_names=(
     "securitycenter"
 )
 
-rm -rf "Program Files/WindowsApps"
-rm -rf "ProgramData/Packages"
-rm -rf Users/*/AppData/Local/Microsoft/WindowsApps
-rm -rf Users/*/AppData/Local/Packages/!("Microsoft.Windows.ShellExperienceHost_cw5n1h2txyewy"|"windows.immersivecontrolpanel_cw5n1h2txyewy")
-rm -rf Windows/SystemApps/!("ShellExperienceHost_cw5n1h2txyewy")
+rm -rf Program\ Files/WindowsApps/*
+rm -rf ProgramData/Packages/!("MicrosoftWindows.Client.CBS_cw5n1h2txyewy")
+rm -rf Users/*/AppData/Local/Microsoft/WindowsApps/!("MicrosoftWindows.Client.CBS_cw5n1h2txyewy")
+rm -rf Users/*/AppData/Local/Packages/!("Microsoft.Windows.ShellExperienceHost_cw5n1h2txyewy"|"windows.immersivecontrolpanel_cw5n1h2txyewy"|"MicrosoftWindows.Client.CBS_cw5n1h2txyewy")
+rm -rf Windows/SystemApps/!("ShellExperienceHost_cw5n1h2txyewy"|"Microsoft.UI.Xaml.CBS_8wekyb3d8bbwe"|"MicrosoftWindows.Client.CBS_cw5n1h2txyewy"|"MicrosoftWindows.Client.Core_cw5n1h2txyewy")
 rm -rf "Program Files/Windows Defender"
 rm -rf "Program Files (x86)/Windows Defender"
 rm -rf "Program Files/Windows Defender Advanced Threat Protection"

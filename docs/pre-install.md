@@ -23,13 +23,14 @@ in advance of building the ISO, see the [Integrate and Obtain Drivers](./buildin
 
 ## Boot Into the ISO
 
-For the next steps, it is **vital** that you unplug your Ethernet cable and are not connected to the Internet. This will allow us to bypass the forced Microsoft login during OOBE and will prevent Windows from fetching updates. Moving onward, you will need to open [docs/post-install.md](./post-install.md) on another device (phone) to follow up until a web browser is installed. After that you can open the guide on the same operating system you are configuring.
+For the next steps, it is imperative that you unplug your Ethernet cable and are not connected to the Internet. This will allow us to bypass the forced Microsoft login during OOBE and will prevent Windows from fetching updates. Moving onward, you will need to open [docs/post-install.md](./post-install.md) on another device (phone) to follow up until a web browser is installed. After that you can open the guide on the same operating system you are configuring.
 
 - Install using a USB storage device:
 
     - Place the ISO into the same location where the Linux Mint ISO is and select the USB storage device in the boot options in BIOS
     - When installing Windows 8 with a USB, you may be required to enter a key. Use the generic key ``GCRJD-8NW9H-F2CDX-CCM8D-9D6T9`` to get past this step
+    - When installing Windows 11 with a USB, you may encounter system requirement issues. To bypass the checks, press **Shift + F10** to open CMD then type **regedit**. Go to **File -> Import...** and import the **bypass-windows11-checks.reg** registry file
 
-- Install using DISM Apply-Image:
+- Install using DISM Apply-Image (without a USB storage device):
 
     - Create a new partition by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) and assign it a drive letter. Extract the ISO if required and launch **install.bat**

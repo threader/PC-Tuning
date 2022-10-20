@@ -56,7 +56,7 @@ HDCP Can be disabled with the [following registry key](https://github.com/djdall
 
 ## Configure NVIDIA Control Panel
 
-- Enable **Desktop > Enable Developer Settings**, I also like to disable the notification tray icon
+- Disable **Desktop > Show Notification Tray Icon**
 
 - In the **3D Settings > Manage 3D settings** section, configure the following:
 

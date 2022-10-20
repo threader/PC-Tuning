@@ -171,7 +171,7 @@ This step is not required if you are [installing using DISM Apply-Image](./pre-i
     ```
 ## Insert DISM Apply-Image Script
 
-Use the command below to open the extracted directory, place the **install.bat** script in the directory.
+Use the command below to open the extracted directory, place the **install.bat** script and the **bypass-windows11-checks.reg** registry file in the directory.
 
 ```bat
 explorer "%EXTRACTED_ISO%"
