@@ -10,7 +10,7 @@ The custom ISO from the previous project is discontinued so please do not ask fo
 
 I have tried my best to provide technical references, my own research and a valid justification to the information provided to prevent making changes that would otherwise make your system perform worse than stock but simultaneously also provide a solid baseline for experimenting with settings in the future.
 
-The guidance is currently updated and has been tested on Windows 7 through to Windows 10. Configuring Windows 11 currently has major problems. See a full list of [issues](https://github.com/amitxv/EVA/issues).
+The guidance is currently updated and has been tested on Windows 7 through to Windows 11. See a full list of [issues](https://github.com/amitxv/EVA/issues).
 
 ## Requirements
 
