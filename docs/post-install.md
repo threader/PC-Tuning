@@ -290,7 +290,7 @@ Open CMD and enter the commands below.
     bcdedit /timeout 0
     ```
 
-- Configure [Data Execution Prevention](https://docs.microsoft.com/en-us/windows/win32/memory/data-execution-prevention) for **essential Windows programs and services only**
+- Configure [Data Execution Prevention](https://docs.microsoft.com/en-us/windows/win32/memory/data-execution-prevention) for **essential Windows programs and services only**. DEP can be completely disabled with ``bcdedit /set nx AlwaysOff`` however the former is preferred due to compatibility with a minority of anticheats
 
     ```bat
     bcdedit /set nx Optin

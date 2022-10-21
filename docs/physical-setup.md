@@ -78,9 +78,9 @@
 
 - Disable unnecessary devices such as WLAN, Bluetooth, High Definition Audio Controller (if not using aux/line-in audio) and unused USB, PCIe, iGPU and DIMM slots
 
-- Disable Trusted Platform Module
+- Disable Trusted Platform Module. On Windows 11, a minority of anticheats (Vanguard, FACEIT) require it to be enabled
 
-    - Verify that it is disabled in win + r, **tpm.msc**
+    - Verify its status in win + r, **tpm.msc**
 
 - Enable High Precision Event Timer
 
@@ -90,7 +90,7 @@
 
     - Windows 7 UEFI requires CSM and OpROMs unless using [uefiseven](https://github.com/manatails/uefiseven)
 
-- Disable Secure Boot
+- Disable Secure Boot. On Windows 11, a minority of anticheats (Vanguard, FACEIT) require it to be enabled
 
 - Disable Fast Boot or similar options
 
