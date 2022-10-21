@@ -141,7 +141,7 @@ C:\prerequisites\scripts\scheduled-tasks\disable-tasks.exe
 
 ## Merge the Registry Files
 
-Open CMD as administrator and enter the command below. Replace **<winver\>** with the Windows version you are configuring (e.g 7, 8, 10).
+Open CMD as administrator and enter the command below. Replace **<winver\>** with the Windows version you are configuring (e.g 7, 8, 10, 11).
 
 ```bat
 C:\prerequisites\scripts\registry\apply-registry.exe --winver <winver>
