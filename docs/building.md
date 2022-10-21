@@ -187,7 +187,7 @@ DISM /Export-Image /SourceImageFile:"%EXTRACTED_ISO%\sources\install.wim" /Sourc
 
 ## Convert to ISO
 
-This step is not required if you are [installing using DISM Apply-Image](./pre-install.md#booting-into-the-iso). Use the command below to convert the extracted ISO to an ISO file which will be created on the desktop.
+This step is not required if you are [installing using DISM Apply-Image](./pre-install.md#boot-into-the-iso). Use the command below to convert the extracted ISO to an ISO file which will be created on the desktop.
 
 ```bat
 "%OSCDIMG%" -m -o -u2 -udfver102 -l"FINAL" -bootdata:2#p0,e,b"%EXTRACTED_ISO%\boot\etfsboot.com"#pEF,e,b"%EXTRACTED_ISO%\efi\microsoft\boot\efisys.bin" "%EXTRACTED_ISO%" "%userprofile%\Desktop\FINAL.iso"
