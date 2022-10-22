@@ -1,4 +1,4 @@
-# Pre-Installation Instructions
+# Pre-Install Instructions
 
 ## Configure Partitions
 

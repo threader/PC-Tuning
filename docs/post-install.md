@@ -1,4 +1,4 @@
-# Post-Installation Instructions
+# Post-Install Instructions
 
 ## OOBE Setup
 

@@ -24,11 +24,11 @@ The guidance is currently updated and has been tested on Windows 7 through to Wi
 
 - See [docs/physical-setup.md](./docs/physical-setup.md)
 
-## Pre-Installation Instructions
+## Pre-Install Instructions
 
 - See [docs/pre-install.md](./docs/pre-install.md)
 
-## Post-Installation Instructions
+## Post-Install Instructions
 
 - See [docs/post-install.md](./docs/post-install.md)
 
