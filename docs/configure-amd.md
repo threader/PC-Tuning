@@ -30,7 +30,7 @@
 
 - In the **Settings > Display section**, configure the following:
 
-    - FreeSync - Has the potential to increase input latency due to extra processing. However, it has supposedly improved over time so feel free to test it yourself, your mileage may vary
+    - FreeSync - Has the potential to increase input latency due to extra processing. However, it has supposedly improved over time so feel free to benchmark it yourself, your mileage may vary
     - GPU Scaling - Off
     - HDCP Support - Disable (required for DRM content)
 

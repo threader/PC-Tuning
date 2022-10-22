@@ -65,11 +65,11 @@ HDCP Can be disabled with the [following registry key](https://github.com/djdall
     - Low Latency Mode - On (limits prerendered frames to 1)
     - Power management mode - Prefer maximum performance
     - Texture filtering - Quality - High performance
-    - [Threaded Optimization offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html), it usually hurts frametime consistency but feel free to test it yourself. You should also consider whether or not you are already CPU bottlenecked if you do choose to enable the setting
+    - [Threaded Optimization offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html), it usually hurts frametime consistency but feel free to benchmark it yourself. You should also consider whether or not you are already CPU bottlenecked if you do choose to enable the setting
 
 - In the **Display > Adjust Desktop size and position** section, set the scaling mode to **No Scaling** and set perform scaling on to **Display**. Configure your resolution and refresh rate
 
-- Consider disabling G-Sync, it has the potential to increase input latency due to extra processing however it has supposedly improved over time so feel free to test it yourself, your mileage may vary
+- Consider disabling G-Sync, it has the potential to increase input latency due to extra processing however it has supposedly improved over time so feel free to benchmark it yourself, your mileage may vary
 
 ## Lock Clocks/P-State 0
     

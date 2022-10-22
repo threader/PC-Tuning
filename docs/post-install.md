@@ -153,7 +153,7 @@ C:\prerequisites\scripts\registry\apply-registry.exe --winver <winver>
 
 ## [Spectre and Meltdown](https://www.grc.com/inspectre.htm)
 
-Ensure **System is Spectre/Meltdown protected** is **NO** with the program below. AMD is unaffected by Meltdown.
+Ensure **System is Spectre/Meltdown protected** is **NO** with the program below. AMD is unaffected by Meltdown and apparently [performs better with Spectre enabled](https://www.phoronix.com/review/amd-zen4-spectrev2), feel free to benchmark it on your own system.
 
 ```
 C:\prerequisites\inspectre.exe
@@ -571,7 +571,7 @@ By default, CPU 0 handles the majority of DPCs and ISRs for several devices whic
 
 - Use [Mouse Tester](https://github.com/microe1/MouseTester) to compare polling variation between the USB controller on different cores
 
-    - Ideally this should be done with some sort of realistic load such as a game running in the background as idle benchmarks are misleading but as we do not have any games installed yet, you can and test this later
+    - Ideally this should be done with some sort of realistic load such as a game running in the background as idle benchmarks are misleading but as we do not have any games installed yet, you can and benchmark this later
 
 - Open CMD and enter the command below to configure what CPU handles DPCs/ISRs for the network driver. Ensure to change the driver key to suit your needs
 

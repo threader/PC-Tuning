@@ -249,7 +249,7 @@ On a stock Windows 10 installation, the Wdf01000.sys driver handles USB connecti
 
 <img src="../media/amdxhc31-usb-xperf-report.png" width="500">
 
-Excluding benchmark variation, ISR/DPC count and ISR latency is identical. However, with the vendor drivers, DPC latency was positively impacted and for this reason it would be appropriate to update the USB driver if applicable but your mileage may vary so feel free to test it on your own system.
+Excluding benchmark variation, ISR/DPC count and ISR latency is identical. However, with the vendor drivers, DPC latency was positively impacted and for this reason it would be appropriate to update the USB driver if applicable but your mileage may vary so feel free to benchmark it on your own system.
 
 </details>
 
