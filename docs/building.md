@@ -73,7 +73,7 @@ DISM /Mount-Wim /WimFile:"%EXTRACTED_ISO%\sources\install.wim" /Index:1 /MountDi
     KB4490628 - Servicing Stack Update
     KB4474419 - SHA-2 Code Signing Update
     KB2670838 - Platform Update and DirectX 11.1
-    KB2990941 - NVME Support
+    KB2990941 - NVME Support (https://files.soupcan.tech/KB2990941-NVMe-Hotfix/Windows6.1-KB2990941-x64.msu)
     KB3087873 - NVME Support and Language Pack Hotfix
     KB2864202 - KMDF Update (required for USB 3/XHCI driver stack)
     KB4534314 - Easy Anti-Cheat Support
