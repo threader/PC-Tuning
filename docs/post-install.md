@@ -264,8 +264,6 @@ C:\prerequisites\SDIO\SDIO_x64_R746.exe
 
 - Open ``C:\prerequisites\PowerSettingsExplorer.exe`` and configure the following:
 
-    - Primary/Secondary NVMe Idle Timeout - 0
-
     - NVMe NOPPME - Off
 
     - Allow Throttle States - Off
@@ -319,7 +317,7 @@ Open CMD and enter the commands below.
 
 If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards) to configure the clock/memory frequency, fan speed and other settings, download and install it.
 
-- Disable update checks and the low-level IO driver in settings
+- Disable update checks in settings
 
 - I would recommend configuring a static fan speed as using the fan curve feature requires the program to run continually
 
@@ -519,22 +517,10 @@ Open CMD & enter the commands below.
     fsutil behavior set disable8dot3 1
     ```
 
-- Disable the encryption of folders & files on NTFS volumes
-
-    ```bat
-    fsutil behavior set disableencryption 1
-    ```
-
 - Disable updates to the Last Access Time stamp on each directory when directories are listed on an NTFS volume
 
     ```bat
     fsutil behavior set disablelastaccess 1
-    ```
-
-- Configure NTFS quota violations to be reported in the system log every 3 hours instead of every hour
-
-    ```bat
-    fsutil behavior set quotanotify 10800
     ```
 
 - Enables delete notifications (also known as trim or unmap), should be enabled by default but here for safe measure
