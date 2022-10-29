@@ -176,12 +176,6 @@ Install any drivers your system requires, avoid installing chipset drivers. I wo
 
 Try to obtain the driver in its INF form so that it can be installed in device manager as executable installers usually install other bloatware along with the driver itself. Most of the time, you can extract the installer's executable with 7-Zip to obtain the driver.
 
-[Snappy Driver Installer Origin](https://www.snappy-driver-installer.org) can also be used to install drivers on a live system. Use the program below.
-
-```
-C:\prerequisites\SDIO\SDIO_x64_R746.exe
-```
-
 ## Installing Recommended Packages and Programs
 
 - [.NET 4.8 Runtimes](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48)
