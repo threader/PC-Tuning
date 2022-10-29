@@ -251,32 +251,56 @@ C:\prerequisites\SDIO\SDIO_x64_R746.exe
 
 ## Configure Power Options
 
-- Set the power plan to **High performance** in **Control Panel -> Hardware and Sound -> Power Options**
+Open CMD and enter the commands below.
 
-- Open CMD and enter the commands below to remove every power plan except the active power scheme, ignore errors
+- Set active power scheme to High performance
 
     ```bat
-	powercfg -delete 381b4222-f694-41f0-9685-ff5bb260df2e
-	powercfg -delete 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
-	powercfg -delete a1841308-3541-4fab-bc81-f71556f20b4a
-	powercfg -delete e9a42b02-d5df-448d-aa00-03f14749eb61
-	```
+    powercfg /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
+    ```
 
-- Open ``C:\prerequisites\PowerSettingsExplorer.exe`` and configure the following:
+- Remove the Balanced and Power saver power scheme
 
-    - NVMe NOPPME - Off
+    ```bat
+    powercfg -delete 381b4222-f694-41f0-9685-ff5bb260df2e
+    powercfg -delete a1841308-3541-4fab-bc81-f71556f20b4a
+    ```
 
-    - Allow Throttle States - Off
+- NVMe NOPPME - Off
 
-    - USB 3 Link Power Management - Off
+    ```bat
+    powercfg /setacvalueindex scheme_current 0012ee47-9041-4b5d-9b77-535fba8b1442 fc7372b6-ab2d-43ee-8797-15e9841f2cca 0
+    ```
 
-    - USB Selective Suspend - Disabled
+- Allow Throttle States - Off
 
-    - Turn off display after - 0 minutes
+    ```bat
+    powercfg /setacvalueindex scheme_current 54533251-82be-4824-96c1-47b60b740d00 3b04d4fd-1cc7-4f23-ab1c-d1337819c4bb 0
+    ```
 
-    - Processor idle disable - Disable idle
+- USB 3 Link Power Management - Off
 
-        - If you do not want to run your CPU at C-State 0 all of the time, use the scripts in ``C:\prerequisites\scripts\idle-scripts`` (place on desktop for easy access) to disable idle before launching a game and enable idle after you close your game. This will mitigate jitter due to the process of state transition. Beware of higher temperatures, you should not be thermal throttling to begin with after following [docs/physical-setup.md](./physical-setup.md)
+    ```bat
+    powercfg /setacvalueindex scheme_current 2a737441-1930-4402-8d77-b2bebba308a3 d4e98f31-5ffe-4ce1-be31-1b38b384c009 0
+    ```
+
+- USB Selective Suspend - Disabled
+
+    ```bat
+    powercfg /setacvalueindex scheme_current 2a737441-1930-4402-8d77-b2bebba308a3 48e6b7a6-50f5-4782-a5d4-53bb8f07e226 0
+    ```
+
+- Turn off display after - 0 minutes
+
+    ```bat
+    powercfg /setacvalueindex scheme_current 7516b95f-f776-4464-8c53-06167f40cc99 3c0bc021-c8a8-4e07-a973-6b14cbcb2b7e 0
+    ```
+
+- Set the active scheme as the current scheme
+
+    ```bat
+    powercfg -setactive scheme_current
+    ```
 
 ## Configure the BCD Store
 
@@ -368,7 +392,7 @@ This step is not optional, pcw.sys will be disabled which breaks the stock Task 
 
 - It relies on a kernel mode driver to operate (additional overhead)
 - Does not provide performance metrics such as cycles/context switches delta and other useful details
-- On Windows 8+, [Task Manager reports CPU utility in %](https://aaron-margosis.medium.com/task-managers-cpu-numbers-are-all-but-meaningless-2d165b421e43) which provides misleading CPU utilization details, on the other hand, Windows 7's Task Manager and process explorer report time-based busy utilization. This also explains why the disable idle power plan option results in 100% CPU utilization on Windows 8+
+- On Windows 8+, [Task Manager reports CPU utility in %](https://aaron-margosis.medium.com/task-managers-cpu-numbers-are-all-but-meaningless-2d165b421e43) which provides misleading CPU utilization details, on the other hand, Windows 7's Task Manager and process explorer report time-based busy utilization. This also explains why the disable idle power setting results in 100% CPU utilization on Windows 8+
 
 </details>
 
@@ -645,6 +669,8 @@ Configure default programs in **Settings -> Apps**.
 - Kill processes that waste CPU cycles such as game clients and **explorer.exe**
 
     - Use **Ctrl + Shift + Esc** to open process explorer then use **File -> Run** to start the **explorer.exe** shell again
+
+- Consider using the scripts in ``C:\prerequisites\scripts\idle-scripts`` (place on desktop for easy access) to disable idle before launching a game and enable idle after you close your game. This will mitigate jitter due to the process of state transition. Beware of higher temperatures, you should not be thermal throttling to begin with after following [docs/physical-setup.md](./physical-setup.md)
 
 - If you are using Windows 8.1+ and [FSE/Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) with your game, you *can* disable DWM using the scripts in ``C:\prerequisites\scripts\dwm-scripts`` as the process wastes CPU cycles despite there being no composition. Beware as elements of the UI will be broken and somes games/programs will not be able to launch (you may need to disable hardware acceleration)
 
