@@ -188,15 +188,6 @@ C:\prerequisites\SDIO\SDIO_x64_R746.exe
 
     - Run ``C:\prerequisites\ndp48-web.exe``
 
-- [DirectX Runtimes](https://www.microsoft.com/en-gb/download/details.aspx?id=35)
-
-    - Run ``C:\prerequisites\dxwebsetup.exe``. ensure to uncheck the Bing bar option
-
-- [7-Zip](https://www.7-zip.org)
-
-    - Run ``C:\prerequisites\7-Zip\7z2201-x64.exe``
-    - Open ``C:\Program Files\7-Zip\7zFM.exe`` then to go **Tools -> Options** and associate 7-Zip with all file extensions by clicking the **+** button. You may need to click it twice to override existing associated extensions
-
 - Web Browser
 
     - [Librewolf](https://librewolf.net) (fork of Firefox) recommended
@@ -244,6 +235,15 @@ C:\prerequisites\SDIO\SDIO_x64_R746.exe
         - **Disable ResistFingerprinting** (not recommended but the browser can become sluggish)
 
             - privacy.resistFingerprinting = false
+
+- 7-Zip
+
+    - Download and install [7-Zip](https://www.7-zip.org)
+    - Open ``C:\Program Files\7-Zip\7zFM.exe`` then to go **Tools -> Options** and associate 7-Zip with all file extensions by clicking the **+** button. You may need to click it twice to override existing associated extensions
+
+- DirectX Runtimes
+
+    - Download and install the [DirectX runtimes](https://www.microsoft.com/en-gb/download/details.aspx?id=35). Ensure to uncheck the Bing bar option
 
 - Media Player
 
@@ -396,7 +396,8 @@ This step is not optional, pcw.sys will be disabled which breaks the stock Task 
 
 </details>
 
-- Copy **procexp.exe** from ``C:\prerequisites\sysinternals`` into ``C:\Windows`` and open it
+- Download and extract [Process Explorer](https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer)
+- Copy **procexp64.exe** into ``C:\Windows`` and open it
 - Go to **Options** and select **Replace Task Manager**. I also configure **Confirm Kill** and **Allow Only One Instance**
 
 ## Disable Process Mitigations (Windows 10 1709+)
@@ -498,7 +499,7 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 
     - Disable any **unneeded** devices that are using an IRQ or I/O resources, always ask if unsure, take your time on this step. Windows should not allow you to disable any required devices but ensure you do not accidentally disable another important device such as your main USB controller or similar. Once again, **DO NOT** disable any device with a yellow icon
 
-        - If there are multiple of the same devices and you are unsure which one is in use, refer back to the tree structure in **View -> Devices by connection**. Remember that a single device can use many resources. You can also use ``C:\prerequisites\MSIUtil.exe`` to check for duplicate, unneeded devices incase you accidently miss any with the confusing device manager tree structure
+        - If there are multiple of the same devices and you are unsure which one is in use, refer back to the tree structure in **View -> Devices by connection**. Remember that a single device can use many resources. You can also use [MSI Utility](https://forums.guru3d.com/threads/windows-line-based-vs-message-signaled-based-interrupts-msi-tool.378044) to check for duplicate, unneeded devices incase you accidently miss any with the confusing device manager tree structure
 
 - To prepare us for the next steps, run **Services-Enable.bat** with NSudo, ensure **Enable All Privileges** is enabled as mentioned
 
@@ -561,7 +562,7 @@ It is not a bad idea to skim through both the legacy and immersive control panel
 
 [Message signaled interrupts are faster than traditional line-based interrupts and may also resolve the issue of shared interrupts which are often the cause of high interrupt latency and stability](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitations/Windows%20Internals%20Part%201_6th%20Edition.pdf).
 
-- Open ``C:\prerequisites\MSIUtil.exe``
+- Download and open [MSI Utility](https://forums.guru3d.com/threads/windows-line-based-vs-message-signaled-based-interrupts-msi-tool.378044)
 
     - Enable Message Signaled Interrupts on all devices that support it
 
@@ -569,7 +570,7 @@ It is not a bad idea to skim through both the legacy and immersive control panel
         
     - Be careful as to what you choose to prioritize. As an example, you will likely stutter in a open-world game that utilizes texture streaming if the GPU IRQ priority is set higher than the storage controller priority. For this reason, you can set all devices to undefined/normal priority
 
-- Restart your PC, you can verify if a device is utilizing MSIs by checking if it has a negative IRQ in MSIUtil
+- Restart your PC, you can verify if a device is utilizing MSIs by checking if it has a negative IRQ in MSI Utility
 
 - Ensure that there is no IRQ sharing on your system by checking win + r, **msinfo32**, **Hardware Resources -> Conflicts/Sharing** section
 
