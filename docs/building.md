@@ -12,8 +12,8 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
 - Recommended ISOs:
 
-    - Windows 7: **en_windows_7_professional_with_sp1_x64_dvd_u_676939.iso** - [Adguard ISO hashes](https://files.rg-adguard.net/file/11ad6502-c2aa-261c-8c3f-c81477b21dd2)
-    - Windows 8: **en_windows_8.1_with_update_x64_dvd_6051480.iso** - [Adguard ISO hashes](https://files.rg-adguard.net/file/feeb8cae-fb0b-42b9-6f69-50c71f0e5415)
+    - Windows 7: **en_windows_7_professional_with_sp1_x64_dvd_u_676939.iso** - [Adguard hashes](https://files.rg-adguard.net/file/11ad6502-c2aa-261c-8c3f-c81477b21dd2?lang=en-us)
+    - Windows 8: **en_windows_8_1_x64_dvd_2707217.iso** - [Adguard hashes](https://files.rg-adguard.net/file/406e60db-4275-7bf8-616f-56e88d9e0a4a?lang=en-us)
     - Windows 10+: Try to obtain an ISO with minimal updates
 
 - ISO Sources:
@@ -79,9 +79,16 @@ DISM /Mount-Wim /WimFile:"%EXTRACTED_ISO%\sources\install.wim" /Index:1 /MountDi
     KB4534314 - Easy Anti-Cheat Support
     ```
 
-- Windows 8+ recommended updates:
+- Windows 8 recommended updates:
 
-    - Download the latest non-security cumulative update along with the servicing stack for that specific update (specified in the update page). The update page should also specify if the update is non-security or a security update, if it does not, then download the latest update. Use the official update history page ([Windows 8](https://support.microsoft.com/en-us/topic/july-21-2016-kb3172614-dcf9bea5-47b0-b574-2929-4f9e130f5192), [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b))
+    ```
+    KB2919442 - Servicing Stack Update
+    KB2919355 - Cumulative Update
+    ```
+
+- Windows 10+ recommended updates:
+
+    - Download the latest non-security cumulative update along with the servicing stack for that specific update (specified in the update page). The update page should also specify if the update is non-security or a security update, if it does not, then download the latest update. Use the official update history page ([Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b), [Windows 11](https://support.microsoft.com/en-us/topic/october-12-2021-kb5006674-os-build-22000-258-32255bb8-6b25-4265-934c-74fdb25f4d35))
 
 - Download the updates from the [Microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the KB identifier. Place the updates somewhere easily accessible such as ``C:\updates``
 
