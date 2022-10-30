@@ -83,7 +83,8 @@ Force P-State 0 with the [following registry key](https://github.com/djdallmann/
 
 ## Disable Ansel
 
-Disable Ansel with ``C:\prerequisites\nvidia-ansel-configurator\NvCameraConfiguration_v1.0.0.6.exe``.
+- Download and extract [NVCameraConfiguration](https://international-gfe.download.nvidia.com/GFE/GFEClient/NVCameraConfiguration/v1.0/NVCameraConfiguration_v1.0.0.6.zip)
+- Change the status to **Disabled**
 
 ## Configure NVIDIA Inspector
 
