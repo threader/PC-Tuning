@@ -497,11 +497,8 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 
 - To prepare us for the next steps, run **Services-Enable.bat** with NSudo, ensure **Enable All Privileges** is enabled as mentioned
 
-- Open CMD and enter the command below to cleanup hidden and unused devices
-    
-    ```bat
-    C:\prerequisites\device-cleanup\DeviceCleanup.exe -s -n *
-    ```
+- Download and extract [DeviceCleanup](https://www.uwe-sieber.de/misc_tools_e.html)
+- Open the program, select all devices and press the delete key to clean-up hidden devices
 
 ## Disable Driver Power Saving
 
