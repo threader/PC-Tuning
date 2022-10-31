@@ -4,7 +4,7 @@
 
 I recommend using the 472.12 ([Windows 7/Windows 8](https://www.nvidia.co.uk/Download/driverResults.aspx/180606/en-uk), [Windows 10+](https://www.nvidia.com/download/driverResults.aspx/180555/en-us)) as it is the latest non-DCH driver. The latest DCH driver now ships with the NVIDIA control panel, Windows Store is no longer required to install it so feel free to use it on Windows 10+.
 
-- Extract the driver executable package with 7-Zip and remove all folders **except** the following:
+- Extract the driver executable package with 7-Zip and remove all files and folders **except** the following:
 
     ```
     Display.Driver
@@ -90,5 +90,5 @@ Force P-State 0 with the [following registry key](https://github.com/djdallmann/
 
 During CUDA workloads, the memory clock frequency will downclock to P-State 2 despite following the [Lock Clocks/P-State 0](#lock-clocksp-state-0) step. For this reason, you should set **CUDA - Force P2 State** to **Off**. [**SILK Smoothness**](https://www.avsim.com/forums/topic/552651-nvidia-setting-silk-smoothness) can also be disabled.
 
-- See [CUDA-force-p2-state-analysis](../media/cuda-force-p2-state-analysis.png)
+- See [media/CUDA-force-p2-state-analysis](../media/cuda-force-p2-state-analysis.png)
 - Download and extract [NVIDIA Profile Inspector](https://github.com/Orbmu2k/nvidiaProfileInspector)
