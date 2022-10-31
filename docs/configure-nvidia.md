@@ -2,7 +2,7 @@
 
 ## Strip and Install the Driver
 
-I recommend using the 472.12 ([Windows 7/Windows 8](https://www.nvidia.co.uk/Download/driverResults.aspx/180606/en-uk), [Windows 10+](https://www.nvidia.com/download/driverResults.aspx/180555/en-us)) as it is the latest non-DCH driver. The latest DCH driver now ships with the NVIDIA control panel, Windows Store is no longer required to install it so feel free to use it on Windows 10+.
+I recommend using the 472.12 ([Windows 7/Windows 8](https://www.nvidia.com/Download/driverResults.aspx/180606), [Windows 10+](https://www.nvidia.com/download/driverResults.aspx/180555/en-us)) as it is the latest non-DCH driver. The latest DCH driver now ships with the NVIDIA control panel, Windows Store is no longer required to install it so feel free to use it on Windows 10+.
 
 - Extract the driver executable package with 7-Zip and remove all files and folders **except** the following:
 
