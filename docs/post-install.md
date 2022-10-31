@@ -672,7 +672,7 @@ Configure default programs in **Settings -> Apps**.
 
     - Trimming your SSD
 
-    - Using a [lint roller](https://www.ikea.com/us/en/p/baestis-lint-roller-grey-90425626) to remove dirt and debris from the mousepad once in a while
+    - Using a [lint roller](https://www.ikea.com/us/en/p/baestis-lint-roller-gray-90425626) to remove dirt and debris from the mousepad once in a while
 
     - Using a small [air dust blower](https://www.amazon.com/s?k=air+dust+blower) to remove dirt and debris from the mouse sensor lens often
 
