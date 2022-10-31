@@ -335,6 +335,8 @@ Open CMD and enter the commands below.
 
 If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards) to configure the clock/memory frequency, fan speed and other settings, download and install it.
 
+- Disable RivaTuner Statistics Server during installation
+
 - Disable update checks in settings
 
 - I would recommend configuring a static fan speed as using the fan curve feature requires the program to run continually
