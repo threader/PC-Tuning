@@ -25,7 +25,7 @@
 
 - Invest in non-RGB fans with a high static pressure
 
-    - See [PC Fans | Calypto](https://docs.google.com/spreadsheets/d/1AydYHI_M6ov9a3OgVuYXhLEGps0J55LniH9htAHy2wU/edit#gid=0)
+    - See [PC Fans | Calypto](https://docs.google.com/spreadsheets/d/1AydYHI_M6ov9a3OgVuYXhLEGps0J55LniH9htAHy2wU/edit)
 
 - Ensure not to overload the motherboard fan header if you are using splitters
 
@@ -37,7 +37,7 @@
 
 ## Minimize Interference
 
-- Move devices that produce RF, EMF and EMI such as radios, phones and routers away from your setup as they have the potential to increase latency due to unintended behavior of electrical components
+- Move devices that produce RF, EMF and EMI such as radios, cellphones and routers away from your setup as they have the potential to increase latency due to unintended behavior of electrical components
 - Always favor wired over cordless
 - Ensure there is a moderate amount of space between all cables to reduce the risk of [coupling](https://en.wikipedia.org/wiki/Coupling_(electronics))
 - Disconnect unnecessary devices from your motherboard/setup such as LEDs, front panel connectors, unused drives, RGB light strips and all HDDs
@@ -58,8 +58,8 @@
 - [Higher DPI reduces latency](https://www.youtube.com/watch?v=6AoRfv9W110). Most mice are able to handle 1600 DPI without [sensor smoothing](https://www.reddit.com/r/MouseReview/comments/5haxn4/sensor_smoothing)
 - [Higher polling rate reduces jitter](https://www.youtube.com/watch?app=desktop&v=djCLZ6qEVuA). Polling rates higher than 1kHz may negatively impact performance depending on your hardware so adjust accordingly
 - USB output is limited to roughly 7A and RGB requires unnecessary power. Turn off RGB where you can or strip the LEDs from the peripheral as [running a RGB effect/animation can take a great toll on the MCU and will delay other processes](https://blog.wooting.nl/what-influences-keyboard-speed)
-- Get a [lint roller](https://www.ikea.com/gb/en/p/baestis-lint-roller-grey-90425626) to remove dirt and debris from your mousepad once in a while
-- Get a [air dust blower](https://www.amazon.co.uk/s?k=air+dust+blower) to remove dirt and debris from the mouse sensor lens
+- Get a [lint roller](https://www.ikea.com/us/en/p/baestis-lint-roller-gray-90425626/) to remove dirt and debris from your mousepad once in a while
+- Get a [air dust blower](https://www.amazon.com/s?k=air+dust+blower) to remove dirt and debris from the mouse sensor lens
 - Factory reset your monitor and reconfigure the settings. Avoid post-processing effects and set overdrive/AMA to an acceptably [high setting as it reduces latency](https://twitter.com/CaIypto/status/1464236780190851078) but comes with a penalty of overshoot
 
 ## BIOS
