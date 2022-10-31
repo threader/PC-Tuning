@@ -204,7 +204,7 @@ Try to obtain the driver in its INF form so that it can be installed in device m
 
     - Install [uBlock Origin](https://github.com/gorhill/uBlock), Librewolf already ships with it
 
-        - I would also recommend importing [ClearURL's filter list](https://raw.githubusercontent.com/DandelionSprout/adfilt/master/ClearURLs%20for%20uBo/clear_urls_uboified.txt) along with [Dreammjow's filter list](https://raw.githubusercontent.com/dreammjow/MyFilters/main/src/filters.txt) and installing the [Skip Redirect](https://addons.mozilla.org/firefox/addon/skip-redirect/) extension
+        - I would also recommend importing [ClearURL's filter list](https://raw.githubusercontent.com/DandelionSprout/adfilt/master/ClearURLs%20for%20uBo/clear_urls_uboified.txt) along with [Dreammjow's filter list](https://raw.githubusercontent.com/dreammjow/MyFilters/main/src/filters.txt) and installing the [Skip Redirect](https://addons.mozilla.org/firefox/addon/skip-redirect) extension
 
     - Recommended **about:config** changes (enter about:config in the URL box). Thanks to Dato for initially sharing these
 
@@ -237,7 +237,7 @@ Try to obtain the driver in its INF form so that it can be installed in device m
 
 - DirectX Runtimes
 
-    - Download and install the [DirectX runtimes](https://www.microsoft.com/en-gb/download/details.aspx?id=35). Ensure to uncheck the Bing bar option
+    - Download and install the [DirectX runtimes](https://www.microsoft.com/en-us/download/details.aspx?id=35). Ensure to uncheck the Bing bar option
 
 - Media Player
 
@@ -436,7 +436,7 @@ Feel free to skip this step as it is not required, Microsoft fixed the standby l
 - Open **Network and Sharing Center -> Change adapter settings**
 - Right click your main network adapter and select properties
 - Disable all items except **QoS Packet Scheduler** and **Internet Protocol Version 4 (TCP/IPv4)**
-- [Configure a Static IP address](https://youtu.be/5iRp1Nug0PU?t=36). this is required as we will be disabling the network services that waste CPU cycles
+- [Configure a Static IP address](https://www.youtube.com/watch?t=36&v=5iRp1Nug0PU). this is required as we will be disabling the network services that waste CPU cycles
 - Disable **NetBIOS over TCP/IP** in **General -> Advanced -> WINS** to [prevent unnecessary system listening](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/DOCS/NETWORK/README.md)
 
 ## Configure Audio Devices
@@ -497,7 +497,7 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 
 - To prepare us for the next steps, run **Services-Enable.bat** with NSudo, ensure **Enable All Privileges** is enabled as mentioned
 
-- Download and extract [DeviceCleanup](https://www.uwe-sieber.de/misc_tools_e.html)
+- Download and extract [DeviceCleanup](https://www.uwe-sieber.de/files/DeviceCleanup.zip)
 - Open the program, select all devices and press the delete key to clean-up hidden devices
 
 ## Disable Driver Power Saving
@@ -591,15 +591,15 @@ By default, CPU 0 handles the majority of DPCs and ISRs for several devices whic
 
 Install any programs and game launchers you commonly use to prepare us for the next steps.
 
-- Consider [NVIDIA Reflex](https://www.nvidia.com/en-gb/geforce/news/reflex-low-latency-platform) if your game has support for it
+- Consider [NVIDIA Reflex](https://www.nvidia.com/en-us/geforce/news/reflex-low-latency-platform) if your game has support for it
 
-- Cap your framerate at a multiple of your monitor refresh rate to prevent [frame mistiming](https://youtu.be/_73gFgNrYVQ). E.g possible framerate caps with a 144Hz monitor include 72, 144, 288, 432. Consider capping at your minimum fps threshold for increased smoothness and ensure the GPU is not maxed out as [lower GPU utilization reduces system latency](https://youtu.be/8ZRuFaFZh5M?t=859)
+- Cap your framerate at a multiple of your monitor refresh rate to prevent [frame mistiming](https://www.youtube.com/watch?v=_73gFgNrYVQ). E.g possible framerate caps with a 144Hz monitor include 72, 144, 288, 432. Consider capping at your minimum fps threshold for increased smoothness and ensure the GPU is not maxed out as [lower GPU utilization reduces system latency](https://www.youtube.com/watch?v=8ZRuFaFZh5M&t=859s)
 
-    - Capping your framerate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the in-game limiter will result in consistent frametimes and a smoother experience but at the cost of [noticeably higher latency](https://youtu.be/T2ENf9cigSk?t=377)
+    - Capping your framerate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the in-game limiter will result in consistent frametimes and a smoother experience but at the cost of [noticeably higher latency](https://www.youtube.com/watch?t=377&v=T2ENf9cigSk)
 
 - Configure FSE and QoS
 
-    - Microsoft has claimed FSO/independent flip has improved in later Windows versions which has also been verified by members in the community with [Reflex Latency Analyzer](https://www.nvidia.com/en-gb/geforce/news/reflex-latency-analyzer-360hz-g-sync-monitors). However, other users have claimed otherwise
+    - Microsoft has claimed FSO/independent flip has improved in later Windows versions which has also been verified by members in the community with [Reflex Latency Analyzer](https://www.nvidia.com/en-us/geforce/news/reflex-latency-analyzer-360hz-g-sync-monitors). However, other users have claimed otherwise
 
     - Configuring a QoS Policy will allow Windows to prioritize packets of an application over other devices on your network and PC
 
@@ -672,8 +672,8 @@ Configure default programs in **Settings -> Apps**.
 
     - Trimming your SSD
 
-    - Using a [lint roller](https://www.ikea.com/gb/en/p/baestis-lint-roller-grey-90425626) to remove dirt and debris from the mousepad once in a while
+    - Using a [lint roller](https://www.ikea.com/us/en/p/baestis-lint-roller-grey-90425626) to remove dirt and debris from the mousepad once in a while
 
-    - Using a small [air dust blower](https://www.amazon.co.uk/s?k=air+dust+blower) to remove dirt and debris from the mouse sensor lens often
+    - Using a small [air dust blower](https://www.amazon.com/s?k=air+dust+blower) to remove dirt and debris from the mouse sensor lens often
 
     - Removing dust from components often
