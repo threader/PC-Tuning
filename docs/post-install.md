@@ -165,7 +165,6 @@ C:\prerequisites\inspectre.exe
 
 Go through the ``C:\prerequisites\preference`` folder to configure the following:
 
-- Configure Pointer Scheme
 - Desktop Icon Settings
 - Region and language
 - Taskbar Settings
