@@ -259,12 +259,6 @@ Open CMD and enter the commands below.
     powercfg -delete a1841308-3541-4fab-bc81-f71556f20b4a
     ```
 
-- NVMe NOPPME - Off
-
-    ```bat
-    powercfg /setacvalueindex scheme_current 0012ee47-9041-4b5d-9b77-535fba8b1442 fc7372b6-ab2d-43ee-8797-15e9841f2cca 0
-    ```
-
 - Allow Throttle States - Off
 
     ```bat
