@@ -343,12 +343,6 @@ If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/gra
     set "afterburner_path=C:\Program Files (x86)\MSI Afterburner\MSIAfterburner.exe"
     set "profile=1"
 
-    if not exist "!afterburner_path!" (
-        echo error: afterburner path invalid
-        pause
-        exit /b 1
-    )
-
     start "" "!afterburner_path!" -Profile!profile!
     timeout -t 8 /nobreak
     PowerShell -Command Stop-Process -Name "MSIAfterburner" -Force
