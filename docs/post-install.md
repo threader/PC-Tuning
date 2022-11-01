@@ -58,6 +58,10 @@ C:\prerequisites\scripts\miscellaneous.bat
 
     - See [media/full-control-example.png](../media/full-control-example.png), continue and ignore errors
 
+- Windows 10+ Only:
+
+    - Disable notifications in **Settings -> Notifications and actions**
+
 ## Remove Bloatware Natively
 
 - Although nothing should appear, as a precautionary measure check and uninstall any bloatware that exists in **Control Panel -> Programs -> Programs and Features**.
