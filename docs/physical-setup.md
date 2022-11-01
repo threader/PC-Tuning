@@ -74,6 +74,8 @@
 
 - Limit C-States, P-States and S-States to the minimum or disable them. It is a source of jitter due to the process of state transition
 
+    - Verify S-State status with ``powercfg -a`` in CMD
+
 - Disable [Virtualization](https://en.wikipedia.org/wiki/Desktop_virtualization) and [IOMMU](https://en.wikipedia.org/wiki/Input%E2%80%93output_memory_management_unit) if applicable as they can cause a [difference in latency for memory access](https://developer.amd.com/wordpress/media/2013/12/PerformanceTuningGuidelinesforLowLatencyResponse.pdf)
 
 - Disable [Active State Power Management](https://en.wikipedia.org/wiki/Active_State_Power_Management) and any other power saving features you can locate
