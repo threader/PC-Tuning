@@ -64,7 +64,7 @@ C:\prerequisites\scripts\miscellaneous.bat
 
 ## Remove Bloatware Natively
 
-- Although nothing should appear, as a precautionary measure check and uninstall any bloatware that exists in **Control Panel -> Programs -> Programs and Features**.
+- Although nothing should appear, as a precautionary measure check and uninstall any bloatware that exists in **Control Panel -> Programs -> Programs and Features**
 
 - In win + r, **OptionalFeatures**, disable everything except for the following:
 
