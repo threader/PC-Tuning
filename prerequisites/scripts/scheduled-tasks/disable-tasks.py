@@ -1,12 +1,8 @@
-"""disable-tasks"""
-
-
 import sys
 import os
 import subprocess
 import io
 import ctypes
-
 
 def main() -> int:
     """program entrypoint"""
@@ -77,7 +73,6 @@ def main() -> int:
     print("info: done")
 
     return 0
-
 
 if __name__ == "__main__":
     sys.exit(main())

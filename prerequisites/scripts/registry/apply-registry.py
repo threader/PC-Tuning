@@ -1,22 +1,16 @@
-"""apply-registry"""
-
-
 import sys
 import os
 import subprocess
 import argparse
 import ctypes
 
-
 nsudo_path = "C:\\prerequisites\\nsudo\\NSudo.exe"
 nsudo_args = [nsudo_path, "-U:T", "-P:E", "-Wait"]
 
-
-def apply_registry(file_path: str) -> None:
+def apply_registry(file_path) -> None:
     """function to merge registry files"""
     subprocess.run(["regedit.exe", "/s", file_path], check=False)
     subprocess.run([*nsudo_args, "regedit.exe", "/s", file_path], check=False)
-
 
 def main() -> int:
     """program entrypoint"""
@@ -52,7 +46,6 @@ def main() -> int:
     print("info: done")
 
     return 0
-
 
 if __name__ == "__main__":
     sys.exit(main())
