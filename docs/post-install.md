@@ -60,7 +60,7 @@ C:\prerequisites\scripts\miscellaneous.bat
 
 - Windows 10+ Only:
 
-    - Disable notifications in **Settings -> Notifications and actions**
+    - Disable everything in **Settings -> Notifications and actions**
 
 ## Remove Bloatware Natively
 
