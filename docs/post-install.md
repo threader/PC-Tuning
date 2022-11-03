@@ -179,72 +179,71 @@ Install any drivers your system requires, avoid installing chipset drivers. I wo
 
 Try to obtain the driver in its INF form so that it can be installed in device manager as executable installers usually install other bloatware along with the driver itself. Most of the time, you can extract the installer's executable with 7-Zip to obtain the driver.
 
-## Installing Recommended Packages and Programs
+## Install [.NET 4.8 Runtimes](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48)
 
-- [.NET 4.8 Runtimes](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48)
+Run the package below to install the runtimes.
 
-    - Run ``C:\prerequisites\ndp48-web.exe``
+```
+C:\prerequisites\ndp48-web.exe
+```
 
-- Web Browser
+## Configure a Web Browser
 
-    - [Librewolf](https://librewolf.net) (fork of Firefox) recommended
+[Librewolf](https://librewolf.net) (fork of Firefox) is recommended. The [Arkenfox user.js](https://github.com/arkenfox/user.js) is an alternative for Librewolf and applicable to a default Firefox installation.
 
-        - See https://privacytests.org
+- See https://privacytests.org
 
-    - The [Arkenfox user.js](https://github.com/arkenfox/user.js) is an alternative for Librewolf and applicable to a default Firefox installation
+- Open CMD and enter the command below
 
-    - Open CMD and enter the command below
+    ```bat
+    C:\prerequisites\scripts\librewolf-web-installer.bat
+    ```
 
-        ```bat
-        C:\prerequisites\scripts\librewolf-web-installer.bat
-        ```
+- Remove the following from ``C:\Program Files\LibreWolf`` then open **Librewolf.exe**:
 
-    - Remove the following from ``C:\Program Files\LibreWolf`` then open **Librewolf.exe**:
+    - **pingsender.exe**
 
-        - **pingsender.exe**
+- If you would like to set the search engine to Google, open [this link](https://www.linuxmint.com/searchengines.php), scroll to the bottom, click the Google icon and right click the URL to add the search engine to settings
 
-    - If you would like to set the search engine to Google, open [this link](https://www.linuxmint.com/searchengines.php), scroll to the bottom, click the Google icon and right click the URL to add the search engine to settings
+- Install [uBlock Origin](https://github.com/gorhill/uBlock), Librewolf already ships with it
 
-    - Install [uBlock Origin](https://github.com/gorhill/uBlock), Librewolf already ships with it
+    - I would also recommend importing [ClearURL's filter list](https://raw.githubusercontent.com/DandelionSprout/adfilt/master/ClearURLs%20for%20uBo/clear_urls_uboified.txt) along with [Dreammjow's filter list](https://raw.githubusercontent.com/dreammjow/MyFilters/main/src/filters.txt) and installing the [Skip Redirect](https://addons.mozilla.org/firefox/addon/skip-redirect) extension
 
-        - I would also recommend importing [ClearURL's filter list](https://raw.githubusercontent.com/DandelionSprout/adfilt/master/ClearURLs%20for%20uBo/clear_urls_uboified.txt) along with [Dreammjow's filter list](https://raw.githubusercontent.com/dreammjow/MyFilters/main/src/filters.txt) and installing the [Skip Redirect](https://addons.mozilla.org/firefox/addon/skip-redirect) extension
+- Recommended **about:config** changes (enter about:config in the URL box). Thanks to Dato for initially sharing these
 
-    - Recommended **about:config** changes (enter about:config in the URL box). Thanks to Dato for initially sharing these
+    - **Enable Compact Mode**
 
-        - **Enable Compact Mode**
+        - browser.uidensity = 1
 
-            - browser.uidensity = 1
+    - **Remove fullscreen transition animation and warning message**
 
-        - **Remove fullscreen transition animation and warning message**
+        - full-screen-api.transition-duration.enter = 0
+        - full-screen-api.transition-duration.leave = 0
+        - full-screen-api.warning.timeout = 0
 
-            - full-screen-api.transition-duration.enter = 0
-            - full-screen-api.transition-duration.leave = 0
-            - full-screen-api.warning.timeout = 0
+    - **Remove tab preview image when dragging**
 
-        - **Remove tab preview image when dragging**
+        - nglayout.enable_drag_images = false
 
-            - nglayout.enable_drag_images = false
+    - **Disable reader mode**
 
-        - **Disable reader mode**
+        - reader.parse-on-load.enabled = false
 
-            - reader.parse-on-load.enabled = false
+    - **Disable ResistFingerprinting** (not recommended but the browser can become sluggish)
 
-        - **Disable ResistFingerprinting** (not recommended but the browser can become sluggish)
+        - privacy.resistFingerprinting = false
 
-            - privacy.resistFingerprinting = false
+## Install 7-Zip
 
-- 7-Zip
+Download and install [7-Zip](https://www.7-zip.org). Open ``C:\Program Files\7-Zip\7zFM.exe`` then to go **Tools -> Options** and associate 7-Zip with all file extensions by clicking the **+** button. You may need to click it twice to override existing associated extensions
 
-    - Download and install [7-Zip](https://www.7-zip.org)
-    - Open ``C:\Program Files\7-Zip\7zFM.exe`` then to go **Tools -> Options** and associate 7-Zip with all file extensions by clicking the **+** button. You may need to click it twice to override existing associated extensions
+## Install DirectX Runtimes
 
-- DirectX Runtimes
+Download and install the [DirectX runtimes](https://www.microsoft.com/en-us/download/details.aspx?id=35). Ensure to uncheck the Bing bar option.
 
-    - Download and install the [DirectX runtimes](https://www.microsoft.com/en-us/download/details.aspx?id=35). Ensure to uncheck the Bing bar option
+## Install a Media Player
 
-- Media Player
-
-    - [mpv](https://mpv.io)/[mpv.net](https://github.com/stax76/mpv.net) or [mpc-hc](https://mpc-hc.org) ([alternative link](https://github.com/clsid2/mpc-hc)) recommended
+[mpv](https://mpv.io)/[mpv.net](https://github.com/stax76/mpv.net) or [mpc-hc](https://mpc-hc.org) ([alternative link](https://github.com/clsid2/mpc-hc)) recommended.
 
 ## Configure Power Options
 
