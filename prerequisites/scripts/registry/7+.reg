@@ -414,11 +414,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\WSFFile\Shell\Print]
 "ProgrammaticAccessOnly"=""
 
-; remove network tab in explorer
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\ShellFolder]
-"Attributes"=dword:b0940064
-
 ; disable automatic setup of network devices
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\NcdAutoSetup\Private]
