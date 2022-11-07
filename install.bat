@@ -20,7 +20,7 @@ if exist ".\sources\install.wim" (
 )
 
 :select_drive
-set /p install_dir="Enter the drive letter you created to install windows on: "
+set /p install_dir="info: enter the drive letter you created to install windows on: "
 
 set "err=0"
 if defined install_dir (

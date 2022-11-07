@@ -2,12 +2,12 @@
 
 ## Configure Partitions
 
-Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate work/bloatware and gaming environments. This way you will not be forced to install bloatware on your gaming partition (such as mouse software as previously mentioned) and full functionality of the operating system will be guaranteed for when you need it. You can do this by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) in disk management.
+Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate work/bloatware and gaming environments. This way you will not be forced to install bloatware on your gaming partition (such as mouse software as previously mentioned) and full functionality of the operating system will be guaranteed for when you need it. You can do this by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) in disk management which will create unallocated space for the new operating system to be installed to completely independent to the current install.
 
 ## Create the Base ISO
 
 Generally, Windows 7 is superior for real-time tasks compared to its successors but lacks driver support for modern hardware so drivers must be integrated manually. In some cases, you may not be able to find USB drivers at all on newer platforms (it is recommended to check if you can get hold of them 
-in advance of building the ISO, see the [Integrate and Obtain Drivers](./building.md#integrate-and-obtain-drivers) section for details on finding drivers). Earlier versions of Windows lack GPU driver and anticheat support so some users are forced on newer builds. Microsoft implemented a fixed 10mHz QueryPerformanceFrequency on Windows 10 1809+ which was intended to make developing applications easier but many users reported worse performance. Windows 10 1903+ has an [updated scheduler for multi CCX Ryzen CPUs](https://i.redd.it/y8nxtm08um331.png) (which you should sell). Microsoft changed how timer resolution functions as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change/) on Windows 10 2004+ and was [further developed in Windows 11](../media/windows11-timeapi-changes.png) which is an attempt to improve power efficiency.
+in advance of building the ISO, see the [Integrate and Obtain Drivers](./building.md#integrate-and-obtain-drivers) section for details on finding drivers). Earlier versions of Windows lack GPU driver and anticheat support so some users are forced on newer builds. Microsoft implemented a fixed 10mHz QueryPerformanceFrequency on Windows 10 1809+ which was intended to make developing applications easier but many users reported worse performance. Windows 10 1903+ has an [updated scheduler for multi CCX Ryzen CPUs](https://i.redd.it/y8nxtm08um331.png). Microsoft changed how timer resolution functions as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change/) on Windows 10 2004+ and was [further developed in Windows 11](../media/windows11-timeapi-changes.png) which is an attempt to improve power efficiency.
 
 - See [docs/building.md](../docs/building.md)
 
@@ -33,4 +33,4 @@ For the next steps, it is imperative that you unplug your Ethernet cable and are
 
 - Install using DISM Apply-Image (without a USB storage device):
 
-    - Create a new partition by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) and assign it a drive letter. Extract the ISO if required and launch **install.bat**
+    - Create a new partition by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) and assign the newly created unallocated space a drive letter. Extract the ISO if required and launch **install.bat**

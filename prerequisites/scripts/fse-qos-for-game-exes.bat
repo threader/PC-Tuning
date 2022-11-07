@@ -54,7 +54,6 @@ if defined binary_path (
 echo error: invalid input
 goto set_binary_path
 
-goto :EOF
 PS #>
 
 Add-Type -AssemblyName System.Windows.Forms
