@@ -199,7 +199,7 @@ A standard Firefox installation is recommended. I have created a script to downl
     C:\prerequisites\scripts\install-firefox.bat
     ```
 
-- Install [uBlock Origin](https://github.com/gorhill/uBlock). The script above already installs the extension. I also recommend importing [ClearURL's filter list](https://raw.githubusercontent.com/DandelionSprout/adfilt/master/ClearURLs%20for%20uBo/clear_urls_uboified.txt) along with [Dreammjow's filter list](https://raw.githubusercontent.com/dreammjow/MyFilters/main/src/filters.txt) and installing the [Skip Redirect](https://addons.mozilla.org/firefox/addon/skip-redirect) extension. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported into Firefox. See the [wiki](https://github.com/arkenfox/user.js/wiki).
+- Install [uBlock Origin](https://github.com/gorhill/uBlock) if you have not already. I also recommend importing [ClearURL's filter list](https://raw.githubusercontent.com/DandelionSprout/adfilt/master/ClearURLs%20for%20uBo/clear_urls_uboified.txt) along with [Dreammjow's filter list](https://raw.githubusercontent.com/dreammjow/MyFilters/main/src/filters.txt) and installing the [Skip Redirect](https://addons.mozilla.org/firefox/addon/skip-redirect) extension. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported into Firefox, see the [wiki](https://github.com/arkenfox/user.js/wiki).
 
 - Recommended **about:config** changes (enter about:config in the URL box). Thanks to Dato for initially sharing these
 
