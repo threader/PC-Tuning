@@ -189,25 +189,17 @@ C:\prerequisites\ndp48-web.exe
 
 ## Configure a Web Browser
 
-[Librewolf](https://librewolf.net) (fork of Firefox) is recommended. The [Arkenfox user.js](https://github.com/arkenfox/user.js) is an alternative for Librewolf and applicable to a default Firefox installation.
+A standard Firefox installation is recommended. I have created a script to download and install the latest version, install [uBlock Origin](https://github.com/gorhill/uBlock) and disable updates. If you would like to retain in-browser update capabilities, remove the entire line that contains **DisableAppUpdate** from the script.
 
 - See https://privacytests.org
 
 - Open CMD and enter the command below
 
     ```bat
-    C:\prerequisites\scripts\librewolf-web-installer.bat
+    C:\prerequisites\scripts\install-firefox.bat
     ```
 
-- Remove the following from ``C:\Program Files\LibreWolf`` then open **Librewolf.exe**:
-
-    - **pingsender.exe**
-
-- If you would like to set the search engine to Google, open [this link](https://www.linuxmint.com/searchengines.php), scroll to the bottom, click the Google icon and right click the URL to add the search engine to settings
-
-- Install [uBlock Origin](https://github.com/gorhill/uBlock), Librewolf already ships with it
-
-    - I would also recommend importing [ClearURL's filter list](https://raw.githubusercontent.com/DandelionSprout/adfilt/master/ClearURLs%20for%20uBo/clear_urls_uboified.txt) along with [Dreammjow's filter list](https://raw.githubusercontent.com/dreammjow/MyFilters/main/src/filters.txt) and installing the [Skip Redirect](https://addons.mozilla.org/firefox/addon/skip-redirect) extension
+- Install [uBlock Origin](https://github.com/gorhill/uBlock). The script above already installs the extension. I also recommend importing [ClearURL's filter list](https://raw.githubusercontent.com/DandelionSprout/adfilt/master/ClearURLs%20for%20uBo/clear_urls_uboified.txt) along with [Dreammjow's filter list](https://raw.githubusercontent.com/dreammjow/MyFilters/main/src/filters.txt) and installing the [Skip Redirect](https://addons.mozilla.org/firefox/addon/skip-redirect) extension. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported into Firefox. See the [wiki](https://github.com/arkenfox/user.js/wiki).
 
 - Recommended **about:config** changes (enter about:config in the URL box). Thanks to Dato for initially sharing these
 
@@ -228,10 +220,6 @@ C:\prerequisites\ndp48-web.exe
     - **Disable reader mode**
 
         - reader.parse-on-load.enabled = false
-
-    - **Disable ResistFingerprinting** (not recommended but the browser can become sluggish)
-
-        - privacy.resistFingerprinting = false
 
 ## Install 7-Zip
 
