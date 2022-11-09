@@ -246,8 +246,8 @@ Open CMD and enter the commands below.
 - Remove the Balanced and Power saver power scheme
 
     ```bat
-    powercfg -delete 381b4222-f694-41f0-9685-ff5bb260df2e
-    powercfg -delete a1841308-3541-4fab-bc81-f71556f20b4a
+    powercfg /delete 381b4222-f694-41f0-9685-ff5bb260df2e
+    powercfg /delete a1841308-3541-4fab-bc81-f71556f20b4a
     ```
 
 - Allow Throttle States - Off
@@ -277,7 +277,7 @@ Open CMD and enter the commands below.
 - Set the active scheme as the current scheme
 
     ```bat
-    powercfg -setactive scheme_current
+    powercfg /setactive scheme_current
     ```
 
 ## Configure the BCD Store
