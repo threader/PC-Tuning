@@ -81,7 +81,8 @@ def main() -> int:
     defaultPref("full-screen-api.transition-duration.leave", "0 0");
     defaultPref("full-screen-api.warning.timeout", 0);
     defaultPref("nglayout.enable_drag_images", false);
-    defaultPref("browser.search.suggest.enabled", false);    
+    defaultPref("browser.search.suggest.enabled", false);
+    defaultPref("reader.parse-on-load.enabled", false);
     """
 
     try:
