@@ -88,7 +88,7 @@ def main() -> int:
         if os.path.exists(file):
             os.remove(file)
 
-    print("info: importing policies")
+    print("info: importing policies.json")
     os.makedirs(f"{install_dir}\\distribution", exist_ok=True)
 
     if os.path.exists(policies):
