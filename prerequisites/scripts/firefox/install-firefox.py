@@ -3,6 +3,7 @@ import ctypes
 import os
 import subprocess
 import textwrap
+import hashlib
 import requests
 
 def main() -> int:
@@ -26,9 +27,8 @@ def main() -> int:
     policies = f"{install_dir}\\distribution\\policies.json"
     autoconfig = f"{install_dir}\\defaults\\pref\\autoconfig.js"
     firefox_cfg = f"{install_dir}\\firefox.cfg"
-
-    response = requests.get("https://product-details.mozilla.org/1.0/firefox_versions.json", timeout=3)
-    remote_version = response.json()["LATEST_FIREFOX_VERSION"]
+    remote_version = requests.get("https://product-details.mozilla.org/1.0/firefox_versions.json", timeout=3).json()["LATEST_FIREFOX_VERSION"]
+    setup_sha256 = requests.get(f"https://mediacdn.prod.productdelivery.prod.webservices.mozgcp.net/pub/firefox/releases/{remote_version}/SHA256SUMS", timeout=3).text
 
     remove_files = [
         "crashreporter.exe",
@@ -86,22 +86,32 @@ def main() -> int:
     defaultPref("browser.search.suggest.enabled", false);    
     """
 
-    if os.path.exists(f"{install_dir}\\firefox.exe"):
-        process = subprocess.run(['C:\\Program Files\\Mozilla Firefox\\firefox.exe', '--version', '|', 'more'], capture_output=True, check=False, universal_newlines=True)
+    try:
+        process = subprocess.run(['C:\\Program Files\\Mozilla Firefox\\firefoxx.exe', '--version', '|', 'more'], capture_output=True, check=False, universal_newlines=True)
         local_version = process.stdout.split()[-1]
 
         if all([remote_version, local_version]) and local_version == remote_version:
             print(f"info: latest version {remote_version} already installed")
             return 0
+    except FileNotFoundError:
+        pass
 
     if os.path.exists(setup):
         os.remove(setup)
 
     print(f"info: downloading firefox {remote_version} setup")
-    with open(setup, "wb") as binary:
-        binary.write(requests.get(download_link, timeout=5).content)
+    with open(setup, "wb") as f:
+        f.write(requests.get(download_link, timeout=5).content)
 
-    if not os.path.exists(setup):
+    try:
+        with open(setup, "rb") as f:
+            file_bytes = f.read()
+            sha256 = hashlib.sha256(file_bytes).hexdigest()
+
+            if sha256 not in str(setup_sha256):
+                print("error: hash mismatch, corrupted download")
+                return 1
+    except FileNotFoundError:
         print("error: download unsuccessful")
         return 1
 
@@ -115,7 +125,7 @@ def main() -> int:
         file = f"{install_dir}\\{file}"
         if os.path.exists(file):
             os.remove(file)
-    
+
     # remove files before creating them again
     for file in [setup, policies, autoconfig, firefox_cfg]:
         if os.path.exists(file):
@@ -128,12 +138,10 @@ def main() -> int:
         f.writelines(textwrap.dedent(policies_content))
 
     print("info: importing autoconfig.js")
-
     with open(autoconfig, "a", encoding="UTF-8", newline="\n") as f:
         f.writelines(textwrap.dedent(autoconfig_content))
 
     print("info: importing firefox.cfg")
-
     with open(firefox_cfg, "a", encoding="UTF-8") as f:
         f.writelines(textwrap.dedent(firefox_cfg_content))
 
