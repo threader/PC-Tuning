@@ -2,7 +2,7 @@ import sys
 import ctypes
 import os
 import subprocess
-import json
+import textwrap
 import requests
 
 def main() -> int:
@@ -24,6 +24,8 @@ def main() -> int:
     download_link = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-GB"
     install_dir = "C:\\Program Files\\Mozilla Firefox"
     policies = f"{install_dir}\\distribution\\policies.json"
+    autoconfig = f"{install_dir}\\defaults\\pref\\autoconfig.js"
+    firefox_cfg = f"{install_dir}\\firefox.cfg"
 
     response = requests.get("https://product-details.mozilla.org/1.0/firefox_versions.json", timeout=3)
     remote_version = response.json()["LATEST_FIREFOX_VERSION"]
@@ -42,19 +44,47 @@ def main() -> int:
         "update-settings.ini"
     ]
 
-    policies_content = {
+    policies_content = """
+    {
         "policies": {
-            "DisableAppUpdate": True,
+            "DisableAppUpdate": true,
             "OverrideFirstRunPage": "",
-            "DisableFirefoxStudies": True,
-            "DisableTelemetry": True,
             "Extensions": {
                 "Install": [
                     "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi"
                 ]
-            },
+            }
         }
-    }
+    }    
+    """
+
+    autoconfig_content = """
+    pref("general.config.filename", "firefox.cfg");
+    pref("general.config.obscure_value", 0);
+    """
+
+    firefox_cfg_content = """
+    defaultPref("dom.security.https_only_mode", true);
+    defaultPref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
+    defaultPref("browser.newtabpage.activity-stream.feeds.topsites", false);
+    defaultPref("browser.newtabpage.activity-stream.section.highlights.includeBookmarks", false);
+    defaultPref("browser.newtabpage.activity-stream.section.highlights.includeDownloads", false);
+    defaultPref("browser.newtabpage.activity-stream.section.highlights.includePocket", false);
+    defaultPref("browser.newtabpage.activity-stream.section.highlights.includeVisited", false);
+    defaultPref("browser.newtabpage.pinned", "[]");
+    defaultPref("browser.newtabpage.activity-stream.showSponsored", false);
+    defaultPref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
+    defaultPref("browser.newtabpage.activity-stream.feeds.section.highlights", false);
+    defaultPref("app.shield.optoutstudies.enabled", false);
+    defaultPref("browser.discovery.enabled", false);
+    defaultPref("datareporting.healthreport.uploadEnabled", false);
+    defaultPref("browser.uidensity", 1);
+    defaultPref("full-screen-api.transition-duration.enter", "0 0");
+    defaultPref("full-screen-api.transition-duration.leave", "0 0");
+    defaultPref("full-screen-api.warning.timeout", 0);
+    defaultPref("nglayout.enable_drag_images", false);
+    defaultPref("browser.search.suggest.enabled", false);    
+    """
 
     if os.path.exists(f"{install_dir}\\firefox.exe"):
         process = subprocess.run(['C:\\Program Files\\Mozilla Firefox\\firefox.exe', '--version', '|', 'more'], capture_output=True, check=False, universal_newlines=True)
@@ -80,22 +110,32 @@ def main() -> int:
     print("info: installing firefox")
     subprocess.run([setup, "/S", "/MaintenanceService=false"], check=False)
 
-    os.remove(setup)
-
     print("info: removing bloatware")
     for file in remove_files:
         file = f"{install_dir}\\{file}"
+        if os.path.exists(file):
+            os.remove(file)
+    
+    # remove files before creating them again
+    for file in [setup, policies, autoconfig, firefox_cfg]:
         if os.path.exists(file):
             os.remove(file)
 
     print("info: importing policies.json")
     os.makedirs(f"{install_dir}\\distribution", exist_ok=True)
 
-    if os.path.exists(policies):
-        os.remove(policies)
-
     with open(policies, "a", encoding="UTF-8") as f:
-        json.dump(policies_content, f, indent=4)
+        f.writelines(textwrap.dedent(policies_content))
+
+    print("info: importing autoconfig.js")
+
+    with open(autoconfig, "a", encoding="UTF-8", newline="\n") as f:
+        f.writelines(textwrap.dedent(autoconfig_content))
+
+    print("info: importing firefox.cfg")
+
+    with open(firefox_cfg, "a", encoding="UTF-8") as f:
+        f.writelines(textwrap.dedent(firefox_cfg_content))
 
     print("info: done")
 
