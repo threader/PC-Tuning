@@ -44,8 +44,7 @@ def main() -> int:
         "update-settings.ini"
     ]
 
-    policies_content = """
-    {
+    policies_content = """    {
         "policies": {
             "DisableAppUpdate": true,
             "OverrideFirstRunPage": "",
@@ -58,8 +57,7 @@ def main() -> int:
     }    
     """
 
-    autoconfig_content = """
-    pref("general.config.filename", "firefox.cfg");
+    autoconfig_content = """    pref("general.config.filename", "firefox.cfg");
     pref("general.config.obscure_value", 0);
     """
 
