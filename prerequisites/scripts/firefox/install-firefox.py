@@ -85,7 +85,7 @@ def main() -> int:
     """
 
     try:
-        process = subprocess.run(['C:\\Program Files\\Mozilla Firefox\\firefoxx.exe', '--version', '|', 'more'], capture_output=True, check=False, universal_newlines=True)
+        process = subprocess.run(['C:\\Program Files\\Mozilla Firefox\\firefox.exe', '--version', '|', 'more'], capture_output=True, check=False, universal_newlines=True)
         local_version = process.stdout.split()[-1]
 
         if all([remote_version, local_version]) and local_version == remote_version:
