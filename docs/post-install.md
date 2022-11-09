@@ -113,7 +113,7 @@ C:\prerequisites\scripts\miscellaneous.bat
 
 - I have included a registry file that will apply a basic OpenShell skin along with a few other settings, feel free to use your own
 
-- Create a shortcut in win + r, **shell:startup** pointing to ``C:\Program Files\Open-Shell\StartMenu.exe``
+- Create a shortcut in win + r, **shell:startup** with a target of ``C:\Program Files\Open-Shell\StartMenu.exe``
 
 - Windows 8 Only:
 
@@ -318,27 +318,10 @@ Open CMD and enter the commands below.
 ## Configure MSI Afterburner
 
 If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards) to configure the clock/memory frequency, fan speed and other settings, download and install it.
-
 - Disable RivaTuner Statistics Server during installation
-
 - Disable update checks in settings
-
 - I would recommend configuring a static fan speed as using the fan curve feature requires the program to run continually
-
-- To automatically load a profile at startup, create a batch script in win + r, **shell:startup** containing the following, edit to suit your needs:
-
-    ```bat
-    @echo off
-    setlocal EnableDelayedExpansion
-
-    set "afterburner_path=C:\Program Files (x86)\MSI Afterburner\MSIAfterburner.exe"
-    set "profile=1"
-
-    start "" "!afterburner_path!" -Profile!profile!
-    timeout -t 8 /nobreak
-    PowerShell -Command Stop-Process -Name "MSIAfterburner" -Force
-    exit /b 0
-    ```
+- To automatically load profile 1 (as an example) and exit, create a shortcut in win + r, **shell:startup** with a target of ``"C:\Program Files (x86)\MSI Afterburner\MSIAfterburner.exe" /Profile1 /Q``
 
 ## Configure CRU
 
