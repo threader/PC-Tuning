@@ -187,39 +187,15 @@ Run the package below to install the runtimes.
 C:\prerequisites\ndp48-web.exe
 ```
 
-## Configure a Web Browser
+## Configure a [Web Browser](https://privacytests.org)
 
-A standard Firefox installation is recommended. I have created a script to download and install the latest version, install [uBlock Origin](https://github.com/gorhill/uBlock) and disable updates. If you would like to retain in-browser update capabilities, remove the entire line that contains **DisableAppUpdate** from the script.
+A standard Firefox installation is recommended. I have created a script to download and install the latest version, install [uBlock Origin](https://github.com/gorhill/uBlock), cleanup the interface and disable updates. If you would like to retain in-browser update capabilities, remove the entire line that contains **DisableAppUpdate** from the script. Open CMD and enter the command below.
 
-- See https://privacytests.org
-
-- Open CMD and enter the command below
-
-    ```bat
-    C:\prerequisites\scripts\firefox\install-firefox.exe
-    ```
+```bat
+C:\prerequisites\scripts\firefox\install-firefox.exe
+```
 
 - Install [uBlock Origin](https://github.com/gorhill/uBlock) if you have not already. I also recommend importing [ClearURL's filter list](https://raw.githubusercontent.com/DandelionSprout/adfilt/master/ClearURLs%20for%20uBo/clear_urls_uboified.txt) along with [Dreammjow's filter list](https://raw.githubusercontent.com/dreammjow/MyFilters/main/src/filters.txt) and installing the [Skip Redirect](https://addons.mozilla.org/firefox/addon/skip-redirect) extension. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported into Firefox, see the [wiki](https://github.com/arkenfox/user.js/wiki).
-
-- Recommended **about:config** changes (enter about:config in the URL box). Thanks to Dato for initially sharing these
-
-    - **Enable Compact Mode**
-
-        - browser.uidensity = 1
-
-    - **Remove fullscreen transition animation and warning message**
-
-        - full-screen-api.transition-duration.enter = 0
-        - full-screen-api.transition-duration.leave = 0
-        - full-screen-api.warning.timeout = 0
-
-    - **Remove tab preview image when dragging**
-
-        - nglayout.enable_drag_images = false
-
-    - **Disable reader mode**
-
-        - reader.parse-on-load.enabled = false
 
 ## Install 7-Zip
 
