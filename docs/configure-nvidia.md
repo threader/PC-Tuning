@@ -32,7 +32,7 @@ I recommend using the 472.12 ([Windows 7/Windows 8](https://www.nvidia.com/Downl
 
 - Run setup.exe to install the driver
 
-    - If setup fails however you followed the steps above correctly, try redownload the driver and follow the steps again. Some users have reported this is due to a corrupted download
+    - If setup fails however you followed the steps above correctly, try to re-download the driver and follow the steps again. Some users have reported this is due to a corrupted download
 
 - Open CMD and enter the commands below to disable telemetry
 

@@ -27,8 +27,8 @@ def main() -> int:
     policies = f"{install_dir}\\distribution\\policies.json"
     autoconfig = f"{install_dir}\\defaults\\pref\\autoconfig.js"
     firefox_cfg = f"{install_dir}\\firefox.cfg"
-    remote_version = requests.get("https://product-details.mozilla.org/1.0/firefox_versions.json", timeout=3).json()["LATEST_FIREFOX_VERSION"]
-    setup_sha256 = requests.get(f"https://mediacdn.prod.productdelivery.prod.webservices.mozgcp.net/pub/firefox/releases/{remote_version}/SHA256SUMS", timeout=3).text
+    latest_firefox_version = requests.get("https://product-details.mozilla.org/1.0/firefox_versions.json", timeout=3).json()["LATEST_FIREFOX_VERSION"]
+    setup_sha256 = requests.get(f"https://mediacdn.prod.productdelivery.prod.webservices.mozgcp.net/pub/firefox/releases/{latest_firefox_version}/SHA256SUMS", timeout=3).text
 
     remove_files = [
         "crashreporter.exe",
@@ -86,11 +86,11 @@ def main() -> int:
     """
 
     try:
-        process = subprocess.run(['C:\\Program Files\\Mozilla Firefox\\firefox.exe', '--version', '|', 'more'], capture_output=True, check=False, universal_newlines=True)
+        process = subprocess.run(["C:\\Program Files\\Mozilla Firefox\\firefox.exe", "--version", "|", "more"], capture_output=True, check=False, universal_newlines=True)
         local_version = process.stdout.split()[-1]
 
-        if all([remote_version, local_version]) and local_version == remote_version:
-            print(f"info: latest version {remote_version} already installed")
+        if all([latest_firefox_version, local_version]) and local_version == latest_firefox_version:
+            print(f"info: latest version {latest_firefox_version} already installed")
             return 0
     except FileNotFoundError:
         pass
@@ -98,7 +98,7 @@ def main() -> int:
     if os.path.exists(setup):
         os.remove(setup)
 
-    print(f"info: downloading firefox {remote_version} setup")
+    print(f"info: downloading firefox {latest_firefox_version} setup")
     with open(setup, "wb") as f:
         f.write(requests.get(download_link, timeout=5).content)
 
