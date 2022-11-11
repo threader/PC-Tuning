@@ -107,7 +107,7 @@ def main() -> int:
             file_bytes = f.read()
             sha256 = hashlib.sha256(file_bytes).hexdigest()
 
-            if sha256 not in str(setup_sha256):
+            if sha256 not in setup_sha256:
                 print("error: hash mismatch, corrupted download")
                 return 1
     except FileNotFoundError:
