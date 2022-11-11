@@ -22,7 +22,7 @@ def main() -> int:
 
     subprocess_null = {"stdout": subprocess.DEVNULL, "stderr": subprocess.DEVNULL}
     setup = f"{os.environ['TEMP']}\\FirefoxSetup.exe"
-    download_link = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-GB"
+    download_link = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"
     install_dir = "C:\\Program Files\\Mozilla Firefox"
     policies = f"{install_dir}\\distribution\\policies.json"
     autoconfig = f"{install_dir}\\defaults\\pref\\autoconfig.js"
