@@ -7,11 +7,11 @@ echo info: setting PowerShell executionpolicy to unrestricted
 PowerShell Set-ExecutionPolicy Unrestricted -force
 
 echo info: setting the password to never expire, resolves some bugs despite no password being set
-net accounts /maxpwage:unlimited
+net accounts /maxpwage:unlimited > nul 2>&1
 
 echo info: disable automatic repair, does more harm than good in our use case
-bcdedit /set {current} recoveryenabled no
-fsutil repair set C: 0
+bcdedit /set {current} recoveryenabled no > nul 2>&1
+fsutil repair set C: 0 > nul 2>&1
 
 echo info: cleaning the winsxs folder
 DISM /Online /Cleanup-Image /StartComponentCleanup /ResetBase
@@ -20,9 +20,11 @@ echo info: disabling reserved storage, ignore errors
 DISM /Online /Set-ReservedStorageState /State:Disabled
 
 echo info: disabling sleepstudy
-wevtutil sl Microsoft-Windows-SleepStudy/Diagnostic /e:false
-wevtutil sl Microsoft-Windows-Kernel-Processor-Power/Diagnostic /e:false
-wevtutil sl Microsoft-Windows-UserModePowerService/Diagnostic /e:false
+> nul 2>&1 (
+    wevtutil sl Microsoft-Windows-SleepStudy/Diagnostic /e:false
+    wevtutil sl Microsoft-Windows-Kernel-Processor-Power/Diagnostic /e:false
+    wevtutil sl Microsoft-Windows-UserModePowerService/Diagnostic /e:false
+)
 
 if exist "C:\Program Files (x86)\Microsoft\Edge\Application" (
     echo info: uninstalling chromium microsoft edge
