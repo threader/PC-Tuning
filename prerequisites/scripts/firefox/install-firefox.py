@@ -4,6 +4,7 @@ import os
 import subprocess
 import textwrap
 import hashlib
+import json
 import requests
 
 def main() -> int:
@@ -44,9 +45,9 @@ def main() -> int:
         "update-settings.ini"
     ]
 
-    policies_content = """    {
+    policies_content = {
         "policies": {
-            "DisableAppUpdate": true,
+            "DisableAppUpdate": True,
             "OverrideFirstRunPage": "",
             "Extensions": {
                 "Install": [
@@ -54,8 +55,7 @@ def main() -> int:
                 ]
             }
         }
-    }    
-    """
+    }
 
     autoconfig_content = """    pref("general.config.filename", "firefox.cfg");
     pref("general.config.obscure_value", 0);
@@ -134,7 +134,7 @@ def main() -> int:
     os.makedirs(f"{install_dir}\\distribution", exist_ok=True)
 
     with open(policies, "a", encoding="UTF-8") as f:
-        f.writelines(textwrap.dedent(policies_content))
+        json.dump(policies_content, f, indent=4)
 
     print("info: importing autoconfig.js")
     with open(autoconfig, "a", encoding="UTF-8", newline="\n") as f:
