@@ -208,11 +208,9 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WSearch]
 "Start"=dword:00000004
 
-; disable tracking
 ; default power saving mode for all network cards to disabled
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NDIS\Parameters]
-"TrackNblOwner"=dword:00000000
 "DefaultPnPCapabilities"=dword:00000018
 
 ; allow windows to automatically sync time
