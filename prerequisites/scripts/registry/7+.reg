@@ -453,16 +453,6 @@ Windows Registry Editor Version 5.00
 "ThemeChangesDesktopIcons"=dword:00000000
 "ThemeChangesMousePointers"=dword:00000000
 
-; disable the reboot prompt in msconfig
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Shared Tools\MsConfig]
-"NoRebootUI"=dword:00000001
-
-; disable the save prompt in snipping tool
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\TabletPC\Snipping Tool]
-"PromptToSave"=dword:00000000
-
 ; clear history of recently opened documents on exit
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
