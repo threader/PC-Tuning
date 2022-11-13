@@ -591,6 +591,15 @@ Configure default programs in **Settings -> Apps**.
         cleanmgr /sagerun:50
         ```
 
+- Reset Firewall rules
+
+    - Open CMD and enter the command below
+
+        ```bat
+        reg.exe delete "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f
+        reg.exe add "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f
+        ```
+
 ## Final Thoughts and Tips
 
 - Avoid applying random tweaks, using tweaking programs or fall for the "fps boost" marketing nonsense. If you have a question about a specific option or setting, just ask
