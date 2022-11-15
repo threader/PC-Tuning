@@ -83,15 +83,17 @@ C:\prerequisites\scripts\miscellaneous.bat
         - Uninstall bloatware in **Settings -> Apps -> Installed apps**
         - In the **Settings -> Apps -> Optional features** section, uninstall everything apart from **WMIC**, **Notepad (system)** and **WordPad**
 
-- Restart your PC once to apply the changes above (do not boot into Linux Mint without a full restart beforehand)
+- Restart your PC once to apply the changes above (do not boot into Linux without a full restart beforehand)
 
 ## Removing Bloatware with Linux
 
-- Boot into Ventoy on your USB in BIOS and select the Linux Mint ISO. Select **Start Linux Mint** when prompted
+As mentioned previously, the instructions below are specific to Linux Mint. If you are using another distro, interpret the steps below and follow along accordingly.
+
+- Boot into Ventoy on your USB in BIOS and select the Linux ISO
 
 - Open file explorer which is pinned to the taskbar and navigate to the volume Windows is installed on. You can identify this by finding the volume that has the **win-debloat.sh** script in
 
-- Right click an empty space and select **Open in Terminal**. Use the command below to run the script
+- Right click an empty space and select **Open in Terminal** to open a terminal window in the current directory. Use the command below to run the script
 
     ```
     sudo bash win-debloat.sh

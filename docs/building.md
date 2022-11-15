@@ -8,7 +8,7 @@
 
 ## Download Stock ISOs
 
-Ensure to cross-check the hashes for the ISO to verify that it is genuine and not corrupted (not required when building an ISO from UUP dump). Use the command ``certutil -hashfile <path\to\file>`` to get the hash of the ISO file.
+Ensure to cross-check the hashes for the ISO to verify that it is genuine and not corrupted (not required when building an ISO from UUP dump). Use the command ``certutil -hashfile <path\to\file>`` to get the hash of the ISO.
 
 - Recommended ISOs:
 
@@ -195,7 +195,7 @@ DISM /Export-Image /SourceImageFile:"%EXTRACTED_ISO%\sources\install.wim" /Sourc
 
 ## Convert to ISO
 
-This step is not required if you are [installing using DISM Apply-Image](./pre-install.md#boot-into-the-iso). Use the command below to convert the extracted ISO to an ISO file which will be created on the desktop.
+This step is not required if you are [installing using DISM Apply-Image](./pre-install.md#boot-into-the-iso). Use the command below to pack the extracted contents back to a single ISO which will be created on the desktop.
 
 ```bat
 "%OSCDIMG%" -m -o -u2 -udfver102 -l"FINAL" -bootdata:2#p0,e,b"%EXTRACTED_ISO%\boot\etfsboot.com"#pEF,e,b"%EXTRACTED_ISO%\efi\microsoft\boot\efisys.bin" "%EXTRACTED_ISO%" "%userprofile%\Desktop\FINAL.iso"

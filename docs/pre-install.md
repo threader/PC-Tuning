@@ -13,13 +13,11 @@ in advance of building the ISO, see the [Integrate and Obtain Drivers](./buildin
 
 ## Prepare the USB
 
-- Download [Ventoy](https://github.com/ventoy/Ventoy/releases) and [Linux Mint Xfce Edition](https://www.linuxmint.com/download.php)
-
-- Plug in your USB storage and launch **Ventoy2Disk.exe**. Go to **Option > Partition Style** and select GPT (UEFI) or MBR (Legacy) then select your USB storage and click install
+- Plug in your USB storage, download [Ventoy](https://github.com/ventoy/Ventoy/releases) and launch **Ventoy2Disk.exe**. Go to **Option > Partition Style** and select GPT (UEFI) or MBR (Legacy) then select your USB storage and click install
 
     - See [media/identify-bios-mode.png](../media/identify-bios-mode.png)
 
-- Move the Linux Mint ISO file into the USB storage in file explorer
+- Download a live Linux distribution of your choice and move the ISO into the USB storage in file explorer. I will be using [Linux Mint Xfce Edition](https://www.linuxmint.com/download.php)
 
 ## Boot Into the ISO
 
@@ -27,8 +25,9 @@ For the next steps, it is imperative that you unplug your Ethernet cable and are
 
 - Install using a USB storage device:
 
-    - Place the ISO into the same location where the Linux Mint ISO is and select the USB storage device in the boot options in BIOS
-    - When installing Windows 8 with a USB, you may be required to enter a key. Use the generic key ``GCRJD-8NW9H-F2CDX-CCM8D-9D6T9`` to get past this step
+    - Move your Windows ISO into the USB storage in file explorer (where the Linux ISO is also located)
+    - Boot into Ventoy on your USB in BIOS and select your Windows ISO. Continue with setup as per usual
+    - When installing Windows 8 with a USB, you may be required to enter a key. Use the generic key ``GCRJD-8NW9H-F2CDX-CCM8D-9D6T9`` to get past this step (this does not activate Windows)
     - When installing Windows 11 with a USB, you may encounter system requirement issues. To bypass the checks, press **Shift + F10** to open CMD then type **regedit**. Go to **File -> Import...** and import the **bypass-windows11-checks.reg** registry file
 
 - Install using DISM Apply-Image (without a USB storage device):
