@@ -357,16 +357,16 @@ Get-ProcessMitigation -System
 
 ## Memory Cleaner and Timer Resolution (Windows 10 1909 and Under)
 
-Feel free to skip this step as it is not required, Microsoft fixed the standby list memory management issues in a later version of Windows but some modern games still have memory leaks. [Memory Cleaner](https://github.com/danskee/MemoryCleaner) ([alternative link](https://git.zusier.xyz/Zusier/MemoryCleaner)) also allows us to set the kernel timer-resolution globally however the behavior of timer-resolution changed in 2004+ as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change/), rendering this "trick" useless.
+Microsoft fixed the standby list memory management issues in a later version of Windows but some modern games still have memory leaks. Memory Cleaner ([official reference](https://github.com/danskee/MemoryCleaner), [source code](https://git.zusier.xyz/Zusier/MemoryCleaner), [download](https://www.majorgeeks.com/files/details/memory_cleaner_danskee.html)) also allows us to raise the clock interrupt frequency on a global level however the behavior of processes that are affected significantly changed in  Windows 10 2004+ in a way that potentially breaks realtime applications as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change) rendering this *trick* obsolete.
 
-- Place ``C:\prerequisites\Memory-Cleaner.exe`` in win + r, **shell:startup** and open it
+- Place **Memory-Cleaner.exe** in win + r, **shell:startup** and open it
 
-    - Go to **File -> Settings** and configure the following:
-    
-        - The hotkey to clean the standby list and working set
-        - The desired timer-resolution, 10000 (1MS) recommended
-        - Uncheck **Enable timer**
-        - Check **Start minimized** and **Start timer resolution automatically**
+- Go to **File -> Settings** and configure the following:
+
+    - The hotkey to clean the standby list and working set
+    - The desired timer-resolution, 10000 (1MS) recommended
+    - Uncheck **Enable timer**
+    - Check **Start minimized** and **Start timer resolution automatically**
 
 - Avoid using auto cleaning apps like ISLC/MemReduct, they consume a lot of resources due to a frequent polling timer interval and cause stuttering due to autocleaning memory
 
