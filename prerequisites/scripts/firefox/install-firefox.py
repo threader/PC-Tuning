@@ -62,26 +62,16 @@ def main() -> int:
     """
 
     firefox_cfg_content = """
-    defaultPref("dom.security.https_only_mode", true);
-    defaultPref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
-    defaultPref("browser.newtabpage.activity-stream.feeds.topsites", false);
-    defaultPref("browser.newtabpage.activity-stream.section.highlights.includeBookmarks", false);
-    defaultPref("browser.newtabpage.activity-stream.section.highlights.includeDownloads", false);
-    defaultPref("browser.newtabpage.activity-stream.section.highlights.includePocket", false);
-    defaultPref("browser.newtabpage.activity-stream.section.highlights.includeVisited", false);
-    defaultPref("browser.newtabpage.pinned", "[]");
-    defaultPref("browser.newtabpage.activity-stream.showSponsored", false);
-    defaultPref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
-    defaultPref("browser.newtabpage.activity-stream.feeds.section.highlights", false);
     defaultPref("app.shield.optoutstudies.enabled", false);
-    defaultPref("browser.discovery.enabled", false);
-    defaultPref("datareporting.healthreport.uploadEnabled", false);
+    defaultPref("datareporting.healthreport.uploadEnabled", false); 
+    defaultPref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
+    defaultPref("browser.newtabpage.activity-stream.feeds.topsites", false); 
+    defaultPref("dom.security.https_only_mode", true);
     defaultPref("browser.uidensity", 1);
     defaultPref("full-screen-api.transition-duration.enter", "0 0");
     defaultPref("full-screen-api.transition-duration.leave", "0 0");
     defaultPref("full-screen-api.warning.timeout", 0);
     defaultPref("nglayout.enable_drag_images", false);
-    defaultPref("browser.search.suggest.enabled", false);
     defaultPref("reader.parse-on-load.enabled", false);
     """
 
