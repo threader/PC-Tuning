@@ -3,8 +3,7 @@ setlocal EnableDelayedExpansion
 
 dism > nul 2>&1 || echo error: administrator privileges required && pause && exit /b 1
 
-echo info: nobody is responsible for damage caused to your operating system or computer, run at your own RISK
-echo info: windows 8+ only
+echo info: windows 8+ only - nobody is responsible for damage caused to your system or computer, run at your own risk
 echo info: press any key to continue
 pause > nul 2>&1
 
