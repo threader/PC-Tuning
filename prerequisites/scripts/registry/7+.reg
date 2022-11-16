@@ -242,11 +242,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers]
 "DisableAutoplay"=dword:00000001
 
-; show more details during file transfer
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager]
-"EnthusiastMode"=dword:00000001
-
 ; disable crash dumping
 ; do not automatically reboot after a BSOD
 
@@ -257,11 +252,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl\StorageTelemetry]
 "DeviceDumpEnabled"=dword:00000000
-
-; disable notify me when the clock changes
-
-[HKEY_CURRENT_USER\Control Panel\TimeDate]
-"DstNotification"=dword:00000000
 
 ; enable one view mode for all folders in file explorer
 
@@ -329,7 +319,6 @@ Windows Registry Editor Version 5.00
 "ShellState"=hex(3):24,00,00,00,3E,20,00,00,00,00,00,00,00,00,00,00,00,00,\
 00,00,01,00,00,00,12,00,00,00,00,00,00,00,22,00,00,00
 "link"=hex:00,00,00,00
-"AltTabSettings"=dword:00000001
 
 ; hide quick access from file explorer
 ; disable smartscreen
@@ -370,14 +359,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\VSCommon\15.0\SQM]
 "OptIn"=dword:00000000
 
-; disable font cache, not required with systems that have a ssd
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\FontCache]
-"Start"=dword:00000004
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\FontCache3.0.0.0]
-"Start"=dword:00000004
-
 ; apply the default account picture to all users
 ; remove the security and maintenance icon
 ; disables retrieval of online tips and help in the immersive control panel
@@ -403,16 +384,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\FTH]
 "Enabled"=dword:00000000
-
-; use the oem lock screen background image
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\Background]
-"OEMBackground"=dword:00000001
-
-; disable your pc is out of support message
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\EOSNotify]
-"DiscontinueEOS"=dword:00000001
 
 ; enable the legacy photo viewer
 
@@ -567,11 +538,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EdgeUpdate]
 "DoNotUpdateToEdgeWithChromium"=dword:00000001
 
-; restore old volume flyout
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\MTCUVC]
-"EnableMtcUvc"=dword:00000000
-
 ; prevent auto updating store apps
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
@@ -719,12 +685,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary]
 "Value"="Deny"
 
-; disable game mode
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\GameBar]
-"UseNexusForGameBarEnabled"=dword:00000000
-"AutoGameModeEnabled"=dword:00000000
-
 ; disable automatic updates for offline maps
 
 [HKEY_LOCAL_MACHINE\System\Maps]
@@ -791,11 +751,6 @@ C2,0A,01,D2,1E,26,4D,00,69,00,63,00,72,00,6F,00,73,00,6F,00,66,00,74,00,2E,\
 
 [HKEY_CURRENT_USER\Control Panel\Accessibility\StickyKeys]
 "Flags"="506"
-
-; disable play windows startup sound
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation]
-"DisableStartupSound"=dword:00000001
 
 ; disable remote assistance and remote desktop
 

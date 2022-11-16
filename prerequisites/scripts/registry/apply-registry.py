@@ -20,7 +20,7 @@ def main() -> int:
         return 1
 
     registry_dir = "C:\\prerequisites\\scripts\\registry"
-    registry_files = ["7+.reg", "8.reg", "8+.reg", "10+.reg", "11+.reg"]
+    registry_files = ["7.reg", "7+.reg", "7-8.reg", "8.reg", "8+.reg", "10+.reg", "11+.reg"]
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--winver", choices=[7, 8, 10, 11], help="specify windows version to be configured", required=True, type=int, metavar="<winver>")
@@ -37,11 +37,18 @@ def main() -> int:
     print(f"info: applying registry file for windows {args.winver}")
 
     for file in registry_files:
-        if "+" in file:
-            if int(file.rpartition("+")[0]) <= args.winver:
-                apply_registry(f"{registry_dir}\\{file}")
-        elif int(file.rpartition(".reg")[0]) == args.winver:
-            apply_registry(f"{registry_dir}\\{file}")
+        file_name = file.replace(".reg", "")
+        file = f"{registry_dir}\\{file}"
+
+        if "+" in file_name:
+            if int(file_name[:-1]) <= args.winver:
+                apply_registry(file)
+        elif "-" in file_name:
+            lower, upper = [int(x) for x in file_name.split("-")]
+            if lower <= args.winver <= upper:
+                apply_registry(file)
+        elif int(file_name) == args.winver:
+            apply_registry(file)
 
     print("info: done")
 
