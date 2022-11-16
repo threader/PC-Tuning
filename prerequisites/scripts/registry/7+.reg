@@ -489,11 +489,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]
 "NoGenTicket"=dword:00000001
 
-; disable game dvr
-
-[HKEY_CURRENT_USER\System\GameConfigStore] 
-"GameDVR_Enabled"=dword:00000000
-
 ; disable search the web or display web results in Search
 ; disable cloud search
 ; disable cortana
