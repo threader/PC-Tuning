@@ -17,13 +17,13 @@ if not !errorlevel! == 0 (
 
 set "err=0"
 for %%a in (
-    curl.exe
-    7z.exe
+    "curl.exe"
+    "7z.exe"
 ) do (
-    where %%a > nul 2>&1
+    where %%~a > nul 2>&1
     if not !errorlevel! == 0 (
         set "err=1"
-        echo error: %%a not found in path
+        echo error: %%~a not found in path
     )
 )
 if not !err! == 0 exit /b 1
@@ -32,9 +32,9 @@ set "current_dir=%~dp0"
 set "current_dir=!current_dir:~0,-1!"
 set "python=!current_dir!\python"
 
-for %%a in (python-embed.zip get-pip.py) do (
-    if exist "!temp!\%%a" (
-        del /f /q "!temp!\%%a"
+for %%a in ("python-embed.zip" "get-pip.py") do (
+    if exist "!temp!\%%~a" (
+        del /f /q "!temp!\%%~a"
     )
 )
 
@@ -42,10 +42,10 @@ curl.exe -l "https://www.python.org/ftp/python/3.8.6/python-3.8.6-embed-amd64.zi
 curl.exe -l "https://bootstrap.pypa.io/get-pip.py" -o "!temp!\get-pip.py"
 
 set "err=0"
-for %%a in (python-embed.zip get-pip.py) do (
-    if not exist "!temp!\%%a" (
+for %%a in ("python-embed.zip" "get-pip.py") do (
+    if not exist "!temp!\%%~a" (
         set "err=1"
-        echo error: %%a download failed
+        echo error: %%~a download failed
     )
 )
 if not !err! == 0 exit /b 1
@@ -74,9 +74,9 @@ mkdir "!python!"
 
 "!python!\python.exe" -m pip install -r "!current_dir!\python-modules.txt"
 
-for %%a in (python-embed.zip get-pip.py) do (
-    if exist "!temp!\%%a" (
-        del /f /q "!temp!\%%a"
+for %%a in ("python-embed.zip" "get-pip.py") do (
+    if exist "!temp!\%%~a" (
+        del /f /q "!temp!\%%~a"
     )
 )
 
