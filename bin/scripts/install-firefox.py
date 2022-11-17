@@ -81,6 +81,8 @@ def main() -> int:
     defaultPref("full-screen-api.warning.timeout", 0);
     defaultPref("nglayout.enable_drag_images", false);
     defaultPref("reader.parse-on-load.enabled", false);
+    defaultPref("browser.tabs.firefox-view", false);
+    defaultPref("browser.tabs.tabmanager.enabled", false);
     """
 
     try:
