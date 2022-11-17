@@ -2,12 +2,12 @@ Windows Registry Editor Version 5.00
 
 ; disable suggestions in the search box and in search home
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SearchSettings]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\SearchSettings]
 "IsDynamicSearchBoxEnabled"=dword:00000000
 
 ; disable location override
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CPSS\Store\UserLocationOverridePrivacySetting]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CPSS\Store\UserLocationOverridePrivacySetting]
 "Value"=dword:00000000
 
 ; prevent apps from accessing the downloads folder
@@ -32,23 +32,23 @@ Windows Registry Editor Version 5.00
 
 ; disable narrator keyboard shortcut
 
-[HKEY_CURRENT_USER\Software\Microsoft\Narrator\NoRoam]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Narrator\NoRoam]
 "WinEnterLaunchEnabled"=dword:00000000
 
 ; disable typing insights
 
-[HKEY_CURRENT_USER\Software\Microsoft\input\Settings]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\input\Settings]
 "InsightsEnabled"=dword:00000000
 
 ; disable snap bar
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "EnableSnapBar"=dword:00000000
 
 ; restore old context menu
 
-[HKEY_CURRENT_USER\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}]
 @=""
 
-[HKEY_CURRENT_USER\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32]
 @=""
