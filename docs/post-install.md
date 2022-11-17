@@ -230,12 +230,6 @@ Open CMD and enter the commands below.
     powercfg /delete a1841308-3541-4fab-bc81-f71556f20b4a
     ```
 
-- Allow Throttle States - Off
-
-    ```bat
-    powercfg /setacvalueindex scheme_current 54533251-82be-4824-96c1-47b60b740d00 3b04d4fd-1cc7-4f23-ab1c-d1337819c4bb 0
-    ```
-
 - USB 3 Link Power Management - Off
 
     ```bat
