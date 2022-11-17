@@ -149,7 +149,7 @@ win-wallpaper.exe --dir "%MOUNT_DIR%" --rgb #000000
 
 ## Integrating Required Files
 
-Clone the repository and place the **prerequisites** folder and **win-debloat.sh** script in the mounted directory. Open the mounted directory with the command below.
+Clone the repository and place the **bin** folder and **win-debloat.sh** script in the mounted directory. Open the mounted directory with the command below.
 
 ```bat
 explorer "%MOUNT_DIR%"

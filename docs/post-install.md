@@ -35,7 +35,7 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 Open CMD as administrator and enter the command below. The commands are placed in a script instead of this document as it will be tedious to copy and paste each command without a web browser installed.
 
 ```bat
-C:\prerequisites\scripts\miscellaneous.bat
+C:\bin\scripts\miscellaneous.bat
 ```
 
 - Disable all messages in **Control Panel -> System and Security -> Action Center -> Change Action Center settings -> Change Security and Maintenance settings**
@@ -105,11 +105,11 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
     sudo reboot
     ```
 
-- Open ```C:\prerequisites\sysinternals\Autoruns.exe``` and remove all obsolete entries with a yellow label, run with ``C:\prerequisites\nsudo\NSudo.exe`` if you encounter any permission errors
+- Open ```C:\bin\sysinternals\Autoruns.exe``` and remove all obsolete entries with a yellow label, run with ``C:\bin\nsudo\NSudo.exe`` if you encounter any permission errors
 
 ## Install [OpenShell](https://github.com/Open-Shell/Open-Shell-Menu) (Windows 8+)
 
-- Run **OpenShellSetup.exe** in ``C:\prerequisites\open-shell``
+- Run **OpenShellSetup.exe** in ``C:\bin\open-shell``
 
     - Only install the **Open-Shell Menu**. Disable everything else to prevent installing bloatware
 
@@ -126,7 +126,7 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
 Some games such as Apex Legends require Game Bar to be installed for [FSE/Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) to properly function. The Game Bar related processes will get disabled in the [Configure Services and Drivers](#configure-services-and-drivers) section to prevent it from running in the background. Open CMD as administrator and enter the command below.
 
 ```bat
-C:\prerequisites\scripts\install-game-bar.bat
+C:\bin\scripts\install-game-bar.bat
 ```
 
 ## Install [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist/releases)
@@ -134,7 +134,7 @@ C:\prerequisites\scripts\install-game-bar.bat
 Run the package below to install the redistributables.
 
 ```
-C:\prerequisites\VisualCppRedist_AIO_x86_x64.exe
+C:\bin\VisualCppRedist_AIO_x86_x64.exe
 ```
 
 ## Disable Residual Scheduled Tasks
@@ -142,7 +142,7 @@ C:\prerequisites\VisualCppRedist_AIO_x86_x64.exe
 Open CMD as administrator and enter the command below.
 
 ```bat
-C:\prerequisites\scripts\scheduled-tasks\disable-tasks.exe
+C:\bin\python\python.exe C:\bin\scripts\disable-tasks.py
 ```
 
 ## Merge the Registry Files
@@ -150,7 +150,7 @@ C:\prerequisites\scripts\scheduled-tasks\disable-tasks.exe
 Open CMD as administrator and enter the command below. Replace **<winver\>** with the Windows version you are configuring (e.g 7, 8, 10, 11).
 
 ```bat
-C:\prerequisites\scripts\registry\apply-registry.exe --winver <winver>
+C:\bin\python\python.exe C:\bin\scripts\apply-registry.py --winver <winver>
 ```
 
 - Ensure that the program prints a "done" message to the console, if it has not then command prompt was probably not opened with administrator privileges and the registry files were not successfully merged
@@ -162,14 +162,14 @@ C:\prerequisites\scripts\registry\apply-registry.exe --winver <winver>
 Ensure **System is Spectre/Meltdown protected** is **NO** with the program below. AMD is unaffected by Meltdown and apparently [performs better with Spectre enabled](https://www.phoronix.com/review/amd-zen4-spectrev2), feel free to benchmark it on your own system.
 
 ```
-C:\prerequisites\inspectre.exe
+C:\bin\inspectre.exe
 ```
 
 - See [media/meltdown-spectre-example.png](../media/meltdown-spectre-example.png)
 
 ## User Preference
 
-Go through the ``C:\prerequisites\preference`` folder to configure the following:
+Go through the ``C:\bin\preference`` folder to configure the following:
 
 - Desktop Icon Settings
 - Region and language
@@ -186,7 +186,7 @@ Try to obtain the driver in its INF form so that it can be installed in device m
 Run the package below to install the runtimes.
 
 ```
-C:\prerequisites\ndp48-web.exe
+C:\bin\ndp48-web.exe
 ```
 
 ## Configure a [Web Browser](https://privacytests.org)
@@ -194,7 +194,7 @@ C:\prerequisites\ndp48-web.exe
 A standard Firefox installation is recommended. I have created a script used to update/install the latest Firefox version. Open CMD and enter the command below
 
 ```bat
-C:\prerequisites\scripts\firefox\install-firefox.exe
+C:\bin\python\python.exe C:\bin\scripts\install-firefox.py
 ```
 
 - Install [uBlock Origin](https://github.com/gorhill/uBlock) and the [Skip Redirect](https://addons.mozilla.org/firefox/addon/skip-redirect) extension if you have not already. [Dreammjow's filter list](https://raw.githubusercontent.com/dreammjow/MyFilters/main/src/filters.txt) can be imported (beware of sites breaking)
@@ -308,16 +308,10 @@ If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/gra
 If you usually use [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU) to configure display resolutions, download and extract it.
 
 - See [How to setup Display Scaling, works with all games | KajzerD](https://www.youtube.com/watch?v=50itBs-sz1w)
-
 - Use the exact timing for an integer refresh rate
-
 - Try to delete every resolution and the other bloatware (audio blocks) apart from your native resolution, this may be a work around for the 1 second black screen when alt-tabbing in FSE, feel free to skip this step if you are not comfortable risking a black screen
-
 - Restart your PC instead of using **restart64.exe** as it may result in a black screen
-
 - Ensure your resolution is configured properly in Display Adapter Settings
-
-    - Use the ``C:\prerequisites\change-resolution.lnk`` shortcut on Windows 8+
 
 ## Replace Task Manager with Process Explorer
 
@@ -339,7 +333,7 @@ This step is not optional, pcw.sys will be disabled which breaks the stock Task 
 
 ## Disable Process Mitigations (Windows 10 1709+)
 
-Run the ``C:\prerequisites\scripts\disable-process-mitigations.bat`` script to disable [process mitigations](https://docs.microsoft.com/en-us/powershell/module/processmitigations/set-processmitigation?view=windowsserver2019-ps). Effects can be viewed with the command below in PowerShell
+Run the ``C:\bin\scripts\disable-process-mitigations.bat`` script to disable [process mitigations](https://docs.microsoft.com/en-us/powershell/module/processmitigations/set-processmitigation?view=windowsserver2019-ps). Effects can be viewed with the command below in PowerShell
 
 ```powershell
 Get-ProcessMitigation -System
@@ -398,7 +392,7 @@ Microsoft fixed the standby list memory management issues in a later version of 
 
 ## Configure Services and Drivers
 
-The service list configuration is not intended for Wi-Fi and webcam functionality. I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming and use default services for everything else. Feel free to customize the lists by editing  ``C:\prerequisites\bare-services.ini`` in a text editor.
+The service list configuration is not intended for Wi-Fi and webcam functionality. I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming and use default services for everything else. Feel free to customize the lists by editing  ``C:\bin\bare-services.ini`` in a text editor.
 
 - On Windows 7 and 8, remove **MMCSS** from the **DependOnService** registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Audiosrv``
 
@@ -409,7 +403,7 @@ The service list configuration is not intended for Wi-Fi and webcam functionalit
 - Use the command below to build the scripts in the **build** folder. NSudo is required to run the batch scripts
 
     ```bat
-    service-list-builder.exe --config C:\prerequisites\bare-services.ini
+    service-list-builder.exe --config C:\bin\bare-services.ini
     ```
 
 - Move the batch scripts and **NSudo.exe** somewhere safe such as in the ``C:\`` drive and do not share it with other people as it is specific to your system
@@ -448,11 +442,11 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 Open CMD and enter the commands below to disable power saving on various devices in device manager and registry entries present in modern drivers.
 
 ```bat
-C:\prerequisites\scripts\disable-pnp-powersaving.ps1
+C:\bin\scripts\disable-pnp-powersaving.ps1
 ```
 
 ```bat
-C:\prerequisites\scripts\disable-driver-powersaving.bat
+C:\bin\scripts\disable-driver-powersaving.bat
 ```
 
 ## Configure Event Trace Sessions
@@ -522,7 +516,7 @@ By default, CPU 0 handles the majority of DPCs and ISRs for several devices whic
 
 - Open CMD and enter the command below to configure what CPU handles DPCs/ISRs for the network driver. Ensure to change the driver key to suit your needs
 
-    - Run ``C:\prerequisites\scripts\get-driver-keys.bat`` to get the driver keys on your system
+    - Run ``C:\bin\scripts\get-driver-keys.bat`` to get the driver keys on your system
 
         ```bat
         reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000" /v "*RssBaseProcNumber" /t REG_SZ /d "2" /f
@@ -548,7 +542,7 @@ Install any programs and game launchers you commonly use to prepare us for the n
 
         - Related: [research.md - How can you verify if a DSCP QoS policy is working?](research.md#how-can-you-verify-if-a-dscp-policy-is-working)
 
-    - Run the ``C:\prerequisites\scripts\fse-qos-for-game-exes.bat`` script and follow the instructions in the console output
+    - Run the ``C:\bin\scripts\fse-qos-for-game-exes.bat`` script and follow the instructions in the console output
 
 ## Configure Default Programs
 
@@ -556,7 +550,7 @@ Configure default programs in **Settings -> Apps**.
 
 ## Cleanup
 
-- Open ```C:\prerequisites\sysinternals\Autoruns.exe``` and remove any unwanted programs such as game launchers. Remove all obsolete entries with a yellow label, run with ``C:\prerequisites\nsudo\NSudo.exe`` if you encounter any permission errors
+- Open ```C:\bin\sysinternals\Autoruns.exe``` and remove any unwanted programs such as game launchers. Remove all obsolete entries with a yellow label, run with ``C:\bin\nsudo\NSudo.exe`` if you encounter any permission errors
 
 - Some locations you may want to review for leftover bloatware and unwanted shortcuts
 
@@ -616,9 +610,9 @@ Configure default programs in **Settings -> Apps**.
 
     - Use **Ctrl + Shift + Esc** to open process explorer then use **File -> Run** to start the **explorer.exe** shell again
 
-- Consider using the scripts in ``C:\prerequisites\scripts\idle-scripts`` (place on desktop for easy access) to disable idle before launching a game and enable idle after you close your game. This will mitigate jitter due to the process of state transition. Beware of higher temperatures, you should not be thermal throttling to begin with after following [docs/physical-setup.md](./physical-setup.md)
+- Consider using the scripts in ``C:\bin\scripts\idle-scripts`` (place on desktop for easy access) to disable idle before launching a game and enable idle after you close your game. This will mitigate jitter due to the process of state transition. Beware of higher temperatures, you should not be thermal throttling to begin with after following [docs/physical-setup.md](./physical-setup.md)
 
-- If you are using Windows 8.1+ and [FSE/Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) with your game, you *can* disable DWM using the scripts in ``C:\prerequisites\scripts\dwm-scripts`` as the process wastes CPU cycles despite there being no composition. Beware as elements of the UI will be broken and somes games/programs will not be able to launch (you may need to disable hardware acceleration)
+- If you are using Windows 8.1+ and [FSE/Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) with your game, you *can* disable DWM using the scripts in ``C:\bin\scripts\dwm-scripts`` as the process wastes CPU cycles despite there being no composition. Beware as elements of the UI will be broken and somes games/programs will not be able to launch (you may need to disable hardware acceleration)
 
 - Carry out maintenance tasks yourself on a weekly basis. This includes:
 

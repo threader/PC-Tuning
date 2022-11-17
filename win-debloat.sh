@@ -55,7 +55,7 @@ rm -rf "Windows/System32/SecurityHealthSystray.exe"
 for i in "${wildcard_names[@]}"
 do
     echo info: removing $i
-    find . -ipath "*$i*" -not -ipath "./prerequisites/*" -delete
+    find . -ipath "*$i*" -not -ipath "./bin/*" -delete
 done
 
 # echo info: searching for files that are supposed to be removed...
@@ -64,7 +64,7 @@ done
 # for i in "${wildcard_names[@]}"
 # do
 #     echo info: searching for $i
-#     find . -ipath "*$i*" -not -ipath "./prerequisites/*"
+#     find . -ipath "*$i*" -not -ipath "./bin/*"
 # done
 
 echo info: done

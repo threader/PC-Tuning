@@ -42,7 +42,7 @@
 
 The following commands disable ultra low power states and set the flip queue size to 1.
 
-- Run ``C:\prerequisites\scripts\get-driver-keys.bat`` to get the driver keys on your system
+- Run ``C:\bin\scripts\get-driver-keys.bat`` to get the driver keys on your system
 
     ```bat
     set "key=0000"
