@@ -4,7 +4,7 @@ import subprocess
 import argparse
 import ctypes
 
-nsudo_path = "C:\\bin\\nsudo\\NSudo.exe"
+nsudo_path = "C:\\bin\\NSudo.exe"
 nsudo_args = [nsudo_path, "-U:T", "-P:E", "-Wait"]
 
 def apply_registry(file_path) -> None:

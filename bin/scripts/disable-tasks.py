@@ -11,7 +11,7 @@ def main() -> int:
         print("error: administrator privileges required")
         return 1
 
-    nsudo_path = "C:\\bin\\nsudo\\NSudo.exe"
+    nsudo_path = "C:\\bin\\NSudo.exe"
     if not os.path.exists(nsudo_path):
         print(f"error: {nsudo_path} not exists")
         return 1

@@ -105,9 +105,9 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
     sudo reboot
     ```
 
-- Open ```C:\bin\sysinternals\Autoruns.exe``` and remove all obsolete entries with a yellow label, run with ``C:\bin\nsudo\NSudo.exe`` if you encounter any permission errors
+- Open ```C:\bin\Autoruns.exe``` and remove all obsolete entries with a yellow label, run with ``C:\bin\NSudo.exe`` if you encounter any permission errors
 
-## Install [OpenShell](https://github.com/Open-Shell/Open-Shell-Menu) (Windows 8+)
+## Install [Open-Shell](https://github.com/Open-Shell/Open-Shell-Menu) (Windows 8+)
 
 - Run **OpenShellSetup.exe** in ``C:\bin\open-shell``
 
@@ -550,7 +550,7 @@ Configure default programs in **Settings -> Apps**.
 
 ## Cleanup
 
-- Open ```C:\bin\sysinternals\Autoruns.exe``` and remove any unwanted programs such as game launchers. Remove all obsolete entries with a yellow label, run with ``C:\bin\nsudo\NSudo.exe`` if you encounter any permission errors
+- Open ```C:\bin\Autoruns.exe``` and remove any unwanted programs such as game launchers. Remove all obsolete entries with a yellow label, run with ``C:\bin\NSudo.exe`` if you encounter any permission errors
 
 - Some locations you may want to review for leftover bloatware and unwanted shortcuts
 
