@@ -1,3 +1,4 @@
+from urllib import request, error
 import sys
 import ctypes
 import os
@@ -5,7 +6,7 @@ import subprocess
 import textwrap
 import hashlib
 import json
-import requests
+import ssl
 
 def main() -> int:
     """program entrypoint"""
@@ -14,10 +15,13 @@ def main() -> int:
         print("error: administrator privileges required")
         return 1
 
+    # https://stackoverflow.com/questions/50236117/scraping-ssl-certificate-verify-failed-error-for-http-en-wikipedia-org
+    ssl._create_default_https_context = ssl._create_unverified_context
+
     print("info: checking for an internet connection")
     try:
-        requests.get("https://archlinux.org", timeout=3)
-    except requests.ConnectionError:
+        request.urlopen("https://archlinux.org")
+    except error.URLError:
         print("error: no internet connection")
         return 1
 
@@ -28,8 +32,12 @@ def main() -> int:
     policies = f"{install_dir}\\distribution\\policies.json"
     autoconfig = f"{install_dir}\\defaults\\pref\\autoconfig.js"
     firefox_cfg = f"{install_dir}\\firefox.cfg"
-    latest_firefox_version = requests.get("https://product-details.mozilla.org/1.0/firefox_versions.json", timeout=3).json()["LATEST_FIREFOX_VERSION"]
-    setup_sha256 = requests.get(f"https://mediacdn.prod.productdelivery.prod.webservices.mozgcp.net/pub/firefox/releases/{latest_firefox_version}/SHA256SUMS", timeout=3).text
+
+    with request.urlopen("https://product-details.mozilla.org/1.0/firefox_versions.json") as url:
+        latest_firefox_version = json.loads(url.read().decode())["LATEST_FIREFOX_VERSION"]
+
+    with request.urlopen(f"https://mediacdn.prod.productdelivery.prod.webservices.mozgcp.net/pub/firefox/releases/{latest_firefox_version}/SHA256SUMS") as url:
+        setup_sha256 = url.read().decode("UTF-8")
 
     remove_files = [
         "crashreporter.exe",
@@ -89,8 +97,7 @@ def main() -> int:
         os.remove(setup)
 
     print(f"info: downloading firefox {latest_firefox_version} setup")
-    with open(setup, "wb") as f:
-        f.write(requests.get(download_link, timeout=5).content)
+    request.urlretrieve(download_link, setup)
 
     try:
         with open(setup, "rb") as f:

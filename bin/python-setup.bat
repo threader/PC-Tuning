@@ -72,8 +72,6 @@ mkdir "!python!"
 
 >> "!python!\python38._pth" echo Lib\site-packages
 
-"!python!\python.exe" -m pip install -r "!current_dir!\python-modules.txt"
-
 for %%a in ("python-embed.zip" "get-pip.py") do (
     if exist "!temp!\%%~a" (
         del /f /q "!temp!\%%~a"
