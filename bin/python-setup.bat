@@ -30,7 +30,6 @@ if not !err! == 0 exit /b 1
 
 set "current_dir=%~dp0"
 set "current_dir=!current_dir:~0,-1!"
-set "python=!current_dir!\python"
 
 for %%a in ("python-embed.zip" "get-pip.py") do (
     if exist "!temp!\%%~a" (
@@ -61,16 +60,16 @@ if not "!file_sha1!" == "855de5c4049ee9469da03d0aac8d3b4ca3e29af5" (
     exit /b 1
 )
 
-if exist "!python!" (
-    rd /s /q "!python!"
+if exist "!current_dir!\python" (
+    rd /s /q "!current_dir!\python"
 )
-mkdir "!python!"
+mkdir "!current_dir!\python"
 
-7z x "!temp!\python-embed.zip" -o"!python!"
+7z x "!temp!\python-embed.zip" -o"!current_dir!\python"
 
-"!python!\python.exe" "!temp!\get-pip.py"
+"!current_dir!\python\python.exe" "!temp!\get-pip.py"
 
->> "!python!\python38._pth" echo Lib\site-packages
+>> "!current_dir!\python\python38._pth" echo Lib\site-packages
 
 for %%a in ("python-embed.zip" "get-pip.py") do (
     if exist "!temp!\%%~a" (
