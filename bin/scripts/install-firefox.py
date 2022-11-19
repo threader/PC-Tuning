@@ -60,6 +60,7 @@ def main() -> int:
             "Extensions": {
                 "Install": [
                     "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi"
+                    "https://addons.mozilla.org/firefox/downloads/file/3950379/latest.xpi"
                 ]
             }
         }
@@ -113,7 +114,7 @@ def main() -> int:
         print("error: download unsuccessful")
         return 1
 
-    subprocess.run(["taskkill", "/F", "/IM", "Firefox.exe"], **subprocess_null, check=False)
+    subprocess.run(["taskkill", "/F", "/IM", "firefox.exe"], **subprocess_null, check=False)
 
     print("info: installing firefox")
     subprocess.run([setup, "/S", "/MaintenanceService=false"], check=False)
