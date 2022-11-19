@@ -31,22 +31,22 @@
 
 - Remove the heatsink from your DIMMs and mount a fan over it using cable ties
 
-- Along with a M.2/NVME heatsink, optionally place a fan over it
+- Along with a M.2/NVMe heatsink, optionally place a fan over it
 
 - Configure fan curves or set a static, high, noise-acceptable RPM
 
 ## Minimize Interference
 
-- Move devices that produce RF, EMF and EMI such as radios, cellphones and routers away from your setup as they have the potential to increase latency due to unintended behavior of electrical components
+- Move devices that produce RF, EMF and EMI such as radios, cellphones and routers away from your setup as they have the potential to increase latency due to unconscious behavior of electrical components
 - Always favor wired over cordless
 - Ensure there is a moderate amount of space between all cables to reduce the risk of [coupling](https://en.wikipedia.org/wiki/Coupling_(electronics))
-- Disconnect unnecessary devices from your motherboard/setup such as LEDs, front panel connectors, unused drives, RGB light strips and all HDDs
+- Disconnect unnecessary devices from your motherboard/setup such as LEDs, RGB light strips, front panel connectors, unused drives and all HDDs
 
 ## Configure USB Port Layout
 
 - Unplug any other unnecessary devices such as portable device chargers
 
-- Plug your mouse and keyboard into the first two ports on your first USB controller. This can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html#download) with trial and error. Use the motherboard ports and avoid companion ports (indicated on the right section of the program)
+- Plug your mouse and keyboard into the first two ports on your first USB controller. This can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/files/UsbTreeView_x64.zip) with trial and error. Use the motherboard ports and avoid companion ports (indicated on the right section of the program)
 
     - Ryzen systems have a USB port that is directly connected to the CPU which can be identified through the motherboard manual
 
@@ -72,7 +72,7 @@
 
 - Disable [Hyper-Threading/Simultaneous Multithreading](https://en.wikipedia.org/wiki/Hyper-threading). This feature is beneficial for highly threaded operations such as video editing, compiling and rendering however using multiple execution threads per core requires resource sharing and is a potential [source of system latency and jitter](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-1-configuring-the-hardware.html). Other drawbacks include limited overclocking potential due to increased temperatures
 
-- Limit C-States, P-States and S-States to the minimum or disable them. It is a source of jitter due to the process of state transition
+- Limit C-States, P-States and S-States to the minimum or disable them completely. It is a source of jitter due to the process of state transition
 
     - Verify S-State status with ``powercfg -a`` in CMD
 

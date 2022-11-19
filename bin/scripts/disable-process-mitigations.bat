@@ -13,7 +13,9 @@ if not !errorlevel! == 0 (
 )
 
 :: get current mask
-for /f "tokens=3 skip=2" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationAuditOptions"') do set "mitigation_mask=%%a"
+for /f "tokens=3 skip=2" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationAuditOptions"') do (
+    set "mitigation_mask=%%a"
+)
 
 echo info: current mask - !mitigation_mask!
 

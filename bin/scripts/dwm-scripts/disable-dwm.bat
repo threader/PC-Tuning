@@ -8,7 +8,7 @@ echo info: press any key to continue
 pause > nul 2>&1
 
 echo info: disabling dwm
-reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\dwm.exe" /v "Debugger" /t REG_SZ /d "\"C:\WINDOWS\SYSTEM32\RUNDLL32.EXE\"" /f > nul 2>&1
+reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\dwm.exe" /v "Debugger" /t REG_SZ /d "\"C:\Windows\System32\rundll32.exe\"" /f > nul 2>&1
 
 for %%a in ("UIRibbon" "UIRibbonRes" "Windows.UI.Logon") do (
     if exist "!windir!\System32\%%~a.dll" (

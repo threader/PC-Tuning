@@ -4,7 +4,7 @@
 
 Do not connect to the Internet until the [Merge the Registry Files](#merge-the-registry-files) section. Avoid using a password as the service list used will break user password functionality.
 
-If you are configuring Windows 11, press **Shift + F10** to open CMD and run the following command ``oobe\BypassNRO.cmd``.  This will unlock the **I don't have internet** option demonstrated in the video examples below.
+If you are configuring Windows 11, press **Shift + F10** to open CMD and run the following command ``oobe\BypassNRO.cmd``. This will unlock the **I don't have internet** option demonstrated in the video examples below.
 
 - See [media/oobe-windows7-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows7-example.mp4)
 - See [media/oobe-windows8-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows8-example.mp4)
@@ -42,7 +42,7 @@ C:\bin\scripts\miscellaneous.bat
 
     - This section is named **Security and Maintenance** on Windows 10+
 
-- Enable **Launching applications and unsafe files** in **Internet Options -> Security -> Custom Level**. This prevents the [ridiculous warning when opening files](https://gearupwindows.com/how-to-disable-open-file-security-warning-in-windows-10)
+- Enable **Launching applications and unsafe files** in **Network and Internet -> Internet Options -> Security -> Custom Level**. This prevents the [ridiculous warning when opening files](https://gearupwindows.com/how-to-disable-open-file-security-warning-in-windows-10)
 
 - In win + r, **dfrgui** disable **Run on a schedule**. More details on doing maintenance tasks ourselves in [Final Thoughts and Tips](#final-thoughts-and-tips)
 
@@ -50,8 +50,8 @@ C:\bin\scripts\miscellaneous.bat
 
 - In win + r, **sysdm.cpl** configure the following:
 
-    - **Computer Name -> Change**- configure the PC name
-    - **Advanced -> Performance -> Settings** - configure **Adjust for best performance** and optionally the page file
+    - **Computer Name -> Change** - configure the PC name
+    - **Advanced -> Performance -> Settings** - configure **Adjust for best performance** and optionally the paging file
     - **System Protection** - disable and delete system restore points. It has been proven to be very unreliable
 
 - Allow users full control of the ``C:\`` directory to resolve xperf etl processing
@@ -123,13 +123,13 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
 
 ## Install Xbox Game Bar (Windows 10+)
 
-Some games such as Apex Legends require Game Bar to be installed for [FSE/Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) to properly function. The Game Bar related processes will get disabled in the [Configure Services and Drivers](#configure-services-and-drivers) section to prevent it from running in the background. Open CMD as administrator and enter the command below.
+Some games such as Apex Legends require Game Bar to be installed for [FSE/Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) to properly function. The Game Bar related processes will get disabled in the [Configure Services and Drivers](#configure-services-and-drivers) section to prevent them from running in the background. Open CMD as administrator and enter the command below.
 
 ```bat
 C:\bin\scripts\install-game-bar.bat
 ```
 
-## Install [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist/releases)
+## Install [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist)
 
 Run the package below to install the redistributables.
 
@@ -171,10 +171,14 @@ C:\bin\inspectre.exe
 
 Go through the ``C:\bin\preference`` folder to configure the following:
 
-- Desktop Icon Settings
-- Region and language
-- Taskbar Settings
+- Desktop icon settings
+- Region and format
+- Taskbar settings
 
+- Windows 10+ Only:
+    - Colors and settings
+    - Country and language
+ 
 ## Install Drivers
 
 Install any drivers your system requires, avoid installing chipset drivers. I would recommend updating and installing Ethernet, USB, NVME, SATA (required on Windows 7 as enabling MSI on the stock SATA driver will result in a BSOD). See the [Integrate and Obtain Drivers](./building.md#integrate-and-obtain-drivers) section for details on finding drivers (download them on another operating system or PC).
@@ -191,19 +195,19 @@ C:\bin\ndp48-web.exe
 
 ## Configure a [Web Browser](https://privacytests.org)
 
-A standard Firefox installation is recommended. I have created a script used to update/install the latest Firefox version. Open CMD and enter the command below
+A standard Firefox installation is recommended. I have created a script used to update/install the latest Firefox version. Open CMD and enter the command below.
 
 ```bat
 C:\bin\python\python.exe C:\bin\scripts\install-firefox.py
 ```
 
-- Install [uBlock Origin](https://github.com/gorhill/uBlock) and the [FastForward](https://addons.mozilla.org/en-GB/firefox/addon/fastforwardteam) extension if you have not already. [Dreammjow's filter list](https://raw.githubusercontent.com/dreammjow/MyFilters/main/src/filters.txt) can be imported (beware of sites breaking)
+- [Dreammjow's filter list](https://raw.githubusercontent.com/dreammjow/MyFilters/main/src/filters.txt) can be imported (beware of sites breaking)
 
 - On Firefox, after configuring extensions, I usually customize/cleanup the interface further in **Menu Settings -> More tools -> Customize toolbar...** then skim through **about:preferences**. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported, see the [wiki](https://github.com/arkenfox/user.js/wiki)
 
 ## Install 7-Zip
 
-Download and install [7-Zip](https://www.7-zip.org). Open ``C:\Program Files\7-Zip\7zFM.exe`` then to go **Tools -> Options** and associate 7-Zip with all file extensions by clicking the **+** button. You may need to click it twice to override existing associated extensions
+Download and install [7-Zip](https://www.7-zip.org). Open ``C:\Program Files\7-Zip\7zFM.exe`` then to go **Tools -> Options** and associate 7-Zip with all file extensions by clicking the **+** button. You may need to click it twice to override existing associated extensions.
 
 ## Install DirectX Runtimes
 
@@ -264,7 +268,7 @@ Open CMD and enter the commands below.
     bcdedit /timeout 0
     ```
 
-- Configure [Data Execution Prevention](https://docs.microsoft.com/en-us/windows/win32/memory/data-execution-prevention) for **essential Windows programs and services only**. DEP can be completely disabled with ``bcdedit /set nx AlwaysOff`` however the former is preferred due to compatibility with a minority of anticheats
+- Configure [Data Execution Prevention](https://docs.microsoft.com/en-us/windows/win32/memory/data-execution-prevention) for **essential Windows programs and services only**. DEP can be completely disabled with ``bcdedit /set nx AlwaysOff``. However, the former is preferred due to compatibility with a minority of anticheats
 
     ```bat
     bcdedit /set nx Optin
@@ -327,7 +331,7 @@ This step is not optional, pcw.sys will be disabled which breaks the stock Task 
 
 ## Disable Process Mitigations (Windows 10 1709+)
 
-Run the ``C:\bin\scripts\disable-process-mitigations.bat`` script to disable [process mitigations](https://docs.microsoft.com/en-us/powershell/module/processmitigations/set-processmitigation?view=windowsserver2019-ps). Effects can be viewed with the command below in PowerShell
+Run the ``C:\bin\scripts\disable-process-mitigations.bat`` script to disable [process mitigations](https://docs.microsoft.com/en-us/powershell/module/processmitigations/set-processmitigation?view=windowsserver2019-ps). Effects can be viewed with the command below in PowerShell.
 
 ```powershell
 Get-ProcessMitigation -System
@@ -349,14 +353,14 @@ Get-ProcessMitigation -System
 
 ## Memory Cleaner and Timer Resolution (Windows 10 1909 and Under)
 
-Microsoft fixed the standby list memory management issues in a later version of Windows but some modern games still have memory leaks. Memory Cleaner ([official reference](https://github.com/danskee/MemoryCleaner), [source code](https://git.zusier.xyz/Zusier/MemoryCleaner), [download](https://www.majorgeeks.com/files/details/memory_cleaner_danskee.html)) also allows us to raise the clock interrupt frequency on a global level however the behavior of processes that are affected significantly changed in  Windows 10 2004+ in a way that potentially breaks realtime applications as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change) rendering this *trick* obsolete.
+Microsoft fixed the standby list memory management issues in a later version of Windows but some modern games still have memory leaks. Memory Cleaner ([official reference](https://github.com/danskee/MemoryCleaner), [source code](https://git.zusier.xyz/Zusier/MemoryCleaner), [download](https://www.majorgeeks.com/files/details/memory_cleaner_danskee.html)) also allows us to raise the clock interrupt frequency on a global level. However, the behavior of processes that are affected significantly changed in Windows 10 2004+ in a way that potentially breaks real-time applications as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change) rendering this *trick* obsolete.
 
 - Place **Memory-Cleaner.exe** in win + r, **shell:startup** and open it
 
 - Go to **File -> Settings** and configure the following:
 
     - The hotkey to clean the standby list and working set
-    - The desired timer-resolution, 10000 (1MS) recommended
+    - The desired timer-resolution, 10000 (1ms) recommended
     - Uncheck **Enable timer**
     - Check **Start minimized** and **Start timer resolution automatically**
 
@@ -418,7 +422,7 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 
     - Disable **High Definition Audio Controller** and the USB controller on the same PCI port as your GPU
 
-    - Disable any PCI, SATA, NVME and USB controllers with nothing connected to them
+    - Disable any PCI, SATA, NVMe and USB controllers with nothing connected to them
 
 - Go to **View -> Resources by connection**
 
@@ -429,6 +433,7 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 - To prepare us for the next steps, run **Services-Enable.bat** with NSudo, ensure **Enable All Privileges** is enabled as mentioned
 
 - Download and extract [DeviceCleanup](https://www.uwe-sieber.de/files/DeviceCleanup.zip)
+
 - Open the program, select all devices and press the delete key to clean-up hidden devices
 
 ## Disable Driver Power Saving
@@ -445,7 +450,7 @@ C:\bin\scripts\disable-driver-powersaving.bat
 
 ## Configure Event Trace Sessions
 
-Create registry files to toggle event trace sessions. Programs that rely on event tracers such will not be able to log data until the required sessions are restored which is the purpose of creating two registry files to toggle between them (identical concept to the service scripts). Open CMD and enter the commands below to build the registry files in the ``C:\`` directory. As with the services scripts, these registry files must be ran with NSudo.
+Create registry files to toggle event trace sessions. Programs that rely on event tracers such will not be able to log data until the required sessions are restored which is the purpose of creating two registry files to toggle between them (identical concept to the service scripts). Open CMD and enter the commands below to build the registry files in the ``C:\`` directory. As with the services scripts these registry files must be ran with NSudo.
 
 ```bat
 reg export "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger" "C:\ets-enable.reg"
@@ -470,7 +475,7 @@ Open CMD & enter the commands below.
     fsutil behavior set disablelastaccess 1
     ```
 
-- Enables delete notifications (also known as trim or unmap), should be enabled by default but here for safe measure
+- Enables delete notifications (also known as trim or unmap), should be enabled by default but it is here for safe measure
 
     ```bat
     fsutil behavior set disabledeletenotify 0
