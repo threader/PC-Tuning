@@ -18,7 +18,7 @@ The guidance is currently updated and has been tested on Windows 7 through to Wi
 - [Ventoy](https://github.com/ventoy/Ventoy/releases)
 - Any live Linux distribution
 - Familiarity with the command-line interface
-- Ethernet and at least one SSD/NVME
+- Ethernet and at least one SSD/NVMe
 
 ## Physical Setup
 

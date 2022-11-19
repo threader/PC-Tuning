@@ -2,7 +2,7 @@
 
 ## Hardware
 
-- Ethernet and at least one SSD/NVME is a requirement
+- Ethernet and at least one SSD/NVMe is a requirement
 
 - See [Low Latency Hardware | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4)
 

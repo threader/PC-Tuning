@@ -73,8 +73,8 @@ DISM /Mount-Wim /WimFile:"%EXTRACTED_ISO%\sources\install.wim" /Index:1 /MountDi
     KB4490628 - Servicing Stack Update
     KB4474419 - SHA-2 Code Signing Update
     KB2670838 - Platform Update and DirectX 11.1
-    KB2990941 - NVME Support (https://files.soupcan.tech/KB2990941-NVMe-Hotfix/Windows6.1-KB2990941-x64.msu)
-    KB3087873 - NVME Support and Language Pack Hotfix
+    KB2990941 - NVMe Support (https://files.soupcan.tech/KB2990941-NVMe-Hotfix/Windows6.1-KB2990941-x64.msu)
+    KB3087873 - NVMe Support and Language Pack Hotfix
     KB2864202 - KMDF Update (required for USB 3/XHCI driver stack)
     KB4534314 - Easy Anti-Cheat Support
     ```
@@ -121,7 +121,7 @@ for /f "tokens=3" %i in ('DISM /Image:"%MOUNT_DIR%" /Get-ProvisionedAppxPackages
 
 ## Integrate and Obtain Drivers
 
-As mentioned previously, this step is generally only required for users configuring Windows 7 so that the ISO can be equipped with modern hardware support. Typically, only NVME and USB drivers are required to boot into the desktop, other drivers can be installed later in the [post-installation instructions](./post-install.md#install-drivers).
+As mentioned previously, this step is generally only required for users configuring Windows 7 so that the ISO can be equipped with modern hardware support. Typically, only NVMe and USB drivers are required to boot into the desktop, other drivers can be installed later in the [post-installation instructions](./post-install.md#install-drivers).
 
 - You can usually find drivers by searching or asking others for drivers that are compatible with your device HWID
 
@@ -131,7 +131,7 @@ As mentioned previously, this step is generally only required for users configur
 
     - If you can not find a USB driver, try using the [generic USB driver](https://forums.mydigitallife.net/threads/usb-3-xhci-driver-stack-for-windows-7.81934)
 
-- [Win-Raid AHCI and NVME driver collection](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310)
+- [Win-Raid AHCI and NVMe driver collection](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310)
 
 - Place all of the drivers to be integrated somewhere easily accessible such as ``C:\drivers`` and use the command below to integrate them into the mounted ISO
 

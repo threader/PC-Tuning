@@ -181,7 +181,7 @@ Go through the ``C:\bin\preference`` folder to configure the following:
  
 ## Install Drivers
 
-Install any drivers your system requires, avoid installing chipset drivers. I would recommend updating and installing Ethernet, USB, NVME, SATA (required on Windows 7 as enabling MSI on the stock SATA driver will result in a BSOD). See the [Integrate and Obtain Drivers](./building.md#integrate-and-obtain-drivers) section for details on finding drivers (download them on another operating system or PC).
+Install any drivers your system requires, avoid installing chipset drivers. I would recommend updating and installing Ethernet, USB, NVMe, SATA (required on Windows 7 as enabling MSI on the stock SATA driver will result in a BSOD). See the [Integrate and Obtain Drivers](./building.md#integrate-and-obtain-drivers) section for details on finding drivers (download them on another operating system or PC).
 
 Try to obtain the driver in its INF form so that it can be installed in device manager as executable installers usually install other bloatware along with the driver itself. Most of the time, you can extract the installer's executable with 7-Zip to obtain the driver.
 
