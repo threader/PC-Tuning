@@ -21,9 +21,12 @@ for %%a in (
     )
 )
 
-for %%a in ("WakeEnabled" "WdkSelectiveSuspendEnable") do (
+for %%a in (
+    "WakeEnabled" 
+    "WdkSelectiveSuspendEnable"
+) do (
     echo info: configuring %%~a
-    for /f "delims=" %%b in ('reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class" /s /f "%%~a" ^| findstr "HKEY"') do (
+    for /f "delims=" %%b in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class" /s /f "%%~a" ^| findstr "HKEY"') do (
         reg.exe add "%%b" /v "%%~a" /t REG_DWORD /d "0" /f > nul 2>&1
     )
 )
