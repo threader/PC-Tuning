@@ -14,7 +14,7 @@
 
     - See [media/replace-ccc2_install-example.png](../media/replace-ccc2_install-example.png)
 
-- Open device manager and install the driver by right clicking the display adapter, browse my computer for driver software and select the driver folder
+- Open device manager and install the driver by right clicking on the display adapter, browse my computer for driver software and select the driver folder
 
 - Once the driver has installed, extract **ccc2_install.exe** with 7-Zip and run ``.\CN\cnext\cnext64\ccc-next64.msi`` to install the Radeon software control panel
 
@@ -34,9 +34,9 @@
     - GPU Scaling - Off
     - HDCP Support - Disable (required for DRM content)
 
-## Lock Clocks/P-State 0
+## Lock GPU Clocks
 
-- Use [OverdriveNTool](https://forums.guru3d.com/threads/overdriventool-tool-for-amd-gpus.416116), [MoreClockTool](https://www.igorslab.de/en/the-moreclocktool-mct-for-free-download-the-practical-oc-attachment-to-the-morepowertool-replaces-the-wattman/) or [MorePowerTool](https://www.igorslab.de/en/red-bios-editor-and-morepowertool-adjust-and-optimize-your-vbios-and-even-more-stable-overclocking-navi-unlimited) to reduce render time and jitter caused by frequency transitions
+- [MorePowerTool](https://www.igorslab.de/en/red-bios-editor-and-morepowertool-adjust-and-optimize-your-vbios-and-even-more-stable-overclocking-navi-unlimited), [MoreClockTool](https://www.igorslab.de/en/the-moreclocktool-mct-for-free-download-the-practical-oc-attachment-to-the-morepowertool-replaces-the-wattman/) or [OverdriveNTool](https://forums.guru3d.com/threads/overdriventool-tool-for-amd-gpus.416116) to reduce render time and jitter caused by frequency transitions
 
 ## Configure Flip Queue Size and ULPS
 
