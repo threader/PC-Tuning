@@ -201,7 +201,7 @@ A standard Firefox installation is recommended. I have created a script used to 
 C:\bin\python\python.exe C:\bin\scripts\install-firefox.py
 ```
 
-- Install [FastForward](https://addons.mozilla.org/en-US/firefox/addon/fastforwardteam) extension if you have not already. [Dreammjow's filter list](https://raw.githubusercontent.com/dreammjow/MyFilters/main/src/filters.txt) can be imported (beware of sites breaking)
+- [Dreammjow's filter list](https://raw.githubusercontent.com/dreammjow/MyFilters/main/src/filters.txt) can be imported (beware of sites breaking)
 
 - On Firefox, after configuring extensions, I usually customize/cleanup the interface further in **Menu Settings -> More tools -> Customize toolbar...** then skim through **about:preferences**. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported, see the [wiki](https://github.com/arkenfox/user.js/wiki)
 
