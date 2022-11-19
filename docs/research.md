@@ -79,13 +79,13 @@ I simulated Valorant's network traffic in iperf using two machines (~300kb/s rec
 
 <img src="../media/300kbps-ndis-xperf-report.png" width="500">
 
-I noticed that despite having RSS queues set to 2, only CPU 1 was primarily handling interrupts for the driver which I assume was due to such little traffic. So I decided to re-test with the same configuration, however this time I simulated 1Gbps network traffic to verify this.
+I noticed that despite having RSS queues set to 2, only CPU 1 was primarily handling interrupts for the driver which I assume was due to such little traffic. So I decided to re-test with the same configuration. However, this time I simulated 1Gbps network traffic to verify this.
 
 <img src="../media/1gbps-ndis-xperf-report.png" width="500">
 
 As expected, this scenario demonstrates that both CPU 0 and CPU 1 are handling DPCs/ISRs for ndis.sys.
 
-Conclusion: During online matches, at most two RSS queues/cores are being utilized, however there is no harm in using more than two but it is important to be aware of the information above as people reserve consecutive cores specifically for the network driver when those core(s) could better be used for another driver or a real-time application. The amount of RSS queues a network adapter has may also determine the quality of the hardware but this is yet to be explored but something to keep in mind.
+Conclusion: During online matches, at most two RSS queues/cores are being utilized. However, there is no harm in using more than two but it is important to be aware of the information above as people reserve consecutive cores specifically for the network driver when those core(s) could better be used for another driver or a real-time application. The amount of RSS queues a network adapter has may also determine the quality of the hardware but this is yet to be explored but something to keep in mind.
 
 </details>
 
