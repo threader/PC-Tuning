@@ -1,5 +1,5 @@
 # inspired by the AME bash script
-# https://ameliorated.info/
+# https://ameliorated.info
 
 cd "$(dirname "$0")"
 shopt -s extglob
