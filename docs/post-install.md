@@ -42,7 +42,7 @@ C:\bin\scripts\miscellaneous.bat
 
     - This section is named **Security and Maintenance** on Windows 10+
 
-- Enable **Launching applications and unsafe files** in **Network and Internet -> Internet Options -> Security -> Custom Level**. This prevents the [ridiculous warning when opening files](https://gearupwindows.com/how-to-disable-open-file-security-warning-in-windows-10)
+- Enable **Launching applications and unsafe files** in win + r, **inetcpl.cpl** -> **Custom level...**. This prevents the [ridiculous warning when opening files](https://gearupwindows.com/how-to-disable-open-file-security-warning-in-windows-10)
 
 - In win + r, **dfrgui** disable **Run on a schedule**. More details on doing maintenance tasks ourselves in [Final Thoughts and Tips](#final-thoughts-and-tips)
 
