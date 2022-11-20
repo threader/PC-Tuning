@@ -83,7 +83,7 @@ Force P-State 0 with the [following registry key](https://github.com/djdallmann/
 
 ## Configure NVIDIA Inspector
 
-During CUDA workloads, the memory clock frequency will downclock to P-State 2 despite following the [Lock Clocks/P-State 0](#lock-clocksp-state-0) step. For this reason, you should set **CUDA - Force P2 State** to **Off**. [**SILK Smoothness**](https://www.avsim.com/forums/topic/552651-nvidia-setting-silk-smoothness) and **Enable Ansel** can also be set to **Off**.
+During CUDA workloads, the memory clock frequency will downclock to P-State 2 despite following the [Lock GPU Clocks/P-State 0](#lock-gpu-clocksp-state-0) step. For this reason, you should set **CUDA - Force P2 State** to **Off**. [**SILK Smoothness**](https://www.avsim.com/forums/topic/552651-nvidia-setting-silk-smoothness) and **Enable Ansel** can also be set to **Off**.
 
 - See [media/CUDA-force-p2-state-analysis](../media/cuda-force-p2-state-analysis.png)
 - Download and extract [NVIDIA Profile Inspector](https://github.com/Orbmu2k/nvidiaProfileInspector)
