@@ -102,7 +102,7 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
     
     According to the documentation Windows allows up to 0x3F (63 decimal) because the bitmask is made up of 6-bits, so why do values above this exist? what happens if we enter a value greater than the (theoretically) maximum allowed?
 
-    We can read PsPrioritySeparation and PspForegroundQuantum in a local kernel debugger such as WinDbg in realtime and use the quantum index provided in the Windows internals book to find out the different values it returns with different Win32PrioritySeparation entries.
+    We can read PsPrioritySeparation and PspForegroundQuantum in a local kernel debugger such as WinDbg in real-time and use the quantum index provided in the Windows internals book to find out the different values it returns with different Win32PrioritySeparation entries.
 
     | PsPrioritySeparation | Foreground boost |
     |----------------------|------------------|
