@@ -46,7 +46,7 @@
 
 - Unplug any other unnecessary devices such as portable device chargers
 
-- Plug your mouse and keyboard into the first two ports on your first USB controller. This can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/files/UsbTreeView_x64.zip) with trial and error. Use the motherboard ports and avoid companion ports (indicated on the right section of the program)
+- Plug your mouse and keyboard into the first two ports on your first USB controller. This can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html) with trial and error. Use the motherboard ports and avoid companion ports (indicated on the right section of the program)
 
     - Ryzen systems have a USB port that is directly connected to the CPU which can be identified through the motherboard manual
 
