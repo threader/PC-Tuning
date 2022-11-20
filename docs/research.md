@@ -31,7 +31,7 @@
 <summary>Read More</summary>
 <br>
 
-After searching through the decompiled **ntoskrnl.exe** pseudocode in [Hex-Rays IDA](https://hex-rays.com/products/idahome/), I noticed that **HalpTscSyncPolicy** is changed when **TscSyncPolicy** is configured by modifying the BCD store. Despite many claims of enhanced being the default value, there has no been evidence so I decided to find out myself.
+After searching through the decompiled **ntoskrnl.exe** pseudocode in [Hex-Rays IDA](https://hex-rays.com/products/idahome), I noticed that **HalpTscSyncPolicy** is changed when **TscSyncPolicy** is configured by modifying the BCD store. Despite many claims of enhanced being the default value, there has no been evidence so I decided to find out myself.
 
 We can read **HalpTscSyncPolicy** in a local kernel debugger such as [WinDbg](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/debugger-download-tools) in real-time to find out the different values it returns with different bcd store configurations.
 
