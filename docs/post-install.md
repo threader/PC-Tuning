@@ -107,20 +107,6 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
 
 - Open ```C:\bin\Autoruns.exe``` and remove all obsolete entries with a yellow label, run with ``C:\bin\NSudo.exe`` if you encounter any permission errors
 
-## Install [Open-Shell](https://github.com/Open-Shell/Open-Shell-Menu) (Windows 8+)
-
-- Run **OpenShellSetup.exe** in ``C:\bin\open-shell``
-
-    - Only install the **Open-Shell Menu**. Disable everything else to prevent installing bloatware
-
-- I have included a registry file that will apply a basic OpenShell skin along with a few other settings, feel free to use your own
-
-- Create a shortcut in win + r, **shell:startup** with a target of ``C:\Program Files\Open-Shell\StartMenu.exe``
-
-- Windows 8 Only:
-
-    - Open ``"C:\Program Files\Open-Shell\Start Menu Settings.lnk"``, enable **Show all settings** then go to the Windows 8 Settings section and set **Disable active corners** to **All**
-
 ## Install Xbox Game Bar (Windows 10+)
 
 Some games such as Apex Legends require Game Bar to be installed for [FSE/Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) to properly function. The Game Bar related processes will get disabled in the [Configure Services and Drivers](#configure-services-and-drivers) section to prevent them from running in the background. Open CMD as administrator and enter the command below.
@@ -195,7 +181,7 @@ C:\bin\ndp48-web.exe
 
 ## Configure a [Web Browser](https://privacytests.org)
 
-A standard Firefox installation is recommended. I have created a script used to update/install the latest Firefox version. Open CMD and enter the command below.
+A standard Firefox installation is recommended. I have created a script used to update/install the latest Firefox version. Open CMD as administrator and enter the command below.
 
 ```bat
 C:\bin\python\python.exe C:\bin\scripts\install-firefox.py
@@ -204,6 +190,18 @@ C:\bin\python\python.exe C:\bin\scripts\install-firefox.py
 - [Dreammjow's filter list](https://raw.githubusercontent.com/dreammjow/MyFilters/main/src/filters.txt) can be imported (beware of sites breaking)
 
 - On Firefox, after configuring extensions, I usually customize/cleanup the interface further in **Menu Settings -> More tools -> Customize toolbar...** then skim through **about:preferences**. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported, see the [wiki](https://github.com/arkenfox/user.js/wiki)
+
+## Install Open-Shell (Windows 8+)
+
+- Download and install [Open-Shell](https://github.com/Open-Shell/Open-Shell-Menu). Only install the **Open-Shell Menu**
+
+- ``C:\bin\openshell-settings-(reboot required).reg`` will apply a basic OpenShell skin along with a few other settings, feel free to use your own
+
+- Create a shortcut in win + r, **shell:startup** with a target of ``C:\Program Files\Open-Shell\StartMenu.exe``
+
+- Windows 8 Only:
+
+    - Open ``"C:\Program Files\Open-Shell\Start Menu Settings.lnk"``, enable **Show all settings** then go to the Windows 8 Settings section and set **Disable active corners** to **All**
 
 ## Install 7-Zip
 
