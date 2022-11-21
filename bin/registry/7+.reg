@@ -130,11 +130,9 @@ Windows Registry Editor Version 5.00
 "AutoEndTasks"="1"
 
 ; turn off display of recent search entries in the file explorer search box
-; remove notifications and action center
 
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer]
 "DisableSearchBoxSuggestions"=dword:00000001
-"DisableNotificationCenter"=dword:00000001
 
 ; disable shake to minimize
 ; disable tooltips in file explorer
@@ -356,12 +354,10 @@ Windows Registry Editor Version 5.00
 
 ; apply the default account picture to all users
 ; remove the security and maintenance icon
-; disables retrieval of online tips and help in the immersive control panel
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
 "UseDefaultTile"=dword:00000001
 "HideSCAHealth"=dword:00000001
-"AllowOnlineTips"=dword:00000000
 
 ; do not allow themes to change desktop icons
 ; do not allow themes to change mouse pointers
@@ -434,12 +430,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Classes\.jxr]
 @="PhotoViewer.FileAssoc.Tiff"
 
-; do not sync
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]
-"DisableSettingSync"=dword:00000002
-"DisableSettingSyncUserOverride"=dword:00000001
-
 ; turn off the advertising id
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo]
@@ -450,23 +440,9 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Control Panel\International\User Profile]
 "HttpAcceptLanguageOptOut"=dword:00000001
 
-; disable license telemetry
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]
-"NoGenTicket"=dword:00000001
-
-; disable search the web or display web results in Search
-; disable cloud search
-; disable cortana
-; do not allow search and cortana to use location
 ; do not allow web search
-; allow indexing of encrypted files
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
-"ConnectedSearchUseWeb"=dword:00000000
-"AllowCloudSearch"=dword:00000000
-"AllowCortana"=dword:00000000
-"AllowSearchToUseLocation"=dword:00000000
 "DisableWebSearch"=dword:00000001
 
 ; disable inking and typing personalization
@@ -499,18 +475,6 @@ Windows Registry Editor Version 5.00
 "HistoryViewEnabled"=dword:00000000
 "HasAboveLockTips"=dword:00000000
 
-; disable activity feed
-; disable continue experiences on this device
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
-"EnableActivityFeed"=dword:00000000
-"EnableCdp"=dword:00000000
-
-; disable microsoft consumer experiences
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
-"DisableWindowsConsumerFeatures"=dword:00000001
-
 ; do not let windows apps run in the background
 ; do not let windows apps access notifications
 ; do not let windows apps control radios
@@ -522,20 +486,10 @@ Windows Registry Editor Version 5.00
 "LetAppsAccessRadios"=dword:00000002
 "LetAppsGetDiagnosticInfo"=dword:00000002
 
-; disable notifications network usage
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]
-"NoCloudApplicationNotification"=dword:00000001
-
 ; prevent edge from installing automatically
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EdgeUpdate]
 "DoNotUpdateToEdgeWithChromium"=dword:00000001
-
-; prevent auto updating store apps
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
-"AutoDownload"=dword:00000002
 
 ; disable automatic update of speech data on windows
 
@@ -568,11 +522,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Shell\USB]
 "NotifyOnUsbErrors"=dword:00000000
 "NotifyOnWeakCharger"=dword:00000000
-
-; disable access to the store
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
-"NoUseStoreOpenWith"=dword:00000001
 
 ; disable suggested content in the immersive control panel
 
