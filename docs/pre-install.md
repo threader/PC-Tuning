@@ -13,7 +13,7 @@ in advance of building the ISO, see the [Integrate and Obtain Drivers](./buildin
 
 ## Prepare the USB
 
-- Plug in your USB storage, download [Ventoy](https://github.com/ventoy/Ventoy/releases) and launch **Ventoy2Disk.exe**. Go to **Option > Partition Style** and select GPT (UEFI) or MBR (Legacy) then select your USB storage and click install
+- Plug in your USB storage and backup any important files. Download [Ventoy](https://github.com/ventoy/Ventoy/releases) and launch **Ventoy2Disk.exe**. Go to **Option > Partition Style** and select GPT (UEFI) or MBR (Legacy) then select your USB storage and click install
 
     - See [media/identify-bios-mode.png](../media/identify-bios-mode.png)
 
