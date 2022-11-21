@@ -59,8 +59,8 @@ def main() -> int:
             "OverrideFirstRunPage": "",
             "Extensions": {
                 "Install": [
-                    "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi"
-                    "https://addons.mozilla.org/firefox/downloads/file/3950379/latest.xpi"
+                    "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/11423598-latest.xpi",
+                    "https://addons.mozilla.org/firefox/downloads/latest/fastforwardteam/17032224-latest.xpi"
                 ]
             }
         }
