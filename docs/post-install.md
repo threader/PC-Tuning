@@ -321,7 +321,7 @@ This step is not optional, pcw.sys will be disabled which breaks the stock Task 
 
 - It relies on a kernel mode driver to operate (additional overhead)
 - Does not provide performance metrics such as cycles/context switches delta and other useful details
-- On Windows 8+, [Task Manager reports CPU utility in %](https://aaron-margosis.medium.com/task-managers-cpu-numbers-are-all-but-meaningless-2d165b421e43) which provides misleading CPU utilization details, on the other hand, Windows 7's Task Manager and process explorer report time-based busy utilization. This also explains why the disable idle power setting results in 100% CPU utilization on Windows 8+
+- On Windows 8+, [Task Manager reports CPU utility in %](https://aaron-margosis.medium.com/task-managers-cpu-numbers-are-all-but-meaningless-2d165b421e43) which provides misleading CPU utilization details, on the other hand, Windows 7's Task Manager and Process Explorer report time-based busy utilization. This also explains why the disable idle power setting results in 100% CPU utilization on Windows 8+
 
 </details>
 
@@ -504,7 +504,7 @@ It is not a bad idea to skim through both the legacy and immersive control panel
 
 By default, CPU 0 handles the majority of DPCs and ISRs for several devices which can be viewed in a xperf dpcisr trace. This is not desirable as there will be a latency penalty because many processes and system activities are scheduled on the same core. We can set an interrupt affinity policy to the USB, GPU and NIC driver, which are few of many devices responsible for the most DPCs/ISRs, to offload them onto another core. The device can be identified by cross-checking the **Location Info** with the **Location** in the **Properties -> General** section of a device in device manager. Restart your PC instead of the driver to avoid issues.
 
-- Download [Microsoft Interrupt Affinity Tool](https://www.techpowerup.com/download/microsoft-interrupt-affinity-tool/#:~:text=The%20Microsoft%20Interrupt%2DAffinity%20Policy,processors%20on%20a%20multiprocessor%20computer.) and extract **intPolicy_x64.exe**
+- Download [Microsoft Interrupt Affinity Tool](https://www.techpowerup.com/download/microsoft-interrupt-affinity-tool) and extract **intPolicy_x64.exe**
 
 - Use [AutoGpuAffinity](https://github.com/amitxv/AutoGpuAffinity) to benchmark the GPU affinity
 
