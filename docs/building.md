@@ -18,6 +18,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
 - ISO Sources:
 
+    - [New Download Links](https://docs.google.com/spreadsheets/d/1zTF5uRJKfZ3ziLxAZHh47kF85ja34_OFB5C5bVSPumk/edit#gid=0)
     - [MVS Collection](https://isofiles.bd581e55.workers.dev)
     - [TechBench](https://tb.rg-adguard.net/public.php)
     - [UUP dump](https://uupdump.net)
