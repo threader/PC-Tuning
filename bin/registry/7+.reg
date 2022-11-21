@@ -112,11 +112,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EnhancedStorageDevices]
 "TCGSecurityActivationDisabled"=dword:00000001
 
-; prevent the usage of onedrive for file storage
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive]
-"DisableFileSyncNGSC"=dword:00000001
-
 ; do not send additional error data to microsoft
 
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
@@ -473,7 +468,6 @@ Windows Registry Editor Version 5.00
 "AllowCortana"=dword:00000000
 "AllowSearchToUseLocation"=dword:00000000
 "DisableWebSearch"=dword:00000001
-"AllowIndexingEncryptedStoresOrItems"=dword:00000000
 
 ; disable inking and typing personalization
 
@@ -552,16 +546,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Appx]
 "AllowAutomaticAppArchiving"=dword:00000000
-
-; disable windows spotlight features
-
-[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
-"DisableWindowsSpotlightFeatures"=dword:00000001
-"ConfigureWindowsSpotlight"=dword:00000002
-"IncludeEnterpriseSpotlight"=dword:00000000
-"DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001
-"DisableWindowsSpotlightOnActionCenter"=dword:00000001
-"DisableWindowsSpotlightOnSettings"=dword:00000001
 
 ; disable automatic registry backup
 
