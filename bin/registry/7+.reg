@@ -6,10 +6,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options]
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata]
-
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\StorageSense]
-
 ; remove pin to start from context menu as we will be using open-shell
 
 [-HKEY_CLASSES_ROOT\Folder\shellex\ContextMenuHandlers\PintoStartScreen]
@@ -31,10 +27,6 @@ Windows Registry Editor Version 5.00
 [-HKEY_CLASSES_ROOT\Folder\shell\pintohome]
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\pintohome]
-
-; remove share in context menu
-
-[-HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\ModernSharing]
 
 ; disable windows update
 
