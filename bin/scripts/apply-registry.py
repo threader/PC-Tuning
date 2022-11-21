@@ -20,7 +20,7 @@ def main() -> int:
         return 1
 
     registry_dir = "C:\\bin\\registry"
-    registry_files = ["7.reg", "7+.reg", "7-8.reg", "8.reg", "8+.reg", "10+.reg", "11+.reg"]
+    registry_files = ["7.reg", "7+.reg", "7-8.reg", "8.reg", "8+.reg", "10+.reg", "11.reg"]
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--winver", choices=[7, 8, 10, 11], help="specify windows version to be configured", required=True, type=int, metavar="<winver>")

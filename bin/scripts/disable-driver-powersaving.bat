@@ -1,6 +1,6 @@
 @echo off
 
-dism > nul 2>&1 || echo error: administrator privileges required && pause && exit /b 1
+DISM > nul 2>&1 || echo error: administrator privileges required && pause && exit /b 1
 
 for %%a in (
     "EnhancedPowerManagementEnabled"
