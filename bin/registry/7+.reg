@@ -107,11 +107,6 @@ Windows Registry Editor Version 5.00
 "AllowTelemetry"=dword:00000000
 "DoNotShowFeedbackNotifications"=dword:00000001
 
-; do not configure encrypted drives
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EnhancedStorageDevices]
-"TCGSecurityActivationDisabled"=dword:00000001
-
 ; do not send additional error data to microsoft
 
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
@@ -135,44 +130,23 @@ Windows Registry Editor Version 5.00
 "DisableSearchBoxSuggestions"=dword:00000001
 
 ; disable shake to minimize
-; disable tooltips in file explorer
-; hide status bar in file explorer
 ; disable sync provider notifications
-; hide preview handlers in preview pane of file explorer
-; disable the sharing wizard in file explorer
 ; show file extensions
-; never combine taskbar icons
 ; launch file explorer to this pc
+; configure snap settings
 ; disable recent items and frequent places
 ; disable app launch tracking
-; disable display compressed and encrypted NTFS files in color
-; configure snap settings
-; disable show windows store apps on the taskbar
-; remove favorites from explorer pane
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "DisallowShaking"=dword:00000001
-"ShowInfoTip"=dword:00000000
-"ShowStatusBar"=dword:00000000
 "ShowSyncProviderNotifications"=dword:00000000
-"ShowPreviewHandlers"=dword:00000000
-"SharingWizardOn"=dword:00000000
 "HideFileExt"=dword:00000000
-"TaskbarGlomLevel"=dword:00000002
 "LaunchTo"=dword:00000001
-"Start_TrackDocs"=dword:00000000
-"Start_TrackProgs"=dword:00000000
-"ShowCompColor"=dword:00000000
+"SnapAssist"=dword:00000000
 "SnapFill"=dword:00000000
 "JointResize"=dword:00000000
-"SnapAssist"=dword:00000000
-"StoreAppsOnTaskbar"=dword:00000000
-"NavPaneShowFavorites"=dword:00000000
-
-; disable lmhosts
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetBT\Parameters]
-"EnableLMHOSTS"=dword:00000000
+"Start_TrackDocs"=dword:00000000
+"Start_TrackProgs"=dword:00000000
 
 ; disable administrative shares
 
@@ -206,11 +180,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NDIS\Parameters]
 "DefaultPnPCapabilities"=dword:00000018
 
-; allow windows to automatically sync time
-
-[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W32Time\Parameters]
-"Type"="NTP"
-
 ; disable windows error reporting
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
@@ -220,15 +189,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\AppCompat]
 "DisablePCA"=dword:00000001
-
-; disable hibernate option
-; disable lock option
-; disable sleep option
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings]
-"ShowHibernateOption"=dword:00000000
-"ShowLockOption"=dword:00000000
-"ShowSleepOption"=dword:00000000
 
 ; disable autoplay
 
@@ -250,13 +210,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\SOFTWARE\Classes\Local Settings\SOFTWARE\Microsoft\Windows\Shell\Bags\AllFolders\Shell]
 "FolderType"="NotSpecified"
-
-; does not affect keyboard latency, the keyboard typing delay is genuinely annoying while typing
-
-[HKEY_CURRENT_USER\Control Panel\Keyboard]
-"InitialKeyboardIndicators"="0"
-"KeyboardDelay"="0"
-"KeyboardSpeed"="31"
 
 ; disable language bar
 
@@ -302,8 +255,6 @@ Windows Registry Editor Version 5.00
 ; hide frequent folders in quick access
 ; hide recent folders in quick access
 ; show all tray icons in the taskbar
-; remove shortcut in shortcut names
-; restore classic alt tab
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
 "ShowFrequent"=dword:00000000
@@ -311,25 +262,11 @@ Windows Registry Editor Version 5.00
 "EnableAutoTray"=dword:00000000
 "ShellState"=hex(3):24,00,00,00,3E,20,00,00,00,00,00,00,00,00,00,00,00,00,\
 00,00,01,00,00,00,12,00,00,00,00,00,00,00,22,00,00,00
-"link"=hex:00,00,00,00
 
 ; hide quick access from file explorer
-; disable smartscreen
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
 "HubMode"=dword:00000001
-"SmartScreenEnabled"="Off"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes\Local Settings\SOFTWARE\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\PhishingFilter]
-"Enabledv9"=dword:00000000
-"PreventOverride"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\PhishingFilter]
-"Enabledv9"=dword:00000000
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost]
-"EnableWebContentEvaluation"=dword:00000000
-"PreventOverride"=dword:00000000
 
 ; disable automatic setup of network devices
 
@@ -358,13 +295,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
 "UseDefaultTile"=dword:00000001
 "HideSCAHealth"=dword:00000001
-
-; do not allow themes to change desktop icons
-; do not allow themes to change mouse pointers
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes]
-"ThemeChangesDesktopIcons"=dword:00000000
-"ThemeChangesMousePointers"=dword:00000000
 
 ; clear history of recently opened documents on exit
 
@@ -440,11 +370,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Control Panel\International\User Profile]
 "HttpAcceptLanguageOptOut"=dword:00000001
 
-; do not allow web search
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
-"DisableWebSearch"=dword:00000001
-
 ; disable inking and typing personalization
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Personalization\Settings]
@@ -486,11 +411,6 @@ Windows Registry Editor Version 5.00
 "LetAppsAccessRadios"=dword:00000002
 "LetAppsGetDiagnosticInfo"=dword:00000002
 
-; prevent edge from installing automatically
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EdgeUpdate]
-"DoNotUpdateToEdgeWithChromium"=dword:00000001
-
 ; disable automatic update of speech data on windows
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech_OneCore\Preferences]
@@ -529,94 +449,6 @@ Windows Registry Editor Version 5.00
 "SubscribedContent-353694Enabled"=dword:00000001
 "SubscribedContent-353696Enabled"=dword:00000001
 "SubscribedContent-338393Enabled"=dword:00000001
-
-; configure privacy settings in the immersive control panel
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Speech_OneCore\Settings\VoiceActivation\UserPreferenceForAllApps]
-"AgentActivationOnLockScreenEnabled"=dword:00000000
-"AgentActivationEnabled"=dword:00000000
-"AgentActivationLastUsed"=dword:00000000
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCall]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCall]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCallHistory]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCallHistory]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\email]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userDataTasks]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\email]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userDataTasks]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\bluetoothSync]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\broadFileSystemAccess]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documentsLibrary]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\picturesLibrary]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\broadFileSystemAccess]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documentsLibrary]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\picturesLibrary]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary]
-"Value"="Deny"
 
 ; disable automatic updates for offline maps
 
