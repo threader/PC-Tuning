@@ -460,9 +460,9 @@ reg export "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger" 
 
 ## Optimize the File System
 
-Open CMD & enter the commands below.
+Open CMD and enter the commands below.
 
-- Disables the creation of 8.3 character-length file names on FAT- & NTFS-formatted volumes
+- Disables the creation of 8.3 character-length file names on FAT- and NTFS-formatted volumes
 
     ```bat
     fsutil behavior set disable8dot3 1

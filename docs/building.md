@@ -109,7 +109,7 @@ DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:NetFx3 /All /LimitAccess 
 
 ```bat
 DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:DirectPlay /All
- ```
+```
 
 ## Remove Provisioned Appx Bloatware (Windows 8+)
 

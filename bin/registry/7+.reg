@@ -10,7 +10,7 @@ Windows Registry Editor Version 5.00
 
 [-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\StorageSense]
 
-; remove pin to start from context menu as we will be using open shell
+; remove pin to start from context menu as we will be using open-shell
 
 [-HKEY_CLASSES_ROOT\Folder\shellex\ContextMenuHandlers\PintoStartScreen]
 
