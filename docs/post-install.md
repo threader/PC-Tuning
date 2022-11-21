@@ -331,10 +331,10 @@ This step is not optional, pcw.sys will be disabled which breaks the stock Task 
 
 ## Disable Process Mitigations (Windows 10 1709+)
 
-Run the ``C:\bin\scripts\disable-process-mitigations.bat`` script to disable [process mitigations](https://docs.microsoft.com/en-us/powershell/module/processmitigations/set-processmitigation?view=windowsserver2019-ps). Effects can be viewed with the command below in PowerShell.
+Open CMD and enter the command below to disable [process mitigations](https://docs.microsoft.com/en-us/powershell/module/processmitigations/set-processmitigation?view=windowsserver2019-ps). Effects can be viewed with ``Get-ProcessMitigation -System`` in PowerShell.
 
-```powershell
-Get-ProcessMitigation -System
+```bat
+C:\bin\scripts\disable-process-mitigations.bat
 ```
 
 ## Configure Memory Management Settings (Windows 8+)
