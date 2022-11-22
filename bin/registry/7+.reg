@@ -442,11 +442,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WlanSvc\AnqpCache]
 "OsuRegistrationStatus"=dword:00000000
 
-; disable windows default printer management
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows]
-"LegacyDefaultPrinterMode"=dword:00000001
-
 ; disable spell checking features
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\TabletTip\1.7]
