@@ -250,11 +250,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\NcdAutoSetup\Private]
 "AutoSetup"=dword:00000000
 
-; disable audio ducking
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Multimedia\Audio]
-"UserDuckingPreference"=dword:00000003
-
 ; disable customer experience improvement program
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SQMClient\Windows]

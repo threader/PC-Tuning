@@ -382,7 +382,9 @@ Microsoft fixed the standby list memory management issues in a later version of 
     
 - Disable **Exclusive Mode** in the Advanced section
 
-- I also like to set the sound scheme to no sounds in the Sounds tab
+- Set the option in the communications tab to **Do nothing**
+
+- I also like to set the sound scheme to no sounds in the sounds tab
 
 ## Configure Services and Drivers
 
