@@ -283,65 +283,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\FTH]
 "Enabled"=dword:00000000
 
-; enable the legacy photo viewer
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations]
-".tif"="PhotoViewer.FileAssoc.Tiff"
-".tiff"="PhotoViewer.FileAssoc.Tiff"
-".bmp"="PhotoViewer.FileAssoc.Tiff"
-".dib"="PhotoViewer.FileAssoc.Tiff"
-".gif"="PhotoViewer.FileAssoc.Tiff"
-".jfif"="PhotoViewer.FileAssoc.Tiff"
-".jpe"="PhotoViewer.FileAssoc.Tiff"
-".jpeg"="PhotoViewer.FileAssoc.Tiff"
-".jpg"="PhotoViewer.FileAssoc.Tiff"
-".jxr"="PhotoViewer.FileAssoc.Tiff"
-".png"="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes\.jpg]
-@="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes\.jpeg]
-@="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes\.gif]
-@="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes\.png]
-@="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes\.bmp]
-@="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes\.tiff]
-@="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes\.ico]
-@="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes\.tif]
-@="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes\.wdp]
-@="PhotoViewer.FileAssoc.Wdp"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes\.jfif]
-@="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes\.dib]
-@="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes\.jpe]
-@="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes\.jxr]
-@="PhotoViewer.FileAssoc.Tiff"
-
-; turn off the advertising id
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo]
-"DisabledByGroupPolicy"=dword:00000001
-
 ; disable website access to language list
 
 [HKEY_CURRENT_USER\Control Panel\International\User Profile]
@@ -414,22 +355,10 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsMitigation]
 "UserPreference"=dword:00000001
 
-; disable suggested content in the immersive control panel
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
-"SubscribedContent-353694Enabled"=dword:00000001
-"SubscribedContent-353696Enabled"=dword:00000001
-"SubscribedContent-338393Enabled"=dword:00000001
-
 ; disable automatic updates for offline maps
 
 [HKEY_LOCAL_MACHINE\System\Maps]
 "AutoUpdateEnabled"=dword:00000000
-
-; disable transparency effects
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize]
-"EnableTransparency"=dword:00000000
 
 ; disable hotspot
 
