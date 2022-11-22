@@ -61,11 +61,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DiagTrack]
 "Start"=dword:00000004
 
-; remove notifications and action center
-
-[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer]
-"DisableNotificationCenter"=dword:00000001
-
 ; disables retrieval of online tips and help in the immersive control panel
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
