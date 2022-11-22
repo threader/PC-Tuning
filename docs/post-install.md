@@ -46,8 +46,6 @@ C:\bin\scripts\miscellaneous.bat
 
 - In win + r, **dfrgui** disable **Run on a schedule**. More details on doing maintenance tasks ourselves in [Final Thoughts and Tips](#final-thoughts-and-tips)
 
-- Disable **Turn on fast startup** in **Control Panel -> Hardware and Sound -> Power Options -> System Settings**
-
 - In win + r, **sysdm.cpl** configure the following:
 
     - **Computer Name -> Change** - configure the PC name
