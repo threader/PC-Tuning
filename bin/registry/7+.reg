@@ -414,12 +414,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsMitigation]
 "UserPreference"=dword:00000001
 
-; disable notification of usb issues
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Shell\USB]
-"NotifyOnUsbErrors"=dword:00000000
-"NotifyOnWeakCharger"=dword:00000000
-
 ; disable suggested content in the immersive control panel
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
