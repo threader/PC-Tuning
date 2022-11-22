@@ -1,7 +1,7 @@
 @echo off
 setlocal EnableDelayedExpansion
 
-dism > nul 2>&1 || echo error: administrator privileges required && pause && exit /b 1
+DISM > nul 2>&1 || echo error: administrator privileges required && pause && exit /b 1
 
 where xperf.exe > nul 2>&1
 if not !errorlevel! == 0 (

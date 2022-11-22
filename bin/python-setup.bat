@@ -2,7 +2,6 @@
 setlocal EnableDelayedExpansion
 
 :: Requirements
-::
 :: - 7-Zip
 :: - cURL
 

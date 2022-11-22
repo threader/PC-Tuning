@@ -18,7 +18,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
 - ISO Sources:
 
-    - [New Download Links](https://docs.google.com/spreadsheets/d/1zTF5uRJKfZ3ziLxAZHh47kF85ja34_OFB5C5bVSPumk/edit#gid=0)
+    - [New Download Links](https://docs.google.com/spreadsheets/d/1zTF5uRJKfZ3ziLxAZHh47kF85ja34_OFB5C5bVSPumk)
     - [MVS Collection](https://isofiles.bd581e55.workers.dev)
     - [TechBench](https://tb.rg-adguard.net/public.php)
     - [UUP dump](https://uupdump.net)
@@ -106,7 +106,6 @@ DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:NetFx3 /All /LimitAccess 
 ```
 
 ## Enable Legacy Components for Older Games (Windows 8+)
-
 
 ```bat
 DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:DirectPlay /All
