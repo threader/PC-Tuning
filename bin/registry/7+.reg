@@ -119,24 +119,6 @@ Windows Registry Editor Version 5.00
 "Start_TrackDocs"=dword:00000000
 "Start_TrackProgs"=dword:00000000
 
-; disable administrative shares
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters]
-"AutoShareWks"=dword:00000000
-
-; enable firewall, disable file sharing
-
-[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile]
-"DisableNotifications"=dword:00000001
-"EnableFirewall"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile]
-"DisableNotifications"=dword:00000001
-"EnableFirewall"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile]
-"EnableFirewall"=dword:00000001
-
 ; disable search indexing
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Search\Preferences]
