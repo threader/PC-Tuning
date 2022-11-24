@@ -105,14 +105,6 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
 
 - Open ```C:\bin\Autoruns.exe``` and remove all obsolete entries with a yellow label, run with ``C:\bin\NSudo.exe`` if you encounter any permission errors
 
-## Install Xbox Game Bar (Windows 10+)
-
-Some games such as Apex Legends require Game Bar to be installed for [FSE/Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) to properly function. The Game Bar related processes will get disabled in the [Configure Services and Drivers](#configure-services-and-drivers) section to prevent them from running in the background. Open CMD as administrator and enter the command below.
-
-```bat
-C:\bin\scripts\install-game-bar.bat
-```
-
 ## Install [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist)
 
 Run the package below to install the redistributables.
