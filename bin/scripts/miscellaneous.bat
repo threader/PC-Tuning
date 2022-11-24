@@ -9,11 +9,11 @@ powercfg /hibernate off
 echo info: setting PowerShell executionpolicy to unrestricted
 PowerShell Set-ExecutionPolicy Unrestricted -force
 
-echo info: setting the password to never expire, resolves some bugs despite no password being set
+echo info: setting the password to never expire
 net accounts /maxpwage:unlimited > nul 2>&1
 
-echo info: disable automatic repair, does more harm than good in our use case
-bcdedit /set {current} recoveryenabled no > nul 2>&1
+echo info: disable automatic repair
+bcdedit /set recoveryenabled no > nul 2>&1
 fsutil repair set C: 0 > nul 2>&1
 
 echo info: cleaning the winsxs folder
