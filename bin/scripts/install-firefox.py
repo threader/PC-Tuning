@@ -86,15 +86,13 @@ def main() -> int:
     defaultPref("browser.tabs.tabmanager.enabled", false);
     """
 
-    try:
-        process = subprocess.run(["C:\\Program Files\\Mozilla Firefox\\firefox.exe", "--version", "|", "more"], capture_output=True, check=False, universal_newlines=True)
+    if os.path.exists(f"{install_dir}\\firefox.exe"):
+        process = subprocess.run([f"{install_dir}\\firefox.exe", "--version", "|", "more"], capture_output=True, check=False, universal_newlines=True)
         local_version = process.stdout.split()[-1]
 
-        if all([latest_firefox_version, local_version]) and local_version == latest_firefox_version:
+        if local_version == latest_firefox_version:
             print(f"info: latest version {latest_firefox_version} already installed")
             return 0
-    except FileNotFoundError:
-        pass
 
     if os.path.exists(setup):
         os.remove(setup)
