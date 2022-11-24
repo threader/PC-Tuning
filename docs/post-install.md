@@ -139,7 +139,7 @@ C:\bin\python\python.exe C:\bin\scripts\apply-registry.py --winver <winver>
 
 - Ensure that the program prints a "done" message to the console, if it has not then command prompt was probably not opened with administrator privileges and the registry files were not successfully merged
 
-- After a restart, you can establish an Internet connection as the Windows update policies will take effect
+- Restart your PC. After and only after a restart, you can establish an Internet connection as the Windows update policies will take effect
 
 ## [Spectre and Meltdown](https://www.grc.com/inspectre.htm)
 
@@ -160,6 +160,7 @@ Go through the ``C:\bin\preference`` folder to configure the following:
 - Taskbar settings
 
 - Windows 10+ Only:
+
     - Colors and settings
     - Country and language
  
@@ -365,7 +366,7 @@ Microsoft fixed the standby list memory management issues in a later version of 
 ## Configure the Network Adapter
 
 - Open **Network and Sharing Center -> Change adapter settings**
-- Right click your main network adapter and select properties
+- Disable any unused network adapters then right click your main one and select properties
 - Disable all items except **QoS Packet Scheduler** and **Internet Protocol Version 4 (TCP/IPv4)**
 - [Configure a Static IP address](https://www.youtube.com/watch?t=36&v=5iRp1Nug0PU). this is required as we will be disabling the network services that waste CPU cycles
 - Disable **NetBIOS over TCP/IP** in **General -> Advanced -> WINS** to [prevent unnecessary system listening](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/DOCS/NETWORK/README.md)
@@ -448,7 +449,7 @@ C:\bin\scripts\disable-driver-powersaving.bat
 
 ## Configure Event Trace Sessions
 
-Create registry files to toggle event trace sessions. Programs that rely on event tracers such will not be able to log data until the required sessions are restored which is the purpose of creating two registry files to toggle between them (identical concept to the service scripts). Open CMD and enter the commands below to build the registry files in the ``C:\`` directory. As with the services scripts these registry files must be ran with NSudo.
+Create registry files to toggle event trace sessions. Programs that rely on event tracers such will not be able to log data until the required sessions are restored which is the purpose of creating two registry files to toggle between them (identical concept to the service scripts). Open CMD and enter the commands below to build the registry files in the ``C:\`` directory. As with the services scripts these registry files must be ran with NSudo. The sessions can be viewed in win + r, **perfmon -> Data Collector Sets -> Event Trace Sessions**. 
 
 ```bat
 reg export "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger" "C:\ets-enable.reg"
@@ -594,7 +595,7 @@ Configure default programs in **Settings -> Apps**.
 
 - Reset Firewall rules
 
-    - Open CMD and enter the command below
+    - Open CMD and enter the commands below
 
         ```bat
         reg.exe delete "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f
