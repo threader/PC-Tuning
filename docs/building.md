@@ -147,9 +147,9 @@ Run the command below to replace all backgrounds and user profile pictures with 
 win-wallpaper.exe --dir "%MOUNT_DIR%" --rgb #000000
 ```
 
-## Integrating Required Files
+## Integrating Required Files (1)
 
-Clone the repository and place the **bin** folder and **win-debloat.sh** script in the mounted directory. Open the mounted directory with the command below.
+Clone the repository and place the **bin** folder and **win-debloat.sh** script in the mounted directory. Open the directory with the command below.
 
 ```bat
 explorer "%MOUNT_DIR%"
@@ -177,9 +177,9 @@ This step is not required if you are [installing using DISM Apply-Image](./pre-i
     set "EXTRACTED_ISO=C:\W10_ISO"
     ```
 
-## Insert DISM Apply-Image Script
+## Integrating Required Files (2)
 
-Use the command below to open the extracted directory, place the **install.bat** script and the **bypass-windows11-checks.reg** registry file in the directory.
+Place the **install.bat** script and the **bypass-windows11-checks.reg** registry file in the extracted ISO directory. Open the directory with the command below.
 
 ```bat
 explorer "%EXTRACTED_ISO%"
