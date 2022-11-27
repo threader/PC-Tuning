@@ -142,6 +142,7 @@ def main() -> int:
     with open(firefox_cfg, "a", encoding="UTF-8") as f:
         f.writelines(textwrap.dedent(firefox_cfg_content))
 
+    print(f"info: version {latest_firefox_version} release notes: https://www.mozilla.org/en-US/firefox/{latest_firefox_version}/releasenotes")
     print("info: done")
 
     return 0
