@@ -7,15 +7,15 @@
 <summary>Read More</summary>
 
 - Download and install [Microsoft Network Monitor 3.4](https://www.microsoft.com/en-us/download/details.aspx?id=4865)
-   
+
 - Create a new capture
-   
+
     <img src="../media/network-monitor-new-capture.png" width="450">
 
 - Open a game that you have applied a DSCP value for and enter a game mode in which the game will send and receive packets (e.g an online match, not a local match)
-   
+
 - Press F5 to start logging. After 30 seconds or so press F7 to stop the log
-   
+
 - In the left hand pane, click on the game executable name and click on a packet header. Expand the packet info under **Frame Details** and finally expand the subcategory **Ipv4**. This will reveal the current DSCP value of each frame
 
     <img src="../media/network-monitor-dscp-value.png" width="400">
@@ -37,25 +37,25 @@ We can read **HalpTscSyncPolicy** in a local kernel debugger such as [WinDbg](ht
 
 **bcdedit.exe /deletevalue tscsyncpolicy** (Windows default)
 
-```
+```txt
 lkd> dd HalpTscSyncPolicy l1
 fffff801`2de4a3ac  00000000
-```
+```txt
 **bcdedit.exe /set tscsyncpolicy default**
 
-```
+```txt
 lkd> dd HalpTscSyncPolicy l1
 fffff803`1dc4a3ac  00000000
-```
+```txt
 **bcdedit.exe /set tscsyncpolicy legacy**
 
-```
+```txt
 lkd> dd HalpTscSyncPolicy l1
 fffff805`1dc4a3ac  00000001
-```
+```txt
 **bcdedit.exe /set tscsyncpolicy enhanced**
 
-```
+```txt
 lkd> dd HalpTscSyncPolicy l1
 fffff802`2864a3ac  00000002
 ```
@@ -99,7 +99,7 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
 
     <summary>Read More</summary>
     <br>
-    
+
     According to the documentation Windows allows up to 0x3F (63 decimal) because the bitmask is made up of 6-bits, so why do values above this exist? what happens if we enter a value greater than the (theoretically) maximum allowed?
 
     We can read PsPrioritySeparation and PspForegroundQuantum in a local kernel debugger such as WinDbg in real-time and use the quantum index provided in the Windows internals book to find out the different values it returns with different Win32PrioritySeparation entries.
@@ -114,23 +114,25 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
 
     Demonstration with the Windows default, **0x2 (2 decimal)**
 
-    ```
+    ```txt
     lkd> dd PsPrioritySeparation L1
     fffff802`3a6fc5c4  00000002
 
     lkd> db PspForegroundQuantum L3
     fffff802`3a72e874  06 0c 12
-    ```
+    ```txt
     PspForegroundQuantum returns the values in hexadecimal so we need to convert it to decimal in order to use the tables correctly. ``06 0c 12`` is equivalent to ``6 12 18`` and PsPrioritySeparation returns ``2``. In the tables, this corresponds to short, variable, 3:1. But we already knew this as it is documented by Microsoft, so now lets try an ambiguous value.
 
     **0xffff3f91 (4294918033 decimal)**
 
-    ```
+    ```txt
+
     lkd> dd PsPrioritySeparation L1
     fffff802`3a6fc5c4  00000001
 
     lkd> db PspForegroundQuantum L3
     fffff802`3a72e874  0c 18 24
+
     ```
 
     ``0c 18 24`` is equivalent to ``12 24 36`` and PsPrioritySeparation returns ``1`` which corresponds to long, variable, 2:1. Nothing special as it seems, this is actually equivalent to values less than the maximum documented value as shown in [this csv](https://raw.githubusercontent.com/djdallmann/GamingPCSetup/master/CONTENT/RESEARCH/FINDINGS/win32prisep0to271.csv). I had the same results while testing various other values.
@@ -158,10 +160,10 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
     <br>
 
     Out of the box, Windows uses 0x2 (2 decimal) which (in terms of foreground boosting) means that the threads of foreground processes get three times as much processor time than the threads of background processes each time they are scheduled for the processor. While this is theoretically desirable when playing a game for example, we need to pause for a moment and think about the potential damage this may be doing.
-    
+
     We can view the QuantumReset value in a local kernel debugger such as [WinDbg](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/debugger-download-tools) in real-time to check what a process's share of the total quantum is.
 
-    ```
+    ```txt
     QuantumReset is the default, full quantum of each thread on the system when it
     is replenished This value is cached into each thread of the process, but the KPROCESS
     structure is easier to look at 
@@ -171,37 +173,37 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
 
     Script.txt contents
 
-    ```
+    ```txt
     .sleep 1000
     dt nt!_KPROCESS <address> QuantumReset
     ```
 
     ---
-    
+
     **Valorant** (game)
 
-    ```
+    ```txt
     lkd> $$>a< "script.txt"
         +0x281 QuantumReset : 18 ''
     ```
 
     **Csrss** (responsible for input)
 
-    ```
+    ```txt
     lkd> $$>a< "script.txt"
         +0x281 QuantumReset : 6 ''
     ```
 
     **System** (Windows kernel)
 
-    ```
+    ```txt
     lkd> $$>a< "script.txt"
         +0x281 QuantumReset : 6 ''
     ```
 
     **Audiodg** (Windows audio)
 
-    ```
+    ```txt
     lkd> $$>a< "script.txt"
         +0x281 QuantumReset : 6 ''
     ```
@@ -210,20 +212,21 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
 
     **Valorant** (game)
 
-    ```
+    ```txt
     lkd> $$>a< "script.txt"
         +0x281 QuantumReset : 6 ''
     ```
 
     **Csrss** (responsible for input)
 
-    ```
+    ```txt
     lkd> $$>a< "script.txt"
         +0x281 QuantumReset : 6 ''
     ```
 
     **System** (Windows kernel)
-    ```
+
+    ```txt
     lkd> $$>a< "script.txt"
         +0x281 QuantumReset : 6 ''
     ```
@@ -232,7 +235,7 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
 
 ---
 
-#### Microsoft USB driver latency penalty 
+#### Microsoft USB driver latency penalty
 
 <details>
 
@@ -241,11 +244,11 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
 
 On a stock Windows 10 installation, the Wdf01000.sys driver handles USB connectivity but using it comes with a major latency penalty compared to using vendor USB drivers.
 
-**Wdf01000.sys**
+#### Wdf01000.sys
 
 <img src="../media/wdf01000-usb-xperf-report.png" width="500">
 
-**amdxhc31.sys** (vendor USB drivers)
+#### amdxhc31.sys (vendor USB drivers)
 
 <img src="../media/amdxhc31-usb-xperf-report.png" width="500">
 

@@ -2,7 +2,7 @@
 
 Windows oriented performance, privacy and latency tuning guide.
 
-Contact: https://twitter.com/amitxv
+Contact: <https://twitter.com/amitxv>
 
 ## Introduction
 

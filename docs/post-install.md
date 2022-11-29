@@ -93,13 +93,13 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
 
 - Right click an empty space and select **Open in Terminal** to open a terminal window in the current directory. Use the command below to run the script
 
-    ```
+    ```bash
     sudo bash win-debloat.sh
     ```
 
 - Once finished, use the command below to reboot
 
-    ```
+    ```bash
     sudo reboot
     ```
 
@@ -109,7 +109,7 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
 
 Run the package below to install the redistributables.
 
-```
+```txt
 C:\bin\VisualCppRedist_AIO_x86_x64.exe
 ```
 
@@ -137,7 +137,7 @@ C:\bin\python\python.exe C:\bin\scripts\apply-registry.py --winver <winver>
 
 Ensure **System is Spectre/Meltdown protected** is **NO** with the program below. AMD is unaffected by Meltdown and apparently [performs better with Spectre enabled](https://www.phoronix.com/review/amd-zen4-spectrev2), feel free to benchmark it on your own system.
 
-```
+```txt
 C:\bin\inspectre.exe
 ```
 
@@ -155,7 +155,7 @@ Go through the ``C:\bin\preference`` folder to configure the following:
 
     - Colors and settings
     - Country and language
- 
+
 ## Install Drivers
 
 Install any drivers your system requires, avoid installing chipset drivers. I would recommend updating and installing Ethernet, USB, NVMe, SATA (required on Windows 7 as enabling MSI on the stock SATA driver will result in a BSOD). See the [Integrate and Obtain Drivers](./building.md#integrate-and-obtain-drivers) section for details on finding drivers (download them on another operating system or PC).
@@ -166,7 +166,7 @@ Try to obtain the driver in its INF form so that it can be installed in device m
 
 Run the package below to install the runtimes.
 
-```
+```txt
 C:\bin\ndp48-web.exe
 ```
 
@@ -276,7 +276,7 @@ Open CMD and enter the commands below.
         ```bat
         bcdedit /set disabledynamictick yes
         ```
-    
+
 ## Configure the Graphics Driver
 
 - See [docs/configure-nvidia.md](../docs/configure-nvidia.md)
@@ -285,6 +285,7 @@ Open CMD and enter the commands below.
 ## Configure MSI Afterburner
 
 If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards) to configure the clock/memory frequency, fan speed and other settings, download and install it.
+
 - Disable RivaTuner Statistics Server during installation
 - Disable update checks in settings
 - I would recommend configuring a static fan speed as using the fan curve feature requires the program to run continually
@@ -368,11 +369,11 @@ Microsoft fixed the standby list memory management issues in a later version of 
 - Open the sound control panel, can be opened with win + r, **mmsys.cpl**
 
 - Disable unused Playback and Recording devices
-    
+
 - Disable audio enhancements as they waste CPU cycles
 
     - See [media/audio enhancements-benchmark.png](../media/audio%20enhancements-benchmark.png)
-    
+
 - Disable **Exclusive Mode** in the Advanced section
 
 - Set the option in the communications tab to **Do nothing**
@@ -441,7 +442,7 @@ C:\bin\scripts\disable-driver-powersaving.bat
 
 ## Configure Event Trace Sessions
 
-Create registry files to toggle event trace sessions. Programs that rely on event tracers such will not be able to log data until the required sessions are restored which is the purpose of creating two registry files to toggle between them (identical concept to the service scripts). Open CMD and enter the commands below to build the registry files in the ``C:\`` directory. As with the services scripts these registry files must be ran with NSudo. The sessions can be viewed in win + r, **perfmon -> Data Collector Sets -> Event Trace Sessions**. 
+Create registry files to toggle event trace sessions. Programs that rely on event tracers such will not be able to log data until the required sessions are restored which is the purpose of creating two registry files to toggle between them (identical concept to the service scripts). Open CMD and enter the commands below to build the registry files in the ``C:\`` directory. As with the services scripts these registry files must be ran with NSudo. The sessions can be viewed in win + r, **perfmon -> Data Collector Sets -> Event Trace Sessions**.
 
 ```bat
 reg export "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger" "C:\ets-enable.reg"
@@ -484,8 +485,8 @@ It is not a bad idea to skim through both the legacy and immersive control panel
 
     - Enable Message Signaled Interrupts on all devices that support it
 
-        - You will BSOD if you enable MSIs for the **stock** Windows 7 SATA driver which you should have updated as mentioned in the [Installing Drivers](#installing-drivers) section
-        
+        - You will BSOD if you enable MSIs for the **stock** Windows 7 SATA driver which you should have updated as mentioned in the [Install Drivers](#install-drivers) section
+
     - Be careful as to what you choose to prioritize. As an example, you will likely stutter in a open-world game that utilizes texture streaming if the GPU IRQ priority is set higher than the storage controller priority. For this reason, you can set all devices to undefined/normal priority
 
 - Restart your PC, you can verify if a device is utilizing MSIs by checking if it has a negative IRQ in MSI Utility
@@ -579,6 +580,7 @@ Configure default programs in **Settings -> Apps**.
         ```bat
         cleanmgr /sageset:50
         ```
+
     - Run Disk Cleanup
 
         ```bat

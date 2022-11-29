@@ -112,7 +112,7 @@ Ensure your CPU, RAM and GPU (with overclock applied) are stable before configur
 - [Linpack-Extended](https://github.com/BoringBoredom/Linpack-Extended)
 
     - Residuals should match, otherwise it may be a sign of instability
-    - GFLOP variation should be minimal 
+    - GFLOP variation should be minimal
     - Use a range of problem sizes while testing for stability
 
 - [Prime95](https://www.mersenne.org/download)

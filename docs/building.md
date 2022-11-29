@@ -54,6 +54,7 @@ Remove every edition except the desired edition (professional edition is recomme
     ```bat
     DISM /Get-WimInfo /WimFile:"%EXTRACTED_ISO%\sources\install.wim"
     ```
+
 - Remove edition by index
 
     ```bat
@@ -70,7 +71,7 @@ DISM /Mount-Wim /WimFile:"%EXTRACTED_ISO%\sources\install.wim" /Index:1 /MountDi
 
 - Windows 7 recommended updates:
 
-    ```
+    ```txt
     KB4490628 - Servicing Stack Update
     KB4474419 - SHA-2 Code Signing Update
     KB2670838 - Platform Update and DirectX 11.1
@@ -82,7 +83,7 @@ DISM /Mount-Wim /WimFile:"%EXTRACTED_ISO%\sources\install.wim" /Index:1 /MountDi
 
 - Windows 8 recommended updates:
 
-    ```
+    ```txt
     KB2919442 - Servicing Stack Update
     KB2919355 - Cumulative Update
     ```
@@ -165,7 +166,7 @@ DISM /Unmount-Wim /MountDir:"%MOUNT_DIR%" /Commit && rd /s /q "%MOUNT_DIR%"
 
 ## Replace Windows 7 Boot Wim (Windows 7)
 
-This step is not required if you are [installing using DISM Apply-Image](./pre-install.md#booting-into-the-iso). As you are aware, Windows 7 lacks driver support for modern hardware and you should have already integrated drivers into the **install.wim**. However we have not yet touched the **boot.wim** (installer). We could integrate the same drivers into the **boot.wim** as we did before. However this may still lead to a problematic installation. Instead, we can use the Windows 10 **boot.wim** which already has modern hardware support to install our Windows 7 **install.wim**. For this to work properly, you should only have one edition of Windows 7 in your **install.wim** which should already be done in the [Stripping Non-Essential Editions](#stripping-non-essential-editions) section.
+This step is not required if you are [installing using DISM Apply-Image](./pre-install.md#booting-into-the-iso). As you are aware, Windows 7 lacks driver support for modern hardware and you should have already integrated drivers into the **install.wim**. However we have not yet touched the **boot.wim** (installer). We could integrate the same drivers into the **boot.wim** as we did before. However this may still lead to a problematic installation. Instead, we can use the Windows 10 **boot.wim** which already has modern hardware support to install our Windows 7 **install.wim**. For this to work properly, you should only have one edition of Windows 7 in your **install.wim** which should already be done in the [Remove Non-Essential Editions](#remove-non-essential-editions) section.
 
 - Download the [latest Windows 10 ISO that matches your Windows 7 ISO's language](https://www.microsoft.com/en-us/software-download/windows10) and extract it, I would recommend renaming the extracted folder to avoid confusion. In the examples below, I have extracted it to ``C:\W10_ISO``
 
