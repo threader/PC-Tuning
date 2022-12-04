@@ -40,19 +40,22 @@ We can read **HalpTscSyncPolicy** in a local kernel debugger such as [WinDbg](ht
 ```txt
 lkd> dd HalpTscSyncPolicy l1
 fffff801`2de4a3ac  00000000
-```txt
+```
+
 **bcdedit.exe /set tscsyncpolicy default**
 
 ```txt
 lkd> dd HalpTscSyncPolicy l1
 fffff803`1dc4a3ac  00000000
-```txt
+```
+
 **bcdedit.exe /set tscsyncpolicy legacy**
 
 ```txt
 lkd> dd HalpTscSyncPolicy l1
 fffff805`1dc4a3ac  00000001
-```txt
+```
+
 **bcdedit.exe /set tscsyncpolicy enhanced**
 
 ```txt
@@ -120,19 +123,18 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
 
     lkd> db PspForegroundQuantum L3
     fffff802`3a72e874  06 0c 12
-    ```txt
+    ```
+
     PspForegroundQuantum returns the values in hexadecimal so we need to convert it to decimal in order to use the tables correctly. ``06 0c 12`` is equivalent to ``6 12 18`` and PsPrioritySeparation returns ``2``. In the tables, this corresponds to short, variable, 3:1. But we already knew this as it is documented by Microsoft, so now lets try an ambiguous value.
 
     **0xffff3f91 (4294918033 decimal)**
 
     ```txt
-
     lkd> dd PsPrioritySeparation L1
     fffff802`3a6fc5c4  00000001
 
     lkd> db PspForegroundQuantum L3
     fffff802`3a72e874  0c 18 24
-
     ```
 
     ``0c 18 24`` is equivalent to ``12 24 36`` and PsPrioritySeparation returns ``1`` which corresponds to long, variable, 2:1. Nothing special as it seems, this is actually equivalent to values less than the maximum documented value as shown in [this csv](https://raw.githubusercontent.com/djdallmann/GamingPCSetup/master/CONTENT/RESEARCH/FINDINGS/win32prisep0to271.csv). I had the same results while testing various other values.
