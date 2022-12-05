@@ -6,8 +6,6 @@
 
 - See [Low Latency Hardware | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4)
 
-- Avoid Ryzen as its architecture does not allow for low RAM latencies when compared to Intel as of 2022
-
 - Avoid single-channel and mixing/matching DIMMs
 
 - Ensure your GPU is installed in the top PCIe slot and that it is running at the rated bandwidth in [GPU-Z](https://www.techpowerup.com/gpuz) while running the build-in render test

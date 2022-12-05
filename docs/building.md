@@ -188,7 +188,7 @@ explorer "%EXTRACTED_ISO%"
 
 ## ISO Compression (Optional)
 
-Use the command below to compress the ISO, this may take a while.
+Compressing has no advantage other than reducing the size. Keep in mind that the ISO has to be decompressed upon installation. Use the command below to compress the ISO.
 
 ```bat
 DISM /Export-Image /SourceImageFile:"%EXTRACTED_ISO%\sources\install.wim" /SourceIndex:1 /DestinationImageFile:"%EXTRACTED_ISO%\sources\install.esd" /Compress:recovery /CheckIntegrity && del /f /q "%EXTRACTED_ISO%\sources\install.wim"
