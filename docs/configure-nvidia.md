@@ -73,7 +73,7 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
 ## Lock GPU Clocks/P-State 0
 
-Force P-State 0 with the [following registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-is-there-a-registry-setting-that-can-force-your-display-adapter-to-remain-at-its-highest-performance-state-pstate-p0) to reduce render time and jitter caused by frequency transitions (reboot required), ensure to change the driver key to suit your needs.
+Force P-State 0 with the [following registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-is-there-a-registry-setting-that-can-force-your-display-adapter-to-remain-at-its-highest-performance-state-pstate-p0) to reduce render time and jitter caused by frequency transitions (reboot required), ensure to change the driver key to suit your needs. To reduce power consumption while not in-game, consider using [limit-nvpstate](https://github.com/amitxv/limit-nvpstate).
 
 - Run ``C:\bin\scripts\get-driver-keys.bat`` to get the driver keys on your system
 
