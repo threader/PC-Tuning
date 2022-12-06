@@ -12,7 +12,7 @@ PowerShell Set-ExecutionPolicy Unrestricted -force
 echo info: setting the password to never expire
 net accounts /maxpwage:unlimited > nul 2>&1
 
-echo info: disable automatic repair
+echo info: disabling automatic repair
 bcdedit /set recoveryenabled no > nul 2>&1
 fsutil repair set C: 0 > nul 2>&1
 
