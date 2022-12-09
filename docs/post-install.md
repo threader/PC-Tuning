@@ -74,7 +74,7 @@ C:\bin\scripts\miscellaneous.bat
     - Windows 10:
 
         - Uninstall bloatware in **Settings -> Apps -> Apps and Features**
-        - In the **Optional features** section, uninstall everything apart from **Microsoft Paint**, **Notepad** and **WordPad**
+        - In the **Optional features** section, uninstall everything apart from **Microsoft Paint**, **Notepad** and **WordPad** if applicable (these do not exist in earlier Windows 10 versions)
 
     - Windows 11:
 
@@ -103,7 +103,7 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
     sudo reboot
     ```
 
-- Open ```C:\bin\Autoruns.exe``` and remove all obsolete entries with a yellow label, run with ``C:\bin\NSudo.exe`` if you encounter any permission errors
+- Open ``C:\bin\Autoruns.exe`` and remove all obsolete entries with a yellow label, run with ``C:\bin\NSudo.exe`` if you encounter any permission errors
 
 ## Install [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist)
 
@@ -158,7 +158,7 @@ Go through the ``C:\bin\preference`` folder to configure the following:
 
 ## Install Drivers
 
-Install any drivers your system requires, avoid installing chipset drivers. I would recommend updating and installing Ethernet, USB, NVMe, SATA (required on Windows 7 as enabling MSI on the stock SATA driver will result in a BSOD). See the [Integrate and Obtain Drivers](./building.md#integrate-and-obtain-drivers) section for details on finding drivers (download them on another operating system or PC).
+Avoid installing chipset drivers. I would recommend updating and installing Ethernet, USB, NVMe, SATA (required on Windows 7 as enabling MSI on the stock SATA driver will result in a BSOD). See the [Integrate and Obtain Drivers](./building.md#integrate-and-obtain-drivers) section for details on finding drivers (download them on another operating system or PC). GPU drivers will be installed in the [Configure the Graphics Driver](#configure-the-graphics-driver) step later on.
 
 Try to obtain the driver in its INF form so that it can be installed in device manager as executable installers usually install other bloatware along with the driver itself. Most of the time, you can extract the installer's executable with 7-Zip to obtain the driver.
 
@@ -172,7 +172,7 @@ C:\bin\ndp48-web.exe
 
 ## Configure a [Web Browser](https://privacytests.org)
 
-A standard Firefox installation is recommended. I have created a script used to update/install the latest Firefox version. Open CMD as administrator and enter the command below.
+A standard Firefox installation is recommended. I have created a script used to update/install the latest Firefox version. Open CMD and enter the command below.
 
 ```bat
 C:\bin\python\python.exe C:\bin\scripts\install-firefox.py
@@ -547,7 +547,7 @@ Configure default programs in **Settings -> Apps**.
 
 ## Cleanup
 
-- Open ```C:\bin\Autoruns.exe``` and remove any unwanted programs such as game launchers. Remove all obsolete entries with a yellow label, run with ``C:\bin\NSudo.exe`` if you encounter any permission errors
+- Open ``C:\bin\Autoruns.exe`` and remove any unwanted programs such as game launchers. Remove all obsolete entries with a yellow label, run with ``C:\bin\NSudo.exe`` if you encounter any permission errors
 
 - Some locations you may want to review for leftover bloatware and unwanted shortcuts
 
