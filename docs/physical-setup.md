@@ -29,7 +29,9 @@
 
 - Remove the heatsink from your DIMMs and mount a fan over it using cable ties
 
-- Along with a M.2/NVMe heatsink, optionally place a fan over it
+- Consider using a M.2/NVMe heatsink
+
+- Consider mounting a fan over VRMs, CPU backplate, storage devices and other hot spots
 
 - Configure fan curves or set a static, high, noise-acceptable RPM
 
