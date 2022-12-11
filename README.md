@@ -2,8 +2,6 @@
 
 Windows oriented performance, privacy and latency tuning guide.
 
-Contact: <https://twitter.com/amitxv>
-
 ## Introduction
 
 The custom ISO from the previous project is discontinued so please do not ask for it as it has been recreated with malware. Although I have chosen to keep the old project's name for the new one, nothing is branded such as the resources included in the repository.
