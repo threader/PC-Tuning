@@ -201,3 +201,7 @@ This step is not required if you are [installing using DISM Apply-Image](./pre-i
 ```bat
 "%OSCDIMG%" -m -o -u2 -udfver102 -l"FINAL" -bootdata:2#p0,e,b"%EXTRACTED_ISO%\boot\etfsboot.com"#pEF,e,b"%EXTRACTED_ISO%\efi\microsoft\boot\efisys.bin" "%EXTRACTED_ISO%" "%userprofile%\Desktop\FINAL.iso"
 ```
+
+## Cleanup
+
+Optionally uninstall the programs and remove the binaries installed in the [Build Requirements](#build-requirements) section if you do not plan on building another image anytime soon.
