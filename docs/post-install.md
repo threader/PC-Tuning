@@ -6,9 +6,9 @@ Do not connect to the Internet until the [Merge the Registry Files](#merge-the-r
 
 If you are configuring Windows 11, press **Shift + F10** to open CMD and run the following command ``oobe\BypassNRO.cmd``. This will unlock the **I don't have internet** option demonstrated in the video examples below.
 
-- See [media/oobe-windows7-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows7-example.mp4)
-- See [media/oobe-windows8-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows8-example.mp4)
-- See [media/oobe-windows10+-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/oobe-windows10+-example.mp4)
+- See [media/oobe-windows7-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/oobe-windows7-example.mp4)
+- See [media/oobe-windows8-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/oobe-windows8-example.mp4)
+- See [media/oobe-windows10+-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/oobe-windows10+-example.mp4)
 
 ## Activate Windows
 
@@ -26,9 +26,9 @@ slmgr /ato
 
 Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and start menu.
 
-- See [media/visual-cleanup-windows7-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/visual-cleanup-windows7-example.mp4)
-- See [media/visual-cleanup-windows8-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/visual-cleanup-windows8-example.mp4)
-- See [media/visual-cleanup-windows10+-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/visual-cleanup-windows10+-example.mp4)
+- See [media/visual-cleanup-windows7-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/visual-cleanup-windows7-example.mp4)
+- See [media/visual-cleanup-windows8-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/visual-cleanup-windows8-example.mp4)
+- See [media/visual-cleanup-windows10+-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/visual-cleanup-windows10+-example.mp4)
 
 ## Miscellaneous
 
