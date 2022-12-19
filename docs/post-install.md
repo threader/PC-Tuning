@@ -388,7 +388,7 @@ The service list configuration is not intended for Wi-Fi and webcam functionalit
 
 - On 1607 and 1703, delete the **ErrorControl** registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Schedule`` to prevent an unresponsive explorer shell after disabling the task scheduler service
 
-- Download and extract the latest [Service-List-Builder](https://github.com/amitxv/Service-List-Builder/releases) release. Open CMD and CD to the extracted folder where the executable is located
+- Download and extract the latest [service-list-builder](https://github.com/amitxv/service-list-builder/releases) release. Open CMD and CD to the extracted folder where the executable is located
 
 - Use the command below to build the scripts in the **build** folder. NSudo is required to run the batch scripts
 
