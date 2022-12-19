@@ -7,10 +7,12 @@ import ctypes
 nsudo_path = "C:\\bin\\NSudo.exe"
 nsudo_args = [nsudo_path, "-U:T", "-P:E", "-Wait"]
 
+
 def apply_registry(file_path) -> None:
     """function to merge registry files"""
     subprocess.run(["regedit.exe", "/s", file_path], check=False)
     subprocess.run([*nsudo_args, "regedit.exe", "/s", file_path], check=False)
+
 
 def main() -> int:
     """program entrypoint"""
@@ -20,10 +22,25 @@ def main() -> int:
         return 1
 
     registry_dir = "C:\\bin\\registry"
-    registry_files = ["7.reg", "7+.reg", "7-8.reg", "8.reg", "8+.reg", "10+.reg", "11+.reg"]
+    registry_files = [
+        "7.reg",
+        "7+.reg",
+        "7-8.reg",
+        "8.reg",
+        "8+.reg",
+        "10+.reg",
+        "11+.reg",
+    ]
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--winver", choices=[7, 8, 10, 11], help="specify windows version to be configured", required=True, type=int, metavar="<winver>")
+    parser.add_argument(
+        "--winver",
+        choices=[7, 8, 10, 11],
+        help="specify windows version to be configured",
+        required=True,
+        type=int,
+        metavar="<winver>",
+    )
     args = parser.parse_args()
 
     if not os.path.exists(nsudo_path):
@@ -53,6 +70,7 @@ def main() -> int:
     print("info: done")
 
     return 0
+
 
 if __name__ == "__main__":
     sys.exit(main())

@@ -4,6 +4,7 @@ import subprocess
 import io
 import ctypes
 
+
 def main() -> int:
     """program entrypoint"""
 
@@ -52,10 +53,15 @@ def main() -> int:
         "autochk\\proxy",
         "siuf",
         "device information",
-        "edp policy manager"
+        "edp policy manager",
     ]
 
-    process = subprocess.run(["schtasks", "/query", "/fo", "list"], capture_output=True, check=False, universal_newlines=True)
+    process = subprocess.run(
+        ["schtasks", "/query", "/fo", "list"],
+        capture_output=True,
+        check=False,
+        universal_newlines=True,
+    )
 
     for line in io.StringIO(process.stdout):
         if "TaskName:" in line:
@@ -68,11 +74,22 @@ def main() -> int:
             if wildcard in task:
                 schtasks_args = ["schtasks", "/change", "/disable", "/tn", task]
                 subprocess.run(schtasks_args, check=False, **subprocess_null)
-                subprocess.run([nsudo_path, "-U:T", "-P:E", "-ShowWindowMode:Hide", *schtasks_args], check=False, **subprocess_null)
+                subprocess.run(
+                    [
+                        nsudo_path,
+                        "-U:T",
+                        "-P:E",
+                        "-ShowWindowMode:Hide",
+                        *schtasks_args,
+                    ],
+                    check=False,
+                    **subprocess_null,
+                )
 
     print("info: done")
 
     return 0
+
 
 if __name__ == "__main__":
     sys.exit(main())

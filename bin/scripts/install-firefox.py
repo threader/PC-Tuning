@@ -8,6 +8,7 @@ import hashlib
 import json
 import ssl
 
+
 def main() -> int:
     """program entrypoint"""
 
@@ -27,16 +28,24 @@ def main() -> int:
 
     subprocess_null = {"stdout": subprocess.DEVNULL, "stderr": subprocess.DEVNULL}
     setup = f"{os.environ['TEMP']}\\FirefoxSetup.exe"
-    download_link = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"
+    download_link = (
+        "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"
+    )
     install_dir = "C:\\Program Files\\Mozilla Firefox"
     policies = f"{install_dir}\\distribution\\policies.json"
     autoconfig = f"{install_dir}\\defaults\\pref\\autoconfig.js"
     firefox_cfg = f"{install_dir}\\firefox.cfg"
 
-    with request.urlopen("https://product-details.mozilla.org/1.0/firefox_versions.json") as url:
-        latest_firefox_version = json.loads(url.read().decode())["LATEST_FIREFOX_VERSION"]
+    with request.urlopen(
+        "https://product-details.mozilla.org/1.0/firefox_versions.json"
+    ) as url:
+        latest_firefox_version = json.loads(url.read().decode())[
+            "LATEST_FIREFOX_VERSION"
+        ]
 
-    with request.urlopen(f"https://mediacdn.prod.productdelivery.prod.webservices.mozgcp.net/pub/firefox/releases/{latest_firefox_version}/SHA256SUMS") as url:
+    with request.urlopen(
+        f"https://mediacdn.prod.productdelivery.prod.webservices.mozgcp.net/pub/firefox/releases/{latest_firefox_version}/SHA256SUMS"
+    ) as url:
         setup_sha256 = url.read().decode("UTF-8")
 
     remove_files = [
@@ -50,7 +59,7 @@ def main() -> int:
         "pingsender.exe",
         "updater.exe",
         "updater.ini",
-        "update-settings.ini"
+        "update-settings.ini",
     ]
 
     policies_content = {
@@ -60,9 +69,9 @@ def main() -> int:
             "Extensions": {
                 "Install": [
                     "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/11423598-latest.xpi",
-                    "https://addons.mozilla.org/firefox/downloads/latest/fastforwardteam/17032224-latest.xpi"
+                    "https://addons.mozilla.org/firefox/downloads/latest/fastforwardteam/17032224-latest.xpi",
                 ]
-            }
+            },
         }
     }
 
@@ -87,7 +96,12 @@ def main() -> int:
     """
 
     if os.path.exists(f"{install_dir}\\firefox.exe"):
-        process = subprocess.run([f"{install_dir}\\firefox.exe", "--version", "|", "more"], capture_output=True, check=False, universal_newlines=True)
+        process = subprocess.run(
+            [f"{install_dir}\\firefox.exe", "--version", "|", "more"],
+            capture_output=True,
+            check=False,
+            universal_newlines=True,
+        )
         local_version = process.stdout.split()[-1]
 
         if local_version == latest_firefox_version:
@@ -112,7 +126,9 @@ def main() -> int:
         print("error: download unsuccessful")
         return 1
 
-    subprocess.run(["taskkill", "/F", "/IM", "firefox.exe"], **subprocess_null, check=False)
+    subprocess.run(
+        ["taskkill", "/F", "/IM", "firefox.exe"], **subprocess_null, check=False
+    )
 
     print("info: installing firefox")
     subprocess.run([setup, "/S", "/MaintenanceService=false"], check=False)
@@ -142,10 +158,13 @@ def main() -> int:
     with open(firefox_cfg, "a", encoding="UTF-8") as f:
         f.writelines(textwrap.dedent(firefox_cfg_content))
 
-    print(f"info: version {latest_firefox_version} release notes: https://www.mozilla.org/en-US/firefox/{latest_firefox_version}/releasenotes")
+    print(
+        f"info: version {latest_firefox_version} release notes: https://www.mozilla.org/en-US/firefox/{latest_firefox_version}/releasenotes"
+    )
     print("info: done")
 
     return 0
+
 
 if __name__ == "__main__":
     sys.exit(main())
