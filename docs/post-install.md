@@ -117,7 +117,7 @@ C:\bin\VisualCppRedist_AIO_x86_x64.exe
 
 ## Disable Residual Scheduled Tasks
 
-Open CMD as administrator and enter the command below.
+Open CMD as administrator and enter the command below. Use win + r, **cmd** then simultaneously press **Ctrl + Shift + Enter** to launch with administrator privileges.
 
 ```bat
 C:\bin\python\python.exe C:\bin\scripts\disable-tasks.py
@@ -133,7 +133,7 @@ C:\bin\python\python.exe C:\bin\scripts\apply-registry.py --winver <winver>
 
 - Ensure that the program prints a "done" message to the console, if it has not then command prompt was probably not opened with administrator privileges and the registry files were not successfully merged
 
-- Restart your PC. After and only after a restart, you can establish an Internet connection as the Windows update policies will take effect
+- Restart your PC through **Ctrl + Alt + Delete**. After and only after a restart, you can establish an Internet connection as the Windows update policies will take effect
 
 ## [Spectre and Meltdown](https://www.grc.com/inspectre.htm)
 
@@ -319,7 +319,7 @@ This step is not optional, pcw.sys will be disabled which breaks the stock Task 
 
 - Download and extract [Process Explorer](https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer)
 - Copy **procexp64.exe** into ``C:\Windows`` and open it
-- Go to **Options** and select **Replace Task Manager**. I also configure **Confirm Kill** and **Allow Only One Instance**
+- Go to **Options** and select **Replace Task Manager**. I also configure **Confirm Kill**, **Allow Only One Instance** and **Always On Top** (helpful when games hang and system becomes unresponsive)
 
 ## Disable Process Mitigations (Windows 10 1709+)
 
