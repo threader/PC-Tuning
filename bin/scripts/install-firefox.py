@@ -115,8 +115,8 @@ def main() -> int:
     request.urlretrieve(download_link, setup)
 
     try:
-        with open(setup, "rb") as f:
-            file_bytes = f.read()
+        with open(setup, "rb") as file:
+            file_bytes = file.read()
             sha256 = hashlib.sha256(file_bytes).hexdigest()
 
             if sha256 not in setup_sha256:
@@ -147,16 +147,16 @@ def main() -> int:
     print("info: importing policies.json")
     os.makedirs(f"{install_dir}\\distribution", exist_ok=True)
 
-    with open(policies, "a", encoding="utf-8") as f:
-        json.dump(policies_content, f, indent=4)
+    with open(policies, "a", encoding="utf-8") as file:
+        json.dump(policies_content, file, indent=4)
 
     print("info: importing autoconfig.js")
-    with open(autoconfig, "a", encoding="utf-8", newline="\n") as f:
+    with open(autoconfig, "a", encoding="utf-8", newline="\n") as file:
         f.writelines(textwrap.dedent(autoconfig_content))
 
     print("info: importing firefox.cfg")
-    with open(firefox_cfg, "a", encoding="utf-8") as f:
-        f.writelines(textwrap.dedent(firefox_cfg_content))
+    with open(firefox_cfg, "a", encoding="utf-8") as file:
+        file.writelines(textwrap.dedent(firefox_cfg_content))
 
     print(
         f"info: version {latest_firefox_version} release notes: https://www.mozilla.org/en-US/firefox/{latest_firefox_version}/releasenotes"
