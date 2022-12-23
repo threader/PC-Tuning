@@ -1,38 +1,15 @@
-$hubs = Get-WmiObject Win32_USBController
-$powerMgmt = Get-WmiObject MSPower_DeviceEnable -Namespace root\wmi
-foreach ($p in $powerMgmt) {
-    $IN = $p.InstanceName.ToUpper()
-    foreach ($h in $hubs){
-        $PNPDI = $h.PNPDeviceID
-        if ($IN -like "*$PNPDI*"){
-            $p.enable = $False
-            $p.psbase.put()
-        }
-    }
-}
+$power_device_enable = Get-WmiObject MSPower_DeviceEnable -Namespace root\wmi
+$usb_devices = @("Win32_USBController", "Win32_USBControllerDevice", "Win32_USBHub")
 
-$hubs = Get-WmiObject Win32_USBControllerDevice
-$powerMgmt = Get-WmiObject MSPower_DeviceEnable -Namespace root\wmi
-foreach ($p in $powerMgmt) {
-    $IN = $p.InstanceName.ToUpper()
-    foreach ($h in $hubs){
-        $PNPDI = $h.PNPDeviceID
-        if ($IN -like "*$PNPDI*"){
-            $p.enable = $False
-            $p.psbase.put()
-        }
-    }
-}
-
-$hubs = Get-WmiObject Win32_USBHub
-$powerMgmt = Get-WmiObject MSPower_DeviceEnable -Namespace root\wmi
-foreach ($p in $powerMgmt) {
-    $IN = $p.InstanceName.ToUpper()
-    foreach ($h in $hubs){
-        $PNPDI = $h.PNPDeviceID
-        if ($IN -like "*$PNPDI*"){
-            $p.enable = $False
-            $p.psbase.put()
+foreach ($power_device in $power_device_enable) {
+    $instance_name = $power_device.InstanceName.ToUpper()
+    foreach ($device in $usb_devices) {
+        foreach ($hub in Get-WmiObject $device) {
+            $pnp_id = $hub.PNPDeviceID
+            if ($instance_name -like "*$pnp_id*"){
+                $power_device.enable = $False
+                $power_device.psbase.put()
+            }
         }
     }
 }
