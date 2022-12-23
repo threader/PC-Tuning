@@ -182,14 +182,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\Microsoft.PowerShellScript.1\Shell\Open\Command]
 @="\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" \"%1\""
 
-; disable enhance pointer precision
-
-[HKEY_CURRENT_USER\Control Panel\Mouse]
-"MouseSpeed"="0"
-"MouseThreshold1"="0"
-"MouseThreshold2"="0"
-"MouseHoverTime"="0"
-
 ; disable paging executive
 ; disable page combining
 ; disable spectre and meltdown

@@ -38,6 +38,8 @@ Open CMD as administrator and enter the command below. The commands are placed i
 C:\bin\scripts\miscellaneous.bat
 ```
 
+- Disable **Enhance pointer precision** in win + r, **main.cpl -> Pointer Options**
+
 - Disable all messages in **Control Panel -> System and Security -> Action Center -> Change Action Center settings -> Change Security and Maintenance settings**
 
     - This section is named **Security and Maintenance** on Windows 10+
