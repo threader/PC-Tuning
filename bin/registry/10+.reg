@@ -188,9 +188,9 @@ Windows Registry Editor Version 5.00
 ; disable suggested content in the immersive control panel
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
-"SubscribedContent-353694Enabled"=dword:00000001
-"SubscribedContent-353696Enabled"=dword:00000001
-"SubscribedContent-338393Enabled"=dword:00000001
+"SubscribedContent-353694Enabled"=dword:00000000
+"SubscribedContent-353696Enabled"=dword:00000000
+"SubscribedContent-338393Enabled"=dword:00000000
 
 ; enable the legacy photo viewer
 
