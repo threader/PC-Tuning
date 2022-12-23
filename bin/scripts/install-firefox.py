@@ -46,7 +46,7 @@ def main() -> int:
     with request.urlopen(
         f"https://mediacdn.prod.productdelivery.prod.webservices.mozgcp.net/pub/firefox/releases/{latest_firefox_version}/SHA256SUMS"
     ) as url:
-        setup_sha256 = url.read().decode("UTF-8")
+        setup_sha256 = url.read().decode("utf-8")
 
     remove_files = [
         "crashreporter.exe",
@@ -147,15 +147,15 @@ def main() -> int:
     print("info: importing policies.json")
     os.makedirs(f"{install_dir}\\distribution", exist_ok=True)
 
-    with open(policies, "a", encoding="UTF-8") as f:
+    with open(policies, "a", encoding="utf-8") as f:
         json.dump(policies_content, f, indent=4)
 
     print("info: importing autoconfig.js")
-    with open(autoconfig, "a", encoding="UTF-8", newline="\n") as f:
+    with open(autoconfig, "a", encoding="utf-8", newline="\n") as f:
         f.writelines(textwrap.dedent(autoconfig_content))
 
     print("info: importing firefox.cfg")
-    with open(firefox_cfg, "a", encoding="UTF-8") as f:
+    with open(firefox_cfg, "a", encoding="utf-8") as f:
         f.writelines(textwrap.dedent(firefox_cfg_content))
 
     print(
