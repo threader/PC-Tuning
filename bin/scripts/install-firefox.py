@@ -152,7 +152,7 @@ def main() -> int:
 
     print("info: importing autoconfig.js")
     with open(autoconfig, "a", encoding="utf-8", newline="\n") as file:
-        f.writelines(textwrap.dedent(autoconfig_content))
+        file.writelines(textwrap.dedent(autoconfig_content))
 
     print("info: importing firefox.cfg")
     with open(firefox_cfg, "a", encoding="utf-8") as file:
