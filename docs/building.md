@@ -25,6 +25,8 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
 ## Prepare the Build Environment
 
+- Open CMD as administrator and follow the instructions below. Do not close CMD as we will be setting temporary environment variables which will be unbound when the current session is ended
+
 - Extract the contents of the ISO to a directory of your choice with 7-Zip, In the examples below, I am using ``C:\en_windows_7_professional_with_sp1_x64_dvd_u_676939``
 
     ```bat
