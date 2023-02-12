@@ -3,40 +3,44 @@ cls
 echo Setting up and updating DO NOT CLOSE THIS WINDOW!
 
 :: set other variables
-set "usedir=%HOMEDRIVE%%HOMEPATH%\AltanOS" :: Altan means porch in Norwegian
+set "usedir=%HOMEDRIVE%%HOMEPATH%\AltanOS.inst" :: Altan means porch in Norwegian
 set "currentuser=%usedir%\bin\Nsudo\x64\NSudoLC.exe  -Priority:AboveNormal -UseCurrentConsole -U:C -P:E --wait"
 set "uacuser=%usedir%\bin\Nsudo\x64\NSudoLG.exe  -Priority:AboveNormal -UseCurrentConsole -U:C -P:E --wait"
 set "admuser=%usedir%\bin\Nsudo\x64\NSudoLC.exe  -Priority:AboveNormal -UseCurrentConsole -M:S -U:S -P:E --wait"
 set "uacadmuser=%usedir%\bin\Nsudo\x64\NSudoLG.exe  -Priority:AboveNormal -UseCurrentConsole -M:S -U:E -P:E --wait"
 set "wingetinstdcmd=winget install --disable-interactivity --accept-source-agreements"
 set "powshcmd=PowerShell -WindowStyle Normal -NoProfile -Command" 
-set "bitsadminget=bitsadmin /transfer /Download /priority FOREGROUND"
-set "webreqget=Invoke-WebRequest -uri "%geturl%" -OutFile %geturlout% -v"
+set "bitsadminget=bitsadmin /transfer /Download /priority HIGH"
+set "webreqget=%powshcmd% Invoke-WebRequest -uri "%geturl%" -OutFile %geturlout% -v"
 set "dismpkg=DISM /online /add-package"
 set "msipkg=msiexec.exe /quiet /norestart /passive /package"
+set "gitget=%ProgramFiles%\Git\bin\git.exe"
+IF "%PROCESSOR_ARCHITECTURE%"=="x64" (set niarchbit=-64)
 
-:: dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-:: dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-:: Enable-WindowsOptiertain applicaonalFeature -Online -FeatureName VirtualMachinePlatform -NoRestart
-:: wsl --set-default-version 2
-
-
-SETLOCAL EnableDelayedExpansion
+SETLOCAL EnableDelayedExpansio
 
 echo Will need net for this 
 :: ping -n 6 8.8.8.8
+ ipconfig /flushdns :: Fixed winget InternetOpenUrl() failed.
 pause
-%powshcmd% mkdir %usedir%
-%bitsadminget% https://github.com/M2Team/NSudo/releases/download/9.0-Preview1/NSudo_9.0_Preview1_9.0.2676.0.zip  %usedir%\Nsudo.zip 
-%bitsadminget% https://github.com/microsoft/winget-cli/releases/download/v1.4.10173/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle %usedir%\Microsoft.DesktopAppInstaller.msixbundle
-%bitsadminget% https://github.com/PowerShell/PowerShell/releases/download/v7.3.2/PowerShell-7.3.2-win-x64.msi  %usedir%\PowerShell-7.3.2-win-x64.msi 
-%uacadmuser% %msipkg% %usedir%\PowerShell-7.3.2-win-x64.msi
-%powshcmd% "Expand-Archive -Force '%usedir%\Nsudo.zip' '%usedir%\bin\Nsudo'"
+mkdir %usedir%
+ %bitsadminget% https://github.com/M2Team/NSudo/releases/download/9.0-Preview1/NSudo_9.0_Preview1_9.0.2676.0.zip  %usedir%\Nsudo.zip 
+ %bitsadminget% https://github.com/microsoft/winget-cli/releases/download/v1.4.10173/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle %usedir%\Microsoft.DesktopAppInstaller.msixbundle
+ %bitsadminget% https://github.com/PowerShell/PowerShell/releases/download/v7.3.2/PowerShell-7.3.2-win-x64.msi  %usedir%\PowerShell-7.3.2-win-x64.msi 
+ %bitsadminget% https://tinywall.pados.hu/files/TinyWall-v3-Installer.msi %usedir%\TinyWall-v3-Installer.msi 
+ %bitsadminget% https://privazer.com/en/PrivaZer.exe %usedir%\bin\PrivaZer.exe
+ %bitsadminget% http://www.itsamples.com/downloads/network-activity-indicator-setup%niarchbit%.zip %usedir%\network-indicator%niarchbit%.zip
+ %uacadmuser% %msipkg% %usedir%\PowerShell-7.3.2-win-x64.msi
+ %powshcmd% "Expand-Archive -Force '%usedir%\Nsudo.zip' '%usedir%\bin\Nsudo'"
+ %powshcmd% "Expand-Archive -Force '%usedir%\network-indicator%niarchbit%.zip' '%usedir%\bin\network-indicator%niarchbit%'"
 
 :: make certain applications in request UAC
 :: although these applications may already request UAC, setting this compatibility flag ensures they are ran as administrator
-reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers" /v "%usedir%\bin\Nsudo\x64\NSudoLC.exe" /t REG_SZ /d "~ RUNASADMIN" /f
-reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers" /v "%usedir%\bin\Nsudo\x64\NSudoLG.exe" /t REG_SZ /d "~ RUNASADMIN" /f
+%admuser% reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers" /v "%usedir%\bin\Nsudo\x64\NSudoLC.exe" /t REG_SZ /d "~ RUNASADMIN" /f
+%admuser% reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers" /v "%usedir%\bin\Nsudo\x64\NSudoLG.exe" /t REG_SZ /d "~ RUNASADMIN" /f
+
+:: enable ASLR
+%admuser% reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "MoveImages" /t REG_DWORD /d 1 /f
 
 :: disable autoplay and autorun
 %currentuser% %powshcmd% reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers" /v "DisableAutoplay" /t REG_DWORD /d "1" /f
@@ -48,7 +52,7 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers
 %admuser% %powshcmd% reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoAutorun" /t REG_DWORD /d "1" /f
 
 :: change ntp server from windows server to pool.ntp.org
-w32tm /config /syncfromflags:manual /manualpeerlist:"0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org"
+%admuser% w32tm /config /syncfromflags:manual /manualpeerlist:"0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org"
 sc queryex "w32time" | find "STATE" | find /v "RUNNING" || (
     net stop w32time
     net start w32time
@@ -57,7 +61,7 @@ sc queryex "w32time" | find "STATE" | find /v "RUNNING" || (
 :: disable netbios over tcp/ip
 :: works only when services are enabled
 for /f "delims=" %%b in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\NetBT\Parameters\Interfaces" /s /f "NetbiosOptions" ^| findstr "HKEY"') do (
-     reg add "%%b" /v "NetbiosOptions" /t REG_DWORD /d "2" /f
+    %admuser% reg add "%%b" /v "NetbiosOptions" /t REG_DWORD /d "2" /f
 )
 
 :: netbios hardening
@@ -111,7 +115,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCloud
 %currentuser% %powshcmd% reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "HideFileExt" /t REG_DWORD /d "0" /f
 
 :: disable lock screen camera
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Personalization" /v "NoLockScreenCamera" /t REG_DWORD /d "1" /f
+%admuser% reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Personalization" /v "NoLockScreenCamera" /t REG_DWORD /d "1" /f
 
 :: disable remote assistance
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Remote Assistance" /v "fAllowFullControl" /t REG_DWORD /d "0" /f
@@ -218,7 +222,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds" /v "EnableFeeds
 
 echo The spooler will not accept client connections nor allow users to share printers.
 :: reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers" /v "RegisterSpoolerRemoteRpcEndPoint" /t REG_DWORD /d "2" /f
-:: reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint" /v "RestrictDriverInstallationToAdministrators" /t REG_DWORD /d "1" /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint" /v "RestrictDriverInstallationToAdministrators" /t REG_DWORD /d "1" /f
 :: reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint" /v "Restricted" /t REG_DWORD /d "1" /f
 
 :: merge as trusted installer for registry files
@@ -241,8 +245,12 @@ for %%a in (
     "htafile"
     "jsefile"
     "jsfile"
+	"jsonfile"
     "regfile"
     "sctfile"
+    "shfile"
+    "inifile"
+    "pyfile"
     "urlfile"
     "vbefile"
     "vbsfile"
@@ -250,8 +258,9 @@ for %%a in (
     "wsffile"
     "wsfile"
     "wshfile"
+    "xmlfile"
 ) do (
-    ftype %%a="%WinDir%\System32\notepad.exe" "%1"
+    ftype %%a="%ProgramFiles%\Notepad++\Notepad++.exe" "%1"
 )
 
 :: remove '- Shortcut' text added onto shortcuts
@@ -269,46 +278,57 @@ pause
 echo Adding various utilities using winget - NEED LAN!
 pause
 
-%uacadmuser% %powshcmd% add-appxpackage -Path "%usedir%\Microsoft.DesktopAppInstaller.msixbundle"
-%uacadmuser% %powshcmd% %wingetinstdcmd% --id Git.Git --source winget
-%uacadmuser% %powshcmd% %wingetinstdcmd% --id  Microsoft.Sysinternals.ProcessMonitor --source winget
-%uacadmuser% %powshcmd% %wingetinstdcmd% --id  Microsoft.Sysinternals.ProcessExplorer --source winget
-%uacadmuser% %powshcmd% %wingetinstdcmd% --id Microsoft.Powershell --source winget
-%uacadmuser% %powshcmd% %wingetinstdcmd% --id Mozilla.Firefox --source winget
-%uacadmuser% %powshcmd% %wingetinstdcmd% --id 7zip.7zip --source winget
-%uacadmuser% %powshcmd% %wingetinstdcmd% --id VideoLAN.VLC --source winget
-%uacadmuser% %powshcmd% %wingetinstdcmd% --id GIMP.GIMP --source winget
-%uacadmuser% %powshcmd% %wingetinstdcmd% --id TheDocumentFoundation.LibreOffice --source winget
-%uacadmuser% %powshcmd% %wingetinstdcmd% --id Piriform.Recuva --source winget
-%uacadmuser% %powshcmd% %wingetinstdcmd% --id Piriform.Defraggler --source winget
-%uacadmuser% %powshcmd% %wingetinstdcmd% --id Notepad++.Notepad++ --source winget
-%uacadmuser% %powshcmd% %wingetinstdcmd% --id Nlitesoft.NTLite --source winget
-%uacadmuser% %powshcmd% %wingetinstdcmd% --id Malwarebytes.Malwarebytes --source winget
-%uacadmuser% %powshcmd% %wingetinstdcmd% --id SaferNetworking.SpybotAntiBeacon --source winget
-%uacadmuser% %powshcmd% winget remove --id Microsoft.Edge --accept-source-agreements --disable-interactivity
-
+  %uacadmuser% %powshcmd% add-appxpackage -Path "%usedir%\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
+  %uacadmuser% %powshcmd% %wingetinstdcmd% --id Git.Git --source winget
+  %uacadmuser% %powshcmd% %wingetinstdcmd% --id  Microsoft.Sysinternals.ProcessMonitor --source winget
+  %uacadmuser% %powshcmd% %wingetinstdcmd% --id  Microsoft.Sysinternals.ProcessExplorer --source winget
+  %uacadmuser% %powshcmd% %wingetinstdcmd% --id Microsoft.Powershell --source winget
+  %uacadmuser% %powshcmd% %wingetinstdcmd% --id Mozilla.Firefox --source winget
+  %uacadmuser% %powshcmd% %wingetinstdcmd% --id 7zip.7zip --source winget
+  %uacadmuser% %powshcmd% %wingetinstdcmd% --id VideoLAN.VLC --source winget
+  %uacadmuser% %powshcmd% %wingetinstdcmd% --id GIMP.GIMP --source winget
+  %uacadmuser% %powshcmd% %wingetinstdcmd% --id TheDocumentFoundation.LibreOffice --source winget
+  %uacadmuser% %powshcmd% %wingetinstdcmd% --id Piriform.Recuva --source winget
+  %uacadmuser% %powshcmd% %wingetinstdcmd% --id Piriform.Defraggler --source winget
+  %uacadmuser% %powshcmd% %wingetinstdcmd% --id Notepad++.Notepad++ --source winget
+  %uacadmuser% %powshcmd% %wingetinstdcmd% --id Nlitesoft.NTLite --source winget
+  %uacadmuser% %powshcmd% %wingetinstdcmd% --id Malwarebytes.Malwarebytes --source winget
+  %uacadmuser% %powshcmd% %wingetinstdcmd% --id SaferNetworking.SpybotAntiBeacon --source winget
+  %uacadmuser% %powshcmd% winget remove --id Microsoft.Edge --accept-source-agreements --disable-interactivity
+  %uacadmuser% %powshcmd% winget remove --id Microsoft.OneDrive --accept-source-agreements --disable-interactivity
 
 echo  Updating Windows. DO NOT CLOSE THIS WINDOW!
-%uacadmuser% %powshcmd% winget upgrade --accept-source-agreements --disable-interactivity --include-unknown -r
+  %uacadmuser% %powshcmd% winget upgrade --accept-source-agreements --disable-interactivity --include-unknown -r
 
 echo Setting up PSWindowsUpdate for unattended upgrades
 
-%uacadmuser% %powshcmd% Set-ExecutionPolicy -ExecutionPolicy Bypass
-%uacadmuser% %powshcmd% Install-Module PSWindowsUpdate
-%uacadmuser% %powshcmd% Import-Module PSWindowsUpdate
-%uacadmuser% %powshcmd% Get-WindowsUpdate -AcceptAll -Install
-%uacadmuser% %powshcmd% Install-WindowsUpdate
-%uacadmuser% %powshcmd% Set-ExecutionPolicy -ExecutionPolicy Restricted
+  %uacadmuser% %powshcmd% Set-ExecutionPolicy -ExecutionPolicy Bypass
+  %uacadmuser% %powshcmd% Install-Module PSWindowsUpdate
+  %uacadmuser% %powshcmd% Import-Module PSWindowsUpdate
+  %uacadmuser% %powshcmd% Get-WindowsUpdate -AcceptAll -Install
+  %uacadmuser% %powshcmd% Install-WindowsUpdate
+  %uacadmuser% %powshcmd% Set-ExecutionPolicy -ExecutionPolicy Restricted
+
+  %gitget% clone -b middle https://github.com/threader/AltanOS %usedir%\..
 
 echo Setting up finishing .reg.
-%admuser% %powshcmd% reg load %usedir%\bin\registry\clean.reg
+  %admuser% %powshcmd% reg load %usedir%\..\AltanOS\bin\registry\clean.reg
 
 %admuser% %powshcmd% DISM /Online /Disable-Feature /FeatureName:WindowsMediaPlayer /norestart
 %admuser% %powshcmd% DISM /Online /Disable-Feature /FeatureName:Internet-Explorer-Optional-amd64 /norestart
+%admuser% %powshcmd% DISM /Online /Disable-Feature /FeatureName:Internet-Explorer-Optional-x86 /norestart
+ %admuser% %powshcmd% DISM /online /enable-feature /featurename:HypervisorPlatform /all /norestart
+ %admuser% %powshcmd% DISM /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+:: %admuser% %powshcmd% DISM /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+:: %admuser% %powshcmd% Enable-WindowsOptionalFeature applicaonalFeature -Online -FeatureName VirtualMachinePlatform -NoRestart
+:: %admuser% %powshcmd% wsl --set-default-version 2
 
-:: echo info: cleaning the winsxs folder
-%admuser% %powshcmd% DISM /Online /Cleanup-Image /StartComponentCleanup /ResetBase
+ %uacadmuser% %msipkg% %usedir%\TinyWall-v3-Installer.msi
 
+ echo info: cleaning the winsxs folder
+ %admuser% %powshcmd% DISM /Online /Cleanup-Image /StartComponentCleanup /ResetBase
+:: %admuser% %powshcmd% sfc /SCANNOW
+:: %admuser% %powshcmd% DISM /Online /Cleanup-Image /RestoreHealth
 
 pause
 exit
