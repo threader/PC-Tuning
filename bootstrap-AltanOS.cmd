@@ -1,10 +1,9 @@
-:: Credits to everyone who contributed to https://github.com/Atlas-OS/Atlas/blob/main/src/AtlasModules/atlas-config.cmd 
+:: Altan means porch in Norwegian, so this is effectively PorchOS 
+:: Credits to everyone who contributed to https://github.com/Atlas-OS/Atlas/blob/9e675157f1a62aa7687a5f0a5d3fbf59cb281f1f/src/AtlasModules/atlas-config.cmd
 :: and https://github.com/amitxv/PC-Tuning
 @echo on
 cls
 echo Setting up and updating Windows and Applications.
-
-:: Altan means porch in Norwegian
 
 :: set variables
 IF "%PROCESSOR_ARCHITECTURE%"=="AMD64" (set niarchbit=-64)
@@ -17,7 +16,8 @@ set "admuser=%usedir%\bin\Nsudo\%nsarchbit%\NSudoLC.exe -Priority:AboveNormal -M
 set "uacuser=%usedir%\bin\Nsudo\%nsarchbit%\NSudoLG.exe -Priority:AboveNormal -U:C -P:E --wait"
 set "uacadmuser=%usedir%\bin\Nsudo\%nsarchbit%\NSudoLG.exe -Priority:AboveNormal -M:S -U:S -P:E --wait"
 set "wingetinstdcmd=winget install --disable-interactivity --accept-source-agreements"
-set "powshcmd=PowerShell -WindowStyle Normal -Command" 
+set "powshcmd=PowerShell -WindowStyle Normal -Command"
+set "powshadmcmd=Start-process powershell -Verb RunAS" 
 set "bitsadminget=bitsadmin /transfer /Download /priority HIGH"
 set "webgetps=%powshcmd% Invoke-WebRequest -uri "%geturl%" -OutFile %geturlout% -v"
 set "dismpkg=DISM /online /add-package"
@@ -33,23 +33,23 @@ echo Will need net for this
 
 :: Flushdns Fixed winget InternetOpenUrl() failed.
  ipconfig /flushdns
-pause
+
 mkdir %usedir%
 if exist %usedir%\bin\Nsudo\%nsarchbit%\NSudoLG.exe goto skipnsudo
  %bitsadminget% https://github.com/M2Team/NSudo/releases/download/9.0-Preview1/NSudo_9.0_Preview1_9.0.2676.0.zip %usedir%\Nsudo.zip 
  %powshcmd% "Expand-Archive -Force '%usedir%\Nsudo.zip' '%usedir%\bin\Nsudo'"
 :skipnsudo
 if exist %usedir%\network-indicator%niarchbit%.zip goto skipdl
- %bitsadminget% https://github.com/microsoft/winget-cli/releases/download/v1.4.10173/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle %usedir%\Microsoft.DesktopAppInstaller.msixbundle
- %bitsadminget% https://github.com/PowerShell/PowerShell/releases/download/v7.3.2/PowerShell-7.3.2-win-x64.msi %usedir%\PowerShell-7.3.2-win-x64.msi 
+:: %bitsadminget% https://github.com/PowerShell/PowerShell/releases/download/v7.3.2/PowerShell-7.3.2-win-x64.msi %usedir%\PowerShell-7.3.2-win-x64.msi 
  %bitsadminget% https://tinywall.pados.hu/files/TinyWall-v3-Installer.msi %usedir%\TinyWall-v3-Installer.msi 
  %bitsadminget% https://privazer.com/en/PrivaZer.exe %usedir%\bin\PrivaZer.exe
  %bitsadminget% http://www.itsamples.com/downloads/network-activity-indicator-setup%niarchbit%.zip %usedir%\network-indicator%niarchbit%.zip
  %powshcmd% "Expand-Archive -Force '%usedir%\network-indicator%niarchbit%.zip' '%usedir%\bin\network-indicator%niarchbit%'"
 :skipdl
- %powshcmd% Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name ConsentPromptBehaviorAdmin -Value 0
-  
-:: %uacadmuser% %msipkg% %usedir%\PowerShell-7.3.2-win-x64.msi
+ %powshcmd% "Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name ConsentPromptBehaviorAdmin -Value 0"
+
+:: %msipkg% %usedir%\PowerShell-7.3.2-win-x64.msi
+:: pause
 :: make certain applications in request UAC
 :: although these applications may already request UAC, setting this compatibility flag ensures they are ran as administrator
  reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers" /v "%usedir%\bin\Nsudo\x64\NSudoLC.exe" /t REG_SZ /d "~ RUNASADMIN" /f
@@ -140,12 +140,6 @@ for /f %%i in ('wmic path win32_networkadapter get GUID ^| findstr "{"') do (
  reg add "HKLM\SYSTEM\CurrentControlSet\Control\Remote Assistance" /v "fAllowToGetHelp" /t REG_DWORD /d "0" /f
  reg add "HKLM\SYSTEM\CurrentControlSet\Control\Remote Assistance" /v "fEnableChatControl" /t REG_DWORD /d "0" /f
 
-:: disable audio excludive mode on all devices
-for /f "delims=" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\MMDevices\Audio\Capture"') do (
-    reg add "%%a\Properties" /v "{b3f8fa53-0004-438e-9003-51a46e139bfc},3" /t REG_DWORD /d "0" /f
-    reg add "%%a\Properties" /v "{b3f8fa53-0004-438e-9003-51a46e139bfc},4" /t REG_DWORD /d "0" /f
-)
-
 :: enable legacy photo viewer
 for %%i in (tif tiff bmp dib gif jfif jpe jpeg jpg jxr png) do (
       reg add "HKLM\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations" /v ".%%~i" /t REG_SZ /d "PhotoViewer.FileAssoc.Tiff" /f
@@ -168,7 +162,7 @@ for %%i in (tif tiff bmp dib gif jfif jpe jpeg jpg jxr png) do (
  setx POWERSHELL_TELEMETRY_OPTOUT 1
 
 :: do not allow pinning microsoft store app to taskbar
- reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "NoPinningStoreToTaskbar" /t REG_DWORD /d "1" /f
+:: reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "NoPinningStoreToTaskbar" /t REG_DWORD /d "1" /f
 
 :: restrict windows' access to internet resources
 :: enables various other GPOs that limit access on specific windows services
@@ -328,10 +322,6 @@ reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "NoRemoteDestinat
 :: reg add "HKLM\SOFTWARE\Classes\.reg\ShellNew" /v "NullFile" /t REG_SZ /d "" /f
 :: reg add "HKLM\SOFTWARE\Classes\.reg\ShellNew" /v "ItemName" /t REG_EXPAND_SZ /d "@C:\Windows\regedit.exe,-309" /f
 
-
-:: enable hyper-v with DISM
-  DISM /Online /Enable-Feature:Microsoft-Hyper-V /Quiet /NoRestart
-
 :: enable security functions
  reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /t REG_DWORD /v "EnableVirtualizationBasedSecurity" /d "1" /f
  reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /t REG_DWORD /v "HypervisorEnforcedCodeIntegrity" /d "1" /f
@@ -340,15 +330,9 @@ reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "NoRemoteDestinat
  reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "WasEnabledBy" /t REG_DWORD /d "1" /f
  reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "Enabled" /t REG_DWORD /d "1" /f
 
-:: enable system devices
-::  DevManView.exe /enable "Microsoft Hyper-V NT Kernel Integration VSP"
-::  DevManView.exe /enable "Microsoft Hyper-V PCI Server"
-::  DevManView.exe /enable "Microsoft Hyper-V Virtual Disk Server"
-::  DevManView.exe /enable "Microsoft Hyper-V Virtual Machine Bus Provider"
-::  DevManView.exe /enable "Microsoft Hyper-V Virtualization Infrastructure Driver"
-
- %powshcmd% "Set-ProcessMitigation -System -Enable DEP, EmulateAtlThunks"
- bcdedit /set nx Optin
+:: disable spectre and meltdown
+:: reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverride" /t REG_DWORD /d "3" /f
+:: reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverrideMask" /t REG_DWORD /d "3" /f
 
 :: prevent print drivers over HTTP
  reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers" /v "DisableWebPnPDownload" /t REG_DWORD /d "1" /f
@@ -356,12 +340,66 @@ reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "NoRemoteDestinat
 :: disable printing over HTTP
  reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers" /v "DisableHTTPPrinting" /t REG_DWORD /d "1" /f
 
-:: disable spectre and meltdown
-:: reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverride" /t REG_DWORD /d "3" /f
-:: reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverrideMask" /t REG_DWORD /d "3" /f
+:: remove '- Shortcut' text added onto shortcuts
+ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "link" /t REG_BINARY /d "00000000" /f
+
+:: Figure out why these fail at some point 
+
+:: disable audio excludive mode on all devices
+:: for /f "delims=" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\MMDevices\Audio\Capture"') do (
+::    reg add "%%a\Properties" /v "{b3f8fa53-0004-438e-9003-51a46e139bfc},3" /t REG_DWORD /d "0" /f
+::    reg add "%%a\Properties" /v "{b3f8fa53-0004-438e-9003-51a46e139bfc},4" /t REG_DWORD /d "0" /f
+::)
+
+:: - harden process mitigations (lower compatibilty for legacy apps) 
+:: %powshcmd% "Set-ProcessMitigation -System -Enable DEP, EmulateAtlThunks, RequireInfo, BottomUp, HighEntropy, StrictHandle, CFG, StrictCFG, SuppressExports, SEHOP, AuditSEHOP, SEHOPTelemetry, ForceRelocateImages"
+
+ %uacadmuser% %powshcmd% "Set-ProcessMitigation -System -Enable DEP, EmulateAtlThunks"
+ bcdedit /set nx Optin
+
+@echo on
+
+:: cls 
+:: 
+:: %uacadmuser% %powshcmd% Set-ExecutionPolicy -ExecutionPolicy Bypass
+:: powershell Start-process powershell -Verb RunAS %cd%\winget-pkg.ps1
+:: %uacadmuser% %powshcmd% Set-ExecutionPolicy -ExecutionPolicy Restricted
+:: %uacadmuser% %powshcmd% add-appxpackage -Path "%usedir%\Microsoft.DesktopAppInstaller.msixbundle"
 
 
-:: - open scripts in notepad to preview instead of executing when clicking
+echo Setting up PSWindowsUpdate for unattended upgrades
+
+
+ %gitget% clone -b middle https://github.com/threader/AltanOS "%usedir%\.."
+
+echo Disablng WMP and IE, enable Hyper-V and WSL
+ DISM /Online /Disable-Feature /FeatureName:WindowsMediaPlayer /norestart
+ DISM /Online /Disable-Feature /FeatureName:Internet-Explorer-Optional-amd64 /norestart
+ DISM /Online /Disable-Feature /FeatureName:Internet-Explorer-Optional-x86 /norestart
+ 
+ DISM /Online /Enable-Feature /featurename:Microsoft-Hyper-V /Quiet /NoRestart
+ DISM /online /enable-feature /featurename:HypervisorPlatform /all /norestart
+ DISM /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+ DISM /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+:: %powshcmd% Enable-WindowsOptionalFeature applicaonalFeature -Online -FeatureName VirtualMachinePlatform -NoRestart
+%powshcmd% wsl --set-default-version 2
+
+:: enable system devices
+::  DevManView.exe /enable "Microsoft Hyper-V NT Kernel Integration VSP"
+::  DevManView.exe /enable "Microsoft Hyper-V PCI Server"
+::  DevManView.exe /enable "Microsoft Hyper-V Virtual Disk Server"
+::  DevManView.exe /enable "Microsoft Hyper-V Virtual Machine Bus Provider"
+::  DevManView.exe /enable "Microsoft Hyper-V Virtualization Infrastructure Driver"
+
+::  %msipkg% %usedir%\TinyWall-v3-Installer.msi
+
+ echo info: cleaning the winsxs folder
+ DISM /Online /Cleanup-Image /StartComponentCleanup /ResetBase
+:: sfc /SCANNOW
+:: DISM /Online /Cleanup-Image /RestoreHealth
+
+:: - open scripts in notepad++ to preview instead of executing when clicking
+if exist %ProgramFiles%\Notepad++\Notepad++.exe (
 for %%a in (
     "batfile"
     "chmfile"
@@ -385,78 +423,7 @@ for %%a in (
     "xmlfile"
 ) do (
    ftype %%a="%ProgramFiles%\Notepad++\Notepad++.exe" "%1"
-)
+) )
 
-:: remove '- Shortcut' text added onto shortcuts
- reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "link" /t REG_BINARY /d "00000000" /f
-
-:: - harden process mitigations (lower compatibilty for legacy apps)
-:: %powshcmd% "Set-ProcessMitigation -System -Enable DEP, EmulateAtlThunks, RequireInfo, BottomUp, HighEntropy, StrictHandle, CFG, StrictCFG, SuppressExports, SEHOP, AuditSEHOP, SEHOPTelemetry, ForceRelocateImages"
-
-echo Removing all installed non-required Windows Packages. Enter to continue
-
-echo you may need to rerun %usedir%\..\AltanOS\rm_all_non_ess_ms_packages.cmd after next reboot
-pause
- %powshcmd% "Get-AppPackage | Remove-AppPackage"
-echo "Removing the calculator might be a bit harsh.... and mspaint is great for pasting screenshots, what else is needed?"
- %powshcmd% "Get-AppxPackage -allusers *windowscalculator* | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register “$($_.InstallLocation)\AppXManifest.xml”}"
- %powshcmd% "Get-AppxPackage -allusers *mspaint* | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register “$($_.InstallLocation)\AppXManifest.xml”}"
-:: cls 
-
-echo Adding various utilities using winget - NEED INET!
-pause
-
- %powshcmd% add-appxpackage -Path "%usedir%\Microsoft.DesktopAppInstaller.msixbundle"
- %powshcmd% %wingetinstdcmd% --id Git.Git --source winget
- %powshcmd% %wingetinstdcmd% --id  Microsoft.Sysinternals.ProcessMonitor --source winget
- %powshcmd% %wingetinstdcmd% --id  Microsoft.Sysinternals.ProcessExplorer --source winget
- %powshcmd% %wingetinstdcmd% --id Microsoft.Powershell --source winget
- %powshcmd% %wingetinstdcmd% --id Mozilla.Firefox --source winget
- %powshcmd% %wingetinstdcmd% --id 7zip.7zip --source winget
- %powshcmd% %wingetinstdcmd% --id VideoLAN.VLC --source winget
- %powshcmd% %wingetinstdcmd% --id GIMP.GIMP --source winget
- %powshcmd% %wingetinstdcmd% --id TheDocumentFoundation.LibreOffice --source winget
- %powshcmd% %wingetinstdcmd% --id Piriform.Recuva --source winget
- %powshcmd% %wingetinstdcmd% --id Piriform.Defraggler --source winget
- %powshcmd% %wingetinstdcmd% --id Notepad++.Notepad++ --source winget
- %powshcmd% %wingetinstdcmd% --id Nlitesoft.NTLite --source winget
- %powshcmd% %wingetinstdcmd% --id Malwarebytes.Malwarebytes --source winget
- %powshcmd% %wingetinstdcmd% --id SaferNetworking.SpybotAntiBeacon --source winget
-::  %uacadmuser% %powshcmd% winget remove --id Microsoft.Edge --accept-source-agreements --disable-interactivity
-::  %uacadmuser% %powshcmd% winget remove --id Microsoft.OneDrive --accept-source-agreements --disable-interactivity
-
-echo  Updating Windows. DO NOT CLOSE THIS WINDOW!
- %powshcmd% winget upgrade --accept-source-agreements --disable-interactivity --include-unknown -r
-
-echo Setting up PSWindowsUpdate for unattended upgrades
-
- %powshcmd% Set-ExecutionPolicy -ExecutionPolicy Bypass
- %powshcmd% Install-Module PSWindowsUpdate
- %powshcmd% Import-Module PSWindowsUpdate
- %powshcmd% Get-WindowsUpdate -AcceptAll -Install
- %powshcmd% Install-WindowsUpdate
- %powshcmd% Set-ExecutionPolicy -ExecutionPolicy Restricted
-
-  %gitget% clone -b middle https://github.com/threader/AltanOS "%usedir%\.."
-
-echo Setting up finishing .reg.
- reg load %usedir%\AltanOS\bin\registry\clean.reg
-
- DISM /Online /Disable-Feature /FeatureName:WindowsMediaPlayer /norestart
- DISM /Online /Disable-Feature /FeatureName:Internet-Explorer-Optional-amd64 /norestart
- DISM /Online /Disable-Feature /FeatureName:Internet-Explorer-Optional-x86 /norestart
- DISM /online /enable-feature /featurename:HypervisorPlatform /all /norestart
- DISM /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-::  DISM /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-:: %uacadmuser% %powshcmd% Enable-WindowsOptionalFeature applicaonalFeature -Online -FeatureName VirtualMachinePlatform -NoRestart
-:: %uacadmuser% %powshcmd% wsl --set-default-version 2
-
-  %msipkg% %usedir%\TinyWall-v3-Installer.msi
-
- echo info: cleaning the winsxs folder
-  DISM /Online /Cleanup-Image /StartComponentCleanup /ResetBase
-:: %uacadmuser% %powshcmd% sfc /SCANNOW
-:: %uacadmuser% %powshcmd% DISM /Online /Cleanup-Image /RestoreHealth
- %powshcmd% Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name ConsentPromptBehaviorAdmin -Value 2
-pause
-exit
+ %powshcmd% Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name ConsentPromptBehaviorAdmin -Value 0
+ pause
