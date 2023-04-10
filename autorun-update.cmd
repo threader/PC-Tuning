@@ -1,4 +1,4 @@
-﻿%usedir%="%HOMEDRIVE%%HOMEPATH%\AltanOS"
+﻿%usedir%="%HOMEDRIVE%%HOMEPATH%\Desktop\AltanOS"
 
 %uacadmuser% %powshcmd% Set-ExecutionPolicy -ExecutionPolicy Bypass
 
