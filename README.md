@@ -1,6 +1,8 @@
-# PC-Tuning
+# AltanOS - a middle ground project between PC-Tuning and Atlas by 'amitvxv' and co.
+With whatever I can think of that may be of use - this is a re-learning experience having focused on everything but Windows since 1999. 
+- Threader
 
-Optimize Windows based systems for real-time tasks
+Optimize Windows based systems for security and ease of use/deployment, with an option to to optimize for real-time tasks eventually
 
 ## Introduction
 
