@@ -366,11 +366,8 @@ reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "NoRemoteDestinat
 :: %uacadmuser% %powshcmd% Set-ExecutionPolicy -ExecutionPolicy Restricted
 :: %uacadmuser% %powshcmd% add-appxpackage -Path "%usedir%\Microsoft.DesktopAppInstaller.msixbundle"
 
-
-echo Setting up PSWindowsUpdate for unattended upgrades
-
-
- %gitget% clone -b middle https://github.com/threader/AltanOS "%usedir%\.."
+echo Hopefully now git clone the latest AltanOS stuff
+ %gitget% clone -b middle https://github.com/threader/AltanOS "%HOMEDRIVE%%HOMEPATH%\Desktop\AltanOS"
 
 echo Disablng WMP and IE, enable Hyper-V and WSL
  DISM /Online /Disable-Feature /FeatureName:WindowsMediaPlayer /norestart
@@ -393,7 +390,7 @@ echo Disablng WMP and IE, enable Hyper-V and WSL
 
 ::  %msipkg% %usedir%\TinyWall-v3-Installer.msi
 
- echo info: cleaning the winsxs folder
+ echo info: cleaning the winsxs folder - bah this needs to be done after a reboot 
  DISM /Online /Cleanup-Image /StartComponentCleanup /ResetBase
 :: sfc /SCANNOW
 :: DISM /Online /Cleanup-Image /RestoreHealth
@@ -423,7 +420,8 @@ for %%a in (
     "xmlfile"
 ) do (
    ftype %%a="%ProgramFiles%\Notepad++\Notepad++.exe" "%1"
-) )
-
- %powshcmd% Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name ConsentPromptBehaviorAdmin -Value 0
+) ) 
+:: reset the password prompt, a value of 1 on here on the admin account will require password to be entered. 2 is a prompt.
+ %powshcmd% Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name ConsentPromptBehaviorAdmin -Value 2
+ echo All done, pausing to review for you what might have gone astray
  pause
